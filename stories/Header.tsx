@@ -1,6 +1,6 @@
 import { mergeProps } from 'solid-js';
 
-import { Button } from './Button';
+import { Button } from '../src/solid-daisy-components/components/Button';
 import './header.css';
 
 export interface HeaderProps {
@@ -46,13 +46,13 @@ export const Header = (_props: HeaderProps) => {
                                     <b>{props.user.name}</b>
                                     !
                                 </span>
-                                <Button size="small" onClick={ props.onLogout } label="Log out" />
+                                <Button size="sm" onClick={ props.onLogout }>Log out</Button>
                             </>
                         )
                         : (
                             <>
-                                <Button size="small" onClick={ props.onLogin } label="Log in" />
-                                <Button primary size="small" onClick={ props.onCreateAccount } label="Sign up" />
+                                <Button size="sm" onClick={ props.onLogin }>Log in</Button>
+                                <Button size="sm" color="primary" onClick={ props.onCreateAccount }>Sign up</Button>
                             </>
                         )}
                 </div>
