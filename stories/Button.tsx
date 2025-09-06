@@ -37,10 +37,6 @@ export const Button = (_props: ButtonProps) => {
         }
         {...rest}
       >
-
-    <div id="98909946" class="rounded bg-red-600 w-96 h-96 animate-spin">
-    </div>
-      zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz
         {props.label}
       </button>
     </>
