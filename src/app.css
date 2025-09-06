@@ -1,0 +1,6 @@
+/* src/tailwind.css */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Optional -- Add Daisy UI */
+@plugin "daisyui";

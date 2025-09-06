@@ -1,4 +1,5 @@
 import type { Preview } from 'storybook-solidjs-vite';
+import "../src/app.css";
 
 const preview: Preview = {
     tags: ['autodocs'],
