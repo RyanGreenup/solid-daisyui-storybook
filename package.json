@@ -24,6 +24,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.13",
+    "cmdk-solid": "^1.1.2",
     "daisyui": "^5.1.7",
     "lucide-solid": "^0.542.0",
     "tailwind-merge": "^3.3.1",
