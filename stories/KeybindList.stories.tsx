@@ -287,69 +287,71 @@ export const MusicPlayer: Story = {
               <p class="text-xs opacity-60 tracking-wide uppercase">Most played songs this week</p>
             </div>
 
-            {/* KeybindList with custom rendering */}
-            <KeybindList
-              ref={(el) => listRef = el}
-              items={songs}
-              selectedIndex={selectedIndex()}
-              onFocused={(song, index) => {
-                if (followMode()) {
+            {/* KeybindList with custom rendering TODO fix the overflow issue*/}
+            <div class="overflow-auto">
+              <KeybindList
+                ref={(el) => listRef = el}
+                items={songs}
+                selectedIndex={selectedIndex()}
+                onFocused={(song, index) => {
+                  if (followMode()) {
+                    setSelectedSong(song);
+                    setSelectedIndex(index);
+                  }
+                }}
+                onSelect={(song, index) => {
                   setSelectedSong(song);
                   setSelectedIndex(index);
-                }
-              }}
-              onSelect={(song, index) => {
-                setSelectedSong(song);
-                setSelectedIndex(index);
-              }}
-              class="!bg-transparent !border-0 !p-0 !w-full !max-w-none"
-              maxHeight="xl"
-            >
-              {(song, index, state) => (
-                <div
-                  class={`p-4 border-l-4 transition-all duration-200 cursor-pointer ${
-                    state.selected
-                      ? 'bg-primary text-primary-content border-primary-content'
-                      : 'border-transparent hover:bg-base-200'
-                  } ${
-                    state.focused
-                      ? 'ring-2 ring-primary ring-inset'
-                      : ''
-                  }`}
-                >
-                  <div class="flex items-center gap-4">
-                    <img class="size-12 rounded-lg object-cover" src={song.cover} alt={song.title} />
+                }}
+                class="bg-base-100 w-full m-2"
+                maxHeight="xl"
+              >
+                {(song, index, state) => (
+                  <div
+                    class={`p-4 border-l-4 transition-all duration-200 cursor-pointer ${
+                      state.selected
+                        ? 'bg-primary text-primary-content border-primary-content'
+                        : 'border-transparent hover:bg-base-200'
+                    } ${
+                      state.focused
+                        ? 'ring-2 ring-primary ring-inset'
+                        : ''
+                    }`}
+                  >
+                    <div class="flex items-center gap-4">
+                      <img class="size-12 rounded-lg object-cover" src={song.cover} alt={song.title} />
 
-                    <div class="flex-1 min-w-0">
-                      <div class="font-semibold truncate">{song.title}</div>
-                      <div class="text-sm opacity-70 truncate">{song.artist}</div>
-                      <div class="text-xs opacity-50 uppercase font-semibold tracking-wide">
-                        {song.album}
+                      <div class="flex-1 min-w-0">
+                        <div class="font-semibold truncate">{song.title}</div>
+                        <div class="text-sm opacity-70 truncate">{song.artist}</div>
+                        <div class="text-xs opacity-50 uppercase font-semibold tracking-wide">
+                          {song.album}
+                        </div>
+                      </div>
+
+                      <div class="flex items-center gap-2">
+                        <span class="text-xs opacity-60 font-mono">{song.duration}</span>
+                        <button
+                          class="btn btn-square btn-ghost btn-sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsPlaying(!isPlaying());
+                          }}
+                        >
+                          <Play size={16} />
+                        </button>
+                        <button
+                          class="btn btn-square btn-ghost btn-sm"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Heart size={16} />
+                        </button>
                       </div>
                     </div>
-
-                    <div class="flex items-center gap-2">
-                      <span class="text-xs opacity-60 font-mono">{song.duration}</span>
-                      <button
-                        class="btn btn-square btn-ghost btn-sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setIsPlaying(!isPlaying());
-                        }}
-                      >
-                        <Play size={16} />
-                      </button>
-                      <button
-                        class="btn btn-square btn-ghost btn-sm"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Heart size={16} />
-                      </button>
-                    </div>
                   </div>
-                </div>
-              )}
-            </KeybindList>
+                )}
+              </KeybindList>
+            </div>
           </div>
         </div>
 
