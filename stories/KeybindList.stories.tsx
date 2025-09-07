@@ -2,7 +2,9 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { KeybindList } from "../src/solid-daisy-components/";
 import { useKeybinding } from "../src/solid-daisy-components/utilities/useKeybinding";
 import { createSignal, For } from "solid-js";
-import { Play, Heart, Music, Folder, FileText, Image, Video, Download } from "lucide-solid";
+import Play from "lucide-solid/icons/play";
+import Heart from "lucide-solid/icons/heart";
+import Music from "lucide-solid/icons/music";
 
 const meta = {
   title: 'Components/KeybindList',
