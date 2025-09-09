@@ -7,19 +7,29 @@ import Heart from "lucide-solid/icons/heart";
 import Music from "lucide-solid/icons/music";
 
 const meta = {
-  title: 'Components/KeybindList',
+  title: "Components/KeybindList",
   component: KeybindList,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof KeybindList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape"];
+const fruits = [
+  "Apple",
+  "Banana",
+  "Cherry",
+  "Date",
+  "Elderberry",
+  "Fig",
+  "Grape",
+];
 
 export const Default: Story = {
   render: () => {
-    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(undefined);
+    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(
+      undefined,
+    );
 
     return (
       <KeybindList
@@ -38,12 +48,15 @@ export const WithCallback: Story = {
   render: () => {
     const [focused, setFocused] = createSignal<string | null>(null);
     const [selected, setSelected] = createSignal<string | null>(null);
-    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(undefined);
+    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(
+      undefined,
+    );
 
     return (
-      <div style={{ display: 'flex', 'flex-direction': 'column', gap: '1rem' }}>
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
         <div>
-          <strong>Instructions:</strong> Click the list to focus it, then use ↑/↓ to navigate (focus), Enter to select
+          <strong>Instructions:</strong> Click the list to focus it, then use
+          ↑/↓ to navigate (focus), Enter to select
         </div>
         <KeybindList
           items={fruits}
@@ -54,7 +67,9 @@ export const WithCallback: Story = {
             setSelectedIndex(index);
           }}
         />
-        <div style={{ display: 'flex', 'flex-direction': 'column', gap: '0.5rem' }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "0.5rem" }}
+        >
           {focused() && (
             <div class="alert alert-warning">
               <span>Currently focused: {focused()}</span>
@@ -75,12 +90,15 @@ export const LongList: Story = {
   render: () => {
     const longList = Array.from({ length: 20 }, (_, i) => `Item ${i + 1}`);
     const [selected, setSelected] = createSignal<string | null>(null);
-    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(undefined);
+    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(
+      undefined,
+    );
 
     return (
-      <div style={{ display: 'flex', 'flex-direction': 'column', gap: '1rem' }}>
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
         <div>
-          <strong>Instructions:</strong> Click the list to focus it, then use ↑/↓ arrow keys to navigate through 20 items
+          <strong>Instructions:</strong> Click the list to focus it, then use
+          ↑/↓ arrow keys to navigate through 20 items
         </div>
         <KeybindList
           items={longList}
@@ -107,27 +125,28 @@ export const NoteSidebar: Story = {
       "Travel Itinerary",
       "Book Recommendations",
       "Code Snippets",
-      "Daily Journal - Dec 15"
+      "Daily Journal - Dec 15",
     ];
     const [focusedNote, setFocusedNote] = createSignal<string | null>(null);
     const [selectedNote, setSelectedNote] = createSignal<string | null>(null);
-    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(undefined);
+    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(
+      undefined,
+    );
     const [followMode, setFollowMode] = createSignal(false);
     let listRef: HTMLUListElement | undefined;
 
     // Global keybinding to focus the list (Ctrl+L)
-    useKeybinding(
-      { key: "l", ctrl: true },
-      () => {
-        listRef?.focus();
-      }
-    );
+    useKeybinding({ key: "l", ctrl: true }, () => {
+      listRef?.focus();
+    });
 
     return (
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <div style={{ width: '300px' }}>
-          <div style={{ 'margin-bottom': '1rem' }}>
-            <strong>Note Sidebar:</strong> Press <kbd class="kbd kbd-xs">Ctrl+L</kbd> to focus list, then ↑/↓ to navigate, Enter to view note
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <div style={{ width: "300px" }}>
+          <div style={{ "margin-bottom": "1rem" }}>
+            <strong>Note Sidebar:</strong> Press{" "}
+            <kbd class="kbd kbd-xs">Ctrl+L</kbd> to focus list, then ↑/↓ to
+            navigate, Enter to view note
           </div>
 
           <div class="form-control mb-4">
@@ -143,7 +162,7 @@ export const NoteSidebar: Story = {
           </div>
 
           <KeybindList
-            ref={(el) => listRef = el}
+            ref={(el) => (listRef = el)}
             items={notes}
             selectedIndex={selectedIndex()}
             onFocused={(item, index) => {
@@ -162,19 +181,26 @@ export const NoteSidebar: Story = {
 
         <div class="divider divider-horizontal"></div>
 
-        <div style={{ flex: 1, 'min-height': '400px' }}>
+        <div style={{ flex: 1, "min-height": "400px" }}>
           <div class="card bg-base-100 shadow-xl h-full">
             <div class="card-body">
               {selectedNote() ? (
                 <>
                   <h2 class="card-title">{selectedNote()}</h2>
-                  <p>This is the content for: <strong>{selectedNote()}</strong></p>
-                  <p>You can imagine this area would show the full note content, editor, etc.</p>
+                  <p>
+                    This is the content for: <strong>{selectedNote()}</strong>
+                  </p>
+                  <p>
+                    You can imagine this area would show the full note content,
+                    editor, etc.
+                  </p>
                 </>
               ) : (
                 <div class="flex items-center justify-center h-full text-base-content/60">
                   <div class="text-center">
-                    <h3 class="text-lg font-semibold mb-2">Select a note to view</h3>
+                    <h3 class="text-lg font-semibold mb-2">
+                      Select a note to view
+                    </h3>
                     <p>Use the sidebar to navigate and select a note</p>
                   </div>
                 </div>
@@ -197,7 +223,8 @@ export const MusicPlayer: Story = {
         album: "Cosmic Reflections",
         duration: "3:42",
         cover: "https://img.daisyui.com/images/profile/demo/1@94.webp",
-        description: "A dreamy synthwave journey through cosmic landscapes, blending ethereal vocals with pulsating electronic beats."
+        description:
+          "A dreamy synthwave journey through cosmic landscapes, blending ethereal vocals with pulsating electronic beats.",
       },
       {
         id: 2,
@@ -206,7 +233,8 @@ export const MusicPlayer: Story = {
         album: "Electric City",
         duration: "4:15",
         cover: "https://img.daisyui.com/images/profile/demo/2@94.webp",
-        description: "High-energy synthpop that captures the essence of 80s nightlife with modern production techniques."
+        description:
+          "High-energy synthpop that captures the essence of 80s nightlife with modern production techniques.",
       },
       {
         id: 3,
@@ -215,7 +243,8 @@ export const MusicPlayer: Story = {
         album: "Future Sounds",
         duration: "5:23",
         cover: "https://img.daisyui.com/images/profile/demo/3@94.webp",
-        description: "Experimental electronic music that pushes the boundaries of sound design and rhythmic complexity."
+        description:
+          "Experimental electronic music that pushes the boundaries of sound design and rhythmic complexity.",
       },
       {
         id: 4,
@@ -224,7 +253,8 @@ export const MusicPlayer: Story = {
         album: "Urban Nights",
         duration: "4:01",
         cover: "https://img.daisyui.com/images/profile/demo/4@94.webp",
-        description: "Smooth jazz fusion with hints of lo-fi hip hop, perfect for late-night contemplation."
+        description:
+          "Smooth jazz fusion with hints of lo-fi hip hop, perfect for late-night contemplation.",
       },
       {
         id: 5,
@@ -233,40 +263,40 @@ export const MusicPlayer: Story = {
         album: "Wilderness",
         duration: "6:18",
         cover: "https://img.daisyui.com/images/profile/demo/5@94.webp",
-        description: "Ambient folk that combines organic instruments with natural soundscapes and field recordings."
-      }
+        description:
+          "Ambient folk that combines organic instruments with natural soundscapes and field recordings.",
+      },
     ];
 
-    const [selectedSong, setSelectedSong] = createSignal<typeof songs[0] | null>(null);
-    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(undefined);
+    const [selectedSong, setSelectedSong] = createSignal<
+      (typeof songs)[0] | null
+    >(null);
+    const [selectedIndex, setSelectedIndex] = createSignal<number | undefined>(
+      undefined,
+    );
     const [isPlaying, setIsPlaying] = createSignal(false);
     const [followMode, setFollowMode] = createSignal(false);
     let listRef: HTMLUListElement | undefined;
 
     // Global keybinding to focus the playlist
-    useKeybinding(
-      { key: "p", ctrl: true },
-      () => {
-        listRef?.focus();
-      }
-    );
+    useKeybinding({ key: "p", ctrl: true }, () => {
+      listRef?.focus();
+    });
 
     // Space bar to play/pause
-    useKeybinding(
-      { key: " " },
-      () => {
-        setIsPlaying(!isPlaying());
-      }
-    );
+    useKeybinding({ key: " " }, () => {
+      setIsPlaying(!isPlaying());
+    });
 
     return (
-      <div style={{ display: 'flex', gap: '2rem' }}>
+      <div style={{ display: "flex", gap: "2rem" }}>
         {/* Playlist */}
-        <div style={{ width: '500px' }}>
-          <div style={{ 'margin-bottom': '1rem' }}>
+        <div style={{ width: "500px" }}>
+          <div style={{ "margin-bottom": "1rem" }}>
             <h2 class="text-xl font-bold mb-2">🎵 Music Player</h2>
             <p class="text-sm opacity-70">
-              Press <kbd class="kbd kbd-xs">Ctrl+P</kbd> to focus playlist • <kbd class="kbd kbd-xs">Space</kbd> to play/pause
+              Press <kbd class="kbd kbd-xs">Ctrl+P</kbd> to focus playlist •{" "}
+              <kbd class="kbd kbd-xs">Space</kbd> to play/pause
             </p>
           </div>
 
@@ -284,13 +314,15 @@ export const MusicPlayer: Story = {
 
           <div class="bg-base-100 rounded-box shadow-lg">
             <div class="p-4 pb-2">
-              <p class="text-xs opacity-60 tracking-wide uppercase">Most played songs this week</p>
+              <p class="text-xs opacity-60 tracking-wide uppercase">
+                Most played songs this week
+              </p>
             </div>
 
             {/* KeybindList with custom rendering TODO fix the overflow issue*/}
             <div class="overflow-auto">
               <KeybindList
-                ref={(el) => listRef = el}
+                ref={(el) => (listRef = el)}
                 items={songs}
                 selectedIndex={selectedIndex()}
                 onFocused={(song, index) => {
@@ -310,27 +342,31 @@ export const MusicPlayer: Story = {
                   <div
                     class={`p-4 border-l-4 transition-all duration-200 cursor-pointer ${
                       state.selected
-                        ? 'bg-primary text-primary-content border-primary-content'
-                        : 'border-transparent hover:bg-base-200'
-                    } ${
-                      state.focused
-                        ? 'ring-2 ring-primary ring-inset'
-                        : ''
-                    }`}
+                        ? "bg-primary text-primary-content border-primary-content"
+                        : "border-transparent hover:bg-base-200"
+                    } ${state.focused ? "ring-2 ring-primary ring-inset" : ""}`}
                   >
                     <div class="flex items-center gap-4">
-                      <img class="size-12 rounded-lg object-cover" src={song.cover} alt={song.title} />
+                      <img
+                        class="size-12 rounded-lg object-cover"
+                        src={song.cover}
+                        alt={song.title}
+                      />
 
                       <div class="flex-1 min-w-0">
                         <div class="font-semibold truncate">{song.title}</div>
-                        <div class="text-sm opacity-70 truncate">{song.artist}</div>
+                        <div class="text-sm opacity-70 truncate">
+                          {song.artist}
+                        </div>
                         <div class="text-xs opacity-50 uppercase font-semibold tracking-wide">
                           {song.album}
                         </div>
                       </div>
 
                       <div class="flex items-center gap-2">
-                        <span class="text-xs opacity-60 font-mono">{song.duration}</span>
+                        <span class="text-xs opacity-60 font-mono">
+                          {song.duration}
+                        </span>
                         <button
                           class="btn btn-square btn-ghost btn-sm"
                           onClick={(e) => {
@@ -363,32 +399,53 @@ export const MusicPlayer: Story = {
                 <div class="text-center">
                   <div class="avatar mb-6">
                     <div class="w-48 rounded-xl">
-                      <img src={selectedSong()!.cover} alt={selectedSong()!.title} />
+                      <img
+                        src={selectedSong()!.cover}
+                        alt={selectedSong()!.title}
+                      />
                     </div>
                   </div>
 
-                  <h2 class="card-title text-3xl mb-2 justify-center">{selectedSong()!.title}</h2>
-                  <p class="text-xl opacity-70 mb-1">{selectedSong()!.artist}</p>
-                  <p class="text-sm opacity-50 uppercase tracking-wide mb-6">{selectedSong()!.album}</p>
+                  <h2 class="card-title text-3xl mb-2 justify-center">
+                    {selectedSong()!.title}
+                  </h2>
+                  <p class="text-xl opacity-70 mb-1">
+                    {selectedSong()!.artist}
+                  </p>
+                  <p class="text-sm opacity-50 uppercase tracking-wide mb-6">
+                    {selectedSong()!.album}
+                  </p>
 
                   <div class="bg-base-200 rounded-box p-4 mb-6">
-                    <p class="text-sm leading-relaxed">{selectedSong()!.description}</p>
+                    <p class="text-sm leading-relaxed">
+                      {selectedSong()!.description}
+                    </p>
                   </div>
 
                   <div class="flex justify-center items-center gap-4">
                     <button class="btn btn-circle btn-ghost">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z" />
                       </svg>
                     </button>
 
                     <button
-                      class={`btn btn-circle btn-lg ${isPlaying() ? 'btn-primary' : 'btn-outline'}`}
+                      class={`btn btn-circle btn-lg ${isPlaying() ? "btn-primary" : "btn-outline"}`}
                       onClick={() => setIsPlaying(!isPlaying())}
                     >
                       {isPlaying() ? (
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        <svg
+                          width="32"
+                          height="32"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                         </svg>
                       ) : (
                         <Play size={32} />
@@ -396,8 +453,13 @@ export const MusicPlayer: Story = {
                     </button>
 
                     <button class="btn btn-circle btn-ghost">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                      <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z" />
                       </svg>
                     </button>
                   </div>
@@ -407,14 +469,20 @@ export const MusicPlayer: Story = {
                       <span>0:00</span>
                       <span>{selectedSong()!.duration}</span>
                     </div>
-                    <progress class="progress progress-primary w-full" value={isPlaying() ? "70" : "0"} max="100"></progress>
+                    <progress
+                      class="progress progress-primary w-full"
+                      value={isPlaying() ? "70" : "0"}
+                      max="100"
+                    ></progress>
                   </div>
                 </div>
               ) : (
                 <div class="flex items-center justify-center h-full text-base-content/60">
                   <div class="text-center">
                     <Music size={64} class="mx-auto mb-4 opacity-30" />
-                    <h3 class="text-2xl font-semibold mb-2">Select a song to play</h3>
+                    <h3 class="text-2xl font-semibold mb-2">
+                      Select a song to play
+                    </h3>
                     <p>Choose from the playlist to start listening</p>
                   </div>
                 </div>

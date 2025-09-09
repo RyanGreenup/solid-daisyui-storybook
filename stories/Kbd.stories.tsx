@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Kbd } from '../src/solid-daisy-components';
+import { Kbd } from "../src/solid-daisy-components";
 
 const meta = {
-  title: 'Components/Kbd',
+  title: "Components/Kbd",
   component: Kbd,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl"],
     },
   },
 } satisfies Meta<typeof Kbd>;
@@ -18,13 +18,13 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'K',
+    children: "K",
   },
 };
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', 'align-items': 'center' }}>
+    <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
       <Kbd size="xs">xs</Kbd>
       <Kbd size="sm">sm</Kbd>
       <Kbd size="md">md</Kbd>
@@ -36,7 +36,7 @@ export const Sizes: Story = {
 
 export const KeyCombination: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '0.25rem', 'align-items': 'center' }}>
+    <div style={{ display: "flex", gap: "0.25rem", "align-items": "center" }}>
       <Kbd>Ctrl</Kbd>
       <span>+</span>
       <Kbd>Shift</Kbd>
@@ -56,7 +56,7 @@ export const InText: Story = {
 
 export const CommonKeys: Story = {
   render: () => (
-    <div style={{ display: 'flex', gap: '1rem', 'flex-wrap': 'wrap' }}>
+    <div style={{ display: "flex", gap: "1rem", "flex-wrap": "wrap" }}>
       <Kbd>Esc</Kbd>
       <Kbd>Tab</Kbd>
       <Kbd>Caps Lock</Kbd>
@@ -77,7 +77,7 @@ export const CommonKeys: Story = {
 
 export const KeyboardShortcuts: Story = {
   render: () => (
-    <div style={{ display: 'flex', 'flex-direction': 'column', gap: '0.5rem' }}>
+    <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem" }}>
       <div>
         Save: <Kbd size="sm">Ctrl</Kbd> + <Kbd size="sm">S</Kbd>
       </div>

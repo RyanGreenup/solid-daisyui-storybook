@@ -89,8 +89,8 @@ export const Modal: Story = {
           <h3 class="text-lg font-semibold mb-4">Command Dialog</h3>
           <p class="text-base-content/70 mb-6">
             Press <kbd class="kbd kbd-sm">Ctrl</kbd> +{" "}
-            <kbd class="kbd kbd-sm">J</kbd> to open the command dialog, or
-            click the button below. Focus is automatically managed.
+            <kbd class="kbd kbd-sm">J</kbd> to open the command dialog, or click
+            the button below. Focus is automatically managed.
           </p>
           <Button onClick={() => setIsOpen(true)}>Open Command Palette</Button>
           <div class="mt-8 gap-2">

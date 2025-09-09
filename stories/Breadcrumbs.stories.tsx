@@ -145,11 +145,16 @@ export const LongPath: Story = {
 
 export const WithMaxWidth: Story = {
   render: () => (
-    <div style={{ width: "300px", "background-color": "#f3f4f6", padding: "1rem" }}>
+    <div
+      style={{ width: "300px", "background-color": "#f3f4f6", padding: "1rem" }}
+    >
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: "Very Long Category Name That Might Overflow", href: "/category" },
+          {
+            label: "Very Long Category Name That Might Overflow",
+            href: "/category",
+          },
           { label: "Current Page" },
         ]}
       />

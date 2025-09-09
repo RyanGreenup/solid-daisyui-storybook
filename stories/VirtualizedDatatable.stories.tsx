@@ -1,4 +1,3 @@
-
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal } from "solid-js";
 import { ColumnDef } from "@tanstack/solid-table";
@@ -135,7 +134,9 @@ const getColumns = (): ColumnDef<Employee>[] => [
       };
 
       return (
-        <div style={{ display: "flex", "align-items": "center", gap: "0.5rem" }}>
+        <div
+          style={{ display: "flex", "align-items": "center", gap: "0.5rem" }}
+        >
           <Progress
             value={performance}
             color={getPerformanceColor(performance)}
