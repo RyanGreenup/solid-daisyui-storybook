@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import SingleCombobox from "../../src/solid-daisy-components/components/Combobox/SingleCombobox";
+import { SingleCombobox } from "../../src/solid-daisy-components/components/Combobox/SingleCombobox";
 import { createSignal } from "solid-js";
 
 const meta = {
