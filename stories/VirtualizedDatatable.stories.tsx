@@ -267,15 +267,28 @@ export const BasicTable: Story = {
     const [data] = createSignal(generateEmployeeData(100));
 
     return (
-      <div style={{ padding: "1.5rem" }}>
-        <VirtualizedDataTable
-          data={data()}
-          columns={getColumns().slice(0, 4)} // Show fewer columns
-          enableGlobalFilter={false}
-          enableColumnFilters={false}
-          enableSorting={false}
-          height="400px"
-        />
+      <div
+        style={{
+          display: "flex",
+          "justify-content": "center",
+        }}
+      >
+      {/* Limit the Width of the Table */}
+        <div
+          style={{
+            padding: "1.5rem",
+            width: "fit-content",
+          }}
+        >
+          <VirtualizedDataTable
+            data={data()}
+            columns={getColumns().slice(0, 4)} // Show fewer columns
+            enableGlobalFilter={false}
+            enableColumnFilters={false}
+            enableSorting={false}
+            height="400px"
+          />
+        </div>
       </div>
     );
   },
