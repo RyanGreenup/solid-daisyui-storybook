@@ -14,6 +14,12 @@ import {
   ToggleButton,
   UnstyledExample,
 } from "../src/solid-daisy-components/components/Layouts/ResponsiveDrawer/";
+import Menu from "lucide-solid/icons/menu";
+import Settings from "lucide-solid/icons/settings";
+import LayoutDashboard from "lucide-solid/icons/layout-dashboard";
+import CheckCircle from "lucide-solid/icons/check-circle";
+import Info from "lucide-solid/icons/info";
+import AlertTriangle from "lucide-solid/icons/alert-triangle";
 
 const meta = {
   title: "Layouts/ResponsiveDrawer",
@@ -171,19 +177,7 @@ export const WithDaisyUI: Story = {
               id={CheckboxId.SIDEBAR}
               class="btn btn-square btn-ghost"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                class="inline-block w-5 h-5 stroke-current"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              </svg>
+              <Menu class="w-5 h-5" />
             </ToggleButton>
           </div>
           <a class="btn btn-ghost text-xl">DaisyUI Layout</a>
@@ -193,25 +187,7 @@ export const WithDaisyUI: Story = {
             id={CheckboxId.RIGHT_DRAWER}
             class="btn btn-square btn-ghost"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="inline-block w-5 h-5 stroke-current"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-              ></path>
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              ></path>
-            </svg>
+            <Settings class="w-5 h-5" />
           </ToggleButton>
         </div>
       </Navbar>
@@ -265,9 +241,7 @@ export const WithDaisyUI: Story = {
                 <div class="max-w-2xl">
                   <div class="flex justify-center mb-6">
                     <div class="p-4 bg-primary/20 rounded-full">
-                      <svg class="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
-                      </svg>
+                      <LayoutDashboard class="w-12 h-12 text-primary" />
                     </div>
                   </div>
                   <h1 class="text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent mb-6">
@@ -331,21 +305,15 @@ export const WithDaisyUI: Story = {
                   </h2>
                   <div class="space-y-4">
                     <div class="alert alert-success">
-                      <svg class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                      </svg>
+                      <CheckCircle class="shrink-0 h-6 w-6" />
                       <span class="text-sm"><strong>Zero JavaScript</strong> for core interactions</span>
                     </div>
                     <div class="alert alert-info">
-                      <svg class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                      </svg>
+                      <Info class="shrink-0 h-6 w-6" />
                       <span class="text-sm">Uses <code class="bg-base-300 px-1 rounded text-xs">input</code> & <code class="bg-base-300 px-1 rounded text-xs">label</code> elements</span>
                     </div>
                     <div class="alert alert-warning">
-                      <svg class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
-                      </svg>
+                      <AlertTriangle class="shrink-0 h-6 w-6" />
                       <span class="text-sm">Lightweight & performant CSS architecture</span>
                     </div>
                   </div>
