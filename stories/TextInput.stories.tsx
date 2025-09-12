@@ -253,7 +253,7 @@ export const FormExamples: Story = {
               required 
               placeholder="https://" 
               value="https://" 
-              pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\\-].*[a-zA-Z0-9])?\\.)+[a-zA-Z].*$"
+              pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
               title="Must be valid URL" 
             />
           </TextInput.Wrapper>
