@@ -230,8 +230,7 @@ export const InteractiveExample: Story = {
                 size="sm"
                 min={1} 
                 max={4} 
-                value={datasetCount()} 
-                onChange={(e) => setDatasetCount(Number(e.target.value))}
+                valueSignal={[datasetCount, setDatasetCount]}
               />
               <div class="text-center text-sm mt-1">{datasetCount()} dataset{datasetCount() > 1 ? 's' : ''}</div>
             </div>
@@ -243,8 +242,7 @@ export const InteractiveExample: Story = {
                 size="sm"
                 min={3} 
                 max={8} 
-                value={categoryCount()} 
-                onChange={(e) => setCategoryCount(Number(e.target.value))}
+                valueSignal={[categoryCount, setCategoryCount]}
               />
               <div class="text-center text-sm mt-1">{categoryCount()} categories</div>
             </div>

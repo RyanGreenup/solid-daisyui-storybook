@@ -306,8 +306,7 @@ export const InteractiveAdvanced: Story = {
                 type="range"
                 min={3}
                 max={12}
-                value={dataPoints()}
-                onChange={(e) => setDataPoints(Number(e.target.value))}
+                valueSignal={[dataPoints, setDataPoints]}
               />
               <div class="text-center text-sm mt-1">{dataPoints()} points</div>
             </div>

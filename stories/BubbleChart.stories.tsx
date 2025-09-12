@@ -229,8 +229,7 @@ export const InteractiveExample: Story = {
                 min={1}
                 max={4}
                 step={1}
-                value={datasetCount()}
-                onChange={(e) => setDatasetCount(e.target.value)}
+                valueSignal={[datasetCount, setDatasetCount]}
               />
               <div class="text-xs text-base-content/70 mt-1">1 to 4 datasets</div>
             </div>
@@ -243,8 +242,7 @@ export const InteractiveExample: Story = {
                 min={5}
                 max={30}
                 step={1}
-                value={bubbleCount()}
-                onChange={(e) => setBubbleCount(e.target.value)}
+                valueSignal={[bubbleCount, setBubbleCount]}
               />
               <div class="text-xs text-base-content/70 mt-1">5 to 30 bubbles</div>
             </div>

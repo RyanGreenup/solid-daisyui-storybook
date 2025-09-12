@@ -151,10 +151,9 @@ export const InteractiveExample: Story = {
               <Range
                 min={0}
                 max={80}
-                value={cutoutSize()}
+                valueSignal={[cutoutSize, setCutoutSize]}
                 color="primary"
                 size="sm"
-                onChange={(e) => setCutoutSize(e.currentTarget.value)}
               />
               <div class="flex justify-between text-xs opacity-60 mt-1">
                 <span>0%</span>
