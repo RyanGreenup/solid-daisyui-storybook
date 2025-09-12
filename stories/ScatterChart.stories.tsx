@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ScatterChart, Select, Toggle, Label } from "../src/solid-daisy-components/";
-import { createSignal, createMemo, For } from "solid-js";
+import { ScatterChart, Select, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
   title: "Charts/ScatterChart",
@@ -198,6 +198,15 @@ export const InteractiveExample: Story = {
     const [pointCount, setPointCount] = createSignal(40);
     const [correlation, setCorrelation] = createSignal<'positive' | 'negative' | 'none'>('positive');
     const [showTrendLine, setShowTrendLine] = createSignal(true);
+    const [animationEnabled, setAnimationEnabled] = createSignal(true);
+    const [pointSize, setPointSize] = createSignal(4);
+    const [hasRendered, setHasRendered] = createSignal(false);
+
+    onMount(() => {
+      if (!hasRendered()) {
+        setTimeout(() => setHasRendered(true), 500);
+      }
+    });
     
     const scatterData = createMemo(() => {
       console.log('Generating scatter data for points:', pointCount(), 'correlation:', correlation());
@@ -226,8 +235,8 @@ export const InteractiveExample: Story = {
                      correlation() === 'negative' ? 'rgb(239, 68, 68)' :
                      'rgb(147, 51, 234)',
         borderWidth: 2,
-        pointRadius: 4,
-        pointHoverRadius: 8,
+        pointRadius: pointSize(),
+        pointHoverRadius: pointSize() + 4,
         showLine: false,
       }];
 
@@ -248,61 +257,134 @@ export const InteractiveExample: Story = {
     });
     
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-        <div class="flex gap-4 p-4 bg-base-200 rounded-box flex-wrap">
-          <div>
-            <Label>Point Count: {pointCount()}</Label>
-            <input 
-              type="range" 
-              min={10} 
-              max={100} 
-              value={pointCount()} 
-              class="range range-primary range-sm"
-              onChange={(e) => setPointCount(Number(e.target.value))}
-            />
-          </div>
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Scatter Plot Configuration</Fieldset.Legend>
           
-          <div>
-            <Label>Correlation:</Label>
-            <select 
-              class="select select-bordered select-sm"
-              value={correlation()} 
-              onChange={(e) => setCorrelation(e.target.value as any)}
-            >
-              <option value="positive">Positive</option>
-              <option value="negative">Negative</option>
-              <option value="none">No Correlation</option>
-            </select>
-          </div>
-          
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Show Trend Line</span>
-              <Toggle 
+          <div style={{ display: "grid", "grid-template-columns": "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
+            <div>
+              <Label>Point Count: {pointCount()}</Label>
+              <Range
+                min={10}
+                max={100}
+                value={pointCount()}
                 color="primary"
-                checked={showTrendLine()}
-                onChange={(checked) => setShowTrendLine(checked)}
+                size="sm"
+                onChange={(e) => setPointCount(e.target.value)}
               />
-            </Label>
+            </div>
+            
+            <div>
+              <Label>Point Size: {pointSize()}px</Label>
+              <Range
+                min={2}
+                max={10}
+                value={pointSize()}
+                color="secondary"
+                size="sm"
+                onChange={(e) => setPointSize(e.target.value)}
+              />
+            </div>
+            
+            <div>
+              <Label>Correlation Type</Label>
+              <Select
+                size="sm"
+                value={correlation()}
+                onChange={(e) => setCorrelation(e.target.value as any)}
+              >
+                <option value="positive">Positive Correlation</option>
+                <option value="negative">Negative Correlation</option>
+                <option value="none">No Correlation</option>
+              </Select>
+            </div>
           </div>
-        </div>
+          
+          <div class="flex gap-6 mt-4">
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-3">Show Trend Line</span>
+                <Toggle
+                  color="primary"
+                  checked={showTrendLine()}
+                  onChange={(e) => setShowTrendLine(e.target.checked)}
+                />
+              </Label>
+            </div>
+            
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-3">Enable Animations</span>
+                <Toggle
+                  color="accent"
+                  checked={animationEnabled()}
+                  onChange={(e) => setAnimationEnabled(e.target.checked)}
+                />
+              </Label>
+            </div>
+          </div>
+          
+          <Label class="text-sm opacity-70 mt-2">
+            Displaying {pointCount()} points with {correlation()} correlation 
+            {showTrendLine() ? ' and trend line' : ''}
+          </Label>
+        </Fieldset>
         
-        <div style={{ height: "400px" }}>
+        <div style={{ height: "450px" }}>
           <ScatterChart
-            title={`Interactive Scatter Plot - ${correlation()} correlation (${pointCount()} points)`}
+            title={`Interactive Scatter Plot - ${correlation().charAt(0).toUpperCase() + correlation().slice(1)} Correlation`}
             data={{ datasets: datasets() }}
             options={{
+              animation: {
+                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
+              },
+              interaction: {
+                intersect: false,
+                mode: 'point' as const
+              },
+              plugins: {
+                legend: {
+                  position: 'bottom' as const,
+                  labels: {
+                    usePointStyle: true,
+                    padding: 15
+                  }
+                },
+                tooltip: {
+                  callbacks: {
+                    title: (context) => `${context[0].dataset.label}`,
+                    label: (context) => {
+                      const point = context.parsed;
+                      return `X: ${point.x.toFixed(1)}, Y: ${point.y.toFixed(1)}`;
+                    }
+                  }
+                }
+              },
               scales: {
                 x: {
                   title: {
                     display: true,
-                    text: 'X Variable'
+                    text: 'X Variable (Marketing Spend)',
+                    font: {
+                      size: 12,
+                      weight: 'bold' as const
+                    }
+                  },
+                  grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
                   }
                 },
                 y: {
                   title: {
                     display: true,
-                    text: 'Y Variable'
+                    text: 'Y Variable (Sales Revenue)',
+                    font: {
+                      size: 12,
+                      weight: 'bold' as const
+                    }
+                  },
+                  grid: {
+                    color: 'rgba(0, 0, 0, 0.1)'
                   }
                 }
               }
