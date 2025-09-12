@@ -267,10 +267,9 @@ export const InteractiveExample: Story = {
               <Range
                 min={10}
                 max={100}
-                value={pointCount()}
+                valueSignal={[pointCount, setPointCount]}
                 color="primary"
                 size="sm"
-                onChange={(e) => setPointCount(e.target.value)}
               />
             </div>
             
@@ -279,10 +278,9 @@ export const InteractiveExample: Story = {
               <Range
                 min={2}
                 max={10}
-                value={pointSize()}
+                valueSignal={[pointSize, setPointSize]}
                 color="secondary"
                 size="sm"
-                onChange={(e) => setPointSize(e.target.value)}
               />
             </div>
             
