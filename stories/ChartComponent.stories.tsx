@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ChartComponent, Select, Toggle, Label } from "../src/solid-daisy-components/";
+import { ChartComponent, Select, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
 import { createSignal, createMemo } from "solid-js";
 import { ChartConfiguration } from "chart.js";
 
@@ -282,55 +282,67 @@ export const InteractiveAdvanced: Story = {
 
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-base-200 rounded-box">
-          <div>
-            <Label>Chart Type:</Label>
-            <Select
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Advanced Chart Configuration</Fieldset.Legend>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <Label>Chart Type</Label>
+              <Select
+                size="sm"
+                value={chartType()}
+                onChange={(e) => setChartType(e.target.value as 'line' | 'bar')}
+              >
+                <option value="line">Line Chart</option>
+                <option value="bar">Bar Chart</option>
+              </Select>
+            </div>
+
+            <div>
+              <Label>Data Points</Label>
+              <Range
+              color="primary"
               size="sm"
-              value={chartType()}
-              onChange={(e) => setChartType(e.target.value as 'line' | 'bar')}
-            >
-              <option value="line">Line Chart</option>
-              <option value="bar">Bar Chart</option>
-            </Select>
-          </div>
-
-          <div>
-            <Label>Data Points: {dataPoints()}</Label>
-            <input
-              type="range"
-              min={3}
-              max={12}
-              value={dataPoints()}
-              class="range range-primary range-sm"
-              onChange={(e) => setDataPoints(Number(e.target.value))}
-            />
-          </div>
-
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Show Legend</span>
-              <Toggle
-                color="primary"
-                size="sm"
-                checked={showLegend()}
-                onChange={(e) => setShowLegend(e.target.checked)}
+                type="range"
+                min={3}
+                max={12}
+                value={dataPoints()}
+                onChange={(e) => setDataPoints(Number(e.target.value))}
               />
-            </Label>
+              <div class="text-center text-sm mt-1">{dataPoints()} points</div>
+            </div>
+
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-2">Show Legend</span>
+                <Toggle
+                  color="primary"
+                  size="sm"
+                  checked={showLegend()}
+                  onChange={(e) => setShowLegend(e.target.checked)}
+                />
+              </Label>
+            </div>
+
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-2">Animation</span>
+                <Toggle
+                  color="secondary"
+                  size="sm"
+                  checked={animationEnabled()}
+                  onChange={(e) => setAnimationEnabled(e.target.checked)}
+                />
+              </Label>
+            </div>
           </div>
 
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Animation</span>
-              <Toggle
-                color="secondary"
-                size="sm"
-                checked={animationEnabled()}
-                onChange={(e) => setAnimationEnabled(e.target.checked)}
-              />
-            </Label>
-          </div>
-        </div>
+          <Label class="text-sm opacity-70 mt-3">
+            {chartType().toUpperCase()} chart with {dataPoints()} data points
+            {showLegend() ? ', legend enabled' : ', legend disabled'}
+            {animationEnabled() ? ', animations enabled' : ', animations disabled'}
+          </Label>
+        </Fieldset>
 
         <div style={{ height: "500px" }}>
           <ChartComponent chartConfig={chartConfig()} />
