@@ -1,163 +1,196 @@
-import type { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Breadcrumbs } from "../src/solid-daisy-components";
+import { Meta, StoryObj } from "storybook-solidjs-vite";
+import { Breadcrumbs } from "../src/solid-daisy-components/";
+import Home from "lucide-solid/icons/home";
+import Folder from "lucide-solid/icons/folder";
+import FilePlus from "lucide-solid/icons/file-plus";
 
 const meta = {
   title: "Components/Breadcrumbs",
   component: Breadcrumbs,
   tags: ["autodocs"],
-  argTypes: {
-    size: {
-      control: "select",
-      options: ["xs", "sm", "md", "lg", "xl"],
-    },
-  },
 } satisfies Meta<typeof Breadcrumbs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    items: [
-      { label: "Home", href: "/" },
-      { label: "Documents", href: "/documents" },
-      { label: "Add Document" },
-    ],
-  },
-};
-
-export const WithIcons: Story = {
-  args: {
-    items: [
-      { label: "Home", href: "/", icon: <span>🏠 </span> },
-      { label: "Documents", href: "/documents", icon: <span>📄 </span> },
-      { label: "Add Document", icon: <span>➕ </span> },
-    ],
-  },
-};
-
-export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-      <Breadcrumbs
-        size="xs"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Hosting" },
-        ]}
-      />
-      <Breadcrumbs
-        size="sm"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Hosting" },
-        ]}
-      />
-      <Breadcrumbs
-        size="md"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Hosting" },
-        ]}
-      />
-      <Breadcrumbs
-        size="lg"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Hosting" },
-        ]}
-      />
-      <Breadcrumbs
-        size="xl"
-        items={[
-          { label: "Home", href: "/" },
-          { label: "Services", href: "/services" },
-          { label: "Hosting" },
-        ]}
-      />
-    </div>
-  ),
-};
-
-export const CustomMarkup: Story = {
-  render: () => (
-    <Breadcrumbs>
-      <ul>
-        <li>
-          <a href="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="h-4 w-4 stroke-current"
-              style={{ display: "inline-block", "margin-right": "0.25rem" }}
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-              />
-            </svg>
-            Home
-          </a>
-        </li>
-        <li>
-          <a href="/documents">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="h-4 w-4 stroke-current"
-              style={{ display: "inline-block", "margin-right": "0.25rem" }}
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-            Documents
-          </a>
-        </li>
-        <li>Add Document</li>
-      </ul>
+    <Breadcrumbs class="text-sm">
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Home</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Documents</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>Add Document</Breadcrumbs.Item>
     </Breadcrumbs>
   ),
 };
 
-export const LongPath: Story = {
-  args: {
-    items: [
-      { label: "Home", href: "/" },
-      { label: "Category", href: "/category" },
-      { label: "Sub Category", href: "/category/sub" },
-      { label: "Products", href: "/category/sub/products" },
-      { label: "Product Details" },
-    ],
-  },
+export const WithIcons: Story = {
+  render: () => (
+    <Breadcrumbs class="text-sm">
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer inline-flex gap-2 items-center">
+          <Home size={16} />
+          Home
+        </a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer inline-flex gap-2 items-center">
+          <Folder size={16} />
+          Documents
+        </a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <span class="inline-flex gap-2 items-center">
+          <FilePlus size={16} />
+          Add Document
+        </span>
+      </Breadcrumbs.Item>
+    </Breadcrumbs>
+  ),
 };
 
 export const WithMaxWidth: Story = {
   render: () => (
-    <div
-      style={{ width: "300px", "background-color": "#f3f4f6", padding: "1rem" }}
-    >
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          {
-            label: "Very Long Category Name That Might Overflow",
-            href: "/category",
-          },
-          { label: "Current Page" },
-        ]}
-      />
+    <Breadcrumbs class="max-w-xs text-sm">
+      <Breadcrumbs.Item>Long text 1</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Long text 2</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Long text 3</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Long text 4</Breadcrumbs.Item>
+      <Breadcrumbs.Item>Long text 5</Breadcrumbs.Item>
+    </Breadcrumbs>
+  ),
+};
+
+export const DifferentSizes: Story = {
+  render: () => (
+    <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+      <Breadcrumbs class="text-xs">
+        <Breadcrumbs.Item>
+          <a>Home</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <a>Documents</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>Extra Small</Breadcrumbs.Item>
+      </Breadcrumbs>
+
+      <Breadcrumbs class="text-sm">
+        <Breadcrumbs.Item>
+          <a>Home</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <a>Documents</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>Small</Breadcrumbs.Item>
+      </Breadcrumbs>
+
+      <Breadcrumbs class="text-base">
+        <Breadcrumbs.Item>
+          <a>Home</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <a>Documents</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>Base</Breadcrumbs.Item>
+      </Breadcrumbs>
+
+      <Breadcrumbs class="text-lg">
+        <Breadcrumbs.Item>
+          <a>Home</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <a>Documents</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>Large</Breadcrumbs.Item>
+      </Breadcrumbs>
+
+      <Breadcrumbs class="text-xl">
+        <Breadcrumbs.Item>
+          <a>Home</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>
+          <a>Documents</a>
+        </Breadcrumbs.Item>
+        <Breadcrumbs.Item>Extra Large</Breadcrumbs.Item>
+      </Breadcrumbs>
     </div>
+  ),
+};
+
+export const LongPath: Story = {
+  render: () => (
+    <Breadcrumbs class="text-sm">
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Home</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Category</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Sub Category</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Products</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="hover:underline cursor-pointer">Product Type</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>Current Product</Breadcrumbs.Item>
+    </Breadcrumbs>
+  ),
+};
+
+export const WithCustomStyling: Story = {
+  render: () => (
+    <Breadcrumbs class="text-sm bg-base-200 p-4 rounded-lg">
+      <Breadcrumbs.Item>
+        <a class="link link-primary font-semibold">
+          <Home size={16} class="inline mr-2" />
+          Dashboard
+        </a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a class="link link-secondary">Settings</a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <span class="text-base-content/70">Profile</span>
+      </Breadcrumbs.Item>
+    </Breadcrumbs>
+  ),
+};
+
+export const InteractiveBreadcrumbs: Story = {
+  render: () => (
+    <Breadcrumbs class="text-sm">
+      <Breadcrumbs.Item>
+        <a 
+          href="#" 
+          class="hover:underline cursor-pointer hover:text-primary transition-colors inline-flex gap-2 items-center"
+          onClick={(e) => { e.preventDefault(); alert('Navigate to Home'); }}
+        >
+          <Home size={16} />
+          Home
+        </a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <a 
+          href="#" 
+          class="hover:underline cursor-pointer hover:text-primary transition-colors inline-flex gap-2 items-center"
+          onClick={(e) => { e.preventDefault(); alert('Navigate to Documents'); }}
+        >
+          <Folder size={16} />
+          Documents
+        </a>
+      </Breadcrumbs.Item>
+      <Breadcrumbs.Item>
+        <span class="inline-flex gap-2 items-center text-base-content/70">
+          <FilePlus size={16} />
+          Add Document
+        </span>
+      </Breadcrumbs.Item>
+    </Breadcrumbs>
   ),
 };
