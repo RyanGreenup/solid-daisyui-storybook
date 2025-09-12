@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { BubbleChart, Select, Toggle, Label } from "../src/solid-daisy-components/";
-import { createSignal, createMemo, For } from "solid-js";
+import { BubbleChart, Select, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { createSignal, createMemo, For, onMount } from "solid-js";
 
 const meta = {
   title: "Charts/BubbleChart",
@@ -38,7 +38,7 @@ const generateCompanyData = () => [
 export const Basic: Story = {
   render: () => {
     const bubbleData = generateBubbleData(15);
-    
+
     return (
       <div style={{ height: "400px" }}>
         <BubbleChart
@@ -63,7 +63,7 @@ export const MultipleDatasets: Story = {
     const dataset1 = generateBubbleData(12);
     const dataset2 = generateBubbleData(12);
     const dataset3 = generateBubbleData(10);
-    
+
     return (
       <div style={{ height: "400px" }}>
         <BubbleChart
@@ -102,7 +102,7 @@ export const MultipleDatasets: Story = {
 export const BusinessMetrics: Story = {
   render: () => {
     const companyData = generateCompanyData();
-    
+
     return (
       <div style={{ height: "450px" }}>
         <BubbleChart
@@ -182,6 +182,13 @@ export const InteractiveExample: Story = {
     const [bubbleCount, setBubbleCount] = createSignal(15);
     const [showBorders, setShowBorders] = createSignal(true);
     const [animationEnabled, setAnimationEnabled] = createSignal(true);
+    const [hasRendered, setHasRendered] = createSignal(false);
+
+    onMount(() => {
+        if (!hasRendered()) {
+            setTimeout(() => setHasRendered(true), 500);
+        }
+    });
 
     // Color schemes for different datasets
     const colorSchemes = [
@@ -194,7 +201,7 @@ export const InteractiveExample: Story = {
     const chartData = createMemo(() => {
       console.log('Generating bubble chart data...');
       const datasets = [];
-      
+
       for (let i = 0; i < datasetCount(); i++) {
         datasets.push({
           label: `Dataset ${i + 1}`,
@@ -204,79 +211,84 @@ export const InteractiveExample: Story = {
           borderWidth: showBorders() ? 2 : 0
         });
       }
-      
+
       return { datasets };
     });
 
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-base-200 rounded-box">
-          <div>
-            <Label>Datasets: {datasetCount()}</Label>
-            <input
-              type="range"
-              min={1}
-              max={4}
-              value={datasetCount()}
-              class="range range-primary range-sm"
-              onChange={(e) => setDatasetCount(Number(e.target.value))}
-            />
-          </div>
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Bubble Chart Configuration</Fieldset.Legend>
 
-          <div>
-            <Label>Bubbles per Dataset: {bubbleCount()}</Label>
-            <input
-              type="range"
-              min={5}
-              max={30}
-              value={bubbleCount()}
-              class="range range-secondary range-sm"
-              onChange={(e) => setBubbleCount(Number(e.target.value))}
-            />
-          </div>
-
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Show Borders</span>
-              <Toggle
-                color="accent"
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div>
+              <Label>Number of Datasets: {datasetCount()}</Label>
+              <Range
+                color="primary"
                 size="sm"
-                checked={showBorders()}
-                onChange={(e) => setShowBorders(e.target.checked)}
+                min={1}
+                max={4}
+                step={1}
+                value={datasetCount()}
+                onChange={(e) => setDatasetCount(e.target.value)}
               />
-            </Label>
-          </div>
+              <div class="text-xs text-base-content/70 mt-1">1 to 4 datasets</div>
+            </div>
 
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Animation</span>
-              <Toggle
-                color="success"
+            <div>
+              <Label>Bubbles per Dataset: {bubbleCount()}</Label>
+              <Range
+                color="secondary"
                 size="sm"
-                checked={animationEnabled()}
-                onChange={(e) => setAnimationEnabled(e.target.checked)}
+                min={5}
+                max={30}
+                step={1}
+                value={bubbleCount()}
+                onChange={(e) => setBubbleCount(e.target.value)}
               />
-            </Label>
-          </div>
-        </div>
+              <div class="text-xs text-base-content/70 mt-1">5 to 30 bubbles</div>
+            </div>
 
-        <div class="grid grid-cols-2 gap-4 text-sm">
-          <div class="bg-base-300 p-3 rounded">
-            <strong>Total Bubbles:</strong> {datasetCount() * bubbleCount()}
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-3">Show Borders</span>
+                <Toggle
+                  color="accent"
+                  size="sm"
+                  checked={showBorders()}
+                  onChange={(e) => setShowBorders(e.target.checked)}
+                />
+              </Label>
+            </div>
+
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-3">Enable Animation</span>
+                <Toggle
+                  color="success"
+                  size="sm"
+                  checked={animationEnabled()}
+                  onChange={(e) => setAnimationEnabled(e.target.checked)}
+                />
+              </Label>
+            </div>
           </div>
-          <div class="bg-base-300 p-3 rounded">
-            <strong>Configuration:</strong> {showBorders() ? 'With' : 'Without'} borders, 
-            {animationEnabled() ? ' animated' : ' static'}
-          </div>
-        </div>
+
+          <Label class="text-sm opacity-70 mt-4">
+            Showing {datasetCount()} dataset{datasetCount() > 1 ? 's' : ''} with {bubbleCount()} bubbles each
+            ({datasetCount() * bubbleCount()} total bubbles)
+            {showBorders() && ' with borders'}
+            {animationEnabled() && ' with animations'}
+          </Label>
+        </Fieldset>
 
         <div style={{ height: "500px" }}>
           <BubbleChart
-            title={`Interactive Bubble Chart - ${datasetCount()} Dataset(s)`}
+            title={`Interactive Bubble Chart - ${datasetCount()} Dataset${datasetCount() > 1 ? 's' : ''}`}
             data={chartData()}
             options={{
               animation: {
-                duration: animationEnabled() ? 750 : 0
+                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
               },
               plugins: {
                 tooltip: {
@@ -412,7 +424,7 @@ export const RealTimeSimulation: Story = {
       <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
         <div class="flex justify-between items-center p-4 bg-base-200 rounded-box">
           <h3 class="text-lg font-semibold">Real-time Data Simulation</h3>
-          <button 
+          <button
             class={`btn ${isRunning() ? 'btn-error' : 'btn-primary'}`}
             onClick={toggleSimulation}
           >
