@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ChartComponent, Select, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { ChartComponent, Select, Toggle, Label, Fieldset, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo } from "solid-js";
 import { ChartConfiguration } from "chart.js";
 

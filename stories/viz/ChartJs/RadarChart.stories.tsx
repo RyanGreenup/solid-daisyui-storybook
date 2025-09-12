@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { RadarChart, Toggle, Label, Fieldset, Select } from "../src/solid-daisy-components/";
+import { RadarChart, Toggle, Label, Fieldset, Select } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For, onMount } from "solid-js";
 
 const meta = {

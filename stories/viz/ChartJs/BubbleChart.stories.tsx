@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { BubbleChart, Select, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { BubbleChart, Select, Toggle, Label, Fieldset, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For, onMount } from "solid-js";
 
 const meta = {

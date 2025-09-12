@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { DoughnutChart, Fieldset, Label, Range, Toggle, Select } from "../src/solid-daisy-components/";
+import { DoughnutChart, Fieldset, Label, Range, Toggle, Select } from "../../../src/solid-daisy-components/";
 import { createSignal, onMount } from "solid-js";
 
 const meta = {

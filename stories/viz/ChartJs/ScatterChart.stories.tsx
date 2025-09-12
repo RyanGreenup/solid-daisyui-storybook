@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ScatterChart, Select, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { ScatterChart, Select, Toggle, Label, Fieldset, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
@@ -17,7 +17,7 @@ const generateScatterData = (count: number = 50, correlation: 'positive' | 'nega
   for (let i = 0; i < count; i++) {
     let x = Math.random() * 100;
     let y;
-    
+
     switch (correlation) {
       case 'positive':
         y = x * 0.8 + Math.random() * 20 + 10;
@@ -29,7 +29,7 @@ const generateScatterData = (count: number = 50, correlation: 'positive' | 'nega
         y = Math.random() * 100;
         break;
     }
-    
+
     data.push({ x: Math.round(x), y: Math.round(y) });
   }
   return data;
@@ -45,7 +45,7 @@ const generateBubbleScatterData = (count: number = 30) => {
 export const Basic: Story = {
   render: () => {
     const scatterData = generateScatterData(40, 'positive');
-    
+
     return (
       <div style={{ height: "400px" }}>
         <ScatterChart
@@ -87,7 +87,7 @@ export const MultipleDatasets: Story = {
   render: () => {
     const dataset1 = generateScatterData(35, 'positive');
     const dataset2 = generateScatterData(35, 'negative');
-    
+
     return (
       <div style={{ height: "400px" }}>
         <ScatterChart
@@ -139,7 +139,7 @@ export const MultipleDatasets: Story = {
 export const WithTrendLine: Story = {
   render: () => {
     const scatterData = generateScatterData(45, 'positive');
-    
+
     return (
       <div style={{ height: "400px" }}>
         <ScatterChart
@@ -207,7 +207,7 @@ export const InteractiveExample: Story = {
         setTimeout(() => setHasRendered(true), 500);
       }
     });
-    
+
     const scatterData = createMemo(() => {
       console.log('Generating scatter data for points:', pointCount(), 'correlation:', correlation());
       return generateScatterData(pointCount(), correlation());
@@ -255,12 +255,12 @@ export const InteractiveExample: Story = {
 
       return baseDatasets;
     });
-    
+
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Scatter Plot Configuration</Fieldset.Legend>
-          
+
           <div style={{ display: "grid", "grid-template-columns": "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
             <div>
               <Label>Point Count: {pointCount()}</Label>
@@ -272,7 +272,7 @@ export const InteractiveExample: Story = {
                 size="sm"
               />
             </div>
-            
+
             <div>
               <Label>Point Size: {pointSize()}px</Label>
               <Range
@@ -283,7 +283,7 @@ export const InteractiveExample: Story = {
                 size="sm"
               />
             </div>
-            
+
             <div>
               <Label>Correlation Type</Label>
               <Select
@@ -297,7 +297,7 @@ export const InteractiveExample: Story = {
               </Select>
             </div>
           </div>
-          
+
           <div class="flex gap-6 mt-4">
             <div class="form-control">
               <Label class="cursor-pointer">
@@ -309,7 +309,7 @@ export const InteractiveExample: Story = {
                 />
               </Label>
             </div>
-            
+
             <div class="form-control">
               <Label class="cursor-pointer">
                 <span class="label-text mr-3">Enable Animations</span>
@@ -321,13 +321,13 @@ export const InteractiveExample: Story = {
               </Label>
             </div>
           </div>
-          
+
           <Label class="text-sm opacity-70 mt-2">
-            Displaying {pointCount()} points with {correlation()} correlation 
+            Displaying {pointCount()} points with {correlation()} correlation
             {showTrendLine() ? ' and trend line' : ''}
           </Label>
         </Fieldset>
-        
+
         <div style={{ height: "450px" }}>
           <ScatterChart
             title={`Interactive Scatter Plot - ${correlation().charAt(0).toUpperCase() + correlation().slice(1)} Correlation`}
@@ -408,7 +408,7 @@ export const ClusterAnalysis: Story = {
     const cluster2 = generateCluster(75, 25, 18, 10);
     const cluster3 = generateCluster(50, 50, 15, 8);
     const outliers = generateBubbleScatterData(8);
-    
+
     return (
       <div style={{ height: "500px" }}>
         <ScatterChart
@@ -479,7 +479,7 @@ export const CustomStyling: Story = {
   render: () => {
     const performanceData = generateScatterData(35, 'positive');
     const competitorData = generateScatterData(30, 'none');
-    
+
     return (
       <div style={{ height: "500px" }} class="bg-base-200 p-6 rounded-box">
         <ScatterChart

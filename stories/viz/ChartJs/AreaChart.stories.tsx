@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { AreaChart, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { AreaChart, Toggle, Label, Fieldset } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
@@ -228,7 +228,7 @@ export const InteractiveExample: Story = {
       <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
-          
+
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div>
               <Label>Time Period</Label>
@@ -277,7 +277,7 @@ export const InteractiveExample: Story = {
               </Label>
             </div>
           </div>
-          
+
           <Label class="text-sm opacity-70 mt-3">
             Displaying {timeRange()} months of user analytics data
             {useStacking() ? ' with stacked visualization' : ''}

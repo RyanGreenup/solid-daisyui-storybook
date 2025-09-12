@@ -5,7 +5,7 @@ import {
   Label,
   Fieldset,
   Select,
-} from "../src/solid-daisy-components/";
+} from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
