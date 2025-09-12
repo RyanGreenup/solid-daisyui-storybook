@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ChartJSLineChart as LineChart, Select, Toggle, Label } from "../src/solid-daisy-components/";
+import { ChartJSLineChart as LineChart, Select, Toggle, Label, Fieldset } from "../src/solid-daisy-components/";
 import { createSignal, createMemo, For } from "solid-js";
 
 const meta = {
@@ -131,38 +131,47 @@ export const InteractiveExample: Story = {
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-        <div class="flex gap-4 p-4 bg-base-200 rounded-box">
-          <div>
-            <Label>Time Range: {timeRange()} months</Label>
-            <select
-              class="select select-bordered select-sm"
-              value={timeRange().toString()}
-              onChange={(e) => {
-                const newValue = Number(e.target.value);
-                console.log('Time range changed to:', newValue);
-                setTimeRange(newValue);
-              }}
-            >
-              <option value="3">3 months</option>
-              <option value="6">6 months</option>
-              <option value="12">12 months</option>
-              <option value="24">24 months</option>
-            </select>
-          </div>
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Fill area</span>
-              <Toggle color="primary"
-                checked={showFilled()}
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
+
+          <div class="flex gap-6">
+            <div>
+              <Label>Time Range</Label>
+              <Select size="sm"
+                value={timeRange().toString()}
                 onChange={(e) => {
-                  const checked = e.target.checked;
-                  setShowFilled(checked);
+                  const newValue = Number(e.target.value);
+                  console.log('Time range changed to:', newValue);
+                  setTimeRange(newValue);
                 }}
-              />
-            </Label>
+              >
+                <option value="3">3 months</option>
+                <option value="6">6 months</option>
+                <option value="12">12 months</option>
+                <option value="24">24 months</option>
+              </Select>
+            </div>
+
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-3">Fill area</span>
+                <Toggle
+                  color="primary"
+                  checked={showFilled()}
+                  onChange={(e) => {
+                    const checked = e.target.checked;
+                    setShowFilled(checked);
+                  }}
+                />
+              </Label>
+            </div>
           </div>
-        </div>
+
+          <Label class="text-sm opacity-70 mt-2">
+            Showing {timeRange()} months of data with {showFilled() ? 'filled' : 'line-only'} visualization
+          </Label>
+        </Fieldset>
 
         <div style={{ height: "400px" }}>
           <LineChart
