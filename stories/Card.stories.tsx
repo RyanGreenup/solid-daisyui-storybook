@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Card, CardBody, CardTitle, CardActions, Button } from "../src/solid-daisy-components/";
+import { Card, Button, Badge } from "../src/solid-daisy-components/";
 
 const meta = {
   title: "Components/Card",
@@ -31,13 +31,13 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Card class="w-96 bg-base-100 shadow-sm">
-      <CardBody>
-        <CardTitle>Card Title</CardTitle>
+      <Card.Body>
+        <Card.Title>Card Title</Card.Title>
         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <CardActions>
+        <Card.Actions>
           <Button color="primary">Buy Now</Button>
-        </CardActions>
-      </CardBody>
+        </Card.Actions>
+      </Card.Body>
     </Card>
   ),
 };
@@ -46,15 +46,18 @@ export const WithImage: Story = {
   render: () => (
     <Card class="w-96 bg-base-100 shadow-sm">
       <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          alt="Shoes"
+        />
       </figure>
-      <CardBody>
-        <CardTitle>Shoes!</CardTitle>
+      <Card.Body>
+        <Card.Title>Shoes!</Card.Title>
         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <CardActions>
+        <Card.Actions>
           <Button color="primary">Buy Now</Button>
-        </CardActions>
-      </CardBody>
+        </Card.Actions>
+      </Card.Body>
     </Card>
   ),
 };
@@ -63,19 +66,22 @@ export const WithBadge: Story = {
   render: () => (
     <Card class="w-96 bg-base-100 shadow-sm">
       <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          alt="Shoes"
+        />
       </figure>
-      <CardBody>
-        <CardTitle>
+      <Card.Body>
+        <Card.Title>
           Shoes!
-          <div class="badge badge-secondary">NEW</div>
-        </CardTitle>
+          <Badge color="secondary">NEW</Badge>
+        </Card.Title>
         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <CardActions justify="end">
-          <div class="badge badge-outline">Fashion</div>
-          <div class="badge badge-outline">Products</div>
-        </CardActions>
-      </CardBody>
+        <Card.Actions justify="end">
+          <Badge variant="outline">Fashion</Badge>
+          <Badge variant="outline">Products</Badge>
+        </Card.Actions>
+      </Card.Body>
     </Card>
   ),
 };
@@ -84,15 +90,18 @@ export const Compact: Story = {
   render: () => (
     <Card class="w-96 bg-base-100 shadow-sm card-compact">
       <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          alt="Shoes"
+        />
       </figure>
-      <CardBody>
-        <CardTitle>Shoes!</CardTitle>
+      <Card.Body>
+        <Card.Title>Shoes!</Card.Title>
         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <CardActions>
+        <Card.Actions>
           <Button color="primary">Buy Now</Button>
-        </CardActions>
-      </CardBody>
+        </Card.Actions>
+      </Card.Body>
     </Card>
   ),
 };
@@ -101,15 +110,18 @@ export const ImageFull: Story = {
   render: () => (
     <Card class="w-96 bg-base-100 shadow-sm" image="full">
       <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" alt="Shoes" />
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+          alt="Shoes"
+        />
       </figure>
-      <CardBody>
-        <CardTitle>Shoes!</CardTitle>
+      <Card.Body>
+        <Card.Title>Shoes!</Card.Title>
         <p>If a dog chews shoes whose shoes does he choose?</p>
-        <CardActions>
+        <Card.Actions>
           <Button color="primary">Buy Now</Button>
-        </CardActions>
-      </CardBody>
+        </Card.Actions>
+      </Card.Body>
     </Card>
   ),
 };
@@ -118,15 +130,18 @@ export const Side: Story = {
   render: () => (
     <Card class="card-side bg-base-100 shadow-sm" side="side">
       <figure>
-        <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt="Movie" />
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+          alt="Movie"
+        />
       </figure>
-      <CardBody>
-        <CardTitle>New movie is released!</CardTitle>
+      <Card.Body>
+        <Card.Title>New movie is released!</Card.Title>
         <p>Click the button to watch on Jetflix app.</p>
-        <CardActions>
+        <Card.Actions>
           <Button color="primary">Watch</Button>
-        </CardActions>
-      </CardBody>
+        </Card.Actions>
+      </Card.Body>
     </Card>
   ),
 };
@@ -135,34 +150,34 @@ export const Sizes: Story = {
   render: () => (
     <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
       <Card size="xs" class="w-96 bg-base-100 shadow-sm">
-        <CardBody>
-          <CardTitle>Extra Small Card</CardTitle>
+        <Card.Body>
+          <Card.Title>Extra Small Card</Card.Title>
           <p>This is an extra small card.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
       <Card size="sm" class="w-96 bg-base-100 shadow-sm">
-        <CardBody>
-          <CardTitle>Small Card</CardTitle>
+        <Card.Body>
+          <Card.Title>Small Card</Card.Title>
           <p>This is a small card.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
       <Card size="md" class="w-96 bg-base-100 shadow-sm">
-        <CardBody>
-          <CardTitle>Medium Card</CardTitle>
+        <Card.Body>
+          <Card.Title>Medium Card</Card.Title>
           <p>This is a medium card (default).</p>
-        </CardBody>
+        </Card.Body>
       </Card>
       <Card size="lg" class="w-96 bg-base-100 shadow-sm">
-        <CardBody>
-          <CardTitle>Large Card</CardTitle>
+        <Card.Body>
+          <Card.Title>Large Card</Card.Title>
           <p>This is a large card.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
       <Card size="xl" class="w-96 bg-base-100 shadow-sm">
-        <CardBody>
-          <CardTitle>Extra Large Card</CardTitle>
+        <Card.Body>
+          <Card.Title>Extra Large Card</Card.Title>
           <p>This is an extra large card.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
     </div>
   ),
@@ -172,22 +187,22 @@ export const Borders: Story = {
   render: () => (
     <div style={{ display: "flex", gap: "1rem", "flex-wrap": "wrap" }}>
       <Card class="w-96 bg-base-100 shadow-sm">
-        <CardBody>
-          <CardTitle>Default</CardTitle>
+        <Card.Body>
+          <Card.Title>Default</Card.Title>
           <p>No border styling.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
       <Card border="border" class="w-96 bg-base-100">
-        <CardBody>
-          <CardTitle>Border</CardTitle>
+        <Card.Body>
+          <Card.Title>Border</Card.Title>
           <p>Card with border.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
       <Card border="dash" class="w-96 bg-base-100">
-        <CardBody>
-          <CardTitle>Dashed Border</CardTitle>
+        <Card.Body>
+          <Card.Title>Dashed Border</Card.Title>
           <p>Card with dashed border.</p>
-        </CardBody>
+        </Card.Body>
       </Card>
     </div>
   ),
