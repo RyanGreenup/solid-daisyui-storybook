@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { BarChart, Button, Card, Select } from "../src/solid-daisy-components/";
+import { BarChart, Button, Card, Select } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For } from "solid-js";
 
 const meta = {
@@ -132,7 +132,7 @@ export const InteractiveDashboard: Story = {
   render: () => {
     const [selectedMetric, setSelectedMetric] = createSignal("sales");
     const [chartType, setChartType] = createSignal<"dodge" | "stack">("dodge");
-    
+
     const metrics = [
       { value: "sales", label: "Sales", color: "fill-success" },
       { value: "expenses", label: "Expenses", color: "fill-error" },
@@ -148,7 +148,7 @@ export const InteractiveDashboard: Story = {
           { dataKey: "expenses", class: "fill-error", label: "Expenses" }
         ];
       }
-      
+
       // Find the metric and return it as a single-item array
       const foundMetric = metrics.find(m => m.value === metric);
       if (foundMetric) {
@@ -158,7 +158,7 @@ export const InteractiveDashboard: Story = {
           label: foundMetric.label
         }];
       }
-      
+
       // Fallback to sales if metric not found
       return [{
         dataKey: "sales",
@@ -178,12 +178,12 @@ export const InteractiveDashboard: Story = {
       <Card class="p-6 bg-base-100">
         <Card.Body>
           <Card.Title>Business Metrics Dashboard</Card.Title>
-          
+
           <div style={{ display: "flex", gap: "1rem", "margin-bottom": "1rem", "flex-wrap": "wrap" }}>
             <div>
               <label class="label">Metric:</label>
-              <Select 
-                value={selectedMetric()} 
+              <Select
+                value={selectedMetric()}
                 onInput={(e) => setSelectedMetric(e.currentTarget.value as any)}
                 color="primary"
               >
@@ -194,11 +194,11 @@ export const InteractiveDashboard: Story = {
                 </For>
               </Select>
             </div>
-            
+
             <div>
               <label class="label">Layout:</label>
-              <Select 
-                value={chartType()} 
+              <Select
+                value={chartType()}
                 onInput={(e) => setChartType(e.currentTarget.value as any)}
                 color="secondary"
               >
@@ -241,7 +241,7 @@ export const RealtimeSales: Story = {
       { hour: "11:00", online: 25, store: 15, phone: 7 },
       { hour: "12:00", online: 32, store: 22, phone: 9 },
     ]);
-    
+
     const [isRunning, setIsRunning] = createSignal(false);
     let intervalId: number;
 
@@ -250,7 +250,7 @@ export const RealtimeSales: Story = {
       const hour = currentTime.getHours();
       const minute = currentTime.getMinutes();
       const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
-      
+
       setSalesData(prev => {
         const newData = [...prev];
         if (newData.length >= 8) {
@@ -287,9 +287,9 @@ export const RealtimeSales: Story = {
       <Card class="p-6 bg-base-100">
         <Card.Body>
           <Card.Title>Real-time Sales Monitor</Card.Title>
-          
+
           <div style={{ "margin-bottom": "1rem" }}>
-            <Button 
+            <Button
               color={isRunning() ? "error" : "success"}
               onClick={toggleSimulation}
             >

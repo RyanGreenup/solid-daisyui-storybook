@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { LineChart, Button, Card } from "../src/solid-daisy-components/";
+import { LineChart, Button, Card } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For } from "solid-js";
 
 const meta = {
@@ -113,7 +113,7 @@ export const ReactiveChart: Story = {
   render: () => {
     const [dataPoints, setDataPoints] = createSignal(5);
     const [multiplier, setMultiplier] = createSignal(1);
-    
+
     const generateData = createMemo(() => {
       const points = dataPoints();
       const mult = multiplier();
@@ -129,7 +129,7 @@ export const ReactiveChart: Story = {
       <Card class="p-6 bg-base-100">
         <Card.Body>
           <Card.Title>Interactive Business Metrics</Card.Title>
-          
+
           <div style={{ display: "flex", gap: "1rem", "margin-bottom": "1rem" }}>
             <div>
               <label class="label">Data Points:</label>
@@ -143,7 +143,7 @@ export const ReactiveChart: Story = {
               />
               <span class="text-sm">{dataPoints()} months</span>
             </div>
-            
+
             <div>
               <label class="label">Scale:</label>
               <input
@@ -198,18 +198,18 @@ export const RealTimeData: Story = {
       { temperature: 22, humidity: 48, time: "00:05" },
       { temperature: 21, humidity: 46, time: "00:10" },
     ]);
-    
+
     const [isRunning, setIsRunning] = createSignal(false);
     let intervalId: number;
 
     const addDataPoint = () => {
       const currentTime = new Date();
-      const timeString = currentTime.toLocaleTimeString('en-US', { 
-        hour12: false, 
-        hour: '2-digit', 
-        minute: '2-digit' 
+      const timeString = currentTime.toLocaleTimeString('en-US', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit'
       });
-      
+
       setData(prev => {
         const newData = [...prev];
         if (newData.length >= 10) {
@@ -238,9 +238,9 @@ export const RealTimeData: Story = {
       <Card class="p-6 bg-base-100">
         <Card.Body>
           <Card.Title>Real-time Environmental Monitor</Card.Title>
-          
+
           <div style={{ "margin-bottom": "1rem" }}>
-            <Button 
+            <Button
               color={isRunning() ? "error" : "success"}
               onClick={toggleSimulation}
             >
