@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { RadarChart, Toggle, Label } from "../src/solid-daisy-components/";
-import { createSignal, createMemo, For } from "solid-js";
+import { RadarChart, Toggle, Label, Fieldset, Select } from "../src/solid-daisy-components/";
+import { createSignal, createMemo, For, onMount } from "solid-js";
 
 const meta = {
   title: "Charts/RadarChart",
@@ -177,6 +177,15 @@ export const InteractiveExample: Story = {
   render: () => {
     const [showFilled, setShowFilled] = createSignal(true);
     const [selectedEmployee, setSelectedEmployee] = createSignal('alice');
+    const [animationEnabled, setAnimationEnabled] = createSignal(true);
+    const [showPoints, setShowPoints] = createSignal(true);
+    const [hasRendered, setHasRendered] = createSignal(false);
+
+    onMount(() => {
+      if (!hasRendered()) {
+        setTimeout(() => setHasRendered(true), 500);
+      }
+    });
 
     const employees = {
       alice: { name: 'Alice Johnson', data: [9, 8, 7, 8, 6, 9], color: 'rgb(147, 51, 234)' },
@@ -200,71 +209,120 @@ export const InteractiveExample: Story = {
           backgroundColor: backgroundColor,
           borderWidth: 2,
           fill: showFilled(),
+          pointBackgroundColor: showPoints() ? employee.color : 'transparent',
+          pointBorderColor: showPoints() ? '#fff' : 'transparent',
+          pointBorderWidth: showPoints() ? 2 : 0,
+          pointRadius: showPoints() ? 4 : 0,
         }]
       };
     });
 
     return (
-      <div style={{ display: "flex", gap: "2rem", "align-items": "flex-start" }}>
-        <div class="flex flex-col gap-4 p-4 bg-base-200 rounded-box min-w-64">
-          <h4 class="font-semibold">Chart Controls</h4>
+      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "align-items": "flex-center" }}>
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" >
+          <Fieldset.Legend>Performance Review Controls</Fieldset.Legend>
 
-          <div>
-            <Label>Employee:</Label>
-            <select
-              class="select select-bordered select-sm w-full"
-              value={selectedEmployee()}
-              onChange={(e) => setSelectedEmployee(e.target.value as keyof typeof employees)}
-            >
-              <For each={Object.entries(employees)}>
-                {([key, employee]) => (
-                  <option value={key}>{employee.name}</option>
-                )}
-              </For>
-            </select>
-          </div>
-
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text">Fill Area</span>
-              <Toggle
-                color="primary"
-                checked={showFilled()}
-                onChange={(e) => setShowFilled(e.target.checked)}
-              />
-            </Label>
-          </div>
-
-          <div class="text-sm">
-            <h5 class="font-medium mb-2">Performance Scores:</h5>
-            <div class="space-y-1">
-              <For each={performanceCategories}>
-                {(category, index) => (
-                  <div class="flex justify-between">
-                    <span class="text-xs">{category}:</span>
-                    <span class="font-mono text-xs">
-                      {employees[selectedEmployee()].data[index()]}/10
-                    </span>
-                  </div>
-                )}
-              </For>
+          <div class="flex flex-col gap-4">
+            <div class="flex flex-col gap-2">
+              <Label>Employee</Label>
+              <Select
+                size="sm"
+                value={selectedEmployee()}
+                onChange={(e) => setSelectedEmployee(e.target.value as keyof typeof employees)}
+              >
+                <For each={Object.entries(employees)}>
+                  {([key, employee]) => (
+                    <option value={key}>{employee.name}</option>
+                  )}
+                </For>
+              </Select>
             </div>
 
-            <div class="mt-3 pt-3 border-t border-base-300">
-              <div class="flex justify-between">
-                <span class="text-xs font-medium">Average:</span>
-                <span class="font-mono text-xs font-medium">
-                  {(employees[selectedEmployee()].data.reduce((a, b) => a + b, 0) / performanceCategories.length).toFixed(1)}/10
-                </span>
+            <div class="flex flex-col gap-3">
+              <div class="form-control">
+                <Label class="cursor-pointer flex justify-between">
+                  <span class="label-text">Fill Area</span>
+                  <Toggle
+                    color="primary"
+                    checked={showFilled()}
+                    onChange={(e) => setShowFilled(e.target.checked)}
+                  />
+                </Label>
+              </div>
+
+              <div class="form-control">
+                <Label class="cursor-pointer flex justify-between">
+                  <span class="label-text">Show Points</span>
+                  <Toggle
+                    color="secondary"
+                    checked={showPoints()}
+                    onChange={(e) => setShowPoints(e.target.checked)}
+                  />
+                </Label>
+              </div>
+
+              <div class="form-control">
+                <Label class="cursor-pointer flex justify-between">
+                  <span class="label-text">Animations</span>
+                  <Toggle
+                    color="accent"
+                    checked={animationEnabled()}
+                    onChange={(e) => setAnimationEnabled(e.target.checked)}
+                  />
+                </Label>
               </div>
             </div>
+
+            <div class="border-t border-base-300 pt-3">
+              <Label class="text-sm font-medium mb-2">Performance Scores</Label>
+              <div class="space-y-1">
+                <For each={performanceCategories}>
+                  {(category, index) => (
+                    <div class="flex justify-between text-xs">
+                      <span class="truncate">{category}:</span>
+                      <span class="font-mono font-medium">
+                        {employees[selectedEmployee()].data[index()]}/10
+                      </span>
+                    </div>
+                  )}
+                </For>
+              </div>
+
+              <div class="mt-3 pt-2 border-t border-base-300">
+                <div class="flex justify-between text-sm">
+                  <span class="font-medium">Average Score:</span>
+                  <span class="font-mono font-bold">
+                    {(employees[selectedEmployee()].data.reduce((a, b) => a + b, 0) / performanceCategories.length).toFixed(1)}/10
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <Label class="text-xs opacity-70 border-t border-base-300 pt-3">
+              Current: {employees[selectedEmployee()].name} with {showFilled() ? 'filled' : 'line-only'} visualization
+              {showPoints() ? ' and data points' : ''}
+            </Label>
           </div>
-        </div>
+        </Fieldset>
 
         <div style={{ height: "500px", width: "500px" }}>
           <RadarChart
             title={`${employees[selectedEmployee()].name} - Performance Review`}
             data={chartData()}
+            options={{
+              animation: {
+                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
+              },
+              scales: {
+                r: {
+                  beginAtZero: true,
+                  max: 10,
+                  ticks: {
+                    stepSize: 2
+                  }
+                }
+              }
+            }}
           />
         </div>
       </div>
