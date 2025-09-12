@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Select, Fieldset, Label, Alert } from "../src/solid-daisy-components/";
-import { createSignal, For } from "solid-js";
+import { createSignal, For, Show } from "solid-js";
+import { Transition } from "solid-transition-group";
 
 const meta = {
   title: "Components/Select",
@@ -361,25 +362,43 @@ export const SolidJSReactive: Story = {
             <div><strong>Runtime:</strong> {selectedRuntime() || "None selected"}</div>
           </div>
 
-          {getFrameworkInfo() && (
-            <Alert color={getFrameworkInfo()?.color as any} showIcon={false}>
-              <div>
-                <h5 class="font-semibold">{getFrameworkInfo()?.label}</h5>
-                <p class="text-sm">{getFrameworkInfo()?.message}</p>
-              </div>
-            </Alert>
-          )}
+          <Transition
+            enterActiveClass="transition-all duration-300 ease-out"
+            enterClass="opacity-0 transform translate-y-2 scale-95"
+            enterToClass="opacity-100 transform translate-y-0 scale-100"
+            exitActiveClass="transition-all duration-200 ease-in"
+            exitClass="opacity-100 transform translate-y-0 scale-100"
+            exitToClass="opacity-0 transform translate-y-2 scale-95"
+          >
+            <Show when={getFrameworkInfo()}>
+              <Alert color={getFrameworkInfo()?.color as any} showIcon={false}>
+                <div>
+                  <h5 class="font-semibold">{getFrameworkInfo()?.label}</h5>
+                  <p class="text-sm">{getFrameworkInfo()?.message}</p>
+                </div>
+              </Alert>
+            </Show>
+          </Transition>
 
-          {selectedFramework() && selectedLanguage() && selectedRuntime() && (
-            <Alert color="success">
-              <span>
-                Complete stack selected! You're ready to build with{" "}
-                <strong>{frameworks.find(f => f.value === selectedFramework())?.label}</strong>,{" "}
-                <strong>{languages.find(l => l.value === selectedLanguage())?.label}</strong>, and{" "}
-                <strong>{runtimes.find(r => r.value === selectedRuntime())?.label}</strong>.
-              </span>
-            </Alert>
-          )}
+          <Transition
+            enterActiveClass="transition-all duration-500 ease-out"
+            enterClass="opacity-0 transform translate-y-4 scale-90"
+            enterToClass="opacity-100 transform translate-y-0 scale-100"
+            exitActiveClass="transition-all duration-300 ease-in"
+            exitClass="opacity-100 transform translate-y-0 scale-100"
+            exitToClass="opacity-0 transform translate-y-4 scale-90"
+          >
+            <Show when={selectedFramework() && selectedLanguage() && selectedRuntime()}>
+              <Alert color="success">
+                <span>
+                  Complete stack selected! You're ready to build with{" "}
+                  <strong>{frameworks.find(f => f.value === selectedFramework())?.label}</strong>,{" "}
+                  <strong>{languages.find(l => l.value === selectedLanguage())?.label}</strong>, and{" "}
+                  <strong>{runtimes.find(r => r.value === selectedRuntime())?.label}</strong>.
+                </span>
+              </Alert>
+            </Show>
+          </Transition>
         </div>
       </div>
     );
