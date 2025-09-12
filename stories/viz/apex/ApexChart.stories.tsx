@@ -538,6 +538,541 @@ export const BoxPlotChart: Story = {
   },
 };
 
+export const SparklineCharts: Story = {
+  render: () => {
+    // Helper function to generate random data
+    const randomizeArray = (arg: number[]) => {
+      return arg.map(() => Math.floor(Math.random() * (100 - 10 + 1)) + 10);
+    };
+
+    // Base sparkline data
+    const sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
+
+    // Large sparkline area charts (top row)
+    const [salesSeries] = createSignal([{
+      data: randomizeArray(sparklineData)
+    }]);
+    
+    const [salesOptions] = createSignal({
+      chart: {
+        type: 'area',
+        height: 160,
+        sparkline: {
+          enabled: true
+        },
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      fill: {
+        opacity: 0.3,
+      },
+      yaxis: {
+        min: 0
+      },
+      colors: ['#00E396'],
+      title: {
+        text: '$424,652',
+        offsetX: 0,
+        style: {
+          fontSize: '24px',
+        }
+      },
+      subtitle: {
+        text: 'Sales',
+        offsetX: 0,
+        style: {
+          fontSize: '14px',
+        }
+      }
+    });
+
+    const [expensesSeries] = createSignal([{
+      data: randomizeArray(sparklineData)
+    }]);
+    
+    const [expensesOptions] = createSignal({
+      chart: {
+        type: 'area',
+        height: 160,
+        sparkline: {
+          enabled: true
+        },
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      fill: {
+        opacity: 0.3,
+      },
+      yaxis: {
+        min: 0
+      },
+      colors: ['#FF4560'],
+      title: {
+        text: '$235,312',
+        offsetX: 0,
+        style: {
+          fontSize: '24px',
+        }
+      },
+      subtitle: {
+        text: 'Expenses',
+        offsetX: 0,
+        style: {
+          fontSize: '14px',
+        }
+      }
+    });
+
+    const [profitsSeries] = createSignal([{
+      data: randomizeArray(sparklineData)
+    }]);
+    
+    const [profitsOptions] = createSignal({
+      chart: {
+        type: 'area',
+        height: 160,
+        sparkline: {
+          enabled: true
+        },
+      },
+      stroke: {
+        curve: 'straight'
+      },
+      fill: {
+        opacity: 0.3
+      },
+      xaxis: {
+        crosshairs: {
+          width: 1
+        },
+      },
+      yaxis: {
+        min: 0
+      },
+      colors: ['#008FFB'],
+      title: {
+        text: '$135,965',
+        offsetX: 0,
+        style: {
+          fontSize: '24px',
+        }
+      },
+      subtitle: {
+        text: 'Profits',
+        offsetX: 0,
+        style: {
+          fontSize: '14px',
+        }
+      }
+    });
+
+    // Small sparklines for table
+    const [lineSeries1] = createSignal([{
+      data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+    }]);
+    
+    const [lineOptions1] = createSignal({
+      chart: {
+        type: 'line',
+        width: 100,
+        height: 35,
+        sparkline: {
+          enabled: true
+        }
+      },
+      tooltip: {
+        fixed: {
+          enabled: false
+        },
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function () {
+              return '';
+            }
+          }
+        },
+        marker: {
+          show: false
+        }
+      }
+    });
+
+    const [lineSeries2] = createSignal([{
+      data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
+    }]);
+    
+    const [lineOptions2] = createSignal({
+      chart: {
+        type: 'line',
+        width: 100,
+        height: 35,
+        sparkline: {
+          enabled: true
+        }
+      },
+      tooltip: {
+        fixed: {
+          enabled: false
+        },
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function () {
+              return '';
+            }
+          }
+        },
+        marker: {
+          show: false
+        }
+      }
+    });
+
+    const [pieSeries] = createSignal([43, 32, 12, 9]);
+    const [pieOptions] = createSignal({
+      chart: {
+        type: 'pie',
+        width: 40,
+        height: 40,
+        sparkline: {
+          enabled: true
+        }
+      },
+      stroke: {
+        width: 1
+      },
+      tooltip: {
+        fixed: {
+          enabled: false
+        },
+      }
+    });
+
+    const [donutSeries] = createSignal([43, 32, 12, 9]);
+    const [donutOptions] = createSignal({
+      chart: {
+        type: 'donut',
+        width: 40,
+        height: 40,
+        sparkline: {
+          enabled: true
+        }
+      },
+      stroke: {
+        width: 1
+      },
+      tooltip: {
+        fixed: {
+          enabled: false
+        },
+      }
+    });
+
+    const [barSeries1] = createSignal([{
+      data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
+    }]);
+    
+    const [barOptions1] = createSignal({
+      chart: {
+        type: 'bar',
+        width: 100,
+        height: 35,
+        sparkline: {
+          enabled: true
+        }
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: '80%'
+        }
+      },
+      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      xaxis: {
+        crosshairs: {
+          width: 1
+        },
+      },
+      tooltip: {
+        fixed: {
+          enabled: false
+        },
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function () {
+              return '';
+            }
+          }
+        },
+        marker: {
+          show: false
+        }
+      }
+    });
+
+    const [barSeries2] = createSignal([{
+      data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
+    }]);
+    
+    const [barOptions2] = createSignal({
+      chart: {
+        type: 'bar',
+        width: 100,
+        height: 35,
+        sparkline: {
+          enabled: true
+        }
+      },
+      plotOptions: {
+        bar: {
+          columnWidth: '80%'
+        }
+      },
+      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      xaxis: {
+        crosshairs: {
+          width: 1
+        },
+      },
+      tooltip: {
+        fixed: {
+          enabled: false
+        },
+        x: {
+          show: false
+        },
+        y: {
+          title: {
+            formatter: function () {
+              return '';
+            }
+          }
+        },
+        marker: {
+          show: false
+        }
+      }
+    });
+
+    const [radialSeries1] = createSignal([45]);
+    const [radialOptions1] = createSignal({
+      chart: {
+        type: 'radialBar',
+        width: 50,
+        height: 50,
+        sparkline: {
+          enabled: true
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      plotOptions: {
+        radialBar: {
+          hollow: {
+            margin: 0,
+            size: '50%'
+          },
+          track: {
+            margin: 0
+          },
+          dataLabels: {
+            show: false
+          }
+        }
+      }
+    });
+
+    const [radialSeries2] = createSignal([53, 67]);
+    const [radialOptions2] = createSignal({
+      chart: {
+        type: 'radialBar',
+        width: 40,
+        height: 40,
+        sparkline: {
+          enabled: true
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      plotOptions: {
+        radialBar: {
+          hollow: {
+            margin: 0,
+            size: '50%'
+          },
+          track: {
+            margin: 1
+          },
+          dataLabels: {
+            show: false
+          }
+        }
+      }
+    });
+
+    return (
+      <div class="space-y-8">
+        {/* Large Sparklines */}
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Dashboard Sparklines</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-base-100 p-4 rounded-box shadow">
+              <ApexChart
+                type="area"
+                series={salesSeries()}
+                options={salesOptions()}
+                height={160}
+              />
+            </div>
+            <div class="bg-base-100 p-4 rounded-box shadow">
+              <ApexChart
+                type="area"
+                series={expensesSeries()}
+                options={expensesOptions()}
+                height={160}
+              />
+            </div>
+            <div class="bg-base-100 p-4 rounded-box shadow">
+              <ApexChart
+                type="area"
+                series={profitsSeries()}
+                options={profitsOptions()}
+                height={160}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Portfolio Table with Sparklines */}
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Portfolio Overview</h3>
+          <div class="overflow-x-auto">
+            <table class="table table-zebra w-full">
+              <thead>
+                <tr>
+                  <th>Total Value</th>
+                  <th>Percentage of Portfolio</th>
+                  <th>Last 10 days</th>
+                  <th>Volume</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold">$32,554</td>
+                  <td><div class="badge badge-success">15%</div></td>
+                  <td>
+                    <ApexChart
+                      type="line"
+                      series={lineSeries1()}
+                      options={lineOptions1()}
+                      height={35}
+                      width={100}
+                    />
+                  </td>
+                  <td>
+                    <ApexChart
+                      type="bar"
+                      series={barSeries1()}
+                      options={barOptions1()}
+                      height={35}
+                      width={100}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">$23,533</td>
+                  <td><div class="badge badge-warning">7%</div></td>
+                  <td>
+                    <ApexChart
+                      type="line"
+                      series={lineSeries2()}
+                      options={lineOptions2()}
+                      height={35}
+                      width={100}
+                    />
+                  </td>
+                  <td>
+                    <ApexChart
+                      type="bar"
+                      series={barSeries2()}
+                      options={barOptions2()}
+                      height={35}
+                      width={100}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">$54,276</td>
+                  <td><div class="badge badge-info">9%</div></td>
+                  <td>
+                    <ApexChart
+                      type="pie"
+                      series={pieSeries()}
+                      options={pieOptions()}
+                      height={40}
+                      width={40}
+                    />
+                  </td>
+                  <td>
+                    <ApexChart
+                      type="radialBar"
+                      series={radialSeries1()}
+                      options={radialOptions1()}
+                      height={50}
+                      width={50}
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">$11,533</td>
+                  <td><div class="badge badge-error">2%</div></td>
+                  <td>
+                    <ApexChart
+                      type="donut"
+                      series={donutSeries()}
+                      options={donutOptions()}
+                      height={40}
+                      width={40}
+                    />
+                  </td>
+                  <td>
+                    <ApexChart
+                      type="radialBar"
+                      series={radialSeries2()}
+                      options={radialOptions2()}
+                      height={40}
+                      width={40}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="bg-info text-info-content p-4 rounded-box">
+          <h4 class="font-semibold mb-2">💡 Sparkline Charts</h4>
+          <p class="text-sm">
+            Sparklines are small, word-sized charts that provide quick visual insights without axes or detailed formatting.
+            They're perfect for dashboards, tables, and inline data visualization. The <code class="bg-info-content text-info px-1 rounded">sparkline: {`{ enabled: true }`}</code> option removes all chart chrome.
+          </p>
+        </div>
+      </div>
+    );
+  },
+};
+
 export const InteractiveAdvanced: Story = {
   render: () => {
     const [chartType, setChartType] = createSignal<'line' | 'bar' | 'area'>('line');
