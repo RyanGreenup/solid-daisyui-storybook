@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { AreaChart, Toggle, Label } from "../src/solid-daisy-components/";
-import { createSignal, createMemo } from "solid-js";
+import { AreaChart, Toggle, Label, Fieldset, Range } from "../src/solid-daisy-components/";
+import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
   title: "Charts/AreaChart",
@@ -173,6 +173,14 @@ export const InteractiveExample: Story = {
     const [timeRange, setTimeRange] = createSignal(8);
     const [useStacking, setUseStacking] = createSignal(false);
     const [showPoints, setShowPoints] = createSignal(false);
+    const [animationEnabled, setAnimationEnabled] = createSignal(true);
+    const [hasRendered, setHasRendered] = createSignal(false);
+
+    onMount(() => {
+      if (!hasRendered()) {
+        setTimeout(() => setHasRendered(true), 500);
+      }
+    });
 
     const chartData = createMemo(() => {
       const data = generateMultiSeriesAreaData(timeRange());
@@ -217,50 +225,85 @@ export const InteractiveExample: Story = {
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-        <div class="flex gap-6 p-4 bg-base-200 rounded-box flex-wrap">
-          <div>
-            <Label>Time Range: {timeRange()} months</Label>
-            <select
-              class="select select-bordered select-sm"
-              value={timeRange().toString()}
-              onChange={(e) => setTimeRange(Number(e.target.value))}
-            >
-              <option value="6">6 months</option>
-              <option value="8">8 months</option>
-              <option value="12">12 months</option>
-              <option value="18">18 months</option>
-            </select>
-          </div>
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div>
+              <Label>Time Period</Label>
+              <select
+                class="select select-bordered select-sm w-full"
+                value={timeRange().toString()}
+                onChange={(e) => setTimeRange(Number(e.target.value))}
+              >
+                <option value="6">6 months</option>
+                <option value="8">8 months</option>
+                <option value="12">12 months</option>
+                <option value="18">18 months</option>
+              </select>
+            </div>
 
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Stack Areas</span>
-              <Toggle
-                color="primary"
-                checked={useStacking()}
-                onChange={(e) => setUseStacking(e.target.checked)}
-              />
-            </Label>
-          </div>
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-2">Stack Areas</span>
+                <Toggle
+                  color="primary"
+                  checked={useStacking()}
+                  onChange={(e) => setUseStacking(e.target.checked)}
+                />
+              </Label>
+            </div>
 
-          <div class="form-control">
-            <Label class="cursor-pointer">
-              <span class="label-text mr-2">Show Points</span>
-              <Toggle
-                color="secondary"
-                checked={showPoints()}
-                onChange={(e) => setShowPoints(e.target.checked)}
-              />
-            </Label>
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-2">Show Points</span>
+                <Toggle
+                  color="secondary"
+                  checked={showPoints()}
+                  onChange={(e) => setShowPoints(e.target.checked)}
+                />
+              </Label>
+            </div>
+
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text mr-2">Animations</span>
+                <Toggle
+                  color="accent"
+                  checked={animationEnabled()}
+                  onChange={(e) => setAnimationEnabled(e.target.checked)}
+                />
+              </Label>
+            </div>
           </div>
-        </div>
+          
+          <Label class="text-sm opacity-70 mt-3">
+            Displaying {timeRange()} months of user analytics data
+            {useStacking() ? ' with stacked visualization' : ''}
+            {showPoints() ? ' with data points visible' : ''}
+          </Label>
+        </Fieldset>
 
         <div style={{ height: "400px" }}>
           <AreaChart
             title={`User Analytics - Last ${timeRange()} Months ${useStacking() ? '(Stacked)' : ''}`}
             stacked={useStacking()}
             data={chartData()}
+            options={{
+              animation: {
+                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
+              },
+              plugins: {
+                legend: {
+                  position: 'bottom' as const,
+                  labels: {
+                    usePointStyle: true,
+                    padding: 15
+                  }
+                }
+              }
+            }}
           />
         </div>
       </div>
