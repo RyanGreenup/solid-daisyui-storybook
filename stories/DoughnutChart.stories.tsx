@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { DoughnutChart } from "../src/solid-daisy-components/";
-import { createSignal } from "solid-js";
+import { DoughnutChart, Fieldset, Label, Range, Toggle, Select } from "../src/solid-daisy-components/";
+import { createSignal, onMount } from "solid-js";
 
 const meta = {
   title: "Charts/DoughnutChart",
@@ -126,61 +126,76 @@ export const InteractiveExample: Story = {
     const [cutoutSize, setCutoutSize] = createSignal(50);
     const [showLabels, setShowLabels] = createSignal(true);
     const [colorScheme, setColorScheme] = createSignal<'brand' | 'pastel'>('brand');
-    
+    const [hasRendered, setHasRendered] = createSignal(false);
+
     const data = [30, 25, 20, 15, 10];
     const labels = ['Category A', 'Category B', 'Category C', 'Category D', 'Category E'];
     const colors = colorScheme() === 'brand' ? brandColors : pastelColors;
-    
+
+    onMount(() => {
+    // Set hasRendered to true after the first render
+    if (!hasRendered()) {
+      setTimeout(() => setHasRendered(true), 500);
+    }
+    });
+
+
     return (
       <div style={{ display: "flex", gap: "2rem", "align-items": "flex-start" }}>
-        <div class="flex flex-col gap-4 p-4 bg-base-200 rounded-box min-w-64">
-          <h4 class="font-semibold">Chart Controls</h4>
-          
-          <div>
-            <label class="label">
-              <span class="label-text">Cutout Size: {cutoutSize()}%</span>
-            </label>
-            <input 
-              type="range" 
-              min={0} 
-              max={80} 
-              value={cutoutSize()} 
-              class="range range-primary range-sm"
-              onChange={(e) => setCutoutSize(Number(e.currentTarget.value))}
-            />
-          </div>
-          
-          <div class="form-control">
-            <label class="label cursor-pointer">
-              <span class="label-text">Show Labels</span>
-              <input 
-                type="checkbox" 
-                class="toggle toggle-primary" 
-                checked={showLabels()}
-                onChange={(e) => setShowLabels(e.currentTarget.checked)}
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box min-w-72">
+          <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
+
+          <div class="flex flex-col gap-4">
+            <div>
+              <Label>Cutout Size: {cutoutSize()}%</Label>
+              <Range
+                min={0}
+                max={80}
+                value={cutoutSize()}
+                color="primary"
+                size="sm"
+                onChange={(e) => setCutoutSize(e.currentTarget.value)}
               />
-            </label>
+              <div class="flex justify-between text-xs opacity-60 mt-1">
+                <span>0%</span>
+                <span>80%</span>
+              </div>
+            </div>
+
+            <div class="form-control">
+              <Label class="cursor-pointer">
+                <span class="label-text">Show Labels</span>
+                <Toggle
+                  color="primary"
+                  checked={showLabels()}
+                  onChange={(e) => setShowLabels(e.currentTarget.checked)}
+                />
+              </Label>
+            </div>
+
+            <div>
+              <Label>Color Scheme</Label>
+              <Select
+                size="sm"
+                value={colorScheme()}
+                onChange={(e) => setColorScheme(e.target.value as any)}
+              >
+                <option value="brand">Brand Colors</option>
+                <option value="pastel">Pastel Colors</option>
+              </Select>
+            </div>
+
+            <div class="border-t border-base-300 pt-3 mt-2">
+              <Label class="text-sm opacity-70">
+                Total segments: {data.length} • Total value: {data.reduce((a, b) => a + b, 0)}
+              </Label>
+              <Label class="text-xs opacity-60 mt-1">
+                Using {colorScheme()} color scheme with {cutoutSize()}% cutout
+              </Label>
+            </div>
           </div>
-          
-          <div>
-            <label class="label">
-              <span class="label-text">Color Scheme:</span>
-            </label>
-            <select 
-              class="select select-bordered select-sm w-full"
-              value={colorScheme()} 
-              onChange={(e) => setColorScheme(e.currentTarget.value as any)}
-            >
-              <option value="brand">Brand Colors</option>
-              <option value="pastel">Pastel Colors</option>
-            </select>
-          </div>
-          
-          <div class="text-xs opacity-70">
-            <p>Total Value: {data.reduce((a, b) => a + b, 0)}</p>
-          </div>
-        </div>
-        
+        </Fieldset>
+
         <div style={{ height: "400px", width: "400px" }}>
           <DoughnutChart
             title="Interactive Doughnut Chart"
@@ -195,6 +210,9 @@ export const InteractiveExample: Story = {
               }]
             }}
             options={{
+              animation: {
+                duration: hasRendered() ? 0 : 1000
+              },
               plugins: {
                 legend: {
                   display: showLabels(),
@@ -212,7 +230,7 @@ export const InteractiveExample: Story = {
 export const DonutWithCenterText: Story = {
   render: () => {
     const totalValue = 4250;
-    
+
     return (
       <div style={{ height: "400px", width: "400px", margin: "0 auto", position: "relative" }}>
         <DoughnutChart
@@ -246,13 +264,13 @@ export const DonutWithCenterText: Story = {
             }
           }}
         />
-        
+
         {/* Center text overlay */}
-        <div 
-          style={{ 
-            position: "absolute", 
-            top: "50%", 
-            left: "50%", 
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
             transform: "translate(-50%, -50%)",
             "text-align": "center",
             "pointer-events": "none"
@@ -277,7 +295,7 @@ export const MiniDoughnuts: Story = {
       { label: 'Customer Satisfaction', data: [89, 11], colors: ['rgba(245, 158, 11, 0.8)', 'rgba(229, 231, 235, 0.3)'] },
       { label: 'Revenue Growth', data: [45, 55], colors: ['rgba(147, 51, 234, 0.8)', 'rgba(229, 231, 235, 0.3)'] }
     ];
-    
+
     return (
       <div class="grid grid-cols-2 gap-4">
         {datasets.map((dataset) => (
