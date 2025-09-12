@@ -7,7 +7,7 @@ import HelpCircle from "lucide-solid/icons/help-circle";
 import Star from "lucide-solid/icons/star";
 
 const meta = {
-  title: "Components/Collapsible",
+  title: "Components/Widgets/Collapsible",
   component: Collapsible,
   tags: ["autodocs"],
   argTypes: {
@@ -64,15 +64,15 @@ export const Variants: Story = {
       <Collapsible variant="default" title="Default Variant">
         <p>This uses the default styling with a subtle border and background.</p>
       </Collapsible>
-      
+
       <Collapsible variant="card" title="Card Variant">
         <p>This variant has a card-like appearance with shadow and enhanced background.</p>
       </Collapsible>
-      
+
       <Collapsible variant="outline" title="Outline Variant">
         <p>Clean outline style with transparent background and prominent border.</p>
       </Collapsible>
-      
+
       <Collapsible variant="ghost" title="Ghost Variant">
         <p>Minimal styling with transparent background, perfect for subtle disclosure.</p>
       </Collapsible>
@@ -105,7 +105,7 @@ export const ControlledState: Story = {
             Expanded {expandCount()} times
           </Badge>
         </div>
-        
+
         <Collapsible
           variant="card"
           title="Controlled Collapsible"
@@ -117,7 +117,7 @@ export const ControlledState: Story = {
             <div>
               <strong>External Control</strong>
               <p class="text-sm mt-1">
-                This collapsible's state is controlled by the button above. 
+                This collapsible's state is controlled by the button above.
                 You can also click the header to toggle it.
               </p>
             </div>
@@ -160,7 +160,7 @@ export const FAQ: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
         <h3 class="text-xl font-bold mb-2">Frequently Asked Questions</h3>
-        
+
         <For each={faqs}>
           {(faq) => (
             <Collapsible
@@ -198,7 +198,7 @@ export const NestedContent: Story = {
             <Star size={16} />
             <span>You have 3 active projects with recent activity!</span>
           </Alert>
-          
+
           <Collapsible
             variant="outline"
             title="Active Projects"
@@ -214,7 +214,7 @@ export const NestedContent: Story = {
                   <Badge color="success">85% Complete</Badge>
                 </div>
               </Card>
-              
+
               <Card class="p-3">
                 <div class="flex justify-between items-center">
                   <div>
@@ -224,7 +224,7 @@ export const NestedContent: Story = {
                   <Badge color="warning">60% Complete</Badge>
                 </div>
               </Card>
-              
+
               <Card class="p-3">
                 <div class="flex justify-between items-center">
                   <div>
@@ -236,7 +236,7 @@ export const NestedContent: Story = {
               </Card>
             </div>
           </Collapsible>
-          
+
           <Collapsible
             variant="outline"
             title="Recent Activity"
@@ -273,7 +273,7 @@ export const DisabledState: Story = {
       >
         <p>This content is accessible and can be expanded or collapsed normally.</p>
       </Collapsible>
-      
+
       <Collapsible
         variant="card"
         title="Disabled Content"
