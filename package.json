@@ -29,6 +29,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.13",
     "@tanstack/solid-table": "^8.21.3",
+    "cally": "^0.8.0",
     "cmdk-solid": "^1.1.2",
     "daisyui": "^5.1.7",
     "lucide-solid": "^0.542.0",
