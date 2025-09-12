@@ -216,3 +216,96 @@ export const FormExample: Story = {
     </div>
   ),
 };
+
+export const InteractiveBox: Story = {
+  render: () => {
+    const [rotation, setRotation] = createSignal("0");
+    
+    const getRotationDegrees = () => {
+      switch (rotation()) {
+        case "45":
+          return "45deg";
+        case "90":
+          return "90deg";
+        case "180":
+          return "180deg";
+        default:
+          return "0deg";
+      }
+    };
+
+    return (
+      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "align-items": "center", padding: "2rem" }}>
+        <h3 class="text-lg font-semibold">Rotate the Box</h3>
+        
+        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+            <Radio 
+              name="rotation-control" 
+              color="primary" 
+              value="0" 
+              checked={rotation() === "0"}
+              onChange={(e) => setRotation(e.currentTarget.value)}
+            />
+            <span>No Rotation (0°)</span>
+          </label>
+          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+            <Radio 
+              name="rotation-control" 
+              color="primary" 
+              value="45" 
+              checked={rotation() === "45"}
+              onChange={(e) => setRotation(e.currentTarget.value)}
+            />
+            <span>Slight Rotation (45°)</span>
+          </label>
+          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+            <Radio 
+              name="rotation-control" 
+              color="primary" 
+              value="90" 
+              checked={rotation() === "90"}
+              onChange={(e) => setRotation(e.currentTarget.value)}
+            />
+            <span>Quarter Turn (90°)</span>
+          </label>
+          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+            <Radio 
+              name="rotation-control" 
+              color="primary" 
+              value="180" 
+              checked={rotation() === "180"}
+              onChange={(e) => setRotation(e.currentTarget.value)}
+            />
+            <span>Half Turn (180°)</span>
+          </label>
+        </div>
+
+        <div 
+          style={{ 
+            width: "120px", 
+            height: "120px", 
+            "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            border: "3px solid #4f46e5",
+            "border-radius": "12px",
+            display: "flex",
+            "align-items": "center",
+            "justify-content": "center",
+            color: "white",
+            "font-weight": "bold",
+            "font-size": "18px",
+            transform: `rotate(${getRotationDegrees()})`,
+            transition: "transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+            "box-shadow": "0 10px 25px rgba(0, 0, 0, 0.15)",
+          }}
+        >
+          📦
+        </div>
+
+        <div class="text-sm text-base-content/70 text-center">
+          Current rotation: <strong>{getRotationDegrees()}</strong>
+        </div>
+      </div>
+    );
+  },
+};
