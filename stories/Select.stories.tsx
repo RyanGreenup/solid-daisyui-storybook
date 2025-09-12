@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Select, Fieldset, Label } from "../src/solid-daisy-components/";
+import { Select, Fieldset, Label, Alert } from "../src/solid-daisy-components/";
+import { createSignal, For } from "solid-js";
 
 const meta = {
   title: "Components/Select",
@@ -247,6 +248,142 @@ export const Disabled: Story = {
       <option>You can't touch this</option>
     </Select>
   ),
+};
+
+export const SolidJSReactive: Story = {
+  render: () => {
+    const [selectedFramework, setSelectedFramework] = createSignal("");
+    const [selectedLanguage, setSelectedLanguage] = createSignal("");
+    const [selectedRuntime, setSelectedRuntime] = createSignal("");
+
+    const frameworks = [
+      { value: "solid", label: "SolidJS", color: "primary" },
+      { value: "react", label: "React", color: "info" },
+      { value: "vue", label: "Vue", color: "success" },
+      { value: "svelte", label: "Svelte", color: "warning" },
+      { value: "angular", label: "Angular", color: "error" },
+    ];
+
+    const languages = [
+      { value: "typescript", label: "TypeScript" },
+      { value: "javascript", label: "JavaScript" },
+      { value: "coffeescript", label: "CoffeeScript" },
+    ];
+
+    const runtimes = [
+      { value: "node", label: "Node.js" },
+      { value: "bun", label: "Bun" },
+      { value: "deno", label: "Deno" },
+    ];
+
+    const getFrameworkInfo = () => {
+      const framework = frameworks.find(f => f.value === selectedFramework());
+      if (!framework) return null;
+      
+      const messages = {
+        solid: "Great choice! SolidJS offers fine-grained reactivity with excellent performance.",
+        react: "Popular choice! React has a huge ecosystem and community support.",
+        vue: "Vue provides a gentle learning curve with powerful features.",
+        svelte: "Svelte compiles away the framework for optimal bundle sizes.",
+        angular: "Angular offers a complete framework with TypeScript by default."
+      };
+
+      return {
+        ...framework,
+        message: messages[framework.value]
+      };
+    };
+
+    return (
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem", "max-width": "500px" }}>
+        <h3 class="text-xl font-bold">SolidJS Reactive Select Example</h3>
+        
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Choose your tech stack</Fieldset.Legend>
+          
+          <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+            <div>
+              <Label>Frontend Framework</Label>
+              <Select 
+                color="primary" 
+                value={selectedFramework()} 
+                onInput={(e) => setSelectedFramework(e.currentTarget.value)}
+              >
+                <option value="" disabled selected>Pick a framework</option>
+                <For each={frameworks}>
+                  {(framework) => (
+                    <option value={framework.value}>{framework.label}</option>
+                  )}
+                </For>
+              </Select>
+            </div>
+
+            <div>
+              <Label>Programming Language</Label>
+              <Select 
+                color="secondary" 
+                value={selectedLanguage()} 
+                onInput={(e) => setSelectedLanguage(e.currentTarget.value)}
+              >
+                <option value="" disabled selected>Pick a language</option>
+                <For each={languages}>
+                  {(language) => (
+                    <option value={language.value}>{language.label}</option>
+                  )}
+                </For>
+              </Select>
+            </div>
+
+            <div>
+              <Label>Runtime Environment</Label>
+              <Select 
+                color="accent" 
+                value={selectedRuntime()} 
+                onInput={(e) => setSelectedRuntime(e.currentTarget.value)}
+              >
+                <option value="" disabled selected>Pick a runtime</option>
+                <For each={runtimes}>
+                  {(runtime) => (
+                    <option value={runtime.value}>{runtime.label}</option>
+                  )}
+                </For>
+              </Select>
+            </div>
+          </div>
+        </Fieldset>
+
+        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+          <h4 class="text-lg font-semibold">Current Selection:</h4>
+          
+          <div class="bg-base-300 p-4 rounded-box">
+            <div><strong>Framework:</strong> {selectedFramework() || "None selected"}</div>
+            <div><strong>Language:</strong> {selectedLanguage() || "None selected"}</div>
+            <div><strong>Runtime:</strong> {selectedRuntime() || "None selected"}</div>
+          </div>
+
+          {getFrameworkInfo() && (
+            <Alert color={getFrameworkInfo()?.color as any} showIcon={false}>
+              <div>
+                <h5 class="font-semibold">{getFrameworkInfo()?.label}</h5>
+                <p class="text-sm">{getFrameworkInfo()?.message}</p>
+              </div>
+            </Alert>
+          )}
+
+          {selectedFramework() && selectedLanguage() && selectedRuntime() && (
+            <Alert color="success">
+              <span>
+                Complete stack selected! You're ready to build with{" "}
+                <strong>{frameworks.find(f => f.value === selectedFramework())?.label}</strong>,{" "}
+                <strong>{languages.find(l => l.value === selectedLanguage())?.label}</strong>, and{" "}
+                <strong>{runtimes.find(r => r.value === selectedRuntime())?.label}</strong>.
+              </span>
+            </Alert>
+          )}
+        </div>
+      </div>
+    );
+  },
 };
 
 export const AllVariants: Story = {
