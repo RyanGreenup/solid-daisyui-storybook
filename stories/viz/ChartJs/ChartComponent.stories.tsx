@@ -4,7 +4,7 @@ import { createSignal, createMemo } from "solid-js";
 import { ChartConfiguration } from "chart.js";
 
 const meta = {
-  title: "Charts/ChartComponent",
+  title: "Viz/Chart JS/ChartComponent",
   component: ChartComponent,
   tags: ["autodocs"],
 } satisfies Meta<typeof ChartComponent>;

@@ -9,7 +9,7 @@ import {
 import { createSignal, createMemo, For } from "solid-js";
 
 const meta = {
-  title: "Charts/LineChart",
+  title: "Viz/Chart JS/LineChart",
   component: LineChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof LineChart>;

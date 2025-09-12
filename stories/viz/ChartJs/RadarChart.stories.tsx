@@ -3,7 +3,7 @@ import { RadarChart, Toggle, Label, Fieldset, Select } from "../../../src/solid-
 import { createSignal, createMemo, For, onMount } from "solid-js";
 
 const meta = {
-  title: "Charts/RadarChart",
+  title: "Viz/Chart JS/RadarChart",
   component: RadarChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof RadarChart>;

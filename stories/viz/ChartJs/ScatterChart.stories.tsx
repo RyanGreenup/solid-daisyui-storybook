@@ -3,7 +3,7 @@ import { ScatterChart, Select, Toggle, Label, Fieldset, Range } from "../../../s
 import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
-  title: "Charts/ScatterChart",
+  title: "Viz/Chart JS/ScatterChart",
   component: ScatterChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof ScatterChart>;

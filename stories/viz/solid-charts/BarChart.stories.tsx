@@ -3,7 +3,7 @@ import { BarChart, Button, Card, Select } from "../../../src/solid-daisy-compone
 import { createSignal, createMemo, For } from "solid-js";
 
 const meta = {
-  title: "Viz/solid-charts/Bar Chart",
+  title: "Viz/Solid Charts/Bar Chart",
   component: BarChart,
   tags: ["autodocs"],
   parameters: {

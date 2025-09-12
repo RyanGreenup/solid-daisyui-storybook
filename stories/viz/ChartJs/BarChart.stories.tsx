@@ -3,7 +3,7 @@ import { ChartJSBarChart as BarChart, Fieldset, Label, Select, Range } from "../
 import { createSignal, createMemo } from "solid-js";
 
 const meta = {
-  title: "Charts/BarChart",
+  title: "Viz/Chart JS/BarChart",
   component: BarChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof BarChart>;

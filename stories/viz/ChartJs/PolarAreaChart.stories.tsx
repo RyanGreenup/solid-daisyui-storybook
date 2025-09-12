@@ -9,7 +9,7 @@ import {
 import { createSignal, createMemo, onMount } from "solid-js";
 
 const meta = {
-  title: "Charts/PolarAreaChart",
+  title: "Viz/Chart JS/PolarAreaChart",
   component: PolarAreaChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof PolarAreaChart>;

@@ -3,7 +3,7 @@ import { BubbleChart, Select, Toggle, Label, Fieldset, Range } from "../../../sr
 import { createSignal, createMemo, For, onMount } from "solid-js";
 
 const meta = {
-  title: "Charts/BubbleChart",
+  title: "Viz/Chart JS/BubbleChart",
   component: BubbleChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof BubbleChart>;

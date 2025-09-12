@@ -3,7 +3,7 @@ import { DoughnutChart, Fieldset, Label, Range, Toggle, Select } from "../../../
 import { createSignal, onMount } from "solid-js";
 
 const meta = {
-  title: "Charts/DoughnutChart",
+  title: "Viz/Chart JS/DoughnutChart",
   component: DoughnutChart,
   tags: ["autodocs"],
 } satisfies Meta<typeof DoughnutChart>;

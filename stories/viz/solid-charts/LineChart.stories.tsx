@@ -3,7 +3,7 @@ import { LineChart, Button, Card } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For } from "solid-js";
 
 const meta = {
-  title: "Viz/solid-charts/Line Chart",
+  title: "Viz/Solid Charts/Line Chart",
   component: LineChart,
   tags: ["autodocs"],
   parameters: {
