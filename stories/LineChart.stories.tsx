@@ -6,6 +6,38 @@ const meta = {
   title: "Viz/solid-charts/Line Chart",
   component: LineChart,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `
+## SVG-Based Chart Component
+
+This LineChart component is built on top of solid-charts, which renders charts as **SVG elements**. This approach has a few limitations:
+
+### Benefits:
+- **Scalable**: Vector graphics scale perfectly at any resolution
+- **Lightweight**: No external dependencies beyond solid-charts
+- **Customizable**: Full control over styling with CSS classes
+- **Accessible**: SVG elements support screen readers and semantic markup
+- **Print-friendly**: Charts render correctly when printed
+
+### Limitations:
+- **Large datasets**: Performance is highly dependent on the amount of data
+- **Complex interactions**: Can't (practically) pan regions etc.
+- **Animation**: CSS-based animations only, no complex chart transitions
+- **3D effects**: No support for 3D
+
+### Best Use Cases:
+- **Small widgets** with moderate data volumes (< 1000 points)
+- **Real-time monitoring** with periodic updates
+- **Business reports** that must be printed
+- **Interactive forms** where chart updates based on user input
+
+For high-performance scenarios with large datasets or complex interactions, consider canvas-based alternatives such as Charts.js and Apex Charts
+        `
+      }
+    }
+  },
   argTypes: {
     showGrid: {
       control: "boolean",
