@@ -16,13 +16,13 @@ const generateTrendData = (months: number = 12) => {
   const labels = [];
   const data = [];
   const currentDate = new Date();
-  
+
   for (let i = months - 1; i >= 0; i--) {
     const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
     labels.push(date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }));
     data.push(Math.floor(Math.random() * 10000) + 5000);
   }
-  
+
   return { labels, data };
 };
 
@@ -31,21 +31,21 @@ const generateComparisonData = (months: number = 12) => {
   const currentYear = [];
   const lastYear = [];
   const currentDate = new Date();
-  
+
   for (let i = months - 1; i >= 0; i--) {
     const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
     labels.push(date.toLocaleDateString('en-US', { month: 'short' }));
     currentYear.push(Math.floor(Math.random() * 8000) + 4000);
     lastYear.push(Math.floor(Math.random() * 7000) + 3500);
   }
-  
+
   return { labels, currentYear, lastYear };
 };
 
 export const Basic: Story = {
   render: () => {
     const trendData = generateTrendData(6);
-    
+
     return (
       <div style={{ height: "400px" }}>
         <LineChart
@@ -71,7 +71,7 @@ export const Basic: Story = {
 export const MultipleDatasets: Story = {
   render: () => {
     const comparisonData = generateComparisonData(8);
-    
+
     return (
       <div style={{ height: "400px" }}>
         <LineChart
@@ -109,21 +109,22 @@ export const InteractiveExample: Story = {
   render: () => {
     const [timeRange, setTimeRange] = createSignal(6);
     const [showFilled, setShowFilled] = createSignal(true);
-    
+
     // Create reactive memo for chart data
     const chartData = createMemo(() => {
       console.log('Generating chart data for timeRange:', timeRange(), 'filled:', showFilled());
       const data = generateTrendData(timeRange());
-      
+      const filled = showFilled();
+
       return {
         labels: data.labels,
         datasets: [{
           label: 'Revenue ($)',
           data: data.data,
           borderColor: 'rgb(147, 51, 234)',
-          backgroundColor: showFilled() ? 'rgba(147, 51, 234, 0.1)' : 'transparent',
+          backgroundColor: filled ? 'rgba(147, 51, 234, 0.3)' : 'rgba(147, 51, 234, 0)',
           borderWidth: 2,
-          fill: showFilled(),
+          fill: filled ? 'origin' : false, // Use 'origin' to fill to zero baseline
           tension: 0.4,
         }]
       };
@@ -134,9 +135,9 @@ export const InteractiveExample: Story = {
         <div class="flex gap-4 p-4 bg-base-200 rounded-box">
           <div>
             <Label>Time Range: {timeRange()} months</Label>
-            <select 
+            <select
               class="select select-bordered select-sm"
-              value={timeRange().toString()} 
+              value={timeRange().toString()}
               onChange={(e) => {
                 const newValue = Number(e.target.value);
                 console.log('Time range changed to:', newValue);
@@ -152,18 +153,17 @@ export const InteractiveExample: Story = {
           <div class="form-control">
             <Label class="cursor-pointer">
               <span class="label-text mr-2">Fill area</span>
-              <Toggle 
-                color="primary"
+              <Toggle color="primary"
                 checked={showFilled()}
-                onChange={(checked) => {
-                  console.log('Fill changed to:', checked);
+                onChange={(e) => {
+                  const checked = e.target.checked;
                   setShowFilled(checked);
                 }}
               />
             </Label>
           </div>
         </div>
-        
+
         <div style={{ height: "400px" }}>
           <LineChart
             title={`Revenue Trend - Last ${timeRange()} Months`}
@@ -178,7 +178,7 @@ export const InteractiveExample: Story = {
 export const StepLine: Story = {
   render: () => {
     const stepData = generateTrendData(10);
-    
+
     return (
       <div style={{ height: "400px" }}>
         <LineChart
@@ -213,7 +213,7 @@ export const RealTimeSimulation: Story = {
   render: () => {
     const [data, setData] = createSignal(generateTrendData(20).data);
     const labels = Array.from({ length: 20 }, (_, i) => `Point ${i + 1}`);
-    
+
     // Simulate real-time updates
     setInterval(() => {
       setData(prev => [
@@ -221,7 +221,7 @@ export const RealTimeSimulation: Story = {
         Math.floor(Math.random() * 10000) + 5000
       ]);
     }, 2000);
-    
+
     return (
       <div style={{ height: "400px" }}>
         <LineChart
@@ -247,7 +247,7 @@ export const RealTimeSimulation: Story = {
 export const CustomStyling: Story = {
   render: () => {
     const customData = generateComparisonData(12);
-    
+
     return (
       <div style={{ height: "500px" }} class="bg-base-200 p-6 rounded-box">
         <LineChart
