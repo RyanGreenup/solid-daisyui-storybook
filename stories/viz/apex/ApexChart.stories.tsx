@@ -369,6 +369,175 @@ export const BasicRadialBarChart: Story = {
   },
 };
 
+export const BoxPlotChart: Story = {
+  render: () => {
+    const [series] = createSignal([
+      {
+        name: 'box',
+        type: 'boxPlot',
+        data: [
+          {
+            x: 'Alice',
+            y: [54, 66, 69, 75, 88],
+            goals: [
+              {
+                value: 32,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+            ],
+          },
+          {
+            x: 'Bob',
+            y: [43, 65, 69, 76, 81],
+            goals: [
+              {
+                value: 35,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+              {
+                value: 95,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+            ],
+          },
+          {
+            x: 'Charlie',
+            y: [31, 39, 45, 51, 59],
+            goals: [
+              {
+                value: 64,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+              {
+                value: 75,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+            ],
+          },
+          {
+            x: 'David',
+            y: [39, 46, 55, 65, 71],
+            goals: [
+              {
+                value: 27,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+              {
+                value: 77,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+            ],
+          },
+          {
+            x: 'Ahmed',
+            y: [29, 31, 35, 39, 44],
+            goals: [
+              {
+                value: 10,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+              {
+                value: 56,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+              {
+                value: 62,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+              {
+                value: 98,
+                strokeWidth: 0,
+                strokeHeight: 13,
+                strokeLineCap: 'round',
+                strokeColor: '#FEB019',
+              },
+            ],
+          },
+        ],
+      },
+    ]);
+
+    const [options] = createSignal({
+      chart: {
+        type: 'boxPlot',
+        height: 350,
+        toolbar: {
+          show: true
+        }
+      },
+      colors: ['#008FFB', '#FEB019'],
+      title: {
+        text: 'BoxPlot Chart with Outliers',
+        align: 'left'
+      },
+      xaxis: {
+        type: 'category',
+        title: {
+          text: 'Participants'
+        }
+      },
+      yaxis: {
+        title: {
+          text: 'Score Range'
+        }
+      },
+      plotOptions: {
+        boxPlot: {
+          colors: {
+            upper: '#008FFB',
+            lower: '#008FFB'
+          }
+        }
+      },
+      tooltip: {
+        shared: false,
+        intersect: true
+      }
+    });
+
+    return (
+      <div style={{ height: "400px" }}>
+        <ApexChart
+          type="boxPlot"
+          series={series()}
+          options={options()}
+          size="lg"
+        />
+      </div>
+    );
+  },
+};
+
 export const InteractiveAdvanced: Story = {
   render: () => {
     const [chartType, setChartType] = createSignal<'line' | 'bar' | 'area'>('line');
