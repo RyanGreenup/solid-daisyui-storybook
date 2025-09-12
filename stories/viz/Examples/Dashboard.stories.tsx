@@ -362,51 +362,69 @@ export const HardwareRetailDashboard: Story = {
             {/* KPI Stats Section */}
             <section class="mb-8">
               <h2 class="text-2xl font-bold text-base-content mb-6">Key Performance Indicators</h2>
-              <Stats class="grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <Stat class="bg-base-100 border border-base-300">
-                  <StatFigure>
-                    <DollarSign class="w-8 h-8 text-success" />
-                  </StatFigure>
-                  <StatTitle>Today's Sales</StatTitle>
-                  <StatValue class="text-success">
-                    ${kpis().todaySales.toLocaleString()}
-                  </StatValue>
-                  <StatDesc class={`flex items-center gap-1 ${kpis().salesChange >= 0 ? 'text-success' : 'text-error'}`}>
-                    {kpis().salesChange >= 0 ? 
-                      <TrendingUp class="w-4 h-4" /> : 
-                      <TrendingDown class="w-4 h-4" />
-                    }
-                    {Math.abs(kpis().salesChange).toFixed(1)}% vs yesterday
-                  </StatDesc>
-                </Stat>
+              <div class="overflow-x-auto">
+                <div class="flex gap-4 min-w-max pb-2">
+                  <div class="flex-none w-full sm:w-80 md:w-72 lg:w-64 xl:w-auto xl:flex-1 xl:min-w-0">
+                    <Stats class="bg-base-100 border border-base-300 h-full">
+                      <Stat>
+                        <StatFigure>
+                          <DollarSign class="w-8 h-8 text-success" />
+                        </StatFigure>
+                        <StatTitle>Today's Sales</StatTitle>
+                        <StatValue class="text-success">
+                          ${kpis().todaySales.toLocaleString()}
+                        </StatValue>
+                        <StatDesc class={`flex items-center gap-1 ${kpis().salesChange >= 0 ? 'text-success' : 'text-error'}`}>
+                          {kpis().salesChange >= 0 ? 
+                            <TrendingUp class="w-4 h-4" /> : 
+                            <TrendingDown class="w-4 h-4" />
+                          }
+                          {Math.abs(kpis().salesChange).toFixed(1)}% vs yesterday
+                        </StatDesc>
+                      </Stat>
+                    </Stats>
+                  </div>
 
-                <Stat class="bg-base-100 border border-base-300">
-                  <StatFigure>
-                    <ShoppingCart class="w-8 h-8 text-primary" />
-                  </StatFigure>
-                  <StatTitle>Stock Fill Rate</StatTitle>
-                  <StatValue class="text-primary">{kpis().stockFillRate}%</StatValue>
-                  <StatDesc>{kpis().totalSkus - kpis().outOfStockItems} of {kpis().totalSkus} SKUs in stock</StatDesc>
-                </Stat>
+                  <div class="flex-none w-full sm:w-80 md:w-72 lg:w-64 xl:w-auto xl:flex-1 xl:min-w-0">
+                    <Stats class="bg-base-100 border border-base-300 h-full">
+                      <Stat>
+                        <StatFigure>
+                          <ShoppingCart class="w-8 h-8 text-primary" />
+                        </StatFigure>
+                        <StatTitle>Stock Fill Rate</StatTitle>
+                        <StatValue class="text-primary">{kpis().stockFillRate}%</StatValue>
+                        <StatDesc>{kpis().totalSkus - kpis().outOfStockItems} of {kpis().totalSkus} SKUs in stock</StatDesc>
+                      </Stat>
+                    </Stats>
+                  </div>
 
-                <Stat class="bg-base-100 border border-base-300">
-                  <StatFigure>
-                    <AlertTriangle class="w-8 h-8 text-warning" />
-                  </StatFigure>
-                  <StatTitle>Low Stock Alerts</StatTitle>
-                  <StatValue class="text-warning">{kpis().lowStockItems}</StatValue>
-                  <StatDesc>Items need reordering</StatDesc>
-                </Stat>
+                  <div class="flex-none w-full sm:w-80 md:w-72 lg:w-64 xl:w-auto xl:flex-1 xl:min-w-0">
+                    <Stats class="bg-base-100 border border-base-300 h-full">
+                      <Stat>
+                        <StatFigure>
+                          <AlertTriangle class="w-8 h-8 text-warning" />
+                        </StatFigure>
+                        <StatTitle>Low Stock Alerts</StatTitle>
+                        <StatValue class="text-warning">{kpis().lowStockItems}</StatValue>
+                        <StatDesc>Items need reordering</StatDesc>
+                      </Stat>
+                    </Stats>
+                  </div>
 
-                <Stat class="bg-base-100 border border-base-300">
-                  <StatFigure>
-                    <TrendingUp class="w-8 h-8 text-info" />
-                  </StatFigure>
-                  <StatTitle>Avg Margin</StatTitle>
-                  <StatValue class="text-info">{kpis().avgMargin.toFixed(1)}%</StatValue>
-                  <StatDesc>Across all categories</StatDesc>
-                </Stat>
-              </Stats>
+                  <div class="flex-none w-full sm:w-80 md:w-72 lg:w-64 xl:w-auto xl:flex-1 xl:min-w-0">
+                    <Stats class="bg-base-100 border border-base-300 h-full">
+                      <Stat>
+                        <StatFigure>
+                          <TrendingUp class="w-8 h-8 text-info" />
+                        </StatFigure>
+                        <StatTitle>Avg Margin</StatTitle>
+                        <StatValue class="text-info">{kpis().avgMargin.toFixed(1)}%</StatValue>
+                        <StatDesc>Across all categories</StatDesc>
+                      </Stat>
+                    </Stats>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Charts Section */}
