@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Fieldset, Label, Input, Button } from "../src/solid-daisy-components/";
 
 const meta = {
-  title: "Components/Fieldset",
+  title: "Components/Data Input/Fieldset",
   component: Fieldset,
   tags: ["autodocs"],
 } satisfies Meta<typeof Fieldset>;
@@ -80,7 +80,7 @@ export const Variants: Story = {
           <Label>Helper text</Label>
         </Fieldset>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Styled Fieldset</h3>
         <Fieldset class="w-xs bg-base-200 border border-base-300 p-4 rounded-box">
@@ -89,7 +89,7 @@ export const Variants: Story = {
           <Label>Helper text with styling</Label>
         </Fieldset>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Form with Actions</h3>
         <Fieldset class="w-xs bg-base-200 border border-base-300 p-4 rounded-box">

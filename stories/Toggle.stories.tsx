@@ -6,7 +6,7 @@ import CheckIcon from "lucide-solid/icons/check";
 import XIcon from "lucide-solid/icons/x";
 
 const meta = {
-  title: "Components/Toggle",
+  title: "Components/Data Input/Toggle",
   component: Toggle,
   tags: ["autodocs"],
   argTypes: {
@@ -81,7 +81,7 @@ export const Disabled: Story = {
 export const Indeterminate: Story = {
   render: () => {
     let toggleRef: HTMLInputElement;
-    
+
     onMount(() => {
       if (toggleRef) {
         toggleRef.indeterminate = true;
@@ -116,8 +116,8 @@ export const WithIcons: Story = {
 export const CustomColors: Story = {
   render: () => (
     <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-      <Toggle 
-        checked 
+      <Toggle
+        checked
         class="border-indigo-600 bg-indigo-500 checked:bg-orange-400 checked:text-orange-800 checked:border-orange-500"
       />
       <p class="text-sm text-base-content/70">Toggle with custom Tailwind colors</p>
@@ -139,13 +139,13 @@ export const SolidJSReactive: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "400px" }}>
         <h3 class="text-xl font-bold">User Preferences</h3>
-        
+
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Settings</Fieldset.Legend>
-          
+
           <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
             <Label class="cursor-pointer flex items-center gap-3">
-              <Toggle 
+              <Toggle
                 color="primary"
                 checked={darkMode()}
                 onInput={(e) => setDarkMode(e.currentTarget.checked)}
@@ -154,7 +154,7 @@ export const SolidJSReactive: Story = {
             </Label>
 
             <Label class="cursor-pointer flex items-center gap-3">
-              <Toggle 
+              <Toggle
                 color="info"
                 checked={notifications()}
                 onInput={(e) => setNotifications(e.currentTarget.checked)}
@@ -163,7 +163,7 @@ export const SolidJSReactive: Story = {
             </Label>
 
             <Label class="cursor-pointer flex items-center gap-3">
-              <Toggle 
+              <Toggle
                 color="success"
                 checked={autoSave()}
                 onInput={(e) => setAutoSave(e.currentTarget.checked)}
@@ -172,7 +172,7 @@ export const SolidJSReactive: Story = {
             </Label>
 
             <Label class="cursor-pointer flex items-center gap-3">
-              <Toggle 
+              <Toggle
                 color="warning"
                 checked={publicProfile()}
                 onInput={(e) => setPublicProfile(e.currentTarget.checked)}
@@ -184,7 +184,7 @@ export const SolidJSReactive: Story = {
 
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
           <h4 class="text-lg font-semibold">Current Settings:</h4>
-          
+
           <div class="bg-base-300 p-4 rounded-box space-y-2">
             <div class="flex justify-between">
               <span>Dark Mode:</span>
@@ -223,7 +223,7 @@ export const SolidJSReactive: Story = {
             <Show when={settingsComplete() >= 3}>
               <Alert color="success">
                 <span>
-                  Great! You have {settingsComplete()} out of 4 settings configured. 
+                  Great! You have {settingsComplete()} out of 4 settings configured.
                   Your preferences are well customized!
                 </span>
               </Alert>
@@ -259,7 +259,7 @@ export const AllVariants: Story = {
         <h3 class="text-lg font-semibold mb-2">Basic Toggle</h3>
         <Toggle checked />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Different Colors</h3>
         <div style={{ display: "flex", gap: "0.5rem", "flex-wrap": "wrap" }}>
@@ -269,7 +269,7 @@ export const AllVariants: Story = {
           <Toggle color="success" checked />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Different Sizes</h3>
         <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>
@@ -279,7 +279,7 @@ export const AllVariants: Story = {
           <Toggle size="xl" checked />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">In Form Context</h3>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "300px" }}>
@@ -296,7 +296,7 @@ export const AllVariants: Story = {
           </div>
         </Fieldset>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Disabled States</h3>
         <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>

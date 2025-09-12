@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { FileInput, Fieldset, Label } from "../src/solid-daisy-components/";
 
 const meta = {
-  title: "Components/FileInput",
+  title: "Components/Data Input/FileInput",
   component: FileInput,
   tags: ["autodocs"],
   argTypes: {
@@ -84,22 +84,22 @@ export const AllVariants: Story = {
         <h3 class="text-lg font-semibold mb-2">Basic File Input</h3>
         <FileInput />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Ghost Style</h3>
         <FileInput variant="ghost" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">With Primary Color</h3>
         <FileInput color="primary" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Large Size</h3>
         <FileInput size="lg" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">In Fieldset</h3>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "300px" }}>
@@ -108,7 +108,7 @@ export const AllVariants: Story = {
           <Label>Accepted formats: PDF, DOC, DOCX (Max 5MB)</Label>
         </Fieldset>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Disabled State</h3>
         <FileInput disabled />

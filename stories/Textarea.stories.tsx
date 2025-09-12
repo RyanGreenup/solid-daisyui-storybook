@@ -4,7 +4,7 @@ import { createSignal, createMemo, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
 
 const meta = {
-  title: "Components/Textarea",
+  title: "Components/Data Input/Textarea",
   component: Textarea,
   tags: ["autodocs"],
   argTypes: {
@@ -111,19 +111,19 @@ export const SolidJSReactive: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem", "max-width": "500px" }}>
         <h3 class="text-xl font-bold">SolidJS Reactive Textarea Example</h3>
-        
+
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Write a post</Fieldset.Legend>
-          
+
           <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-            <Textarea 
+            <Textarea
               color={getTextareaColor()}
               class="h-32 resize-none"
               placeholder="What's on your mind? Share your thoughts..."
               value={content()}
               onInput={(e) => setContent(e.currentTarget.value)}
             />
-            
+
             <div style={{ display: "flex", "justify-content": "space-between", "align-items": "center" }}>
               <div style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
                 <Badge color={getCounterColor()} variant="outline">
@@ -133,11 +133,11 @@ export const SolidJSReactive: Story = {
                   {wordCount()} words
                 </Badge>
               </div>
-              
+
               <Show when={isOverLimit()}>
                 <Badge color="error">Over limit!</Badge>
               </Show>
-              
+
               <Show when={isNearLimit() && !isOverLimit()}>
                 <Badge color="warning">Almost full</Badge>
               </Show>
@@ -147,7 +147,7 @@ export const SolidJSReactive: Story = {
 
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
           <h4 class="text-lg font-semibold">Live Preview:</h4>
-          
+
           <div class="bg-base-300 p-4 rounded-box min-h-20">
             <Show when={content().trim().length > 0} fallback={
               <span class="text-base-content/50 italic">Your post will appear here...</span>
@@ -167,7 +167,7 @@ export const SolidJSReactive: Story = {
             <Show when={isOverLimit()}>
               <Alert color="error">
                 <span>
-                  Your post is {Math.abs(remainingChars())} characters over the limit. 
+                  Your post is {Math.abs(remainingChars())} characters over the limit.
                   Please shorten it to continue.
                 </span>
               </Alert>
@@ -185,7 +185,7 @@ export const SolidJSReactive: Story = {
             <Show when={content().trim().length > 0 && !isOverLimit()}>
               <Alert color="success">
                 <span>
-                  Great! Your post looks good with {wordCount()} words 
+                  Great! Your post looks good with {wordCount()} words
                   and {characterCount()} characters.
                 </span>
               </Alert>
@@ -204,22 +204,22 @@ export const AllVariants: Story = {
         <h3 class="text-lg font-semibold mb-2">Basic Textarea</h3>
         <Textarea placeholder="Enter your message" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Ghost Style</h3>
         <Textarea variant="ghost" placeholder="Ghost textarea" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Primary Color</h3>
         <Textarea color="primary" placeholder="Primary textarea" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Large Size</h3>
         <Textarea size="lg" placeholder="Large textarea" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">In Fieldset</h3>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "400px" }}>
@@ -228,7 +228,7 @@ export const AllVariants: Story = {
           <Label>This field is required</Label>
         </Fieldset>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Disabled State</h3>
         <Textarea disabled placeholder="Cannot edit this textarea" />

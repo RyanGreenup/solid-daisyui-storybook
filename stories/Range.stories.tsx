@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Range } from "../src/solid-daisy-components/";
 
 const meta = {
-  title: "Components/Range",
+  title: "Components/Data Input/Range",
   component: Range,
   tags: ["autodocs"],
   argTypes: {
@@ -140,11 +140,11 @@ export const Colors: Story = {
 
 export const CustomStyling: Story = {
   render: () => (
-    <Range 
-      min={0} 
-      max={100} 
-      value={40} 
-      class="text-blue-300 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]" 
+    <Range
+      min={0}
+      max={100}
+      value={40}
+      class="text-blue-300 [--range-bg:orange] [--range-thumb:blue] [--range-fill:0]"
     />
   ),
 };
@@ -156,7 +156,7 @@ export const AllVariants: Story = {
         <h3 class="text-lg font-semibold mb-2">Basic Range</h3>
         <Range min={0} max={100} value={40} />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">With Steps and Labels</h3>
         <div class="w-full max-w-xs">
@@ -170,22 +170,22 @@ export const AllVariants: Story = {
           </div>
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Primary Color Large</h3>
         <Range min={0} max={100} value={60} color="primary" size="lg" />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Custom Styling</h3>
-        <Range 
-          min={0} 
-          max={100} 
-          value={30} 
-          class="text-purple-400 [--range-bg:theme(colors.purple.200)] [--range-thumb:theme(colors.purple.600)]" 
+        <Range
+          min={0}
+          max={100}
+          value={30}
+          class="text-purple-400 [--range-bg:theme(colors.purple.200)] [--range-thumb:theme(colors.purple.600)]"
         />
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Different Sizes</h3>
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", width: "100%", "max-width": "20rem" }}>

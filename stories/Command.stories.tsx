@@ -25,7 +25,7 @@ import {
 } from "../src/solid-daisy-components";
 
 const meta = {
-  title: "Components/Command",
+  title: "Components/Widgets/Command Palette",
   component: Command,
   tags: ["autodocs"],
 } satisfies Meta<typeof Command>;

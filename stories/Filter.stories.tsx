@@ -4,7 +4,7 @@ import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
 
 const meta = {
-  title: "Components/Filter",
+  title: "Components/Data Input/Filter",
   component: Filter,
   tags: ["autodocs"],
 } satisfies Meta<typeof Filter>;
@@ -72,7 +72,7 @@ export const Interactive: Story = {
     const handleCategoryChange = (e: Event) => {
       const target = e.target as HTMLInputElement;
       const categoryId = target.value;
-      
+
       if (target.checked) {
         setSelectedCategories(prev => [...prev, categoryId]);
       } else {
@@ -98,12 +98,12 @@ export const Interactive: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
         <h3 class="text-xl font-bold">Interactive Filter Example</h3>
-        
+
         <div>
           <h4 class="text-lg font-semibold mb-3">Choose Framework (Radio)</h4>
           <Filter>
-            <Filter.Reset 
-              name="framework" 
+            <Filter.Reset
+              name="framework"
               aria-label="All"
               checked={!selectedFramework()}
               onChange={handleReset}
@@ -137,9 +137,9 @@ export const Interactive: Story = {
                 />
               )}
             </For>
-            <input 
-              class="btn btn-square" 
-              type="button" 
+            <input
+              class="btn btn-square"
+              type="button"
               value="×"
               onClick={handleReset}
             />
@@ -148,7 +148,7 @@ export const Interactive: Story = {
 
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
           <h4 class="text-lg font-semibold">Current Selection:</h4>
-          
+
           <div class="bg-base-200 p-4 rounded-box">
             <div><strong>Framework:</strong> {selectedFramework() || "None selected"}</div>
             <div><strong>Categories:</strong> {getSelectedCategoryNames().join(", ") || "None selected"}</div>
@@ -214,7 +214,7 @@ export const AllVariants: Story = {
           <Filter.Input name="frameworks1" aria-label="React" />
         </Filter>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Filter without HTML Form</h3>
         <Filter>
@@ -224,7 +224,7 @@ export const AllVariants: Story = {
           <Filter.Input name="metaframeworks1" aria-label="Next.js" />
         </Filter>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Filter with Checkboxes</h3>
         <form>
@@ -234,7 +234,7 @@ export const AllVariants: Story = {
           <input class="btn btn-square" type="reset" value="×" />
         </form>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Multiple Filter Groups</h3>
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
@@ -248,7 +248,7 @@ export const AllVariants: Story = {
               <Filter.Input name="languages" aria-label="Go" />
             </Filter>
           </div>
-          
+
           <div>
             <label class="text-sm font-medium">Deployment:</label>
             <form>

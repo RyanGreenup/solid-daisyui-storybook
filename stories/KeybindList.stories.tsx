@@ -7,7 +7,7 @@ import Heart from "lucide-solid/icons/heart";
 import Music from "lucide-solid/icons/music";
 
 const meta = {
-  title: "Components/KeybindList",
+  title: "Components/Widgets/List",
   component: KeybindList,
   tags: ["autodocs"],
 } satisfies Meta<typeof KeybindList>;

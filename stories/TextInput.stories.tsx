@@ -10,7 +10,7 @@ import Phone from "lucide-solid/icons/phone";
 import Link from "lucide-solid/icons/link";
 
 const meta = {
-  title: "Components/TextInput",
+  title: "Components/Data Input/TextInput",
   component: TextInput,
   tags: ["autodocs"],
   argTypes: {
@@ -54,12 +54,12 @@ export const WithWrapper: Story = {
         <Kbd size="sm">⌘</Kbd>
         <Kbd size="sm">K</Kbd>
       </TextInput.Wrapper>
-      
+
       <TextInput.Wrapper>
         <File size={16} class="opacity-50" />
         <input type="text" class="grow" placeholder="index.php" />
       </TextInput.Wrapper>
-      
+
       <TextInput.Wrapper>
         Path
         <input type="text" class="grow" placeholder="src/app/" />
@@ -146,14 +146,14 @@ export const FormExamples: Story = {
         <form class="w-full max-w-xs">
           <TextInput.Wrapper class="validator">
             <User size={16} class="opacity-50" />
-            <input 
-              type="text" 
-              required 
-              placeholder="Username" 
-              pattern="[A-Za-z][A-Za-z0-9\\-]*" 
-              minLength={3} 
-              maxLength={30} 
-              title="Only letters, numbers or dash" 
+            <input
+              type="text"
+              required
+              placeholder="Username"
+              pattern="[A-Za-z][A-Za-z0-9\\-]*"
+              minLength={3}
+              maxLength={30}
+              title="Only letters, numbers or dash"
             />
           </TextInput.Wrapper>
           <p class="validator-hint">
@@ -205,13 +205,13 @@ export const FormExamples: Story = {
         <form class="w-full max-w-xs">
           <TextInput.Wrapper class="validator">
             <Key size={16} class="opacity-50" />
-            <input 
-              type="password" 
-              required 
-              placeholder="Password" 
-              minLength={8} 
+            <input
+              type="password"
+              required
+              placeholder="Password"
+              minLength={8}
               pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter" 
+              title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
             />
           </TextInput.Wrapper>
           <p class="validator-hint hidden">
@@ -228,15 +228,15 @@ export const FormExamples: Story = {
         <form class="w-full max-w-xs">
           <TextInput.Wrapper class="validator">
             <Phone size={16} class="opacity-50" />
-            <input 
-              type="tel" 
-              class="tabular-nums" 
-              required 
-              placeholder="Phone" 
-              pattern="[0-9]*" 
-              minLength={10} 
-              maxLength={10} 
-              title="Must be 10 digits" 
+            <input
+              type="tel"
+              class="tabular-nums"
+              required
+              placeholder="Phone"
+              pattern="[0-9]*"
+              minLength={10}
+              maxLength={10}
+              title="Must be 10 digits"
             />
           </TextInput.Wrapper>
           <p class="validator-hint">Must be 10 digits</p>
@@ -248,13 +248,13 @@ export const FormExamples: Story = {
         <form class="w-full max-w-xs">
           <TextInput.Wrapper class="validator">
             <Link size={16} class="opacity-50" />
-            <input 
-              type="url" 
-              required 
-              placeholder="https://" 
-              value="https://" 
+            <input
+              type="url"
+              required
+              placeholder="https://"
+              value="https://"
               pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\-].*[a-zA-Z0-9])?\.)+[a-zA-Z].*$"
-              title="Must be valid URL" 
+              title="Must be valid URL"
             />
           </TextInput.Wrapper>
           <p class="validator-hint">Must be valid URL</p>
@@ -282,13 +282,13 @@ export const SolidJSReactive: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "500px" }}>
         <h3 class="text-xl font-bold">SolidJS Reactive TextInput Example</h3>
-        
+
         <div>
           <h4 class="text-lg font-semibold mb-2">Text Counter</h4>
-          <TextInput 
-            type="text" 
+          <TextInput
+            type="text"
             placeholder="Start typing..."
-            value={value()} 
+            value={value()}
             onInput={(e) => setValue(e.currentTarget.value)}
             color="primary"
           />
@@ -306,8 +306,8 @@ export const SolidJSReactive: Story = {
           <h4 class="text-lg font-semibold mb-2">Email Validation</h4>
           <TextInput.Wrapper class={isValidEmail() ? "" : "input-error"}>
             <Mail size={16} class="opacity-50" />
-            <input 
-              type="email" 
+            <input
+              type="email"
               placeholder="Enter your email"
               value={email()}
               onInput={handleEmailInput}
@@ -321,13 +321,13 @@ export const SolidJSReactive: Story = {
             <p class="mt-1 text-sm text-success">Email looks good!</p>
           </Show>
         </div>
-        
+
         <div>
           <h4 class="text-lg font-semibold mb-2">Search with Live Results</h4>
           <TextInput.Wrapper>
             <Search size={16} class="opacity-50" />
-            <input 
-              type="search" 
+            <input
+              type="search"
               placeholder="Search fruits..."
               class="grow"
               onInput={(e) => setValue(e.currentTarget.value)}
@@ -337,7 +337,7 @@ export const SolidJSReactive: Story = {
             <div class="mt-2 p-3 bg-base-200 rounded-box">
               <strong>Searching for:</strong> "{value()}"
               <div class="mt-2 text-sm">
-                {["Apple", "Banana", "Cherry", "Date", "Elderberry"].filter(fruit => 
+                {["Apple", "Banana", "Cherry", "Date", "Elderberry"].filter(fruit =>
                   fruit.toLowerCase().includes(value().toLowerCase())
                 ).map(fruit => (
                   <div class="py-1 px-2 hover:bg-base-300 rounded cursor-pointer">

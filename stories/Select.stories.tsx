@@ -4,7 +4,7 @@ import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
 
 const meta = {
-  title: "Components/Select",
+  title: "Components/Data Input/Select",
   component: Select,
   tags: ["autodocs"],
   argTypes: {
@@ -280,7 +280,7 @@ export const SolidJSReactive: Story = {
     const getFrameworkInfo = () => {
       const framework = frameworks.find(f => f.value === selectedFramework());
       if (!framework) return null;
-      
+
       const messages = {
         solid: "Great choice! SolidJS offers fine-grained reactivity with excellent performance.",
         react: "Popular choice! React has a huge ecosystem and community support.",
@@ -298,16 +298,16 @@ export const SolidJSReactive: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem", "max-width": "500px" }}>
         <h3 class="text-xl font-bold">SolidJS Reactive Select Example</h3>
-        
+
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Choose your tech stack</Fieldset.Legend>
-          
+
           <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
             <div>
               <Label>Frontend Framework</Label>
-              <Select 
-                color="primary" 
-                value={selectedFramework()} 
+              <Select
+                color="primary"
+                value={selectedFramework()}
                 onInput={(e) => setSelectedFramework(e.currentTarget.value)}
               >
                 <option value="" disabled selected>Pick a framework</option>
@@ -321,9 +321,9 @@ export const SolidJSReactive: Story = {
 
             <div>
               <Label>Programming Language</Label>
-              <Select 
-                color="secondary" 
-                value={selectedLanguage()} 
+              <Select
+                color="secondary"
+                value={selectedLanguage()}
                 onInput={(e) => setSelectedLanguage(e.currentTarget.value)}
               >
                 <option value="" disabled selected>Pick a language</option>
@@ -337,9 +337,9 @@ export const SolidJSReactive: Story = {
 
             <div>
               <Label>Runtime Environment</Label>
-              <Select 
-                color="accent" 
-                value={selectedRuntime()} 
+              <Select
+                color="accent"
+                value={selectedRuntime()}
                 onInput={(e) => setSelectedRuntime(e.currentTarget.value)}
               >
                 <option value="" disabled selected>Pick a runtime</option>
@@ -355,7 +355,7 @@ export const SolidJSReactive: Story = {
 
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
           <h4 class="text-lg font-semibold">Current Selection:</h4>
-          
+
           <div class="bg-base-300 p-4 rounded-box">
             <div><strong>Framework:</strong> {selectedFramework() || "None selected"}</div>
             <div><strong>Language:</strong> {selectedLanguage() || "None selected"}</div>
@@ -417,7 +417,7 @@ export const AllVariants: Story = {
           <option>Option 3</option>
         </Select>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Ghost Style</h3>
         <Select variant="ghost">
@@ -427,7 +427,7 @@ export const AllVariants: Story = {
           <option>Option 3</option>
         </Select>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Primary Color</h3>
         <Select color="primary">
@@ -437,7 +437,7 @@ export const AllVariants: Story = {
           <option>Option 3</option>
         </Select>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Large Size</h3>
         <Select size="lg">
@@ -447,7 +447,7 @@ export const AllVariants: Story = {
           <option>Option 3</option>
         </Select>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">In Fieldset</h3>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "300px" }}>
@@ -461,7 +461,7 @@ export const AllVariants: Story = {
           <Label>This field is required</Label>
         </Fieldset>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Disabled State</h3>
         <Select disabled>
