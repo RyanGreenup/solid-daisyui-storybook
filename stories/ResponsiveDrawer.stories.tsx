@@ -163,7 +163,8 @@ export const WithDevToggles: Story = {
 export const WithDaisyUI: Story = {
   render: () => (
     <Layout class="min-h-screen bg-base-100 text-base-content">
-      <Navbar class="navbar bg-base-200 shadow-lg">
+    {/*Not sure why we need the 1/4 rem neg margin*/}
+      <Navbar class="navbar bg-base-200 shadow-lg mt-[-0.25rem]">
         <div class="navbar-start">
           <div class="dropdown">
             <ToggleButton
@@ -273,7 +274,7 @@ export const WithDaisyUI: Story = {
                     Responsive Drawer Layout
                   </h1>
                   <p class="text-xl text-base-content/70 leading-relaxed">
-                    A modern, flexible layout system built with pure <span class="badge badge-outline badge-primary mx-1">CSS</span> 
+                    A modern, flexible layout system built with pure <span class="badge badge-outline badge-primary mx-1">CSS</span>
                     and enhanced with beautiful components. No JavaScript required for core functionality.
                   </p>
                 </div>
@@ -366,7 +367,7 @@ export const WithDaisyUI: Story = {
           </div>
         </MainContent>
 
-        <RightDrawer class="bg-base-200 p-4">
+        <RightDrawer class="bg-base-200 p-4 mt-0">
           <h3 class="text-lg font-bold mb-4">Settings Panel</h3>
 
           <div class="form-control">
