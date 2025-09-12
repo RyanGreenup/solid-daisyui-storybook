@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ChartJSBarChart as BarChart } from "../src/solid-daisy-components/";
-import { createSignal } from "solid-js";
+import { ChartJSBarChart as BarChart, Fieldset, Label, Select, Range } from "../src/solid-daisy-components/";
+import { createSignal, createMemo } from "solid-js";
 
 const meta = {
   title: "Charts/BarChart",
@@ -190,50 +190,77 @@ export const InteractiveExample: Story = {
   render: () => {
     const [chartType, setChartType] = createSignal<'vertical' | 'horizontal'>('vertical');
     const [datasetCount, setDatasetCount] = createSignal(2);
+    const [categoryCount, setCategoryCount] = createSignal(5);
     
-    const categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
-    const datasets = generateBarData(categories, datasetCount());
+    // Create reactive memo for chart data
+    const chartData = createMemo(() => {
+      const categories = Array.from({ length: categoryCount() }, (_, i) => {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return months[i % 12];
+      });
+      
+      return {
+        labels: categories,
+        datasets: generateBarData(categories, datasetCount())
+      };
+    });
     
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-        <div class="flex gap-4 p-4 bg-base-200 rounded-box">
-          <div>
-            <label class="label">
-              <span class="label-text">Chart Orientation:</span>
-            </label>
-            <select 
-              class="select select-bordered select-sm"
-              value={chartType()} 
-              onChange={(e) => setChartType(e.currentTarget.value as any)}
-            >
-              <option value="vertical">Vertical</option>
-              <option value="horizontal">Horizontal</option>
-            </select>
+      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
+          <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <Label>Chart Orientation</Label>
+              <Select 
+                size="sm"
+                value={chartType()} 
+                onChange={(e) => setChartType(e.target.value as any)}
+              >
+                <option value="vertical">Vertical Bars</option>
+                <option value="horizontal">Horizontal Bars</option>
+              </Select>
+            </div>
+            
+            <div>
+              <Label>Number of Datasets</Label>
+              <Range 
+                color="primary"
+                size="sm"
+                min={1} 
+                max={4} 
+                value={datasetCount()} 
+                onChange={(e) => setDatasetCount(Number(e.target.value))}
+              />
+              <div class="text-center text-sm mt-1">{datasetCount()} dataset{datasetCount() > 1 ? 's' : ''}</div>
+            </div>
+            
+            <div>
+              <Label>Number of Categories</Label>
+              <Range 
+                color="secondary"
+                size="sm"
+                min={3} 
+                max={8} 
+                value={categoryCount()} 
+                onChange={(e) => setCategoryCount(Number(e.target.value))}
+              />
+              <div class="text-center text-sm mt-1">{categoryCount()} categories</div>
+            </div>
           </div>
-          <div>
-            <label class="label">
-              <span class="label-text">Number of Datasets:</span>
-            </label>
-            <input 
-              type="range" 
-              min={1} 
-              max={4} 
-              value={datasetCount()} 
-              class="range range-primary range-sm"
-              onChange={(e) => setDatasetCount(Number(e.currentTarget.value))}
-            />
-            <div class="text-center text-sm">{datasetCount()}</div>
-          </div>
-        </div>
+          
+          <Label class="text-sm opacity-70 mt-3">
+            {chartType() === 'horizontal' ? 'Horizontal' : 'Vertical'} bar chart with {datasetCount()} dataset{datasetCount() > 1 ? 's' : ''} 
+            and {categoryCount()} categories
+          </Label>
+        </Fieldset>
         
-        <div style={{ height: "400px" }}>
+        <div style={{ height: "450px" }}>
           <BarChart
             title={`${chartType() === 'horizontal' ? 'Horizontal' : 'Vertical'} Bar Chart - ${datasetCount()} Dataset(s)`}
             horizontal={chartType() === 'horizontal'}
-            data={{
-              labels: categories,
-              datasets: generateBarData(categories, datasetCount())
-            }}
+            data={chartData()}
           />
         </div>
       </div>
