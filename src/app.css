@@ -4,3 +4,24 @@
 
 /* Optional -- Add Daisy UI */
 @plugin "daisyui";
+
+@theme {
+  /* Accordion animations */
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--kb-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--kb-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
