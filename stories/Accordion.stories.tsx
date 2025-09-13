@@ -458,6 +458,19 @@ export const MathVisualizationExample: Story = {
     const [offset, setOffset] = createSignal(0);
     const [dataPoints, setDataPoints] = createSignal(50);
     const [functionType, setFunctionType] = createSignal("sine");
+    const [animationDuration, setAnimationDuration] = createSignal(1000);
+
+    onMount(() => {
+        createEffect(() => {
+
+        if (animationDuration() > 0) {
+           if (expandedItems().includes("chart")) {
+
+        setTimeout(() => setAnimationDuration(0), 2000);
+           }
+        }
+        });
+    });
 
     // Controlled accordion state
     const [expandedItems, setExpandedItems] = createSignal(["controls"]);
@@ -881,7 +894,7 @@ export const MathVisualizationExample: Story = {
               responsive: true,
               maintainAspectRatio: false,
               animation: {
-                duration: 750,
+                duration: animationDuration(),
                 easing: 'easeInOutQuart'
               },
               scales: {
