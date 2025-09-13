@@ -1,7 +1,12 @@
-
-
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { createSignal, createEffect, createMemo, onMount, createResource, Show } from "solid-js";
+import {
+  createSignal,
+  createEffect,
+  createMemo,
+  onMount,
+  createResource,
+  Show,
+} from "solid-js";
 import {
   Fieldset,
   Label,
@@ -11,17 +16,11 @@ import {
   Input,
   Select,
   RadialProgress,
-  Button
+  Button,
 } from "../../../src/solid-daisy-components/";
 import { Story } from "./Accordion.stories";
 
-
 import { Accordion } from "../../../src/solid-daisy-components/components/Kobalte/Accordion/Accordion";
-
-
-
-
-
 
 export const ReactiveExample: Story = {
   render: () => {
@@ -63,7 +62,9 @@ export const ReactiveExample: Story = {
               <span class={`text-sm font-medium ${temperatureStatus().color}`}>
                 {temperature()}°C
               </span>
-              <span class={`badge badge-sm ${temperatureStatus().color.replace('text-', 'badge-')}`}>
+              <span
+                class={`badge badge-sm ${temperatureStatus().color.replace("text-", "badge-")}`}
+              >
                 {temperatureStatus().status}
               </span>
             </div>
@@ -90,13 +91,18 @@ export const ReactiveExample: Story = {
             </div>
             <div class="mt-3 p-3 bg-base-200 rounded-lg">
               <p class="text-sm">
-                <strong>Current Status:</strong> The room temperature is set to {temperature()}°C
-                which feels <span class={temperatureStatus().color}>{temperatureStatus().status.toLowerCase()}</span>.
-                {isAutoMode() && " Auto-mode is adjusting other settings accordingly."}
+                <strong>Current Status:</strong> The room temperature is set to{" "}
+                {temperature()}°C which feels{" "}
+                <span class={temperatureStatus().color}>
+                  {temperatureStatus().status.toLowerCase()}
+                </span>
+                .
+                {isAutoMode() &&
+                  " Auto-mode is adjusting other settings accordingly."}
               </p>
             </div>
           </Fieldset>
-        )
+        ),
       },
       {
         value: "audio",
@@ -110,9 +116,7 @@ export const ReactiveExample: Story = {
         ),
         content: (
           <Fieldset>
-            <Label for="volume-range">
-              Volume Level: {volume()}%
-            </Label>
+            <Label for="volume-range">Volume Level: {volume()}%</Label>
             <Range
               id="volume-range"
               min={0}
@@ -131,12 +135,13 @@ export const ReactiveExample: Story = {
             {isAutoMode() && (
               <div class="mt-3 p-2 bg-info/10 border border-info/20 rounded-lg">
                 <p class="text-sm text-info">
-                  🤖 Auto-mode: Volume automatically adjusted based on temperature
+                  🤖 Auto-mode: Volume automatically adjusted based on
+                  temperature
                 </p>
               </div>
             )}
           </Fieldset>
-        )
+        ),
       },
       {
         value: "display",
@@ -144,10 +149,10 @@ export const ReactiveExample: Story = {
           <div class="flex items-center justify-between w-full">
             <span>Display Settings</span>
             <div class="flex items-center gap-2">
-              <span class="text-sm text-base-content/60">
-                {brightness()}%
-              </span>
-              {isAutoMode() && <span class="badge badge-info badge-xs">Auto</span>}
+              <span class="text-sm text-base-content/60">{brightness()}%</span>
+              {isAutoMode() && (
+                <span class="badge badge-info badge-xs">Auto</span>
+              )}
             </div>
           </div>
         ),
@@ -173,7 +178,9 @@ export const ReactiveExample: Story = {
             </div>
             <div class="form-control mt-3">
               <label class="label cursor-pointer">
-                <span class="label-text">Auto-adjust brightness based on temperature</span>
+                <span class="label-text">
+                  Auto-adjust brightness based on temperature
+                </span>
                 <input
                   type="checkbox"
                   class="toggle toggle-accent"
@@ -185,13 +192,14 @@ export const ReactiveExample: Story = {
             {isAutoMode() && (
               <div class="mt-2 p-2 bg-accent/10 border border-accent/20 rounded-lg">
                 <p class="text-sm text-accent">
-                  🌡️ Auto-mode: Brightness inversely correlates with temperature for comfort
+                  🌡️ Auto-mode: Brightness inversely correlates with temperature
+                  for comfort
                 </p>
               </div>
             )}
           </Fieldset>
-        )
-      }
+        ),
+      },
     ];
 
     return (
@@ -199,8 +207,9 @@ export const ReactiveExample: Story = {
         <div class="text-center space-y-2">
           <h2 class="text-2xl font-bold">Smart Home Control Panel</h2>
           <p class="text-base-content/60">
-            This example demonstrates SolidJS fine-grained reactivity with accordion components.
-            The accordion titles and content update automatically as signals change.
+            This example demonstrates SolidJS fine-grained reactivity with
+            accordion components. The accordion titles and content update
+            automatically as signals change.
           </p>
         </div>
 
@@ -216,13 +225,17 @@ export const ReactiveExample: Story = {
           <div class="stat">
             <div class="stat-title">Volume</div>
             <div class="stat-value text-2xl">{volume()}%</div>
-            <div class="stat-desc">{isAutoMode() ? "Auto-managed" : "Manual"}</div>
+            <div class="stat-desc">
+              {isAutoMode() ? "Auto-managed" : "Manual"}
+            </div>
           </div>
 
           <div class="stat">
             <div class="stat-title">Brightness</div>
             <div class="stat-value text-2xl">{brightness()}%</div>
-            <div class="stat-desc">{isAutoMode() ? "Auto-managed" : "Manual"}</div>
+            <div class="stat-desc">
+              {isAutoMode() ? "Auto-managed" : "Manual"}
+            </div>
           </div>
         </div>
 
@@ -234,16 +247,29 @@ export const ReactiveExample: Story = {
         />
 
         <div class="alert alert-info">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            class="stroke-current shrink-0 w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
           </svg>
           <div>
             <h3 class="font-bold">SolidJS Reactivity Demo</h3>
             <div class="text-sm">
-              • Accordion titles update automatically when signals change<br/>
-              • Content reflects current state without manual re-rendering<br/>
-              • Auto-mode demonstrates reactive effects and derived signals<br/>
-              • All updates are fine-grained - only affected DOM nodes change
+              • Accordion titles update automatically when signals change
+              <br />
+              • Content reflects current state without manual re-rendering
+              <br />
+              • Auto-mode demonstrates reactive effects and derived signals
+              <br />• All updates are fine-grained - only affected DOM nodes
+              change
             </div>
           </div>
         </div>
@@ -251,4 +277,3 @@ export const ReactiveExample: Story = {
     );
   },
 };
-
