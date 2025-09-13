@@ -62,21 +62,21 @@ const generateSalesData = (days: number = 30) => {
   const labels = [];
   const data = [];
   const baseValue = 15000;
-  
+
   for (let i = days - 1; i >= 0; i--) {
     const date = new Date();
     date.setDate(date.getDate() - i);
     labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
-    
+
     // Simulate realistic sales with weekly patterns and growth
     const weekday = date.getDay();
     const weekendMultiplier = weekday === 0 || weekday === 6 ? 0.7 : 1.0;
     const growthFactor = 1 + (Math.random() - 0.3) * 0.4;
     const seasonalFactor = 1 + Math.sin((i / days) * Math.PI * 2) * 0.2;
-    
+
     data.push(Math.round(baseValue * weekendMultiplier * growthFactor * seasonalFactor));
   }
-  
+
   return { labels, data };
 };
 
@@ -85,7 +85,7 @@ const generateCategoryData = () => {
     'Hand Tools', 'Power Tools', 'Fasteners', 'Plumbing', 'Electrical',
     'Garden & Outdoor', 'Paint & Supplies', 'Hardware', 'Safety Equipment'
   ];
-  
+
   return categories.map((category, index) => ({
     category,
     sales: Math.floor(Math.random() * 50000) + 10000,
@@ -125,7 +125,7 @@ const generateStorePerformance = () => {
   const stores = [
     'Downtown', 'Mall Plaza', 'Industrial District', 'Suburban Center', 'Airport Road'
   ];
-  
+
   return stores.map(store => ({
     store,
     revenue: Math.floor(Math.random() * 200000) + 80000,
@@ -142,34 +142,34 @@ export const HardwareRetailDashboard: Story = {
     const [categoryData, setCategoryData] = createSignal(generateCategoryData());
     const [inventoryData, setInventoryData] = createSignal(generateInventoryData());
     const [storeData, setStoreData] = createSignal(generateStorePerformance());
-    
+
     // Real-time clock update
     onMount(() => {
       const interval = setInterval(() => {
         setCurrentTime(new Date());
       }, 1000);
-      
+
       return () => clearInterval(interval);
     });
-    
+
     // Calculate KPIs
     const kpis = createMemo(() => {
       const sales = salesData();
       const inventory = inventoryData();
       const categories = categoryData();
-      
+
       const todaySales = sales.data[sales.data.length - 1] || 0;
       const yesterdaySales = sales.data[sales.data.length - 2] || 0;
       const salesChange = yesterdaySales ? ((todaySales - yesterdaySales) / yesterdaySales * 100) : 0;
-      
+
       const totalRevenue = categories.reduce((sum, cat) => sum + cat.sales, 0);
       const totalUnits = categories.reduce((sum, cat) => sum + cat.units, 0);
       const avgMargin = categories.reduce((sum, cat) => sum + parseFloat(cat.margin), 0) / categories.length;
-      
+
       const lowStockItems = inventory.filter(item => item.status === 'low').length;
       const outOfStockItems = inventory.filter(item => item.stock === 0).length;
       const totalSkus = inventory.length;
-      
+
       return {
         todaySales,
         salesChange,
@@ -219,12 +219,12 @@ export const HardwareRetailDashboard: Story = {
           const row = info.row.original;
           const stockLevel = row.stock;
           const reorderLevel = row.reorderLevel;
-          
+
           return (
             <div class="flex items-center gap-2">
               <span class="font-medium">{stockLevel}</span>
-              <Badge 
-                size="xs" 
+              <Badge
+                size="xs"
                 color={stockLevel === 0 ? "error" : stockLevel <= reorderLevel ? "warning" : "success"}
               >
                 {stockLevel === 0 ? "Out" : stockLevel <= reorderLevel ? "Low" : "OK"}
@@ -259,25 +259,27 @@ export const HardwareRetailDashboard: Story = {
           <Navbar class="bg-base-100 border-b border-base-300">
             <div class="flex items-center justify-between w-full px-4">
               <div class="flex items-center gap-4">
-                <ToggleButton 
-                  id={CheckboxId.SIDEBAR} 
+                <ToggleButton
+                  id={CheckboxId.SIDEBAR}
                   class="btn btn-square btn-ghost mr-2"
                 >
                   <Menu class="w-5 h-5" />
                 </ToggleButton>
                 <Package class="w-8 h-8 text-primary" />
                 <div>
-                  <h1 class="text-xl font-bold text-base-content">Hardware Pro Dashboard</h1>
+                  <h1 class="md:text-xl text-sm font-bold text-base-content">Hardware Pro Dashboard</h1>
+                  <div class="hidden sm:block">
                   <p class="text-sm text-base-content/60">Merchandising Control Center</p>
+                  </div>
                 </div>
               </div>
               <div class="text-right">
                 <div class="text-sm font-medium text-base-content">
-                  {currentTime().toLocaleDateString('en-US', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
+                  {currentTime().toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
                   })}
                 </div>
                 <div class="text-xs text-base-content/60">
@@ -305,22 +307,22 @@ export const HardwareRetailDashboard: Story = {
                     <BarChart3 class="w-4 h-4" />
                     Dashboard
                   </a>
-                  
+
                   <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors">
                     <Package class="w-4 h-4" />
                     Inventory
                   </a>
-                  
+
                   <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors">
                     <ShoppingCart class="w-4 h-4" />
                     Orders
                   </a>
-                  
+
                   <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors">
                     <Users class="w-4 h-4" />
                     Customers
                   </a>
-                  
+
                   <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors">
                     <Target class="w-4 h-4" />
                     Analytics
@@ -336,7 +338,7 @@ export const HardwareRetailDashboard: Story = {
                       <FileText class="w-4 h-4" />
                       Reports
                     </a>
-                    
+
                     <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors">
                       <Settings class="w-4 h-4" />
                       Settings
@@ -373,8 +375,8 @@ export const HardwareRetailDashboard: Story = {
                       ${kpis().todaySales.toLocaleString()}
                     </StatValue>
                     <StatDesc class={`flex items-center gap-1 ${kpis().salesChange >= 0 ? 'text-success' : 'text-error'}`}>
-                      {kpis().salesChange >= 0 ? 
-                        <TrendingUp class="w-4 h-4" /> : 
+                      {kpis().salesChange >= 0 ?
+                        <TrendingUp class="w-4 h-4" /> :
                         <TrendingDown class="w-4 h-4" />
                       }
                       {Math.abs(kpis().salesChange).toFixed(1)}% vs yesterday
@@ -607,21 +609,21 @@ export const HardwareRetailDashboard: Story = {
                       Current Stock Status
                     </Card.Title>
                     <div class="flex gap-2">
-                      <Badge color="success" size="sm">
+                      <Badge color="success" size="sm" class="h-full">
                         <CheckCircle class="w-3 h-3 mr-1" />
                         In Stock: {inventoryData().filter(item => item.status === 'high').length}
                       </Badge>
-                      <Badge color="warning" size="sm">
+                      <Badge color="warning" size="sm" class="h-full">
                         <Clock class="w-3 h-3 mr-1" />
                         Low Stock: {kpis().lowStockItems}
                       </Badge>
-                      <Badge color="error" size="sm">
+                      <Badge color="error" size="sm" class="h-full">
                         <AlertTriangle class="w-3 h-3 mr-1" />
                         Out of Stock: {kpis().outOfStockItems}
                       </Badge>
                     </div>
                   </div>
-                  
+
                   <VirtualizedDataTable
                     data={inventoryData()}
                     columns={inventoryColumns}
@@ -661,11 +663,11 @@ export const HardwareRetailDashboard: Story = {
                           <span class="text-base-content/70">Conversion:</span>
                           <span class="font-medium">{store.conversion}%</span>
                         </div>
-                        <Progress 
-                          value={Number(store.conversion)} 
-                          max={20} 
-                          color="primary" 
-                          size="sm" 
+                        <Progress
+                          value={Number(store.conversion)}
+                          max={20}
+                          color="primary"
+                          size="sm"
                           class="mt-2"
                         />
                       </div>
@@ -687,7 +689,7 @@ export const CompactDashboardView: Story = {
     const salesData = generateSalesData(7);
     const categoryData = generateCategoryData().slice(0, 6);
     const inventoryAlerts = generateInventoryData().filter(item => item.status !== 'high').slice(0, 8);
-    
+
     const totalSales = salesData.data.reduce((sum, sale) => sum + sale, 0);
     const todaySales = salesData.data[salesData.data.length - 1];
     const lowStockCount = inventoryAlerts.length;
@@ -799,8 +801,8 @@ export const CompactDashboardView: Story = {
                           <div class="font-bold text-sm">{item.stock}</div>
                           <div class="text-xs text-base-content/60">units</div>
                         </div>
-                        <Badge 
-                          size="sm" 
+                        <Badge
+                          size="sm"
                           color={item.stock === 0 ? "error" : "warning"}
                         >
                           {item.stock === 0 ? "OUT" : "LOW"}
