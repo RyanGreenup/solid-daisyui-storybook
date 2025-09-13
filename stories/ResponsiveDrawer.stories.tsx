@@ -169,8 +169,7 @@ export const WithDevToggles: Story = {
 export const WithDaisyUI: Story = {
   render: () => (
     <Layout class="min-h-screen bg-base-100 text-base-content">
-    {/*Not sure why we need the 1/4 rem neg margin*/}
-      <Navbar class="navbar bg-base-200 shadow-lg mt-[-0.25rem]">
+      <Navbar class="bg-base-200 shadow-lg">
         <div class="navbar-start">
           <div class="dropdown">
             <ToggleButton
@@ -335,7 +334,7 @@ export const WithDaisyUI: Story = {
           </div>
         </MainContent>
 
-        <RightDrawer class="bg-base-200 p-4 mt-0">
+        <RightDrawer class="bg-base-200 p-4 ">
           <h3 class="text-lg font-bold mb-4">Settings Panel</h3>
 
           <div class="form-control">
