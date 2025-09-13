@@ -187,7 +187,7 @@ export const WikiApp: Story = {
 
               <div class="mockup-code mb-6">
                 <pre data-prefix="1"><code>// Example component structure</code></pre>
-                <pre data-prefix="2"><code>export const Button = (props: ButtonProps) => {`{`}</code></pre>
+                <pre data-prefix="2"><code>export const Button = (props: ButtonProps) {'=>'} {`{`}</code></pre>
                 <pre data-prefix="3"><code>  const [local, others] = splitProps(props, ['variant', 'size']);</code></pre>
                 <pre data-prefix="4"><code>  return &lt;button class={`{`}buttonVariants(local){`}`} {`{`}...others{`}`} /&gt;;</code></pre>
                 <pre data-prefix="5"><code>{`}`};</code></pre>
