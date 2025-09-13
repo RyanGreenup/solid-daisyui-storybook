@@ -662,7 +662,7 @@ export const MathVisualizationExample: Story = {
         ),
         content: (
           <Show when={expandedItems().includes("table")}>
-            <TableContent />
+            <DelayedTableContent />
           </Show>
         )
       }
@@ -884,6 +884,67 @@ export const MathVisualizationExample: Story = {
       );
     };
 
+    const DelayedTableContent = () => {
+      const TABLE_LOADING_DURATION = 800; // 0.8 seconds - shorter than chart since table loads faster
+      const [showTable, setShowTable] = createSignal(false);
+      const [tableProgress, setTableProgress] = createSignal(0);
+
+      onMount(() => {
+        // Animate progress from 0 to 100% over the loading duration
+        const interval = setInterval(() => {
+          setTableProgress(prev => {
+            const newProgress = prev + (100 / (TABLE_LOADING_DURATION / 40)); // Update every 40ms
+            if (newProgress >= 100) {
+              clearInterval(interval);
+              setTimeout(() => setShowTable(true), 50); // Small delay after 100%
+              return 100;
+            }
+            return newProgress;
+          });
+        }, 40);
+
+        // Cleanup interval if component unmounts
+        return () => clearInterval(interval);
+      });
+
+      return (
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">Mathematical Data Table</h3>
+            <div class="flex gap-2">
+              <div class="badge badge-info">Sortable</div>
+              <div class="badge badge-success">Filterable</div>
+              <div class="badge badge-warning">Downloadable</div>
+            </div>
+          </div>
+          
+          <Show 
+            when={showTable()} 
+            fallback={
+              <div class="flex items-center justify-center h-96 bg-base-200 rounded-lg">
+                <div class="text-center space-y-4">
+                  <RadialProgress value={Math.round(tableProgress())} class="text-secondary" size="6rem">
+                    {Math.round(tableProgress())}%
+                  </RadialProgress>
+                  <div class="space-y-1">
+                    <p class="text-base-content/70 font-medium">Loading data table...</p>
+                    <p class="text-sm text-base-content/50">
+                      Preparing {generateMathData().points.length} rows for virtualization
+                    </p>
+                  </div>
+                  <div class="text-xs text-base-content/40">
+                    Loading duration: {TABLE_LOADING_DURATION / 1000}s
+                  </div>
+                </div>
+              </div>
+            }
+          >
+            <TableContent />
+          </Show>
+        </div>
+      );
+    };
+
     const ChartContent = () => (
       <>
         <div style={{ height: "400px" }}>
@@ -951,16 +1012,7 @@ export const MathVisualizationExample: Story = {
     );
 
     const TableContent = () => (
-      <div class="space-y-4">
-        <div class="flex items-center justify-between">
-          <h3 class="text-lg font-semibold">Mathematical Data Table</h3>
-          <div class="flex gap-2">
-            <div class="badge badge-info">Sortable</div>
-            <div class="badge badge-success">Filterable</div>
-            <div class="badge badge-warning">Downloadable</div>
-          </div>
-        </div>
-
+      <>
         <VirtualizedDataTable
           data={generateMathData().points}
           columns={tableColumns}
@@ -990,7 +1042,7 @@ export const MathVisualizationExample: Story = {
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
 
     return (
