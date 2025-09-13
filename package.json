@@ -36,6 +36,8 @@
     "cmdk-solid": "^1.1.2",
     "corvu": "^0.7.2",
     "daisyui": "^5.1.7",
+    "echarts": "^6.0.0",
+    "echarts.js": "^3.0.0-beta3",
     "lucide-solid": "^0.542.0",
     "solid-apexcharts": "^0.6.0",
     "solid-charts": "^0.0.2",
