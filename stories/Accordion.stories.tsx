@@ -1,15 +1,16 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal, createEffect, createMemo, onMount, createResource, Show } from "solid-js";
-import { 
-  Accordion, 
-  type AccordionProps, 
-  Fieldset, 
-  Label, 
+import {
+  Accordion,
+  type AccordionProps,
+  Fieldset,
+  Label,
   Range,
   ChartJSLineChart,
   VirtualizedDataTable,
   Input,
-  Select
+  Select,
+  RadialProgress
 } from "../src/solid-daisy-components/";
 
 const meta = {
@@ -22,7 +23,7 @@ const meta = {
       options: ["default", "bordered", "ghost"],
     },
     size: {
-      control: "select", 
+      control: "select",
       options: ["sm", "md", "lg"],
     },
     multiple: {
@@ -44,13 +45,13 @@ const defaultItems = [
     content: "Yes. It adheres to the WAI-ARIA design pattern and supports keyboard navigation."
   },
   {
-    value: "item-2", 
+    value: "item-2",
     title: "Is it unstyled?",
     content: "Yes. It's unstyled by default, giving you freedom over the look and feel."
   },
   {
     value: "item-3",
-    title: "Can it be animated?", 
+    title: "Can it be animated?",
     content: "Yes! You can animate the Accordion with CSS or JavaScript animation libraries."
   }
 ];
@@ -83,28 +84,28 @@ export const Variants: Story = {
     <div style={{ display: "flex", "flex-direction": "column", gap: "2rem" }}>
       <div>
         <h3 style={{ "margin-bottom": "1rem", "font-weight": "bold" }}>Default</h3>
-        <Accordion 
-          variant="default" 
-          items={defaultItems.slice(0, 2)} 
-          defaultValue={["item-1"]} 
+        <Accordion
+          variant="default"
+          items={defaultItems.slice(0, 2)}
+          defaultValue={["item-1"]}
         />
       </div>
 
       <div>
         <h3 style={{ "margin-bottom": "1rem", "font-weight": "bold" }}>Bordered</h3>
-        <Accordion 
-          variant="bordered" 
-          items={defaultItems.slice(0, 2)} 
-          defaultValue={["item-1"]} 
+        <Accordion
+          variant="bordered"
+          items={defaultItems.slice(0, 2)}
+          defaultValue={["item-1"]}
         />
       </div>
 
       <div>
         <h3 style={{ "margin-bottom": "1rem", "font-weight": "bold" }}>Ghost</h3>
-        <Accordion 
-          variant="ghost" 
-          items={defaultItems.slice(0, 2)} 
-          defaultValue={["item-1"]} 
+        <Accordion
+          variant="ghost"
+          items={defaultItems.slice(0, 2)}
+          defaultValue={["item-1"]}
         />
       </div>
     </div>
@@ -116,40 +117,40 @@ export const Sizes: Story = {
     <div style={{ display: "flex", "flex-direction": "column", gap: "2rem" }}>
       <div>
         <h3 style={{ "margin-bottom": "1rem", "font-weight": "bold" }}>Small</h3>
-        <Accordion 
-          size="sm" 
+        <Accordion
+          size="sm"
           items={[{
             value: "item-1",
             title: "Small accordion",
             content: "Compact spacing and smaller text for space-constrained layouts."
-          }]} 
-          defaultValue={["item-1"]} 
+          }]}
+          defaultValue={["item-1"]}
         />
       </div>
 
       <div>
         <h3 style={{ "margin-bottom": "1rem", "font-weight": "bold" }}>Medium (Default)</h3>
-        <Accordion 
-          size="md" 
+        <Accordion
+          size="md"
           items={[{
             value: "item-1",
             title: "Medium accordion",
             content: "Standard spacing and text size for most use cases."
-          }]} 
-          defaultValue={["item-1"]} 
+          }]}
+          defaultValue={["item-1"]}
         />
       </div>
 
       <div>
         <h3 style={{ "margin-bottom": "1rem", "font-weight": "bold" }}>Large</h3>
-        <Accordion 
-          size="lg" 
+        <Accordion
+          size="lg"
           items={[{
             value: "item-1",
             title: "Large accordion",
             content: "Generous spacing and larger text for prominent display."
-          }]} 
-          defaultValue={["item-1"]} 
+          }]}
+          defaultValue={["item-1"]}
         />
       </div>
     </div>
@@ -285,7 +286,7 @@ export const ReactiveExample: Story = {
             </div>
             <div class="mt-3 p-3 bg-base-200 rounded-lg">
               <p class="text-sm">
-                <strong>Current Status:</strong> The room temperature is set to {temperature()}°C 
+                <strong>Current Status:</strong> The room temperature is set to {temperature()}°C
                 which feels <span class={temperatureStatus().color}>{temperatureStatus().status.toLowerCase()}</span>.
                 {isAutoMode() && " Auto-mode is adjusting other settings accordingly."}
               </p>
@@ -369,8 +370,8 @@ export const ReactiveExample: Story = {
             <div class="form-control mt-3">
               <label class="label cursor-pointer">
                 <span class="label-text">Auto-adjust brightness based on temperature</span>
-                <input 
-                  type="checkbox" 
+                <input
+                  type="checkbox"
                   class="toggle toggle-accent"
                   checked={isAutoMode()}
                   onChange={(e) => setIsAutoMode(e.currentTarget.checked)}
@@ -398,7 +399,7 @@ export const ReactiveExample: Story = {
             The accordion titles and content update automatically as signals change.
           </p>
         </div>
-        
+
         <div class="stats shadow">
           <div class="stat">
             <div class="stat-title">Temperature</div>
@@ -407,13 +408,13 @@ export const ReactiveExample: Story = {
             </div>
             <div class="stat-desc">{temperatureStatus().status}</div>
           </div>
-          
+
           <div class="stat">
             <div class="stat-title">Volume</div>
             <div class="stat-value text-2xl">{volume()}%</div>
             <div class="stat-desc">{isAutoMode() ? "Auto-managed" : "Manual"}</div>
           </div>
-          
+
           <div class="stat">
             <div class="stat-title">Brightness</div>
             <div class="stat-value text-2xl">{brightness()}%</div>
@@ -457,7 +458,7 @@ export const MathVisualizationExample: Story = {
     const [offset, setOffset] = createSignal(0);
     const [dataPoints, setDataPoints] = createSignal(50);
     const [functionType, setFunctionType] = createSignal("sine");
-    
+
     // Controlled accordion state
     const [expandedItems, setExpandedItems] = createSignal(["controls"]);
 
@@ -466,11 +467,11 @@ export const MathVisualizationExample: Story = {
       const points = dataPoints();
       const data = [];
       const labels = [];
-      
+
       for (let i = 0; i < points; i++) {
         const x = (i / points) * 4 * Math.PI; // 0 to 4π
         const xLabel = (x / Math.PI).toFixed(2) + "π";
-        
+
         let y;
         switch (functionType()) {
           case "sine":
@@ -493,7 +494,7 @@ export const MathVisualizationExample: Story = {
           default:
             y = amplitude() * Math.sin(frequency() * x + phase()) + offset();
         }
-        
+
         data.push({
           x: parseFloat(x.toFixed(3)),
           y: parseFloat(y.toFixed(3)),
@@ -506,14 +507,14 @@ export const MathVisualizationExample: Story = {
         });
         labels.push(xLabel);
       }
-      
+
       return { data, labels, points: data };
     });
 
     // Chart data for visualization
     const chartData = createMemo(() => {
       const { data, labels } = generateMathData();
-      
+
       const getColor = () => {
         switch (functionType()) {
           case "sine": return { border: "rgb(59, 130, 246)", bg: "rgba(59, 130, 246, 0.1)" };
@@ -526,7 +527,7 @@ export const MathVisualizationExample: Story = {
       };
 
       const colors = getColor();
-      
+
       return {
         labels,
         datasets: [{
@@ -590,7 +591,7 @@ export const MathVisualizationExample: Story = {
     const statistics = createMemo(() => {
       const { points } = generateMathData();
       const yValues = points.map(p => p.y);
-      
+
       return {
         min: Math.min(...yValues).toFixed(3),
         max: Math.max(...yValues).toFixed(3),
@@ -659,7 +660,7 @@ export const MathVisualizationExample: Story = {
           <div class="space-y-6">
             <Fieldset>
               <Label class="text-lg font-semibold mb-4">Function Parameters</Label>
-              
+
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-4">
                   <div>
@@ -812,13 +813,26 @@ export const MathVisualizationExample: Story = {
         );
 
     const DelayedChartContent = () => {
+      const LOADING_DURATION = 50; // 2 seconds - configurable timeout duration
       const [showChart, setShowChart] = createSignal(false);
+      const [progress, setProgress] = createSignal(0);
 
       onMount(() => {
-        // 2 second delay to ensure accordion animation completes and DOM is fully ready
-        setTimeout(() => {
-          setShowChart(true);
-        }, 2000);
+        // Animate progress from 0 to 100% over the loading duration
+        const interval = setInterval(() => {
+          setProgress(prev => {
+            const newProgress = prev + (100 / (LOADING_DURATION / 50)); // Update every 50ms
+            if (newProgress >= 100) {
+              clearInterval(interval);
+              setTimeout(() => setShowChart(true), 100); // Small delay after 100%
+              return 100;
+            }
+            return newProgress;
+          });
+        }, 50);
+
+        // Cleanup interval if component unmounts
+        return () => clearInterval(interval);
       });
 
       return (
@@ -829,15 +843,24 @@ export const MathVisualizationExample: Story = {
               {dataPoints()} data points
             </div>
           </div>
-          
-          <Show 
-            when={showChart()} 
+
+          <Show
+            when={showChart()}
             fallback={
               <div class="flex items-center justify-center h-96 bg-base-200 rounded-lg">
-                <div class="text-center space-y-3">
-                  <span class="loading loading-spinner loading-lg text-primary"></span>
-                  <p class="text-base-content/70">Preparing chart visualization...</p>
-                  <p class="text-sm text-base-content/50">Please wait a moment</p>
+                <div class="text-center space-y-4">
+                  <RadialProgress value={Math.round(progress())} class="text-primary" size="8rem">
+                    {Math.round(progress())}%
+                  </RadialProgress>
+                  <div class="space-y-1">
+                    <p class="text-base-content/70 font-medium">Preparing chart visualization...</p>
+                    <p class="text-sm text-base-content/50">
+                      Initializing Chart.js with {dataPoints()} data points
+                    </p>
+                  </div>
+                  <div class="text-xs text-base-content/40">
+                    Loading duration: {LOADING_DURATION / 1000}s
+                  </div>
                 </div>
               </div>
             }
@@ -948,7 +971,7 @@ export const MathVisualizationExample: Story = {
           <div>
             <h4 class="font-bold">Virtualized Performance</h4>
             <div class="text-sm">
-              This table uses virtualization to efficiently render large datasets. 
+              This table uses virtualization to efficiently render large datasets.
               You can filter, sort, and download the mathematical data.
               The table automatically updates when you change the function parameters.
             </div>
@@ -962,8 +985,8 @@ export const MathVisualizationExample: Story = {
         <div class="text-center space-y-2">
           <h2 class="text-3xl font-bold">Mathematical Function Explorer</h2>
           <p class="text-base-content/60 max-w-2xl mx-auto">
-            This advanced example demonstrates SolidJS reactivity with mathematical functions, 
-            real-time charting, and virtualized data tables. All three accordion sections 
+            This advanced example demonstrates SolidJS reactivity with mathematical functions,
+            real-time charting, and virtualized data tables. All three accordion sections
             update automatically as you modify the function parameters.
           </p>
         </div>
@@ -979,7 +1002,7 @@ export const MathVisualizationExample: Story = {
             <div class="stat-value text-primary">{functionType()}</div>
             <div class="stat-desc">Mathematical wave function</div>
           </div>
-          
+
           <div class="stat">
             <div class="stat-figure text-secondary">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
@@ -990,7 +1013,7 @@ export const MathVisualizationExample: Story = {
             <div class="stat-value text-secondary">{dataPoints()}</div>
             <div class="stat-desc">Generated coordinates</div>
           </div>
-          
+
           <div class="stat">
             <div class="stat-figure text-accent">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-8 h-8 stroke-current">
@@ -1007,7 +1030,7 @@ export const MathVisualizationExample: Story = {
           <p class="text-center text-sm text-base-content/60">
             Expanded sections: {expandedItems().join(", ") || "none"}
           </p>
-          
+
           <Accordion
             items={accordionItems()}
             variant="bordered"
