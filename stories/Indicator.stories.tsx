@@ -7,16 +7,6 @@ const meta = {
   title: "Components/Indicator",
   component: Indicator,
   tags: ["autodocs"],
-  argTypes: {
-    horizontal: {
-      control: "select",
-      options: ["start", "center", "end"],
-    },
-    vertical: {
-      control: "select",
-      options: ["top", "middle", "bottom"],
-    },
-  },
 } satisfies Meta<typeof Indicator>;
 
 export default meta;

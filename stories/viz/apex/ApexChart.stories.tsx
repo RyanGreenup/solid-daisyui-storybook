@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { ApexChart, Select, Toggle, Label, Fieldset, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo } from "solid-js";
+import type { ApexOptions } from "apexcharts";
 
 const meta = {
   title: "Viz/ApexCharts/ApexChart",
@@ -34,7 +35,7 @@ export const BasicLineChart: Story = {
       data: [30, 40, 35, 50, 49, 60, 70, 91]
     }]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         toolbar: {
@@ -83,7 +84,7 @@ export const BasicBarChart: Story = {
       data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
     }]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         toolbar: {
@@ -99,7 +100,7 @@ export const BasicBarChart: Story = {
         bar: {
           horizontal: false,
           columnWidth: '55%',
-          endingShape: 'rounded'
+          borderRadius: 4
         }
       },
       dataLabels: {
@@ -132,7 +133,7 @@ export const BasicPieChart: Story = {
   render: () => {
     const [series] = createSignal([44, 55, 13, 43, 22]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350
       },
@@ -170,7 +171,7 @@ export const BasicDonutChart: Story = {
   render: () => {
     const [series] = createSignal([44, 55, 41, 17, 15]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350
       },
@@ -218,7 +219,7 @@ export const BasicAreaChart: Story = {
       data: [11, 32, 45, 32, 34, 52, 41]
     }]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         stacked: false
@@ -281,7 +282,7 @@ export const BasicScatterChart: Story = {
       data: generateScatterData()
     }]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         zoom: {
@@ -325,7 +326,7 @@ export const BasicRadialBarChart: Story = {
   render: () => {
     const [series] = createSignal([44, 55, 67, 83]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350
       },
@@ -487,7 +488,7 @@ export const BoxPlotChart: Story = {
       },
     ]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         type: 'boxPlot',
         height: 350,
@@ -553,7 +554,7 @@ export const SparklineCharts: Story = {
       data: randomizeArray(sparklineData)
     }]);
     
-    const [salesOptions] = createSignal({
+    const [salesOptions] = createSignal<ApexOptions>({
       chart: {
         type: 'area',
         height: 160,
@@ -591,7 +592,7 @@ export const SparklineCharts: Story = {
       data: randomizeArray(sparklineData)
     }]);
     
-    const [expensesOptions] = createSignal({
+    const [expensesOptions] = createSignal<ApexOptions>({
       chart: {
         type: 'area',
         height: 160,
@@ -629,7 +630,7 @@ export const SparklineCharts: Story = {
       data: randomizeArray(sparklineData)
     }]);
     
-    const [profitsOptions] = createSignal({
+    const [profitsOptions] = createSignal<ApexOptions>({
       chart: {
         type: 'area',
         height: 160,
@@ -673,7 +674,7 @@ export const SparklineCharts: Story = {
       data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
     }]);
     
-    const [lineOptions1] = createSignal({
+    const [lineOptions1] = createSignal<ApexOptions>({
       chart: {
         type: 'line',
         width: 100,
@@ -706,7 +707,7 @@ export const SparklineCharts: Story = {
       data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
     }]);
     
-    const [lineOptions2] = createSignal({
+    const [lineOptions2] = createSignal<ApexOptions>({
       chart: {
         type: 'line',
         width: 100,
@@ -736,7 +737,7 @@ export const SparklineCharts: Story = {
     });
 
     const [pieSeries] = createSignal([43, 32, 12, 9]);
-    const [pieOptions] = createSignal({
+    const [pieOptions] = createSignal<ApexOptions>({
       chart: {
         type: 'pie',
         width: 40,
@@ -756,7 +757,7 @@ export const SparklineCharts: Story = {
     });
 
     const [donutSeries] = createSignal([43, 32, 12, 9]);
-    const [donutOptions] = createSignal({
+    const [donutOptions] = createSignal<ApexOptions>({
       chart: {
         type: 'donut',
         width: 40,
@@ -779,7 +780,7 @@ export const SparklineCharts: Story = {
       data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
     }]);
     
-    const [barOptions1] = createSignal({
+    const [barOptions1] = createSignal<ApexOptions>({
       chart: {
         type: 'bar',
         width: 100,
@@ -793,7 +794,7 @@ export const SparklineCharts: Story = {
           columnWidth: '80%'
         }
       },
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
       xaxis: {
         crosshairs: {
           width: 1
@@ -822,8 +823,8 @@ export const SparklineCharts: Story = {
     const [barSeries2] = createSignal([{
       data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
     }]);
-    
-    const [barOptions2] = createSignal({
+
+    const [barOptions2] = createSignal<ApexOptions>({
       chart: {
         type: 'bar',
         width: 100,
@@ -837,7 +838,7 @@ export const SparklineCharts: Story = {
           columnWidth: '80%'
         }
       },
-      labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
       xaxis: {
         crosshairs: {
           width: 1
@@ -864,7 +865,7 @@ export const SparklineCharts: Story = {
     });
 
     const [radialSeries1] = createSignal([45]);
-    const [radialOptions1] = createSignal({
+    const [radialOptions1] = createSignal<ApexOptions>({
       chart: {
         type: 'radialBar',
         width: 50,
@@ -893,7 +894,7 @@ export const SparklineCharts: Story = {
     });
 
     const [radialSeries2] = createSignal([53, 67]);
-    const [radialOptions2] = createSignal({
+    const [radialOptions2] = createSignal<ApexOptions>({
       chart: {
         type: 'radialBar',
         width: 40,
@@ -1141,7 +1142,7 @@ export const InteractiveAdvanced: Story = {
           enabled: showDataLabels()
         },
         stroke: {
-          curve: (currentType === 'area' ? 'smooth' : 'straight') as const,
+          curve: currentType === 'area' ? 'smooth' as const : 'straight' as const,
           width: currentType === 'line' ? debouncedStrokeWidth() : currentType === 'area' ? 2 : 0
         },
         xaxis: {
@@ -1310,7 +1311,7 @@ export const MixedChart: Story = {
       data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
     }]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         stacked: false
@@ -1361,7 +1362,7 @@ export const CustomStyledChart: Story = {
       data: [65, 85, 70, 90, 75, 95]
     }]);
 
-    const [options] = createSignal({
+    const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         background: 'transparent'

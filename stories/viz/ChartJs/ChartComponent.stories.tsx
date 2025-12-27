@@ -172,8 +172,8 @@ export const BasicDoughnutChart: Story = {
             }
           }
         },
-        cutout: '60%'
-      }
+        cutout: '60%' as unknown
+      } as ChartConfiguration<'doughnut'>['options']
     };
 
     return (

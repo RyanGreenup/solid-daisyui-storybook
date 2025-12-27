@@ -248,7 +248,7 @@ export const SolidJSReactive: Story = {
     };
 
     // Auto-play functionality
-    let autoplayInterval: NodeJS.Timeout;
+    let autoplayInterval: ReturnType<typeof setInterval>;
     
     const startAutoplay = () => {
       if (isAutoplay()) {

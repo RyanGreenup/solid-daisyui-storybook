@@ -105,7 +105,7 @@ export const AnimatedProgress: Story = {
   render: () => {
     const [progress, setProgress] = createSignal(0);
     
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     
     const startAnimation = () => {
       setProgress(0);

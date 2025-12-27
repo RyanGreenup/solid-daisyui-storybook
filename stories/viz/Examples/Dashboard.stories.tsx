@@ -846,12 +846,11 @@ export const HardwareRetailDashboard: Story = {
                     <VirtualizedDataTable
                       data={inventoryData()}
                       columns={inventoryColumns}
-                      showGlobalFilter={true}
-                      showColumnFilters={true}
-                      showExport={true}
+                      enableGlobalFilter={true}
+                      enableColumnFilters={true}
+                      enableDownload={true}
                       enableSorting={true}
-                      className="min-h-[500px]"
-                      initialPageSize={10}
+                      class="min-h-[500px]"
                     />
                   </Card.Body>
                 </Card>

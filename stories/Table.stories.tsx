@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { Table, Button, Badge } from "../src/solid-daisy-components/";
-import { createSignal, For, Show } from "solid-js";
+import { createSignal, createEffect, For, Show } from "solid-js";
 
 const meta = {
   title: "Components/Table",
@@ -562,11 +562,15 @@ export const SolidJSInteractive: Story = {
               <tr>
                 <th>
                   <label>
-                    <input 
-                      type="checkbox" 
-                      class="checkbox" 
+                    <input
+                      type="checkbox"
+                      class="checkbox"
                       checked={selectedRows().length === employees.length}
-                      indeterminate={selectedRows().length > 0 && selectedRows().length < employees.length}
+                      ref={(el) => {
+                        createEffect(() => {
+                          el.indeterminate = selectedRows().length > 0 && selectedRows().length < employees.length;
+                        });
+                      }}
                       onChange={toggleSelectAll}
                     />
                   </label>
