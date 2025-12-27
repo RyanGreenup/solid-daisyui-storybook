@@ -4,7 +4,10 @@ import { Transition } from "solid-transition-group";
 import CheckIcon from "lucide-solid/icons/check";
 import XIcon from "lucide-solid/icons/x";
 import { Alert } from "../src/solid-daisy-components/components/Alert";
-import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../src/solid-daisy-components/components/Fieldset";
 import { Toggle } from "../src/solid-daisy-components/components/Toggle";
 
 const meta = {
@@ -14,7 +17,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "primary", "secondary", "accent", "neutral", "info", "success", "warning", "error"],
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "accent",
+        "neutral",
+        "info",
+        "success",
+        "warning",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -58,7 +71,14 @@ export const Sizes: Story = {
 
 export const Colors: Story = {
   render: () => (
-    <div style={{ display: "flex", "align-items": "center", gap: "1rem", "flex-wrap": "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        "align-items": "center",
+        gap: "1rem",
+        "flex-wrap": "wrap",
+      }}
+    >
       <Toggle color="primary" checked />
       <Toggle color="secondary" checked />
       <Toggle color="accent" checked />
@@ -91,12 +111,18 @@ export const Indeterminate: Story = {
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", "align-items": "flex-start" }}>
-        <Toggle
-          ref={toggleRef!}
-          onClick={(e) => e.preventDefault()}
-        />
-        <p class="text-sm text-base-content/70">This toggle is in indeterminate state</p>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "1rem",
+          "align-items": "flex-start",
+        }}
+      >
+        <Toggle ref={toggleRef!} onClick={(e) => e.preventDefault()} />
+        <p class="text-sm text-base-content/70">
+          This toggle is in indeterminate state
+        </p>
       </div>
     );
   },
@@ -110,7 +136,9 @@ export const WithIcons: Story = {
         <CheckIcon size={16} aria-label="enabled" />
         <XIcon size={16} aria-label="disabled" />
       </label>
-      <p class="text-sm text-base-content/70">Toggle with custom icons inside</p>
+      <p class="text-sm text-base-content/70">
+        Toggle with custom icons inside
+      </p>
     </div>
   ),
 };
@@ -122,7 +150,9 @@ export const CustomColors: Story = {
         checked
         class="border-indigo-600 bg-indigo-500 checked:bg-orange-400 checked:text-orange-800 checked:border-orange-500"
       />
-      <p class="text-sm text-base-content/70">Toggle with custom Tailwind colors</p>
+      <p class="text-sm text-base-content/70">
+        Toggle with custom Tailwind colors
+      </p>
     </div>
   ),
 };
@@ -135,17 +165,28 @@ export const SolidJSReactive: Story = {
     const [publicProfile, setPublicProfile] = createSignal(false);
 
     const settingsComplete = () => {
-      return [darkMode(), notifications(), autoSave(), publicProfile()].filter(Boolean).length;
+      return [darkMode(), notifications(), autoSave(), publicProfile()].filter(
+        Boolean,
+      ).length;
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "400px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "400px",
+        }}
+      >
         <h3 class="text-xl font-bold">User Preferences</h3>
 
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Settings</Fieldset.Legend>
 
-          <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+          >
             <Label class="cursor-pointer flex items-center gap-3">
               <Toggle
                 color="primary"
@@ -184,7 +225,9 @@ export const SolidJSReactive: Story = {
           </div>
         </Fieldset>
 
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+        >
           <h4 class="text-lg font-semibold">Current Settings:</h4>
 
           <div class="bg-base-300 p-4 rounded-box space-y-2">
@@ -225,8 +268,8 @@ export const SolidJSReactive: Story = {
             <Show when={settingsComplete() >= 3}>
               <Alert color="success">
                 <span>
-                  Great! You have {settingsComplete()} out of 4 settings configured.
-                  Your preferences are well customized!
+                  Great! You have {settingsComplete()} out of 4 settings
+                  configured. Your preferences are well customized!
                 </span>
               </Alert>
             </Show>
@@ -284,9 +327,18 @@ export const AllVariants: Story = {
 
       <div>
         <h3 class="text-lg font-semibold mb-2">In Form Context</h3>
-        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "300px" }}>
+        <Fieldset
+          class="bg-base-200 border border-base-300 p-4 rounded-box"
+          style={{ width: "300px" }}
+        >
           <Fieldset.Legend>Account Settings</Fieldset.Legend>
-          <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem" }}>
+          <div
+            style={{
+              display: "flex",
+              "flex-direction": "column",
+              gap: "0.5rem",
+            }}
+          >
             <Label class="cursor-pointer flex items-center gap-3">
               <Toggle color="primary" />
               <span>Enable email notifications</span>

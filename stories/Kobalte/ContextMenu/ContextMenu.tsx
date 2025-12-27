@@ -6,7 +6,7 @@ import ChevronRightIcon from "lucide-solid/icons/chevron-right";
 import DotFilledIcon from "lucide-solid/icons/dot";
 
 interface MenuItem {
-  type: 'item' | 'checkbox' | 'radio' | 'sub' | 'separator' | 'group';
+  type: "item" | "checkbox" | "radio" | "sub" | "separator" | "group";
   label?: string;
   shortcut?: string;
   disabled?: boolean;
@@ -27,7 +27,7 @@ export default function App(props: ContextMenuProps) {
 
   const renderMenuItem = (item: MenuItem) => {
     switch (item.type) {
-      case 'item':
+      case "item":
         return (
           <ContextMenu.Item
             class="text-base leading-none text-base-content rounded flex items-center h-8 px-2 pl-6 relative select-none outline-none data-[disabled]:text-base-content/40 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-content"
@@ -42,12 +42,14 @@ export default function App(props: ContextMenuProps) {
           >
             {item.label}
             {item.shortcut && (
-              <div class="ml-auto pl-5 text-sm text-base-content/60 data-[highlighted]:text-primary-content data-[disabled]:text-base-content/40 data-[disabled]:opacity-50">{item.shortcut}</div>
+              <div class="ml-auto pl-5 text-sm text-base-content/60 data-[highlighted]:text-primary-content data-[disabled]:text-base-content/40 data-[disabled]:opacity-50">
+                {item.shortcut}
+              </div>
             )}
           </ContextMenu.Item>
         );
 
-      case 'checkbox':
+      case "checkbox":
         return (
           <ContextMenu.CheckboxItem
             class="text-base leading-none text-base-content rounded flex items-center h-8 px-2 pl-6 relative select-none outline-none data-[disabled]:text-base-content/40 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-content"
@@ -61,7 +63,7 @@ export default function App(props: ContextMenuProps) {
           </ContextMenu.CheckboxItem>
         );
 
-      case 'radio':
+      case "radio":
         return (
           <ContextMenu.RadioItem
             class="text-base leading-none text-base-content rounded flex items-center h-8 px-2 pl-6 relative select-none outline-none data-[disabled]:text-base-content/40 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-content"
@@ -74,7 +76,7 @@ export default function App(props: ContextMenuProps) {
           </ContextMenu.RadioItem>
         );
 
-      case 'sub':
+      case "sub":
         return (
           <ContextMenu.Sub overlap gutter={4} shift={-8}>
             <ContextMenu.SubTrigger class="text-base leading-none text-base-content rounded flex items-center h-8 px-2 pl-6 relative select-none outline-none data-[disabled]:text-base-content/40 data-[disabled]:opacity-50 data-[disabled]:pointer-events-none data-[highlighted]:outline-none data-[highlighted]:bg-primary data-[highlighted]:text-primary-content data-[expanded]:bg-sky-100 data-[expanded]:text-sky-800">
@@ -84,9 +86,11 @@ export default function App(props: ContextMenuProps) {
               </div>
             </ContextMenu.SubTrigger>
             <ContextMenu.Portal>
-              <ContextMenu.SubContent 
+              <ContextMenu.SubContent
                 class="min-w-[220px] p-2 bg-base-100 rounded-md border border-base-300 shadow-lg outline-none"
-                style={{ "transform-origin": "var(--kb-menu-content-transform-origin)" }}
+                style={{
+                  "transform-origin": "var(--kb-menu-content-transform-origin)",
+                }}
               >
                 <For each={item.items}>
                   {(subItem) => renderMenuItem(subItem)}
@@ -96,10 +100,12 @@ export default function App(props: ContextMenuProps) {
           </ContextMenu.Sub>
         );
 
-      case 'separator':
-        return <ContextMenu.Separator class="h-px border-t border-base-300 my-1.5 mx-1.5" />;
+      case "separator":
+        return (
+          <ContextMenu.Separator class="h-px border-t border-base-300 my-1.5 mx-1.5" />
+        );
 
-      case 'group':
+      case "group":
         return (
           <ContextMenu.Group>
             {item.label && (
@@ -122,20 +128,17 @@ export default function App(props: ContextMenuProps) {
 
   return (
     <ContextMenu modal={false}>
-      <ContextMenu.Trigger 
-        class="min-h-96 min-w-96"
-        as="div"
-      >
+      <ContextMenu.Trigger class="min-h-96 min-w-96" as="div">
         Right click here.
       </ContextMenu.Trigger>
       <ContextMenu.Portal>
-        <ContextMenu.Content 
+        <ContextMenu.Content
           class="min-w-[220px] p-2 bg-base-100 rounded-md border border-base-300 shadow-lg outline-none"
-          style={{ "transform-origin": "var(--kb-menu-content-transform-origin)" }}
+          style={{
+            "transform-origin": "var(--kb-menu-content-transform-origin)",
+          }}
         >
-          <For each={props.items}>
-            {(item) => renderMenuItem(item)}
-          </For>
+          <For each={props.items}>{(item) => renderMenuItem(item)}</For>
         </ContextMenu.Content>
       </ContextMenu.Portal>
     </ContextMenu>

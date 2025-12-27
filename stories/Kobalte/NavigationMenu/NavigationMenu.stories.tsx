@@ -57,7 +57,7 @@ export const Default: Story = {
                 Unstyled, accessible components for SolidJS.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://pigment.kobalte.dev"
             >
@@ -68,7 +68,7 @@ export const Default: Story = {
                 Ready-to-use components with a consistent look and feel.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://www.solidjs.com/"
             >
@@ -79,7 +79,7 @@ export const Default: Story = {
                 Simple and performant reactivity for building user interfaces.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://start.solidjs.com/"
             >
@@ -103,7 +103,7 @@ export const Default: Story = {
         </NavigationMenu.Trigger>
         <NavigationMenu.Portal>
           <NavigationMenu.Content class="absolute top-0 left-0 p-6 grid gap-3 grid-auto-flow-col grid-rows-3 min-w-[600px] grid-cols-[1fr_1fr]">
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://kobalte.dev/docs/core/overview/introduction"
             >
@@ -114,7 +114,7 @@ export const Default: Story = {
                 Build high-quality, accessible design systems and web apps.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://kobalte.dev/docs/core/overview/getting-started"
             >
@@ -125,7 +125,7 @@ export const Default: Story = {
                 A quick tutorial to get you up and running with Kobalte.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://kobalte.dev/docs/core/overview/styling"
             >
@@ -136,7 +136,7 @@ export const Default: Story = {
                 Unstyled and compatible with any styling solution.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://kobalte.dev/docs/core/overview/animation"
             >
@@ -147,7 +147,7 @@ export const Default: Story = {
                 Use CSS keyframes or any animation library of your choice.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://kobalte.dev/docs/core/overview/polymorphism"
             >
@@ -158,7 +158,7 @@ export const Default: Story = {
                 Customize behavior or integrate existing libraries.
               </NavigationMenu.ItemDescription>
             </NavigationMenu.Item>
-            <NavigationMenu.Item 
+            <NavigationMenu.Item
               class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
               href="https://kobalte.dev/docs/changelog"
             >
@@ -191,10 +191,12 @@ export const Default: Story = {
 
 export const InteractiveExample: Story = {
   render: () => {
-    const [orientation, setOrientation] = createSignal<"horizontal" | "vertical">("horizontal");
+    const [orientation, setOrientation] = createSignal<
+      "horizontal" | "vertical"
+    >("horizontal");
     const [delayDuration, setDelayDuration] = createSignal(200);
     const [menuValue, setMenuValue] = createSignal<string | undefined>();
-    
+
     // Reactive effect for logging value changes
     createEffect(() => {
       console.log("Navigation menu value changed:", menuValue());
@@ -202,9 +204,22 @@ export const InteractiveExample: Story = {
 
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "2rem" }}>
-        <div style={{ display: "flex", gap: "2rem", "align-items": "center", "flex-wrap": "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "2rem",
+            "align-items": "center",
+            "flex-wrap": "wrap",
+          }}
+        >
           <div>
-            <label style={{ display: "block", "margin-bottom": "0.5rem", "font-weight": "bold" }}>
+            <label
+              style={{
+                display: "block",
+                "margin-bottom": "0.5rem",
+                "font-weight": "bold",
+              }}
+            >
               Orientation: {orientation()}
             </label>
             <RadioGroup
@@ -214,12 +229,36 @@ export const InteractiveExample: Story = {
             >
               <For each={["horizontal", "vertical"] as const}>
                 {(value) => (
-                  <RadioGroup.Item value={value} style={{ display: "flex", "align-items": "center", gap: "0.5rem" }}>
+                  <RadioGroup.Item
+                    value={value}
+                    style={{
+                      display: "flex",
+                      "align-items": "center",
+                      gap: "0.5rem",
+                    }}
+                  >
                     <RadioGroup.ItemInput />
-                    <RadioGroup.ItemControl style={{ width: "16px", height: "16px", border: "1px solid #ccc", "border-radius": "50%" }}>
-                      <RadioGroup.ItemIndicator style={{ width: "8px", height: "8px", "background-color": "blue", "border-radius": "50%", margin: "3px" }} />
+                    <RadioGroup.ItemControl
+                      style={{
+                        width: "16px",
+                        height: "16px",
+                        border: "1px solid #ccc",
+                        "border-radius": "50%",
+                      }}
+                    >
+                      <RadioGroup.ItemIndicator
+                        style={{
+                          width: "8px",
+                          height: "8px",
+                          "background-color": "blue",
+                          "border-radius": "50%",
+                          margin: "3px",
+                        }}
+                      />
                     </RadioGroup.ItemControl>
-                    <RadioGroup.ItemLabel style={{ "text-transform": "capitalize" }}>
+                    <RadioGroup.ItemLabel
+                      style={{ "text-transform": "capitalize" }}
+                    >
                       {value}
                     </RadioGroup.ItemLabel>
                   </RadioGroup.Item>
@@ -229,7 +268,13 @@ export const InteractiveExample: Story = {
           </div>
 
           <div>
-            <label style={{ display: "block", "margin-bottom": "0.5rem", "font-weight": "bold" }}>
+            <label
+              style={{
+                display: "block",
+                "margin-bottom": "0.5rem",
+                "font-weight": "bold",
+              }}
+            >
               Delay Duration: {delayDuration()}ms
             </label>
             <input
@@ -248,9 +293,13 @@ export const InteractiveExample: Story = {
           <p style={{ "margin-bottom": "1rem", color: "#666" }}>
             Current active menu: {menuValue() || "none"}
           </p>
-          
+
           <NavigationMenu
-            class={orientation() === "vertical" ? "flex flex-col justify-center items-center p-1 bg-base-100 w-max rounded-lg shadow-sm border border-base-300" : "flex justify-center items-center p-1 bg-base-100 w-max rounded-lg shadow-sm border border-base-300"}
+            class={
+              orientation() === "vertical"
+                ? "flex flex-col justify-center items-center p-1 bg-base-100 w-max rounded-lg shadow-sm border border-base-300"
+                : "flex justify-center items-center p-1 bg-base-100 w-max rounded-lg shadow-sm border border-base-300"
+            }
             orientation={orientation()}
             delayDuration={delayDuration()}
             value={menuValue()}
@@ -265,7 +314,7 @@ export const InteractiveExample: Story = {
               </NavigationMenu.Trigger>
               <NavigationMenu.Portal>
                 <NavigationMenu.Content class="absolute top-0 left-0 p-6 grid gap-3 min-w-[300px]">
-                  <NavigationMenu.Item 
+                  <NavigationMenu.Item
                     class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
                     href="https://solidjs.com"
                   >
@@ -273,10 +322,11 @@ export const InteractiveExample: Story = {
                       SolidJS
                     </NavigationMenu.ItemLabel>
                     <NavigationMenu.ItemDescription class="text-sm opacity-80 text-base-content leading-snug">
-                      Fine-grained reactive programming with {orientation()} orientation
+                      Fine-grained reactive programming with {orientation()}{" "}
+                      orientation
                     </NavigationMenu.ItemDescription>
                   </NavigationMenu.Item>
-                  <NavigationMenu.Item 
+                  <NavigationMenu.Item
                     class="block outline-none no-underline select-none p-3 rounded-md text-sm leading-tight hover:bg-base-200 focus:bg-base-200"
                     href="https://kobalte.dev"
                   >
@@ -293,7 +343,7 @@ export const InteractiveExample: Story = {
 
             <NavigationMenu.Trigger
               class="flex items-center justify-center gap-2 px-4 py-3 bg-base-100 text-primary font-medium rounded-md transition-colors hover:bg-base-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 data-[highlighted]:bg-base-200 text-sm border-none cursor-pointer no-underline"
-              as="a" 
+              as="a"
               href="#contact"
             >
               Contact

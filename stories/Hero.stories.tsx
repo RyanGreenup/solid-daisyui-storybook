@@ -1,7 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal, For, onMount, onCleanup } from "solid-js";
 import { Transition } from "solid-transition-group";
-import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../src/solid-daisy-components/components/Fieldset";
 import { Input } from "../src/solid-daisy-components/components/Input";
 import { Card } from "../src/solid-daisy-components/components/Card";
 import { Button } from "../src/solid-daisy-components/components/Button";
@@ -42,7 +45,9 @@ export const WithFigure: Story = {
         <div>
           <Hero.Title>Box Office News!</Hero.Title>
           <Hero.Description>
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
           </Hero.Description>
           <Button color="primary">Get Started</Button>
         </div>
@@ -63,7 +68,9 @@ export const WithFigureReverse: Story = {
         <div>
           <h1 class="text-5xl font-bold">Box Office News!</h1>
           <p class="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
           </p>
           <Button color="primary">Get Started</Button>
         </div>
@@ -79,7 +86,9 @@ export const WithForm: Story = {
         <div class="text-center lg:text-left">
           <h1 class="text-5xl font-bold">Login now!</h1>
           <p class="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
           </p>
         </div>
         <Card class="shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -92,7 +101,9 @@ export const WithForm: Story = {
               <div>
                 <span class="link link-hover">Forgot password?</span>
               </div>
-              <Button color="neutral" class="mt-4">Login</Button>
+              <Button color="neutral" class="mt-4">
+                Login
+              </Button>
             </Fieldset>
           </Card.Body>
         </Card>
@@ -105,14 +116,19 @@ export const WithOverlayImage: Story = {
   render: () => (
     <Hero
       class="min-h-96 rounded"
-      style={{ "background-image": "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)" }}
+      style={{
+        "background-image":
+          "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+      }}
     >
       <Hero.Overlay class="rounded" />
       <Hero.Content class="text-center text-neutral-content">
         <div class="max-w-md">
           <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
           <p class="mb-5">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.
+            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
+            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
+            a id nisi.
           </p>
           <Button color="primary">Get Started</Button>
         </div>
@@ -138,16 +154,25 @@ export const ConvenienceAPI: Story = {
       </div>
 
       <div>
-        <h3 class="text-lg font-semibold mb-2">Custom Components for Full Control</h3>
+        <h3 class="text-lg font-semibold mb-2">
+          Custom Components for Full Control
+        </h3>
         <Hero class="min-h-64 rounded bg-base-200">
           <Hero.Content class="text-center">
-            <Hero.Title class="text-3xl text-primary">Custom Styled Title</Hero.Title>
+            <Hero.Title class="text-3xl text-primary">
+              Custom Styled Title
+            </Hero.Title>
             <Hero.Description class="text-sm opacity-70">
-              Use Hero.Title and Hero.Description components for full control over styling.
+              Use Hero.Title and Hero.Description components for full control
+              over styling.
             </Hero.Description>
             <div class="flex gap-2 justify-center mt-4">
-              <Button color="primary" size="sm">Primary</Button>
-              <Button color="secondary" size="sm">Secondary</Button>
+              <Button color="primary" size="sm">
+                Primary
+              </Button>
+              <Button color="secondary" size="sm">
+                Secondary
+              </Button>
             </div>
           </Hero.Content>
         </Hero>
@@ -156,10 +181,7 @@ export const ConvenienceAPI: Story = {
       <div>
         <h3 class="text-lg font-semibold mb-2">Mixed Approach</h3>
         <Hero class="min-h-64 rounded bg-base-200">
-          <Hero.Content
-            class="text-center"
-            title="Mixed Approach"
-          >
+          <Hero.Content class="text-center" title="Mixed Approach">
             <Hero.Description class="text-base-content/80 text-sm">
               You can use title prop with custom Hero.Description component.
             </Hero.Description>
@@ -180,27 +202,33 @@ export const InteractiveDemo: Story = {
       {
         title: "Welcome to SolidJS",
         subtitle: "Fine-grained reactivity",
-        description: "Build user interfaces with fine-grained reactivity and excellent performance. SolidJS compiles away the framework for optimal bundle sizes.",
+        description:
+          "Build user interfaces with fine-grained reactivity and excellent performance. SolidJS compiles away the framework for optimal bundle sizes.",
         buttonText: "Learn SolidJS",
         background: "bg-gradient-to-r from-blue-500 to-purple-600",
-        image: "https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp"
+        image:
+          "https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp",
       },
       {
         title: "DaisyUI Components",
         subtitle: "Beautiful by default",
-        description: "Semantic component classes for Tailwind CSS. Build beautiful interfaces faster with pre-designed components.",
+        description:
+          "Semantic component classes for Tailwind CSS. Build beautiful interfaces faster with pre-designed components.",
         buttonText: "Explore Components",
         background: "bg-gradient-to-r from-green-500 to-teal-600",
-        image: "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+        image:
+          "https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp",
       },
       {
         title: "TypeScript Ready",
         subtitle: "Type-safe development",
-        description: "Full TypeScript support with proper type inference. Build with confidence knowing your code is type-safe.",
+        description:
+          "Full TypeScript support with proper type inference. Build with confidence knowing your code is type-safe.",
         buttonText: "Start Building",
         background: "bg-gradient-to-r from-orange-500 to-red-600",
-        image: "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      }
+        image:
+          "https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp",
+      },
     ];
 
     const nextHero = () => {
@@ -249,7 +277,7 @@ export const InteractiveDemo: Story = {
               style={{
                 "background-image": `linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(${heroes[currentHero()].image})`,
                 "background-size": "cover",
-                "background-position": "center"
+                "background-position": "center",
               }}
             />
           </Transition>
@@ -266,8 +294,12 @@ export const InteractiveDemo: Story = {
               exitToClass="opacity-0 transform -translate-y-4"
             >
               <div class="max-w-lg">
-                <h1 class="mb-2 text-6xl font-bold">{heroes[currentHero()].title}</h1>
-                <h2 class="mb-4 text-2xl font-light opacity-90">{heroes[currentHero()].subtitle}</h2>
+                <h1 class="mb-2 text-6xl font-bold">
+                  {heroes[currentHero()].title}
+                </h1>
+                <h2 class="mb-4 text-2xl font-light opacity-90">
+                  {heroes[currentHero()].subtitle}
+                </h2>
                 <p class="mb-8 text-lg opacity-80 leading-relaxed">
                   {heroes[currentHero()].description}
                 </p>
@@ -310,8 +342,8 @@ export const InteractiveDemo: Story = {
               <button
                 class={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index() === currentHero()
-                    ? 'bg-primary scale-125'
-                    : 'bg-base-300 hover:bg-base-content/20'
+                    ? "bg-primary scale-125"
+                    : "bg-base-300 hover:bg-base-content/20"
                 }`}
                 onClick={() => {
                   if (!isAnimating()) {
@@ -344,8 +376,12 @@ export const AllVariants: Story = {
           <Hero.Content class="text-center">
             <div class="max-w-md">
               <h1 class="text-3xl font-bold">Centered Content</h1>
-              <p class="py-4">Simple centered hero layout with call-to-action.</p>
-              <Button color="primary" size="sm">Get Started</Button>
+              <p class="py-4">
+                Simple centered hero layout with call-to-action.
+              </p>
+              <Button color="primary" size="sm">
+                Get Started
+              </Button>
             </div>
           </Hero.Content>
         </Hero>
@@ -363,7 +399,9 @@ export const AllVariants: Story = {
             <div>
               <h1 class="text-3xl font-bold">With Figure</h1>
               <p class="py-4">Hero section with accompanying image.</p>
-              <Button color="secondary" size="sm">Learn More</Button>
+              <Button color="secondary" size="sm">
+                Learn More
+              </Button>
             </div>
           </Hero.Content>
         </Hero>
@@ -373,14 +411,19 @@ export const AllVariants: Story = {
         <h3 class="text-lg font-semibold mb-2">With Background Overlay</h3>
         <Hero
           class="min-h-64 rounded"
-          style={{ "background-image": "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)" }}
+          style={{
+            "background-image":
+              "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
+          }}
         >
           <Hero.Overlay class="rounded bg-black/40" />
           <Hero.Content class="text-center text-white">
             <div class="max-w-md">
               <h1 class="text-3xl font-bold">Background Hero</h1>
               <p class="py-4">Hero with background image and overlay.</p>
-              <Button color="accent" size="sm">Explore</Button>
+              <Button color="accent" size="sm">
+                Explore
+              </Button>
             </div>
           </Hero.Content>
         </Hero>

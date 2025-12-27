@@ -72,8 +72,12 @@ export const WithButton: Story = {
     <Alert color="info">
       <span>We use cookies for no reason.</span>
       <div>
-        <Button size="sm" variant="ghost">Deny</Button>
-        <Button size="sm" color="primary">Accept</Button>
+        <Button size="sm" variant="ghost">
+          Deny
+        </Button>
+        <Button size="sm" color="primary">
+          Accept
+        </Button>
       </div>
     </Alert>
   ),
@@ -84,7 +88,9 @@ export const WithTitleAndDescription: Story = {
     <Alert color="warning">
       <div>
         <h3 class="font-bold">Warning!</h3>
-        <div class="text-xs">You are about to delete your account. This action cannot be undone.</div>
+        <div class="text-xs">
+          You are about to delete your account. This action cannot be undone.
+        </div>
       </div>
     </Alert>
   ),

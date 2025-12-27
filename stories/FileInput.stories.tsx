@@ -1,7 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../src/solid-daisy-components/components/Fieldset";
 import { FileInput } from "../src/solid-daisy-components/components/FileInput";
-
 
 const meta = {
   title: "Components/Data Input/FileInput",
@@ -10,7 +12,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "neutral", "primary", "secondary", "accent", "info", "success", "warning", "error"],
+      options: [
+        "default",
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "info",
+        "success",
+        "warning",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -31,9 +43,7 @@ export const Default: Story = {
 };
 
 export const Ghost: Story = {
-  render: () => (
-    <FileInput variant="ghost" />
-  ),
+  render: () => <FileInput variant="ghost" />,
 };
 
 export const WithFieldset: Story = {
@@ -48,7 +58,15 @@ export const WithFieldset: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", width: "100%", "align-items": "center" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "1rem",
+        width: "100%",
+        "align-items": "center",
+      }}
+    >
       <FileInput size="xs" />
       <FileInput size="sm" />
       <FileInput size="md" />
@@ -74,9 +92,7 @@ export const Colors: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <FileInput disabled placeholder="You can't touch this" />
-  ),
+  render: () => <FileInput disabled placeholder="You can't touch this" />,
 };
 
 export const AllVariants: Story = {
@@ -104,7 +120,10 @@ export const AllVariants: Story = {
 
       <div>
         <h3 class="text-lg font-semibold mb-2">In Fieldset</h3>
-        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "300px" }}>
+        <Fieldset
+          class="bg-base-200 border border-base-300 p-4 rounded-box"
+          style={{ width: "300px" }}
+        >
           <Fieldset.Legend>Upload Document</Fieldset.Legend>
           <FileInput color="primary" />
           <Label>Accepted formats: PDF, DOC, DOCX (Max 5MB)</Label>

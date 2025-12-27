@@ -36,9 +36,9 @@ This LineChart component is built on top of solid-charts, which renders charts a
 - **Interactive forms** where chart updates based on user input
 
 For high-performance scenarios with large datasets or complex interactions, consider canvas-based alternatives such as Charts.js and Apex Charts
-        `
-      }
-    }
+        `,
+      },
+    },
   },
   argTypes: {
     showGrid: {
@@ -60,13 +60,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const sampleData = [
-  { line1: 0, line2: 7, xAxis: 'Day 1' },
-  { line1: 3, line2: 5, xAxis: 'Day 2' },
-  { line1: 2, line2: 8, xAxis: 'Day 3' },
-  { line1: 7, line2: 3, xAxis: 'Day 4' },
-  { line1: 5, line2: 9, xAxis: 'Day 5' },
-  { line1: 9, line2: 2, xAxis: 'Day 6' },
-  { line1: 4, line2: 6, xAxis: 'Day 7' },
+  { line1: 0, line2: 7, xAxis: "Day 1" },
+  { line1: 3, line2: 5, xAxis: "Day 2" },
+  { line1: 2, line2: 8, xAxis: "Day 3" },
+  { line1: 7, line2: 3, xAxis: "Day 4" },
+  { line1: 5, line2: 9, xAxis: "Day 5" },
+  { line1: 9, line2: 2, xAxis: "Day 6" },
+  { line1: 4, line2: 6, xAxis: "Day 7" },
 ];
 
 export const Default: Story = {
@@ -76,7 +76,7 @@ export const Default: Story = {
       xAxisKey="xAxis"
       lines={[
         { dataKey: "line1", class: "stroke-primary" },
-        { dataKey: "line2", class: "stroke-secondary" }
+        { dataKey: "line2", class: "stroke-secondary" },
       ]}
     />
   ),
@@ -87,9 +87,7 @@ export const SingleLine: Story = {
     <LineChart
       data={sampleData}
       xAxisKey="xAxis"
-      lines={[
-        { dataKey: "line1", class: "stroke-accent", strokeWidth: 4 }
-      ]}
+      lines={[{ dataKey: "line1", class: "stroke-accent", strokeWidth: 4 }]}
     />
   ),
 };
@@ -101,7 +99,7 @@ export const CustomStyling: Story = {
       xAxisKey="xAxis"
       lines={[
         { dataKey: "line1", class: "stroke-success", strokeWidth: 2 },
-        { dataKey: "line2", class: "stroke-error", strokeWidth: 2 }
+        { dataKey: "line2", class: "stroke-error", strokeWidth: 2 },
       ]}
       showGrid={false}
       showXAxisLine={false}
@@ -132,7 +130,9 @@ export const ReactiveChart: Story = {
         <Card.Body>
           <Card.Title>Interactive Business Metrics</Card.Title>
 
-          <div style={{ display: "flex", gap: "1rem", "margin-bottom": "1rem" }}>
+          <div
+            style={{ display: "flex", gap: "1rem", "margin-bottom": "1rem" }}
+          >
             <div>
               <label class="label">Data Points:</label>
               <input
@@ -167,13 +167,20 @@ export const ReactiveChart: Story = {
             lines={[
               { dataKey: "revenue", class: "stroke-success", strokeWidth: 3 },
               { dataKey: "expenses", class: "stroke-error", strokeWidth: 3 },
-              { dataKey: "profit", class: "stroke-primary", strokeWidth: 3 }
+              { dataKey: "profit", class: "stroke-primary", strokeWidth: 3 },
             ]}
             height="h-80"
             width="w-full"
           />
 
-          <div style={{ display: "flex", gap: "1rem", "margin-top": "1rem", "justify-content": "center" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              "margin-top": "1rem",
+              "justify-content": "center",
+            }}
+          >
             <div class="flex items-center gap-2">
               <div class="w-4 h-1 bg-success rounded"></div>
               <span class="text-sm">Revenue</span>
@@ -206,20 +213,20 @@ export const RealTimeData: Story = {
 
     const addDataPoint = () => {
       const currentTime = new Date();
-      const timeString = currentTime.toLocaleTimeString('en-US', {
+      const timeString = currentTime.toLocaleTimeString("en-US", {
         hour12: false,
-        hour: '2-digit',
-        minute: '2-digit'
+        hour: "2-digit",
+        minute: "2-digit",
       });
 
-      setData(prev => {
+      setData((prev) => {
         const newData = [...prev];
         if (newData.length >= 10) {
           newData.shift(); // Remove oldest point
         }
         newData.push({
           temperature: Math.floor(18 + Math.random() * 8), // 18-26°C
-          humidity: Math.floor(40 + Math.random() * 20),   // 40-60%
+          humidity: Math.floor(40 + Math.random() * 20), // 40-60%
           time: timeString,
         });
         return newData;
@@ -254,21 +261,35 @@ export const RealTimeData: Story = {
             data={data()}
             xAxisKey="time"
             lines={[
-              { dataKey: "temperature", class: "stroke-warning", strokeWidth: 3 },
-              { dataKey: "humidity", class: "stroke-info", strokeWidth: 3 }
+              {
+                dataKey: "temperature",
+                class: "stroke-warning",
+                strokeWidth: 3,
+              },
+              { dataKey: "humidity", class: "stroke-info", strokeWidth: 3 },
             ]}
             height="h-64"
             width="w-full"
           />
 
-          <div style={{ display: "flex", gap: "2rem", "margin-top": "1rem", "justify-content": "center" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "2rem",
+              "margin-top": "1rem",
+              "justify-content": "center",
+            }}
+          >
             <div class="text-center">
               <div class="flex items-center gap-2 justify-center">
                 <div class="w-4 h-1 bg-warning rounded"></div>
                 <span class="text-sm">Temperature (°C)</span>
               </div>
               <div class="text-2xl font-bold text-warning">
-                {data().length > 0 ? data()[data().length - 1].temperature : "--"}°C
+                {data().length > 0
+                  ? data()[data().length - 1].temperature
+                  : "--"}
+                °C
               </div>
             </div>
             <div class="text-center">

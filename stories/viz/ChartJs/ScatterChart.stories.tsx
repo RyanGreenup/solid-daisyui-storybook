@@ -3,7 +3,10 @@ import { createSignal, createMemo, onMount } from "solid-js";
 import { ScatterChart } from "../../../src/solid-daisy-components/components/viz/chart_js/ScatterChart";
 import { Select } from "../../../src/solid-daisy-components/components/Select";
 import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
-import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
 import { Range } from "../../../src/solid-daisy-components/components/Range";
 
 const meta = {
@@ -16,20 +19,23 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Data generators
-const generateScatterData = (count: number = 50, correlation: 'positive' | 'negative' | 'none' = 'positive') => {
+const generateScatterData = (
+  count: number = 50,
+  correlation: "positive" | "negative" | "none" = "positive",
+) => {
   const data = [];
   for (let i = 0; i < count; i++) {
     let x = Math.random() * 100;
     let y;
 
     switch (correlation) {
-      case 'positive':
+      case "positive":
         y = x * 0.8 + Math.random() * 20 + 10;
         break;
-      case 'negative':
+      case "negative":
         y = (100 - x) * 0.6 + Math.random() * 25 + 15;
         break;
-      case 'none':
+      case "none":
         y = Math.random() * 100;
         break;
     }
@@ -48,38 +54,40 @@ const generateBubbleScatterData = (count: number = 30) => {
 
 export const Basic: Story = {
   render: () => {
-    const scatterData = generateScatterData(40, 'positive');
+    const scatterData = generateScatterData(40, "positive");
 
     return (
       <div style={{ height: "400px" }}>
         <ScatterChart
           title="Basic Scatter Plot - Sales vs Marketing Spend"
           data={{
-            datasets: [{
-              label: 'Sales Performance',
-              data: scatterData,
-              backgroundColor: 'rgba(59, 130, 246, 0.6)',
-              borderColor: 'rgb(59, 130, 246)',
-              borderWidth: 2,
-              pointRadius: 4,
-              pointHoverRadius: 8,
-            }]
+            datasets: [
+              {
+                label: "Sales Performance",
+                data: scatterData,
+                backgroundColor: "rgba(59, 130, 246, 0.6)",
+                borderColor: "rgb(59, 130, 246)",
+                borderWidth: 2,
+                pointRadius: 4,
+                pointHoverRadius: 8,
+              },
+            ],
           }}
           options={{
             scales: {
               x: {
                 title: {
                   display: true,
-                  text: 'Marketing Spend ($k)'
-                }
+                  text: "Marketing Spend ($k)",
+                },
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Sales Revenue ($k)'
-                }
-              }
-            }
+                  text: "Sales Revenue ($k)",
+                },
+              },
+            },
           }}
         />
       </div>
@@ -89,8 +97,8 @@ export const Basic: Story = {
 
 export const MultipleDatasets: Story = {
   render: () => {
-    const dataset1 = generateScatterData(35, 'positive');
-    const dataset2 = generateScatterData(35, 'negative');
+    const dataset1 = generateScatterData(35, "positive");
+    const dataset2 = generateScatterData(35, "negative");
 
     return (
       <div style={{ height: "400px" }}>
@@ -99,40 +107,40 @@ export const MultipleDatasets: Story = {
           data={{
             datasets: [
               {
-                label: 'Premium Customers',
+                label: "Premium Customers",
                 data: dataset1,
-                backgroundColor: 'rgba(34, 197, 94, 0.6)',
-                borderColor: 'rgb(34, 197, 94)',
+                backgroundColor: "rgba(34, 197, 94, 0.6)",
+                borderColor: "rgb(34, 197, 94)",
                 borderWidth: 2,
                 pointRadius: 5,
                 pointHoverRadius: 10,
               },
               {
-                label: 'Regular Customers',
+                label: "Regular Customers",
                 data: dataset2,
-                backgroundColor: 'rgba(239, 68, 68, 0.6)',
-                borderColor: 'rgb(239, 68, 68)',
+                backgroundColor: "rgba(239, 68, 68, 0.6)",
+                borderColor: "rgb(239, 68, 68)",
                 borderWidth: 2,
                 pointRadius: 5,
                 pointHoverRadius: 10,
-              }
-            ]
+              },
+            ],
           }}
           options={{
             scales: {
               x: {
                 title: {
                   display: true,
-                  text: 'Customer Satisfaction Score'
-                }
+                  text: "Customer Satisfaction Score",
+                },
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Purchase Frequency'
-                }
-              }
-            }
+                  text: "Purchase Frequency",
+                },
+              },
+            },
           }}
         />
       </div>
@@ -142,7 +150,7 @@ export const MultipleDatasets: Story = {
 
 export const WithTrendLine: Story = {
   render: () => {
-    const scatterData = generateScatterData(45, 'positive');
+    const scatterData = generateScatterData(45, "positive");
 
     return (
       <div style={{ height: "400px" }}>
@@ -151,45 +159,45 @@ export const WithTrendLine: Story = {
           data={{
             datasets: [
               {
-                label: 'Data Points',
+                label: "Data Points",
                 data: scatterData,
-                backgroundColor: 'rgba(147, 51, 234, 0.6)',
-                borderColor: 'rgb(147, 51, 234)',
+                backgroundColor: "rgba(147, 51, 234, 0.6)",
+                borderColor: "rgb(147, 51, 234)",
                 borderWidth: 2,
                 pointRadius: 4,
                 pointHoverRadius: 8,
                 showLine: false,
               },
               {
-                label: 'Trend Line',
+                label: "Trend Line",
                 data: [
                   { x: 0, y: 15 },
-                  { x: 100, y: 95 }
+                  { x: 100, y: 95 },
                 ],
-                backgroundColor: 'rgba(245, 158, 11, 0.8)',
-                borderColor: 'rgb(245, 158, 11)',
+                backgroundColor: "rgba(245, 158, 11, 0.8)",
+                borderColor: "rgb(245, 158, 11)",
                 borderWidth: 3,
                 pointRadius: 0,
                 showLine: true,
                 pointHoverRadius: 0,
-              }
-            ]
+              },
+            ],
           }}
           options={{
             scales: {
               x: {
                 title: {
                   display: true,
-                  text: 'Years of Experience'
-                }
+                  text: "Years of Experience",
+                },
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Annual Revenue ($k)'
-                }
-              }
-            }
+                  text: "Annual Revenue ($k)",
+                },
+              },
+            },
           }}
         />
       </div>
@@ -200,7 +208,9 @@ export const WithTrendLine: Story = {
 export const InteractiveExample: Story = {
   render: () => {
     const [pointCount, setPointCount] = createSignal(40);
-    const [correlation, setCorrelation] = createSignal<'positive' | 'negative' | 'none'>('positive');
+    const [correlation, setCorrelation] = createSignal<
+      "positive" | "negative" | "none"
+    >("positive");
     const [showTrendLine, setShowTrendLine] = createSignal(true);
     const [animationEnabled, setAnimationEnabled] = createSignal(true);
     const [pointSize, setPointSize] = createSignal(4);
@@ -213,43 +223,65 @@ export const InteractiveExample: Story = {
     });
 
     const scatterData = createMemo(() => {
-      console.log('Generating scatter data for points:', pointCount(), 'correlation:', correlation());
+      console.log(
+        "Generating scatter data for points:",
+        pointCount(),
+        "correlation:",
+        correlation(),
+      );
       return generateScatterData(pointCount(), correlation());
     });
 
     const getTrendLineData = () => {
       switch (correlation()) {
-        case 'positive':
-          return [{ x: 0, y: 15 }, { x: 100, y: 95 }];
-        case 'negative':
-          return [{ x: 0, y: 85 }, { x: 100, y: 25 }];
-        case 'none':
-          return [{ x: 0, y: 50 }, { x: 100, y: 50 }];
+        case "positive":
+          return [
+            { x: 0, y: 15 },
+            { x: 100, y: 95 },
+          ];
+        case "negative":
+          return [
+            { x: 0, y: 85 },
+            { x: 100, y: 25 },
+          ];
+        case "none":
+          return [
+            { x: 0, y: 50 },
+            { x: 100, y: 50 },
+          ];
       }
     };
 
     const datasets = createMemo(() => {
-      const baseDatasets = [{
-        label: 'Data Points',
-        data: scatterData(),
-        backgroundColor: correlation() === 'positive' ? 'rgba(34, 197, 94, 0.6)' :
-                        correlation() === 'negative' ? 'rgba(239, 68, 68, 0.6)' :
-                        'rgba(147, 51, 234, 0.6)',
-        borderColor: correlation() === 'positive' ? 'rgb(34, 197, 94)' :
-                     correlation() === 'negative' ? 'rgb(239, 68, 68)' :
-                     'rgb(147, 51, 234)',
-        borderWidth: 2,
-        pointRadius: pointSize(),
-        pointHoverRadius: pointSize() + 4,
-        showLine: false,
-      }];
+      const baseDatasets = [
+        {
+          label: "Data Points",
+          data: scatterData(),
+          backgroundColor:
+            correlation() === "positive"
+              ? "rgba(34, 197, 94, 0.6)"
+              : correlation() === "negative"
+                ? "rgba(239, 68, 68, 0.6)"
+                : "rgba(147, 51, 234, 0.6)",
+          borderColor:
+            correlation() === "positive"
+              ? "rgb(34, 197, 94)"
+              : correlation() === "negative"
+                ? "rgb(239, 68, 68)"
+                : "rgb(147, 51, 234)",
+          borderWidth: 2,
+          pointRadius: pointSize(),
+          pointHoverRadius: pointSize() + 4,
+          showLine: false,
+        },
+      ];
 
       if (showTrendLine()) {
         baseDatasets.push({
-          label: 'Trend Line',
+          label: "Trend Line",
           data: getTrendLineData(),
-          backgroundColor: 'rgba(245, 158, 11, 0.8)',
-          borderColor: 'rgb(245, 158, 11)',
+          backgroundColor: "rgba(245, 158, 11, 0.8)",
+          borderColor: "rgb(245, 158, 11)",
           borderWidth: 3,
           pointRadius: 0,
           showLine: true,
@@ -261,11 +293,19 @@ export const InteractiveExample: Story = {
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+      <div
+        style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}
+      >
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Scatter Plot Configuration</Fieldset.Legend>
 
-          <div style={{ display: "grid", "grid-template-columns": "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
+          <div
+            style={{
+              display: "grid",
+              "grid-template-columns": "repeat(auto-fit, minmax(200px, 1fr))",
+              gap: "1.5rem",
+            }}
+          >
             <div>
               <Label>Point Count: {pointCount()}</Label>
               <Range
@@ -328,7 +368,7 @@ export const InteractiveExample: Story = {
 
           <Label class="text-sm opacity-70 mt-2">
             Displaying {pointCount()} points with {correlation()} correlation
-            {showTrendLine() ? ' and trend line' : ''}
+            {showTrendLine() ? " and trend line" : ""}
           </Label>
         </Fieldset>
 
@@ -338,19 +378,19 @@ export const InteractiveExample: Story = {
             data={{ datasets: datasets() }}
             options={{
               animation: {
-                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
+                duration: animationEnabled() ? 750 : hasRendered() ? 0 : 1000,
               },
               interaction: {
                 intersect: false,
-                mode: 'point' as const
+                mode: "point" as const,
               },
               plugins: {
                 legend: {
-                  position: 'bottom' as const,
+                  position: "bottom" as const,
                   labels: {
                     usePointStyle: true,
-                    padding: 15
-                  }
+                    padding: 15,
+                  },
                 },
                 tooltip: {
                   callbacks: {
@@ -358,38 +398,38 @@ export const InteractiveExample: Story = {
                     label: (context) => {
                       const point = context.parsed;
                       return `X: ${point.x.toFixed(1)}, Y: ${point.y.toFixed(1)}`;
-                    }
-                  }
-                }
+                    },
+                  },
+                },
               },
               scales: {
                 x: {
                   title: {
                     display: true,
-                    text: 'X Variable (Marketing Spend)',
+                    text: "X Variable (Marketing Spend)",
                     font: {
                       size: 12,
-                      weight: 'bold' as const
-                    }
+                      weight: "bold" as const,
+                    },
                   },
                   grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
-                  }
+                    color: "rgba(0, 0, 0, 0.1)",
+                  },
                 },
                 y: {
                   title: {
                     display: true,
-                    text: 'Y Variable (Sales Revenue)',
+                    text: "Y Variable (Sales Revenue)",
                     font: {
                       size: 12,
-                      weight: 'bold' as const
-                    }
+                      weight: "bold" as const,
+                    },
                   },
                   grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
-                  }
-                }
-              }
+                    color: "rgba(0, 0, 0, 0.1)",
+                  },
+                },
+              },
             }}
           />
         </div>
@@ -401,7 +441,12 @@ export const InteractiveExample: Story = {
 export const ClusterAnalysis: Story = {
   render: () => {
     // Generate clustered data
-    const generateCluster = (centerX: number, centerY: number, count: number, spread: number = 15) => {
+    const generateCluster = (
+      centerX: number,
+      centerY: number,
+      count: number,
+      spread: number = 15,
+    ) => {
       return Array.from({ length: count }, () => ({
         x: centerX + (Math.random() - 0.5) * spread,
         y: centerY + (Math.random() - 0.5) * spread,
@@ -420,58 +465,58 @@ export const ClusterAnalysis: Story = {
           data={{
             datasets: [
               {
-                label: 'High Value - Low Frequency',
+                label: "High Value - Low Frequency",
                 data: cluster1,
-                backgroundColor: 'rgba(59, 130, 246, 0.7)',
-                borderColor: 'rgb(59, 130, 246)',
+                backgroundColor: "rgba(59, 130, 246, 0.7)",
+                borderColor: "rgb(59, 130, 246)",
                 borderWidth: 2,
                 pointRadius: 6,
                 pointHoverRadius: 10,
               },
               {
-                label: 'Low Value - High Frequency',
+                label: "Low Value - High Frequency",
                 data: cluster2,
-                backgroundColor: 'rgba(34, 197, 94, 0.7)',
-                borderColor: 'rgb(34, 197, 94)',
+                backgroundColor: "rgba(34, 197, 94, 0.7)",
+                borderColor: "rgb(34, 197, 94)",
                 borderWidth: 2,
                 pointRadius: 6,
                 pointHoverRadius: 10,
               },
               {
-                label: 'Medium Value - Medium Frequency',
+                label: "Medium Value - Medium Frequency",
                 data: cluster3,
-                backgroundColor: 'rgba(245, 158, 11, 0.7)',
-                borderColor: 'rgb(245, 158, 11)',
+                backgroundColor: "rgba(245, 158, 11, 0.7)",
+                borderColor: "rgb(245, 158, 11)",
                 borderWidth: 2,
                 pointRadius: 6,
                 pointHoverRadius: 10,
               },
               {
-                label: 'Outliers',
+                label: "Outliers",
                 data: outliers,
-                backgroundColor: 'rgba(239, 68, 68, 0.7)',
-                borderColor: 'rgb(239, 68, 68)',
+                backgroundColor: "rgba(239, 68, 68, 0.7)",
+                borderColor: "rgb(239, 68, 68)",
                 borderWidth: 2,
                 pointRadius: 4,
                 pointHoverRadius: 8,
-              }
-            ]
+              },
+            ],
           }}
           options={{
             scales: {
               x: {
                 title: {
                   display: true,
-                  text: 'Customer Lifetime Value ($k)'
-                }
+                  text: "Customer Lifetime Value ($k)",
+                },
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Purchase Frequency (per year)'
-                }
-              }
-            }
+                  text: "Purchase Frequency (per year)",
+                },
+              },
+            },
           }}
         />
       </div>
@@ -481,8 +526,8 @@ export const ClusterAnalysis: Story = {
 
 export const CustomStyling: Story = {
   render: () => {
-    const performanceData = generateScatterData(35, 'positive');
-    const competitorData = generateScatterData(30, 'none');
+    const performanceData = generateScatterData(35, "positive");
+    const competitorData = generateScatterData(30, "none");
 
     return (
       <div style={{ height: "500px" }} class="bg-base-200 p-6 rounded-box">
@@ -492,41 +537,41 @@ export const CustomStyling: Story = {
           data={{
             datasets: [
               {
-                label: 'Our Performance',
+                label: "Our Performance",
                 data: performanceData,
-                backgroundColor: 'rgba(16, 185, 129, 0.8)',
-                borderColor: 'rgb(16, 185, 129)',
+                backgroundColor: "rgba(16, 185, 129, 0.8)",
+                borderColor: "rgb(16, 185, 129)",
                 borderWidth: 2,
                 pointRadius: 6,
                 pointHoverRadius: 12,
               },
               {
-                label: 'Industry Average',
+                label: "Industry Average",
                 data: competitorData,
-                backgroundColor: 'rgba(156, 163, 175, 0.6)',
-                borderColor: 'rgb(107, 114, 128)',
+                backgroundColor: "rgba(156, 163, 175, 0.6)",
+                borderColor: "rgb(107, 114, 128)",
                 borderWidth: 1,
                 pointRadius: 4,
                 pointHoverRadius: 8,
-              }
-            ]
+              },
+            ],
           }}
           options={{
             plugins: {
               legend: {
-                position: 'bottom',
+                position: "bottom",
                 labels: {
                   usePointStyle: true,
                   padding: 20,
                   font: {
-                    size: 14
-                  }
-                }
+                    size: 14,
+                  },
+                },
               },
               tooltip: {
-                backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                titleColor: 'white',
-                bodyColor: 'white',
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                titleColor: "white",
+                bodyColor: "white",
                 cornerRadius: 8,
                 displayColors: false,
                 callbacks: {
@@ -534,38 +579,38 @@ export const CustomStyling: Story = {
                   label: (context) => {
                     const point = context.parsed;
                     return `Efficiency: ${point.x}%, Quality: ${point.y}%`;
-                  }
-                }
-              }
+                  },
+                },
+              },
             },
             scales: {
               x: {
                 title: {
                   display: true,
-                  text: 'Efficiency Score (%)',
+                  text: "Efficiency Score (%)",
                   font: {
                     size: 14,
-                    weight: 'bold'
-                  }
+                    weight: "bold",
+                  },
                 },
                 grid: {
-                  color: 'rgba(0, 0, 0, 0.1)'
-                }
+                  color: "rgba(0, 0, 0, 0.1)",
+                },
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Quality Score (%)',
+                  text: "Quality Score (%)",
                   font: {
                     size: 14,
-                    weight: 'bold'
-                  }
+                    weight: "bold",
+                  },
                 },
                 grid: {
-                  color: 'rgba(0, 0, 0, 0.1)'
-                }
-              }
-            }
+                  color: "rgba(0, 0, 0, 0.1)",
+                },
+              },
+            },
           }}
         />
       </div>

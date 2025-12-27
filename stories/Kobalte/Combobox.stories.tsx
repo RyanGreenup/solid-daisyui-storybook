@@ -121,7 +121,7 @@ export const ManualTrigger: Story = {
 export const Controlled: Story = {
   render: () => {
     const [value, setValue] = createSignal("");
-    
+
     return (
       <div class="space-y-4">
         <SingleCombobox
@@ -143,7 +143,7 @@ export const MultipleComboboxes: Story = {
   render: () => {
     const [fruit, setFruit] = createSignal("");
     const [country, setCountry] = createSignal("");
-    
+
     return (
       <div class="space-y-6">
         <div>
@@ -183,12 +183,12 @@ export const InForm: Story = {
       fruit: "",
       country: "",
     });
-    
+
     const handleSubmit = (e: Event) => {
       e.preventDefault();
       alert(JSON.stringify(formData(), null, 2));
     };
-    
+
     return (
       <form onSubmit={handleSubmit} class="space-y-4 max-w-md">
         <div class="form-control">
@@ -199,10 +199,12 @@ export const InForm: Story = {
             type="text"
             class="input input-bordered"
             value={formData().name}
-            onInput={(e) => setFormData({ ...formData(), name: e.currentTarget.value })}
+            onInput={(e) =>
+              setFormData({ ...formData(), name: e.currentTarget.value })
+            }
           />
         </div>
-        
+
         <div class="form-control">
           <SingleCombobox
             options={fruits}
@@ -212,7 +214,7 @@ export const InForm: Story = {
             label="Favorite Fruit"
           />
         </div>
-        
+
         <div class="form-control">
           <SingleCombobox
             options={countries}
@@ -222,7 +224,7 @@ export const InForm: Story = {
             label="Country"
           />
         </div>
-        
+
         <button type="submit" class="btn btn-primary">
           Submit
         </button>

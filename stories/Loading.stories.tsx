@@ -106,7 +106,14 @@ export const Infinity: Story = {
 
 export const WithColors: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "1rem", "align-items": "center", "flex-wrap": "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        "align-items": "center",
+        "flex-wrap": "wrap",
+      }}
+    >
       <Loading variant="spinner" class="text-primary" />
       <Loading variant="spinner" class="text-secondary" />
       <Loading variant="spinner" class="text-accent" />
@@ -190,7 +197,14 @@ export const AllVariants: Story = {
 
       <div>
         <h3 class="text-lg font-semibold mb-2">With Colors</h3>
-        <div style={{ display: "flex", gap: "1rem", "align-items": "center", "flex-wrap": "wrap" }}>
+        <div
+          style={{
+            display: "flex",
+            gap: "1rem",
+            "align-items": "center",
+            "flex-wrap": "wrap",
+          }}
+        >
           <Loading variant="spinner" class="text-primary" />
           <Loading variant="spinner" class="text-secondary" />
           <Loading variant="spinner" class="text-accent" />
@@ -222,7 +236,7 @@ export const InteractiveDemo: Story = {
         { text: "Fetching data...", delay: 1200 },
         { text: "Processing results...", delay: 1000 },
         { text: "Almost done...", delay: 600 },
-        { text: "Complete!", delay: 400 }
+        { text: "Complete!", delay: 400 },
       ];
 
       let currentProgress = 0;
@@ -230,7 +244,7 @@ export const InteractiveDemo: Story = {
         setLoadingText(steps[i].text);
         currentProgress = ((i + 1) / steps.length) * 100;
         setProgress(currentProgress);
-        await new Promise(resolve => setTimeout(resolve, steps[i].delay));
+        await new Promise((resolve) => setTimeout(resolve, steps[i].delay));
       }
 
       // Reset after showing success
@@ -242,14 +256,35 @@ export const InteractiveDemo: Story = {
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "500px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "500px",
+        }}
+      >
         <Card class="bg-base-200 border border-base-300">
           <Card.Body>
             <Card.Title>Loading States Demo</Card.Title>
 
-            <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+            <div
+              style={{
+                display: "flex",
+                "flex-direction": "column",
+                gap: "1.5rem",
+              }}
+            >
               <div class="text-center">
-                <div style={{ display: "flex", "justify-content": "center", "align-items": "center", gap: "1rem", "min-height": "80px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    "justify-content": "center",
+                    "align-items": "center",
+                    gap: "1rem",
+                    "min-height": "80px",
+                  }}
+                >
                   <Transition
                     enterActiveClass="transition-all duration-300 ease-out"
                     enterClass="opacity-0 scale-75"
@@ -259,7 +294,11 @@ export const InteractiveDemo: Story = {
                     exitToClass="opacity-0 scale-75"
                   >
                     <Show when={isLoading()}>
-                      <Loading variant="spinner" size="lg" class="text-primary" />
+                      <Loading
+                        variant="spinner"
+                        size="lg"
+                        class="text-primary"
+                      />
                     </Show>
                   </Transition>
                   <div class="text-lg font-medium">{loadingText()}</div>
@@ -298,7 +337,14 @@ export const InteractiveDemo: Story = {
           <Card.Body>
             <Card.Title>Different Loading Styles</Card.Title>
 
-            <div style={{ display: "grid", "grid-template-columns": "repeat(3, 1fr)", gap: "1rem", "text-align": "center" }}>
+            <div
+              style={{
+                display: "grid",
+                "grid-template-columns": "repeat(3, 1fr)",
+                gap: "1rem",
+                "text-align": "center",
+              }}
+            >
               <div>
                 <div class="font-medium mb-2">Spinner</div>
                 <Loading variant="spinner" size="lg" class="text-primary" />

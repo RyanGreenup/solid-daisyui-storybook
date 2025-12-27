@@ -3,7 +3,10 @@ import { createSignal, createMemo, For, onMount } from "solid-js";
 import { BubbleChart } from "../../../src/solid-daisy-components/components/viz/chart_js/BubbleChart";
 import { Select } from "../../../src/solid-daisy-components/components/Select";
 import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
-import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
 import { Range } from "../../../src/solid-daisy-components/components/Range";
 
 const meta = {
@@ -22,21 +25,21 @@ const generateBubbleData = (count: number = 20) => {
     data.push({
       x: Math.random() * 100,
       y: Math.random() * 100,
-      r: Math.random() * 20 + 5
+      r: Math.random() * 20 + 5,
     });
   }
   return data;
 };
 
 const generateCompanyData = () => [
-  { x: 85, y: 12, r: 15, company: 'Tech Corp' },
-  { x: 92, y: 8, r: 25, company: 'Innovation Inc' },
-  { x: 78, y: 15, r: 12, company: 'StartupX' },
-  { x: 88, y: 10, r: 30, company: 'MegaCorp' },
-  { x: 71, y: 18, r: 8, company: 'SmallCo' },
-  { x: 95, y: 5, r: 35, company: 'Enterprise Ltd' },
-  { x: 82, y: 14, r: 18, company: 'GrowthCo' },
-  { x: 75, y: 20, r: 10, company: 'AgileStudio' }
+  { x: 85, y: 12, r: 15, company: "Tech Corp" },
+  { x: 92, y: 8, r: 25, company: "Innovation Inc" },
+  { x: 78, y: 15, r: 12, company: "StartupX" },
+  { x: 88, y: 10, r: 30, company: "MegaCorp" },
+  { x: 71, y: 18, r: 8, company: "SmallCo" },
+  { x: 95, y: 5, r: 35, company: "Enterprise Ltd" },
+  { x: 82, y: 14, r: 18, company: "GrowthCo" },
+  { x: 75, y: 20, r: 10, company: "AgileStudio" },
 ];
 
 export const Basic: Story = {
@@ -48,13 +51,15 @@ export const Basic: Story = {
         <BubbleChart
           title="Basic Bubble Chart"
           data={{
-            datasets: [{
-              label: 'Dataset 1',
-              data: bubbleData,
-              backgroundColor: 'rgba(59, 130, 246, 0.6)',
-              borderColor: 'rgb(59, 130, 246)',
-              borderWidth: 1
-            }]
+            datasets: [
+              {
+                label: "Dataset 1",
+                data: bubbleData,
+                backgroundColor: "rgba(59, 130, 246, 0.6)",
+                borderColor: "rgb(59, 130, 246)",
+                borderWidth: 1,
+              },
+            ],
           }}
         />
       </div>
@@ -75,27 +80,27 @@ export const MultipleDatasets: Story = {
           data={{
             datasets: [
               {
-                label: 'Product A',
+                label: "Product A",
                 data: dataset1,
-                backgroundColor: 'rgba(34, 197, 94, 0.6)',
-                borderColor: 'rgb(34, 197, 94)',
-                borderWidth: 2
+                backgroundColor: "rgba(34, 197, 94, 0.6)",
+                borderColor: "rgb(34, 197, 94)",
+                borderWidth: 2,
               },
               {
-                label: 'Product B',
+                label: "Product B",
                 data: dataset2,
-                backgroundColor: 'rgba(239, 68, 68, 0.6)',
-                borderColor: 'rgb(239, 68, 68)',
-                borderWidth: 2
+                backgroundColor: "rgba(239, 68, 68, 0.6)",
+                borderColor: "rgb(239, 68, 68)",
+                borderWidth: 2,
               },
               {
-                label: 'Product C',
+                label: "Product C",
                 data: dataset3,
-                backgroundColor: 'rgba(245, 158, 11, 0.6)',
-                borderColor: 'rgb(245, 158, 11)',
-                borderWidth: 2
-              }
-            ]
+                backgroundColor: "rgba(245, 158, 11, 0.6)",
+                borderColor: "rgb(245, 158, 11)",
+                borderWidth: 2,
+              },
+            ],
           }}
         />
       </div>
@@ -112,50 +117,52 @@ export const BusinessMetrics: Story = {
         <BubbleChart
           title="Company Performance Analysis"
           data={{
-            datasets: [{
-              label: 'Companies',
-              data: companyData,
-              backgroundColor: [
-                'rgba(59, 130, 246, 0.6)',
-                'rgba(34, 197, 94, 0.6)',
-                'rgba(239, 68, 68, 0.6)',
-                'rgba(245, 158, 11, 0.6)',
-                'rgba(147, 51, 234, 0.6)',
-                'rgba(16, 185, 129, 0.6)',
-                'rgba(236, 72, 153, 0.6)',
-                'rgba(20, 184, 166, 0.6)'
-              ],
-              borderColor: [
-                'rgb(59, 130, 246)',
-                'rgb(34, 197, 94)',
-                'rgb(239, 68, 68)',
-                'rgb(245, 158, 11)',
-                'rgb(147, 51, 234)',
-                'rgb(16, 185, 129)',
-                'rgb(236, 72, 153)',
-                'rgb(20, 184, 166)'
-              ],
-              borderWidth: 2
-            }]
+            datasets: [
+              {
+                label: "Companies",
+                data: companyData,
+                backgroundColor: [
+                  "rgba(59, 130, 246, 0.6)",
+                  "rgba(34, 197, 94, 0.6)",
+                  "rgba(239, 68, 68, 0.6)",
+                  "rgba(245, 158, 11, 0.6)",
+                  "rgba(147, 51, 234, 0.6)",
+                  "rgba(16, 185, 129, 0.6)",
+                  "rgba(236, 72, 153, 0.6)",
+                  "rgba(20, 184, 166, 0.6)",
+                ],
+                borderColor: [
+                  "rgb(59, 130, 246)",
+                  "rgb(34, 197, 94)",
+                  "rgb(239, 68, 68)",
+                  "rgb(245, 158, 11)",
+                  "rgb(147, 51, 234)",
+                  "rgb(16, 185, 129)",
+                  "rgb(236, 72, 153)",
+                  "rgb(20, 184, 166)",
+                ],
+                borderWidth: 2,
+              },
+            ],
           }}
           options={{
             scales: {
               x: {
                 title: {
                   display: true,
-                  text: 'Customer Satisfaction (%)'
+                  text: "Customer Satisfaction (%)",
                 },
                 min: 60,
-                max: 100
+                max: 100,
               },
               y: {
                 title: {
                   display: true,
-                  text: 'Time to Market (months)'
+                  text: "Time to Market (months)",
                 },
                 min: 0,
-                max: 25
-              }
+                max: 25,
+              },
             },
             plugins: {
               tooltip: {
@@ -167,12 +174,12 @@ export const BusinessMetrics: Story = {
                       `Company: ${company}`,
                       `Satisfaction: ${point.x}%`,
                       `Time to Market: ${point.y} months`,
-                      `Market Size: ${point.r * 2}B`
+                      `Market Size: ${point.r * 2}B`,
                     ];
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           }}
         />
       </div>
@@ -189,21 +196,21 @@ export const InteractiveExample: Story = {
     const [hasRendered, setHasRendered] = createSignal(false);
 
     onMount(() => {
-        if (!hasRendered()) {
-            setTimeout(() => setHasRendered(true), 500);
-        }
+      if (!hasRendered()) {
+        setTimeout(() => setHasRendered(true), 500);
+      }
     });
 
     // Color schemes for different datasets
     const colorSchemes = [
-      { bg: 'rgba(59, 130, 246, 0.6)', border: 'rgb(59, 130, 246)' },
-      { bg: 'rgba(34, 197, 94, 0.6)', border: 'rgb(34, 197, 94)' },
-      { bg: 'rgba(239, 68, 68, 0.6)', border: 'rgb(239, 68, 68)' },
-      { bg: 'rgba(245, 158, 11, 0.6)', border: 'rgb(245, 158, 11)' }
+      { bg: "rgba(59, 130, 246, 0.6)", border: "rgb(59, 130, 246)" },
+      { bg: "rgba(34, 197, 94, 0.6)", border: "rgb(34, 197, 94)" },
+      { bg: "rgba(239, 68, 68, 0.6)", border: "rgb(239, 68, 68)" },
+      { bg: "rgba(245, 158, 11, 0.6)", border: "rgb(245, 158, 11)" },
     ];
 
     const chartData = createMemo(() => {
-      console.log('Generating bubble chart data...');
+      console.log("Generating bubble chart data...");
       const datasets = [];
 
       for (let i = 0; i < datasetCount(); i++) {
@@ -212,7 +219,7 @@ export const InteractiveExample: Story = {
           data: generateBubbleData(bubbleCount()),
           backgroundColor: colorSchemes[i % colorSchemes.length].bg,
           borderColor: colorSchemes[i % colorSchemes.length].border,
-          borderWidth: showBorders() ? 2 : 0
+          borderWidth: showBorders() ? 2 : 0,
         });
       }
 
@@ -220,7 +227,9 @@ export const InteractiveExample: Story = {
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+      <div
+        style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}
+      >
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Bubble Chart Configuration</Fieldset.Legend>
 
@@ -235,7 +244,9 @@ export const InteractiveExample: Story = {
                 step={1}
                 valueSignal={[datasetCount, setDatasetCount]}
               />
-              <div class="text-xs text-base-content/70 mt-1">1 to 4 datasets</div>
+              <div class="text-xs text-base-content/70 mt-1">
+                1 to 4 datasets
+              </div>
             </div>
 
             <div>
@@ -248,7 +259,9 @@ export const InteractiveExample: Story = {
                 step={1}
                 valueSignal={[bubbleCount, setBubbleCount]}
               />
-              <div class="text-xs text-base-content/70 mt-1">5 to 30 bubbles</div>
+              <div class="text-xs text-base-content/70 mt-1">
+                5 to 30 bubbles
+              </div>
             </div>
 
             <div class="form-control">
@@ -277,20 +290,21 @@ export const InteractiveExample: Story = {
           </div>
 
           <Label class="text-sm opacity-70 mt-4">
-            Showing {datasetCount()} dataset{datasetCount() > 1 ? 's' : ''} with {bubbleCount()} bubbles each
-            ({datasetCount() * bubbleCount()} total bubbles)
-            {showBorders() && ' with borders'}
-            {animationEnabled() && ' with animations'}
+            Showing {datasetCount()} dataset{datasetCount() > 1 ? "s" : ""} with{" "}
+            {bubbleCount()} bubbles each ({datasetCount() * bubbleCount()} total
+            bubbles)
+            {showBorders() && " with borders"}
+            {animationEnabled() && " with animations"}
           </Label>
         </Fieldset>
 
         <div style={{ height: "500px" }}>
           <BubbleChart
-            title={`Interactive Bubble Chart - ${datasetCount()} Dataset${datasetCount() > 1 ? 's' : ''}`}
+            title={`Interactive Bubble Chart - ${datasetCount()} Dataset${datasetCount() > 1 ? "s" : ""}`}
             data={chartData()}
             options={{
               animation: {
-                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
+                duration: animationEnabled() ? 750 : hasRendered() ? 0 : 1000,
               },
               plugins: {
                 tooltip: {
@@ -301,12 +315,12 @@ export const InteractiveExample: Story = {
                         `${context.dataset.label}`,
                         `X: ${point.x.toFixed(1)}`,
                         `Y: ${point.y.toFixed(1)}`,
-                        `Size: ${point.r.toFixed(1)}`
+                        `Size: ${point.r.toFixed(1)}`,
                       ];
-                    }
-                  }
-                }
-              }
+                    },
+                  },
+                },
+              },
             }}
           />
         </div>
@@ -327,74 +341,79 @@ export const SalesAnalysis: Story = {
       { x: 43, y: 890000, r: 14 },
       { x: 55, y: 760000, r: 20 },
       { x: 71, y: 620000, r: 25 },
-      { x: 34, y: 1050000, r: 10 }
+      { x: 34, y: 1050000, r: 10 },
     ];
 
     return (
-      <div style={{ height: "500px" }} class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-box">
+      <div
+        style={{ height: "500px" }}
+        class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-box"
+      >
         <div class="bg-white rounded-box p-4 shadow-lg h-full">
           <BubbleChart
             title="Sales Team Performance Analysis"
             className="h-full"
             data={{
-              datasets: [{
-                label: 'Sales Teams',
-                data: salesData,
-                backgroundColor: 'rgba(99, 102, 241, 0.6)',
-                borderColor: 'rgb(99, 102, 241)',
-                borderWidth: 2
-              }]
+              datasets: [
+                {
+                  label: "Sales Teams",
+                  data: salesData,
+                  backgroundColor: "rgba(99, 102, 241, 0.6)",
+                  borderColor: "rgb(99, 102, 241)",
+                  borderWidth: 2,
+                },
+              ],
             }}
             options={{
               scales: {
                 x: {
                   title: {
                     display: true,
-                    text: 'Customer Satisfaction Score (%)',
-                    font: { size: 14 }
+                    text: "Customer Satisfaction Score (%)",
+                    font: { size: 14 },
                   },
                   min: 20,
                   max: 80,
                   grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
-                  }
+                    color: "rgba(0, 0, 0, 0.1)",
+                  },
                 },
                 y: {
                   title: {
                     display: true,
-                    text: 'Annual Revenue ($)',
-                    font: { size: 14 }
+                    text: "Annual Revenue ($)",
+                    font: { size: 14 },
                   },
                   min: 500000,
                   max: 1300000,
                   ticks: {
-                    callback: function(value) {
-                      return '$' + (Number(value) / 1000) + 'K';
-                    }
+                    callback: function (value) {
+                      return "$" + Number(value) / 1000 + "K";
+                    },
                   },
                   grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
-                  }
-                }
+                    color: "rgba(0, 0, 0, 0.1)",
+                  },
+                },
               },
               plugins: {
                 legend: {
-                  position: 'bottom' as const
+                  position: "bottom" as const,
                 },
                 tooltip: {
                   callbacks: {
                     label: (context: any) => {
                       const point = context.parsed;
                       return [
-                        'Sales Team Performance:',
+                        "Sales Team Performance:",
                         `Satisfaction: ${point.x}%`,
                         `Revenue: $${(point.y / 1000).toFixed(0)}K`,
-                        `Team Size: ${point.r} people`
+                        `Team Size: ${point.r} people`,
                       ];
-                    }
-                  }
-                }
-              }
+                    },
+                  },
+                },
+              },
             }}
           />
         </div>
@@ -427,29 +446,31 @@ export const RealTimeSimulation: Story = {
         <div class="flex justify-between items-center p-4 bg-base-200 rounded-box">
           <h3 class="text-lg font-semibold">Real-time Data Simulation</h3>
           <button
-            class={`btn ${isRunning() ? 'btn-error' : 'btn-primary'}`}
+            class={`btn ${isRunning() ? "btn-error" : "btn-primary"}`}
             onClick={toggleSimulation}
           >
-            {isRunning() ? 'Stop' : 'Start'} Simulation
+            {isRunning() ? "Stop" : "Start"} Simulation
           </button>
         </div>
 
         <div style={{ height: "400px" }}>
           <BubbleChart
-            title={`Live Bubble Chart ${isRunning() ? '(Updating every 1.5s)' : '(Paused)'}`}
+            title={`Live Bubble Chart ${isRunning() ? "(Updating every 1.5s)" : "(Paused)"}`}
             data={{
-              datasets: [{
-                label: 'Live Data Points',
-                data: data(),
-                backgroundColor: 'rgba(16, 185, 129, 0.6)',
-                borderColor: 'rgb(16, 185, 129)',
-                borderWidth: 2
-              }]
+              datasets: [
+                {
+                  label: "Live Data Points",
+                  data: data(),
+                  backgroundColor: "rgba(16, 185, 129, 0.6)",
+                  borderColor: "rgb(16, 185, 129)",
+                  borderWidth: 2,
+                },
+              ],
             }}
             options={{
               animation: {
-                duration: 500
-              }
+                duration: 500,
+              },
             }}
           />
         </div>

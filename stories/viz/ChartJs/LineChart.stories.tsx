@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal, createMemo } from "solid-js";
-import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
 import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
 import { Select } from "../../../src/solid-daisy-components/components/Select";
 import { LineChart } from "../../../src/solid-daisy-components/components/viz/chart_js/LineChart";
@@ -250,7 +253,9 @@ export const StepLine: Story = {
 
 export const RealTimeSimulation: Story = {
   render: () => {
-    const [data, setData] = createSignal([Math.floor(Math.random() * 10000) + 5000]);
+    const [data, setData] = createSignal([
+      Math.floor(Math.random() * 10000) + 5000,
+    ]);
     const [labels, setLabels] = createSignal([new Date().toLocaleTimeString()]);
     const MAX_DATA_POINTS = 1000;
     const DURATION = 100;
@@ -263,9 +268,7 @@ export const RealTimeSimulation: Story = {
       setData((prev) => {
         const newData = [...prev, newValue];
         // Reset to last 10 points when we hit the threshold
-        return newData.length > MAX_DATA_POINTS
-          ? newData.slice(-10)
-          : newData;
+        return newData.length > MAX_DATA_POINTS ? newData.slice(-10) : newData;
       });
 
       setLabels((prev) => {
@@ -290,17 +293,17 @@ export const RealTimeSimulation: Story = {
                 display: true,
                 title: {
                   display: true,
-                  text: 'Time'
-                }
+                  text: "Time",
+                },
               },
               y: {
                 display: true,
                 title: {
                   display: true,
-                  text: 'Value'
-                }
-              }
-            }
+                  text: "Value",
+                },
+              },
+            },
           }}
           data={{
             labels: labels(),

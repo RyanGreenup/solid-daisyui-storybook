@@ -2,7 +2,10 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal, createMemo, onMount } from "solid-js";
 import { PolarAreaChart } from "../../../src/solid-daisy-components/components/viz/chart_js/PolarAreaChart";
 import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
-import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
 import { Select } from "../../../src/solid-daisy-components/components/Select";
 
 const meta = {

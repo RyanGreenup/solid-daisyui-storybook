@@ -247,8 +247,12 @@ export const WithDaisyUI: Story = {
                     Responsive Drawer Layout
                   </h1>
                   <p class="text-xl text-base-content/70 leading-relaxed">
-                    A modern, flexible layout system built with pure <span class="badge badge-outline badge-primary mx-1">CSS</span>
-                    and enhanced with beautiful components. No JavaScript required for core functionality.
+                    A modern, flexible layout system built with pure{" "}
+                    <span class="badge badge-outline badge-primary mx-1">
+                      CSS
+                    </span>
+                    and enhanced with beautiful components. No JavaScript
+                    required for core functionality.
                   </p>
                 </div>
               </div>
@@ -266,14 +270,18 @@ export const WithDaisyUI: Story = {
                       <div class="badge badge-primary badge-sm mt-1">1</div>
                       <div>
                         <h3 class="font-semibold">Bottom Dock</h3>
-                        <p class="text-sm text-base-content/60">Status bar with contextual information</p>
+                        <p class="text-sm text-base-content/60">
+                          Status bar with contextual information
+                        </p>
                       </div>
                     </div>
                     <div class="flex items-start space-x-3">
                       <div class="badge badge-secondary badge-sm mt-1">2</div>
                       <div>
                         <h3 class="font-semibold">Top Navbar</h3>
-                        <p class="text-sm text-base-content/60">Navigation header with brand and controls</p>
+                        <p class="text-sm text-base-content/60">
+                          Navigation header with brand and controls
+                        </p>
                       </div>
                     </div>
                     <div class="flex items-start space-x-3">
@@ -287,7 +295,12 @@ export const WithDaisyUI: Story = {
                           </div>
                           <div class="flex items-center space-x-2">
                             <span class="w-2 h-2 bg-success rounded-full"></span>
-                            <span class="text-sm">Fixed Sidebar on Desktop <code class="text-xs bg-base-300 px-1 rounded">&gt; md</code></span>
+                            <span class="text-sm">
+                              Fixed Sidebar on Desktop{" "}
+                              <code class="text-xs bg-base-300 px-1 rounded">
+                                &gt; md
+                              </code>
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -305,15 +318,29 @@ export const WithDaisyUI: Story = {
                   <div class="space-y-4">
                     <div class="alert alert-success">
                       <CheckCircle class="shrink-0 h-6 w-6" />
-                      <span class="text-sm"><strong>Zero JavaScript</strong> for core interactions</span>
+                      <span class="text-sm">
+                        <strong>Zero JavaScript</strong> for core interactions
+                      </span>
                     </div>
                     <div class="alert alert-info">
                       <Info class="shrink-0 h-6 w-6" />
-                      <span class="text-sm">Uses <code class="bg-base-300 px-1 rounded text-xs">input</code> & <code class="bg-base-300 px-1 rounded text-xs">label</code> elements</span>
+                      <span class="text-sm">
+                        Uses{" "}
+                        <code class="bg-base-300 px-1 rounded text-xs">
+                          input
+                        </code>{" "}
+                        &{" "}
+                        <code class="bg-base-300 px-1 rounded text-xs">
+                          label
+                        </code>{" "}
+                        elements
+                      </span>
                     </div>
                     <div class="alert alert-warning">
                       <AlertTriangle class="shrink-0 h-6 w-6" />
-                      <span class="text-sm">Lightweight & performant CSS architecture</span>
+                      <span class="text-sm">
+                        Lightweight & performant CSS architecture
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -324,7 +351,12 @@ export const WithDaisyUI: Story = {
               <Button color="primary" size="lg" class="shadow-lg">
                 Get Started
               </Button>
-              <Button variant="outline" color="secondary" size="lg" class="shadow-lg">
+              <Button
+                variant="outline"
+                color="secondary"
+                size="lg"
+                class="shadow-lg"
+              >
                 View Documentation
               </Button>
               <Button variant="ghost" color="accent" size="lg">

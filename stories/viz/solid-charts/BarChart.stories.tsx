@@ -35,9 +35,9 @@ This BarChart component is built on top of solid-charts, which renders charts as
 - **Performance metrics** across different categories
 
 For continuous data or trend analysis, consider using the LineChart component instead.
-        `
-      }
-    }
+        `,
+      },
+    },
   },
   argTypes: {
     layout: {
@@ -66,13 +66,13 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const sampleData = [
-  { category: 'Day 1', sales: 21, expenses: 18, profit: 3 },
-  { category: 'Day 2', sales: 38, expenses: 10, profit: 28 },
-  { category: 'Day 3', sales: 25, expenses: 29, profit: -4 },
-  { category: 'Day 4', sales: 21, expenses: 11, profit: 10 },
-  { category: 'Day 5', sales: 29, expenses: 17, profit: 12 },
-  { category: 'Day 6', sales: 39, expenses: 27, profit: 12 },
-  { category: 'Day 7', sales: 38, expenses: 15, profit: 23 },
+  { category: "Day 1", sales: 21, expenses: 18, profit: 3 },
+  { category: "Day 2", sales: 38, expenses: 10, profit: 28 },
+  { category: "Day 3", sales: 25, expenses: 29, profit: -4 },
+  { category: "Day 4", sales: 21, expenses: 11, profit: 10 },
+  { category: "Day 5", sales: 29, expenses: 17, profit: 12 },
+  { category: "Day 6", sales: 39, expenses: 27, profit: 12 },
+  { category: "Day 7", sales: 38, expenses: 15, profit: 23 },
 ];
 
 export const SingleSeries: Story = {
@@ -80,9 +80,7 @@ export const SingleSeries: Story = {
     <BarChart
       data={sampleData}
       xAxisKey="category"
-      bars={[
-        { dataKey: "sales", class: "fill-primary", label: "Sales" }
-      ]}
+      bars={[{ dataKey: "sales", class: "fill-primary", label: "Sales" }]}
     />
   ),
 };
@@ -95,7 +93,7 @@ export const DodgedBars: Story = {
       layout="dodge"
       bars={[
         { dataKey: "sales", class: "fill-success", label: "Sales" },
-        { dataKey: "expenses", class: "fill-error", label: "Expenses" }
+        { dataKey: "expenses", class: "fill-error", label: "Expenses" },
       ]}
     />
   ),
@@ -109,7 +107,7 @@ export const StackedBars: Story = {
       layout="stack"
       bars={[
         { dataKey: "expenses", class: "fill-error", label: "Expenses" },
-        { dataKey: "profit", class: "fill-success", label: "Profit" }
+        { dataKey: "profit", class: "fill-success", label: "Profit" },
       ]}
     />
   ),
@@ -120,9 +118,7 @@ export const CustomStyling: Story = {
     <BarChart
       data={sampleData}
       xAxisKey="category"
-      bars={[
-        { dataKey: "sales", class: "fill-accent", label: "Revenue" }
-      ]}
+      bars={[{ dataKey: "sales", class: "fill-accent", label: "Revenue" }]}
       showGrid={false}
       showCursor={false}
       height="h-48"
@@ -139,7 +135,7 @@ export const InteractiveDashboard: Story = {
     const metrics = [
       { value: "sales", label: "Sales", color: "fill-success" },
       { value: "expenses", label: "Expenses", color: "fill-error" },
-      { value: "profit", label: "Profit", color: "fill-primary" }
+      { value: "profit", label: "Profit", color: "fill-primary" },
     ];
 
     const getChartBars = createMemo(() => {
@@ -148,26 +144,30 @@ export const InteractiveDashboard: Story = {
         // Show both sales and expenses to calculate profit visually
         return [
           { dataKey: "sales", class: "fill-success", label: "Sales" },
-          { dataKey: "expenses", class: "fill-error", label: "Expenses" }
+          { dataKey: "expenses", class: "fill-error", label: "Expenses" },
         ];
       }
 
       // Find the metric and return it as a single-item array
-      const foundMetric = metrics.find(m => m.value === metric);
+      const foundMetric = metrics.find((m) => m.value === metric);
       if (foundMetric) {
-        return [{
-          dataKey: foundMetric.value,
-          class: foundMetric.color,
-          label: foundMetric.label
-        }];
+        return [
+          {
+            dataKey: foundMetric.value,
+            class: foundMetric.color,
+            label: foundMetric.label,
+          },
+        ];
       }
 
       // Fallback to sales if metric not found
-      return [{
-        dataKey: "sales",
-        class: "fill-success",
-        label: "Sales"
-      }];
+      return [
+        {
+          dataKey: "sales",
+          class: "fill-success",
+          label: "Sales",
+        },
+      ];
     });
 
     const currentData = createMemo(() => {
@@ -182,7 +182,14 @@ export const InteractiveDashboard: Story = {
         <Card.Body>
           <Card.Title>Business Metrics Dashboard</Card.Title>
 
-          <div style={{ display: "flex", gap: "1rem", "margin-bottom": "1rem", "flex-wrap": "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              "margin-bottom": "1rem",
+              "flex-wrap": "wrap",
+            }}
+          >
             <div>
               <label class="label">Metric:</label>
               <Select
@@ -220,11 +227,21 @@ export const InteractiveDashboard: Story = {
             width="w-full"
           />
 
-          <div style={{ display: "flex", gap: "1rem", "margin-top": "1rem", "justify-content": "center", "flex-wrap": "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "1rem",
+              "margin-top": "1rem",
+              "justify-content": "center",
+              "flex-wrap": "wrap",
+            }}
+          >
             <For each={getChartBars()}>
               {(bar) => (
                 <div class="flex items-center gap-2">
-                  <div class={`w-4 h-4 ${bar.class?.replace('fill-', 'bg-')} rounded`}></div>
+                  <div
+                    class={`w-4 h-4 ${bar.class?.replace("fill-", "bg-")} rounded`}
+                  ></div>
                   <span class="text-sm">{bar.label}</span>
                 </div>
               )}
@@ -252,9 +269,9 @@ export const RealtimeSales: Story = {
       const currentTime = new Date();
       const hour = currentTime.getHours();
       const minute = currentTime.getMinutes();
-      const timeString = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+      const timeString = `${hour.toString().padStart(2, "0")}:${minute.toString().padStart(2, "0")}`;
 
-      setSalesData(prev => {
+      setSalesData((prev) => {
         const newData = [...prev];
         if (newData.length >= 8) {
           newData.shift(); // Remove oldest point
@@ -307,13 +324,21 @@ export const RealtimeSales: Story = {
             bars={[
               { dataKey: "online", class: "fill-info", label: "Online" },
               { dataKey: "store", class: "fill-success", label: "In-Store" },
-              { dataKey: "phone", class: "fill-warning", label: "Phone" }
+              { dataKey: "phone", class: "fill-warning", label: "Phone" },
             ]}
             height="h-64"
             width="w-full"
           />
 
-          <div style={{ display: "flex", gap: "2rem", "margin-top": "1rem", "justify-content": "center", "flex-wrap": "wrap" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "2rem",
+              "margin-top": "1rem",
+              "justify-content": "center",
+              "flex-wrap": "wrap",
+            }}
+          >
             <div class="text-center">
               <div class="flex items-center gap-2 justify-center">
                 <div class="w-4 h-1 bg-info rounded"></div>
@@ -343,9 +368,7 @@ export const RealtimeSales: Story = {
             </div>
             <div class="text-center">
               <div class="text-sm">Total Sales</div>
-              <div class="text-2xl font-bold">
-                {totalSales().total}
-              </div>
+              <div class="text-2xl font-bold">{totalSales().total}</div>
             </div>
           </div>
         </Card.Body>

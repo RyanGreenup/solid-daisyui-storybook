@@ -8,7 +8,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "neutral", "primary", "secondary", "accent", "success", "warning", "info", "error"],
+      options: [
+        "default",
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "success",
+        "warning",
+        "info",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -63,56 +73,48 @@ export const WithStepsAndMeasure: Story = {
 };
 
 export const Neutral: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="neutral" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="neutral" />,
 };
 
 export const Primary: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="primary" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="primary" />,
 };
 
 export const Secondary: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="secondary" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="secondary" />,
 };
 
 export const Accent: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="accent" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="accent" />,
 };
 
 export const Success: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="success" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="success" />,
 };
 
 export const Warning: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="warning" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="warning" />,
 };
 
 export const Info: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="info" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="info" />,
 };
 
 export const Error: Story = {
-  render: () => (
-    <Range min={0} max={100} value={40} color="error" />
-  ),
+  render: () => <Range min={0} max={100} value={40} color="error" />,
 };
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", width: "100%", "max-width": "20rem" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "1rem",
+        width: "100%",
+        "max-width": "20rem",
+      }}
+    >
       <Range min={0} max={100} value={30} size="xs" />
       <Range min={0} max={100} value={40} size="sm" />
       <Range min={0} max={100} value={50} size="md" />
@@ -124,7 +126,15 @@ export const Sizes: Story = {
 
 export const Colors: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", width: "100%", "max-width": "20rem" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "1rem",
+        width: "100%",
+        "max-width": "20rem",
+      }}
+    >
       <Range min={0} max={100} value={40} />
       <Range min={0} max={100} value={40} color="neutral" />
       <Range min={0} max={100} value={40} color="primary" />
@@ -188,24 +198,42 @@ export const AllVariants: Story = {
 
       <div>
         <h3 class="text-lg font-semibold mb-2">Different Sizes</h3>
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", width: "100%", "max-width": "20rem" }}>
-          <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>
+        <div
+          style={{
+            display: "flex",
+            "flex-direction": "column",
+            gap: "1rem",
+            width: "100%",
+            "max-width": "20rem",
+          }}
+        >
+          <div
+            style={{ display: "flex", "align-items": "center", gap: "1rem" }}
+          >
             <span class="text-sm w-8">XS</span>
             <Range min={0} max={100} value={20} size="xs" color="accent" />
           </div>
-          <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", "align-items": "center", gap: "1rem" }}
+          >
             <span class="text-sm w-8">SM</span>
             <Range min={0} max={100} value={35} size="sm" color="accent" />
           </div>
-          <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", "align-items": "center", gap: "1rem" }}
+          >
             <span class="text-sm w-8">MD</span>
             <Range min={0} max={100} value={50} size="md" color="accent" />
           </div>
-          <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", "align-items": "center", gap: "1rem" }}
+          >
             <span class="text-sm w-8">LG</span>
             <Range min={0} max={100} value={65} size="lg" color="accent" />
           </div>
-          <div style={{ display: "flex", "align-items": "center", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", "align-items": "center", gap: "1rem" }}
+          >
             <span class="text-sm w-8">XL</span>
             <Range min={0} max={100} value={80} size="xl" color="accent" />
           </div>

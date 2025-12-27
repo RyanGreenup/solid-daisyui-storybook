@@ -275,7 +275,7 @@ export const BasicTable: Story = {
           "justify-content": "center",
         }}
       >
-      {/* Limit the Width of the Table */}
+        {/* Limit the Width of the Table */}
         <div
           style={{
             padding: "1.5rem",

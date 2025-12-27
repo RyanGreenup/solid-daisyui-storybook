@@ -22,7 +22,9 @@ export const Default: Story = {
       <Indicator.Item>
         <Badge color="primary">New</Badge>
       </Indicator.Item>
-      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">content</div>
+      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">
+        content
+      </div>
     </Indicator>
   ),
 };
@@ -33,7 +35,9 @@ export const StatusIndicator: Story = {
       <Indicator.Item>
         <span class="status status-success"></span>
       </Indicator.Item>
-      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">content</div>
+      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">
+        content
+      </div>
     </Indicator>
   ),
 };
@@ -44,7 +48,9 @@ export const BadgeAsIndicator: Story = {
       <Indicator.Item>
         <Badge color="primary">New</Badge>
       </Indicator.Item>
-      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">content</div>
+      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">
+        content
+      </div>
     </Indicator>
   ),
 };
@@ -67,7 +73,10 @@ export const ForAvatar: Story = {
         <Badge color="secondary">Justice</Badge>
       </Indicator.Item>
       <div class="w-20 h-20 rounded-lg">
-        <img alt="Avatar" src="https://img.daisyui.com/images/profile/demo/batperson@192.webp" />
+        <img
+          alt="Avatar"
+          src="https://img.daisyui.com/images/profile/demo/batperson@192.webp"
+        />
       </div>
     </Indicator>
   ),
@@ -79,7 +88,11 @@ export const ForInput: Story = {
       <Indicator.Item>
         <Badge>Required</Badge>
       </Indicator.Item>
-      <Input type="text" placeholder="Your email address" class="input-bordered" />
+      <Input
+        type="text"
+        placeholder="Your email address"
+        class="input-bordered"
+      />
     </Indicator>
   ),
 };
@@ -119,7 +132,13 @@ export const InCenterOfImage: Story = {
 
 export const Positions: Story = {
   render: () => (
-    <div style={{ display: "grid", "grid-template-columns": "repeat(3, 1fr)", gap: "2rem" }}>
+    <div
+      style={{
+        display: "grid",
+        "grid-template-columns": "repeat(3, 1fr)",
+        gap: "2rem",
+      }}
+    >
       {/* Top row */}
       <div>
         <h4 class="text-sm font-medium mb-2">Top Start</h4>
@@ -127,7 +146,9 @@ export const Positions: Story = {
           <Indicator.Item horizontal="start">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -137,7 +158,9 @@ export const Positions: Story = {
           <Indicator.Item horizontal="center">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -147,7 +170,9 @@ export const Positions: Story = {
           <Indicator.Item>
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -158,7 +183,9 @@ export const Positions: Story = {
           <Indicator.Item vertical="middle" horizontal="start">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -168,7 +195,9 @@ export const Positions: Story = {
           <Indicator.Item vertical="middle" horizontal="center">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -178,7 +207,9 @@ export const Positions: Story = {
           <Indicator.Item vertical="middle">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -189,7 +220,9 @@ export const Positions: Story = {
           <Indicator.Item vertical="bottom" horizontal="start">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -199,7 +232,9 @@ export const Positions: Story = {
           <Indicator.Item vertical="bottom" horizontal="center">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
 
@@ -209,7 +244,9 @@ export const Positions: Story = {
           <Indicator.Item vertical="bottom">
             <Badge color="secondary"></Badge>
           </Indicator.Item>
-          <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
+          <div class="grid w-32 h-32 bg-base-300 place-items-center">
+            content
+          </div>
         </Indicator>
       </div>
     </div>
@@ -257,7 +294,9 @@ export const Responsive: Story = {
       <Indicator.Item class="indicator-start sm:indicator-middle md:indicator-bottom lg:indicator-center xl:indicator-end">
         <Badge color="secondary">Responsive</Badge>
       </Indicator.Item>
-      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">content</div>
+      <div class="grid w-32 h-32 rounded bg-base-300 place-items-center">
+        content
+      </div>
     </Indicator>
   ),
 };
@@ -269,21 +308,42 @@ export const NotificationDemo: Story = {
     const [isOnline, setIsOnline] = createSignal(true);
     const [cartItems, setCartItems] = createSignal(0);
 
-    const addToCart = () => setCartItems(prev => prev + 1);
+    const addToCart = () => setCartItems((prev) => prev + 1);
     const clearCart = () => setCartItems(0);
-    const toggleOnline = () => setIsOnline(prev => !prev);
-    const addMessage = () => setMessages(prev => prev + 1);
+    const toggleOnline = () => setIsOnline((prev) => !prev);
+    const addMessage = () => setMessages((prev) => prev + 1);
     const clearMessages = () => setMessages(0);
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "600px",
+        }}
+      >
         <Card class="bg-base-200 border border-base-300">
           <Card.Body>
             <Card.Title>Interactive Notification Demo</Card.Title>
 
-            <div style={{ display: "flex", "flex-wrap": "wrap", gap: "2rem", "align-items": "center" }}>
+            <div
+              style={{
+                display: "flex",
+                "flex-wrap": "wrap",
+                gap: "2rem",
+                "align-items": "center",
+              }}
+            >
               {/* Messages */}
-              <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem", "align-items": "center" }}>
+              <div
+                style={{
+                  display: "flex",
+                  "flex-direction": "column",
+                  gap: "0.5rem",
+                  "align-items": "center",
+                }}
+              >
                 <Indicator>
                   <Transition
                     enterActiveClass="transition-all duration-300 ease-out"
@@ -302,13 +362,24 @@ export const NotificationDemo: Story = {
                   <Button variant="outline">Messages</Button>
                 </Indicator>
                 <div style={{ display: "flex", gap: "0.5rem" }}>
-                  <Button size="xs" onClick={addMessage}>+1</Button>
-                  <Button size="xs" variant="outline" onClick={clearMessages}>Clear</Button>
+                  <Button size="xs" onClick={addMessage}>
+                    +1
+                  </Button>
+                  <Button size="xs" variant="outline" onClick={clearMessages}>
+                    Clear
+                  </Button>
                 </div>
               </div>
 
               {/* Online Status */}
-              <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem", "align-items": "center" }}>
+              <div
+                style={{
+                  display: "flex",
+                  "flex-direction": "column",
+                  gap: "0.5rem",
+                  "align-items": "center",
+                }}
+              >
                 <Indicator class="avatar">
                   <Indicator.Item>
                     <Transition
@@ -319,7 +390,9 @@ export const NotificationDemo: Story = {
                       exitClass="opacity-100 scale-100"
                       exitToClass="opacity-0 scale-75"
                     >
-                      <span class={`w-4 h-4 rounded-full ${isOnline() ? 'bg-success' : 'bg-error'}`}></span>
+                      <span
+                        class={`w-4 h-4 rounded-full ${isOnline() ? "bg-success" : "bg-error"}`}
+                      ></span>
                     </Transition>
                   </Indicator.Item>
                   <div class="w-16 h-16 rounded-full bg-base-300 flex items-center justify-center">
@@ -332,7 +405,14 @@ export const NotificationDemo: Story = {
               </div>
 
               {/* Shopping Cart */}
-              <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem", "align-items": "center" }}>
+              <div
+                style={{
+                  display: "flex",
+                  "flex-direction": "column",
+                  gap: "0.5rem",
+                  "align-items": "center",
+                }}
+              >
                 <Indicator>
                   <Transition
                     enterActiveClass="transition-all duration-500 ease-out"
@@ -351,27 +431,45 @@ export const NotificationDemo: Story = {
                   <Button color="primary">🛒 Cart</Button>
                 </Indicator>
                 <div style={{ display: "flex", gap: "0.5rem" }}>
-                  <Button size="xs" color="primary" onClick={addToCart}>Add Item</Button>
-                  <Button size="xs" variant="outline" onClick={clearCart}>Empty</Button>
+                  <Button size="xs" color="primary" onClick={addToCart}>
+                    Add Item
+                  </Button>
+                  <Button size="xs" variant="outline" onClick={clearCart}>
+                    Empty
+                  </Button>
                 </div>
               </div>
             </div>
 
             <div class="divider">Positioned Indicators</div>
 
-            <div style={{ display: "grid", "grid-template-columns": "repeat(2, 1fr)", gap: "2rem" }}>
+            <div
+              style={{
+                display: "grid",
+                "grid-template-columns": "repeat(2, 1fr)",
+                gap: "2rem",
+              }}
+            >
               {/* Email Input with Required Indicator */}
               <Indicator>
                 <Indicator.Item horizontal="start" vertical="top">
-                  <Badge color="error" size="sm">*</Badge>
+                  <Badge color="error" size="sm">
+                    *
+                  </Badge>
                 </Indicator.Item>
-                <Input type="email" placeholder="Email (required)" class="input-bordered" />
+                <Input
+                  type="email"
+                  placeholder="Email (required)"
+                  class="input-bordered"
+                />
               </Indicator>
 
               {/* Card with Action Button */}
               <Indicator>
                 <Indicator.Item vertical="bottom" horizontal="end">
-                  <Button size="sm" color="accent">Quick Action</Button>
+                  <Button size="sm" color="accent">
+                    Quick Action
+                  </Button>
                 </Indicator.Item>
                 <Card class="bg-base-100 border border-base-300 shadow-sm">
                   <Card.Body class="p-4">
@@ -385,7 +483,9 @@ export const NotificationDemo: Story = {
         </Card>
 
         <div class="text-sm opacity-70">
-          <p><strong>Interactive Elements:</strong></p>
+          <p>
+            <strong>Interactive Elements:</strong>
+          </p>
           <ul class="list-disc list-inside space-y-1">
             <li>Message counter with smooth badge animations</li>
             <li>Online/offline status with color-coded indicator</li>

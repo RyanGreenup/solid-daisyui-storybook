@@ -43,15 +43,29 @@ export const WikiApp: Story = {
         </div>
         <div class="navbar-center hidden lg:flex">
           <div class="join">
-            <input class="input input-bordered join-item" placeholder="Search notes..." />
+            <input
+              class="input input-bordered join-item"
+              placeholder="Search notes..."
+            />
             <button class="btn join-item btn-primary">🔍</button>
           </div>
         </div>
         <div class="navbar-end">
           <button class="btn btn-ghost btn-circle">
             <div class="indicator">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5-5-5h5z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 17h5l-5 5-5-5h5z"
+                />
               </svg>
               <span class="badge badge-xs badge-primary indicator-item">3</span>
             </div>
@@ -76,7 +90,11 @@ export const WikiApp: Story = {
 
             <div class="mb-4">
               <div class="form-control">
-                <input type="text" placeholder="Quick search..." class="input input-sm input-bordered" />
+                <input
+                  type="text"
+                  placeholder="Quick search..."
+                  class="input input-sm input-bordered"
+                />
               </div>
             </div>
 
@@ -87,9 +105,15 @@ export const WikiApp: Story = {
                   <details open>
                     <summary class="font-medium">💼 Work</summary>
                     <ul>
-                      <li><a class="py-1 text-sm">📋 Meeting Notes</a></li>
-                      <li><a class="py-1 text-sm">📊 Project Planning</a></li>
-                      <li><a class="py-1 text-sm">💡 Ideas</a></li>
+                      <li>
+                        <a class="py-1 text-sm">📋 Meeting Notes</a>
+                      </li>
+                      <li>
+                        <a class="py-1 text-sm">📊 Project Planning</a>
+                      </li>
+                      <li>
+                        <a class="py-1 text-sm">💡 Ideas</a>
+                      </li>
                     </ul>
                   </details>
                 </li>
@@ -97,9 +121,15 @@ export const WikiApp: Story = {
                   <details>
                     <summary class="font-medium">🎯 Personal</summary>
                     <ul>
-                      <li><a class="py-1 text-sm">📚 Learning</a></li>
-                      <li><a class="py-1 text-sm">🎨 Creative</a></li>
-                      <li><a class="py-1 text-sm">📝 Journal</a></li>
+                      <li>
+                        <a class="py-1 text-sm">📚 Learning</a>
+                      </li>
+                      <li>
+                        <a class="py-1 text-sm">🎨 Creative</a>
+                      </li>
+                      <li>
+                        <a class="py-1 text-sm">📝 Journal</a>
+                      </li>
                     </ul>
                   </details>
                 </li>
@@ -107,8 +137,12 @@ export const WikiApp: Story = {
                   <details>
                     <summary class="font-medium">🔬 Research</summary>
                     <ul>
-                      <li><a class="py-1 text-sm">🧪 Experiments</a></li>
-                      <li><a class="py-1 text-sm">📖 References</a></li>
+                      <li>
+                        <a class="py-1 text-sm">🧪 Experiments</a>
+                      </li>
+                      <li>
+                        <a class="py-1 text-sm">📖 References</a>
+                      </li>
                     </ul>
                   </details>
                 </li>
@@ -118,13 +152,21 @@ export const WikiApp: Story = {
 
               <div class="menu-title mb-2">📄 Recent Files</div>
               <ul class="space-y-1">
-                <li><a class="py-1 text-sm flex items-center justify-between">
-                  <span>Component Architecture</span>
-                  <span class="badge badge-sm badge-primary">Active</span>
-                </a></li>
-                <li><a class="py-1 text-sm">API Design Notes</a></li>
-                <li><a class="py-1 text-sm">Weekly Review</a></li>
-                <li><a class="py-1 text-sm">Tech Stack Research</a></li>
+                <li>
+                  <a class="py-1 text-sm flex items-center justify-between">
+                    <span>Component Architecture</span>
+                    <span class="badge badge-sm badge-primary">Active</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="py-1 text-sm">API Design Notes</a>
+                </li>
+                <li>
+                  <a class="py-1 text-sm">Weekly Review</a>
+                </li>
+                <li>
+                  <a class="py-1 text-sm">Tech Stack Research</a>
+                </li>
               </ul>
             </div>
 
@@ -139,8 +181,12 @@ export const WikiApp: Story = {
             <div class="flex items-center justify-between mb-6">
               <div class="breadcrumbs text-sm">
                 <ul>
-                  <li><a>Work</a></li> 
-                  <li><a>Project Planning</a></li>
+                  <li>
+                    <a>Work</a>
+                  </li>
+                  <li>
+                    <a>Project Planning</a>
+                  </li>
                   <li>Component Architecture</li>
                 </ul>
               </div>
@@ -152,7 +198,9 @@ export const WikiApp: Story = {
 
             <article class="prose prose-lg max-w-none">
               <header class="not-prose mb-8">
-                <h1 class="text-4xl font-bold text-base-content mb-2">Component Architecture Design</h1>
+                <h1 class="text-4xl font-bold text-base-content mb-2">
+                  Component Architecture Design
+                </h1>
                 <div class="flex items-center gap-4 text-sm text-base-content/60 mb-4">
                   <span>📅 Last edited: March 15, 2024</span>
                   <span>👤 Ryan</span>
@@ -166,37 +214,91 @@ export const WikiApp: Story = {
               </header>
 
               <div class="alert alert-info mb-6">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="stroke-current shrink-0 w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
                 </svg>
-                <span><strong>Status:</strong> In Progress - Working on component hierarchy and data flow patterns</span>
+                <span>
+                  <strong>Status:</strong> In Progress - Working on component
+                  hierarchy and data flow patterns
+                </span>
               </div>
 
               <h2>Overview</h2>
-              <p>This document outlines the architectural decisions and patterns for our component library. We're focusing on creating a scalable, maintainable system that promotes reusability and consistency.</p>
+              <p>
+                This document outlines the architectural decisions and patterns
+                for our component library. We're focusing on creating a
+                scalable, maintainable system that promotes reusability and
+                consistency.
+              </p>
 
               <h3>Key Principles</h3>
               <ul>
-                <li><strong>Composition over Configuration</strong> - Components should be composable and flexible</li>
-                <li><strong>Type Safety</strong> - Leverage TypeScript for better developer experience</li>
-                <li><strong>Performance</strong> - Optimize for bundle size and runtime performance</li>
-                <li><strong>Accessibility</strong> - ARIA support and keyboard navigation by default</li>
+                <li>
+                  <strong>Composition over Configuration</strong> - Components
+                  should be composable and flexible
+                </li>
+                <li>
+                  <strong>Type Safety</strong> - Leverage TypeScript for better
+                  developer experience
+                </li>
+                <li>
+                  <strong>Performance</strong> - Optimize for bundle size and
+                  runtime performance
+                </li>
+                <li>
+                  <strong>Accessibility</strong> - ARIA support and keyboard
+                  navigation by default
+                </li>
               </ul>
 
               <div class="mockup-code mb-6">
-                <pre data-prefix="1"><code>// Example component structure</code></pre>
-                <pre data-prefix="2"><code>export const Button = (props: ButtonProps) {'=>'} {`{`}</code></pre>
-                <pre data-prefix="3"><code>  const [local, others] = splitProps(props, ['variant', 'size']);</code></pre>
-                <pre data-prefix="4"><code>  return &lt;button class={`{`}buttonVariants(local){`}`} {`{`}...others{`}`} /&gt;;</code></pre>
-                <pre data-prefix="5"><code>{`}`};</code></pre>
+                <pre data-prefix="1">
+                  <code>// Example component structure</code>
+                </pre>
+                <pre data-prefix="2">
+                  <code>
+                    export const Button = (props: ButtonProps) {"=>"} {`{`}
+                  </code>
+                </pre>
+                <pre data-prefix="3">
+                  <code>
+                    {" "}
+                    const [local, others] = splitProps(props, ['variant',
+                    'size']);
+                  </code>
+                </pre>
+                <pre data-prefix="4">
+                  <code>
+                    {" "}
+                    return &lt;button class={`{`}buttonVariants(local){`}`}{" "}
+                    {`{`}...others{`}`} /&gt;;
+                  </code>
+                </pre>
+                <pre data-prefix="5">
+                  <code>{`}`};</code>
+                </pre>
               </div>
 
               <h3>Component Hierarchy</h3>
               <div class="bg-base-200 p-4 rounded-lg mb-6">
                 <div class="font-mono text-sm">
                   <div>📦 Components</div>
-                  <div class="ml-4">├── 🎨 Primitives (Button, Input, Badge)</div>
-                  <div class="ml-4">├── 🧩 Composite (Card, Modal, Dropdown)</div>
+                  <div class="ml-4">
+                    ├── 🎨 Primitives (Button, Input, Badge)
+                  </div>
+                  <div class="ml-4">
+                    ├── 🧩 Composite (Card, Modal, Dropdown)
+                  </div>
                   <div class="ml-4">├── 📐 Layout (Grid, Stack, Container)</div>
                   <div class="ml-4">└── 🔧 Utilities (Portal, FocusTrap)</div>
                 </div>
@@ -206,7 +308,11 @@ export const WikiApp: Story = {
               <div class="space-y-2">
                 <div class="form-control">
                   <label class="label cursor-pointer justify-start gap-3">
-                    <input type="checkbox" checked class="checkbox checkbox-primary" />
+                    <input
+                      type="checkbox"
+                      checked
+                      class="checkbox checkbox-primary"
+                    />
                     <span>Define component API patterns</span>
                   </label>
                 </div>
@@ -320,9 +426,15 @@ export const WikiApp: Story = {
               <h4 class="font-medium mb-2">⚙️ Actions</h4>
               <div class="space-y-2">
                 <button class="btn btn-sm w-full btn-outline">📤 Export</button>
-                <button class="btn btn-sm w-full btn-outline">📋 Duplicate</button>
-                <button class="btn btn-sm w-full btn-outline">🗃️ Archive</button>
-                <button class="btn btn-sm w-full btn-outline btn-error">🗑️ Delete</button>
+                <button class="btn btn-sm w-full btn-outline">
+                  📋 Duplicate
+                </button>
+                <button class="btn btn-sm w-full btn-outline">
+                  🗃️ Archive
+                </button>
+                <button class="btn btn-sm w-full btn-outline btn-error">
+                  🗑️ Delete
+                </button>
               </div>
             </div>
 

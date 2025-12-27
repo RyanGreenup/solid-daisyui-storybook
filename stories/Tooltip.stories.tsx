@@ -13,7 +13,17 @@ const meta = {
     },
     color: {
       control: "select",
-      options: ["default", "neutral", "primary", "secondary", "accent", "info", "success", "warning", "error"],
+      options: [
+        "default",
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "info",
+        "success",
+        "warning",
+        "error",
+      ],
     },
     open: {
       control: "boolean",
@@ -49,7 +59,9 @@ export const WithContent: Story = {
     <div class="my-6 mt-12">
       <Tooltip>
         <Tooltip.Content>
-          <div class="animate-bounce text-orange-400 -rotate-10 text-2xl font-black">Wow!</div>
+          <div class="animate-bounce text-orange-400 -rotate-10 text-2xl font-black">
+            Wow!
+          </div>
         </Tooltip.Content>
         <Button>Hover me</Button>
       </Tooltip>
@@ -69,24 +81,44 @@ export const ForceOpen: Story = {
 
 export const Placements: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "align-items": "center", padding: "3rem" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "2rem",
+        "align-items": "center",
+        padding: "3rem",
+      }}
+    >
       <div>
-        <h3 class="text-lg font-semibold mb-4 text-center">Tooltip Placements</h3>
-        <div style={{ display: "grid", "grid-template-columns": "1fr 1fr 1fr", gap: "2rem", "align-items": "center", "justify-items": "center" }}>
+        <h3 class="text-lg font-semibold mb-4 text-center">
+          Tooltip Placements
+        </h3>
+        <div
+          style={{
+            display: "grid",
+            "grid-template-columns": "1fr 1fr 1fr",
+            gap: "2rem",
+            "align-items": "center",
+            "justify-items": "center",
+          }}
+        >
           <div></div>
           <Tooltip placement="top" tip="Top tooltip" open={true}>
             <Button>Top</Button>
           </Tooltip>
           <div></div>
-          
+
           <Tooltip placement="left" tip="Left tooltip" open={true}>
             <Button>Left</Button>
           </Tooltip>
-          <div class="text-center text-sm text-base-content/60">Hover over buttons</div>
+          <div class="text-center text-sm text-base-content/60">
+            Hover over buttons
+          </div>
           <Tooltip placement="right" tip="Right tooltip" open={true}>
             <Button>Right</Button>
           </Tooltip>
-          
+
           <div></div>
           <Tooltip placement="bottom" tip="Bottom tooltip" open={true}>
             <Button>Bottom</Button>
@@ -100,7 +132,14 @@ export const Placements: Story = {
 
 export const Colors: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-wrap": "wrap", gap: "1rem", padding: "2rem" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-wrap": "wrap",
+        gap: "1rem",
+        padding: "2rem",
+      }}
+    >
       <Tooltip color="neutral" tip="Neutral" open={true}>
         <Button color="neutral">Neutral</Button>
       </Tooltip>
@@ -131,30 +170,45 @@ export const Colors: Story = {
 
 export const Interactive: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", padding: "2rem" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "2rem",
+        padding: "2rem",
+      }}
+    >
       <div>
         <h3 class="text-lg font-semibold mb-2">Interactive Tooltips</h3>
-        <p class="text-sm text-base-content/70 mb-4">Hover over the buttons to see tooltips appear</p>
-        
+        <p class="text-sm text-base-content/70 mb-4">
+          Hover over the buttons to see tooltips appear
+        </p>
+
         <div style={{ display: "flex", gap: "1rem", "flex-wrap": "wrap" }}>
           <Tooltip tip="Save your work" placement="top">
             <Button color="primary">💾 Save</Button>
           </Tooltip>
-          
+
           <Tooltip tip="Delete this item" placement="top" color="error">
-            <Button color="error" variant="outline">🗑️ Delete</Button>
+            <Button color="error" variant="outline">
+              🗑️ Delete
+            </Button>
           </Tooltip>
-          
+
           <Tooltip tip="Download file" placement="top" color="success">
-            <Button color="success" variant="soft">⬇️ Download</Button>
+            <Button color="success" variant="soft">
+              ⬇️ Download
+            </Button>
           </Tooltip>
-          
+
           <Tooltip tip="Share with others" placement="top" color="info">
-            <Button color="info" variant="ghost">🔗 Share</Button>
+            <Button color="info" variant="ghost">
+              🔗 Share
+            </Button>
           </Tooltip>
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Custom Content Tooltips</h3>
         <div style={{ display: "flex", gap: "1rem" }}>
@@ -167,10 +221,12 @@ export const Interactive: Story = {
             </Tooltip.Content>
             <Button variant="outline">💡 Tips</Button>
           </Tooltip>
-          
+
           <Tooltip>
             <Tooltip.Content>
-              <div class="animate-pulse text-red-400 font-bold">⚠️ Warning!</div>
+              <div class="animate-pulse text-red-400 font-bold">
+                ⚠️ Warning!
+              </div>
             </Tooltip.Content>
             <Button color="warning">🚨 Alert</Button>
           </Tooltip>

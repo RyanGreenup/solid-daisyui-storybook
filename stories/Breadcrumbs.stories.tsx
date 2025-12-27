@@ -169,7 +169,10 @@ export const InteractiveBreadcrumbs: Story = {
         <a
           href="#"
           class="hover:underline cursor-pointer hover:text-primary transition-colors inline-flex gap-2 items-center"
-          onClick={(e) => { e.preventDefault(); alert('Navigate to Home'); }}
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Navigate to Home");
+          }}
         >
           <Home size={16} />
           Home
@@ -179,7 +182,10 @@ export const InteractiveBreadcrumbs: Story = {
         <a
           href="#"
           class="hover:underline cursor-pointer hover:text-primary transition-colors inline-flex gap-2 items-center"
-          onClick={(e) => { e.preventDefault(); alert('Navigate to Documents'); }}
+          onClick={(e) => {
+            e.preventDefault();
+            alert("Navigate to Documents");
+          }}
         >
           <Folder size={16} />
           Documents

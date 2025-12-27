@@ -54,34 +54,51 @@ export const Default: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem", "align-items": "center" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "0.5rem",
+        "align-items": "center",
+      }}
+    >
       <Pagination>
         <Pagination.Button size="xs">1</Pagination.Button>
-        <Pagination.Button size="xs" active>2</Pagination.Button>
+        <Pagination.Button size="xs" active>
+          2
+        </Pagination.Button>
         <Pagination.Button size="xs">3</Pagination.Button>
         <Pagination.Button size="xs">4</Pagination.Button>
       </Pagination>
       <Pagination>
         <Pagination.Button size="sm">1</Pagination.Button>
-        <Pagination.Button size="sm" active>2</Pagination.Button>
+        <Pagination.Button size="sm" active>
+          2
+        </Pagination.Button>
         <Pagination.Button size="sm">3</Pagination.Button>
         <Pagination.Button size="sm">4</Pagination.Button>
       </Pagination>
       <Pagination>
         <Pagination.Button size="md">1</Pagination.Button>
-        <Pagination.Button size="md" active>2</Pagination.Button>
+        <Pagination.Button size="md" active>
+          2
+        </Pagination.Button>
         <Pagination.Button size="md">3</Pagination.Button>
         <Pagination.Button size="md">4</Pagination.Button>
       </Pagination>
       <Pagination>
         <Pagination.Button size="lg">1</Pagination.Button>
-        <Pagination.Button size="lg" active>2</Pagination.Button>
+        <Pagination.Button size="lg" active>
+          2
+        </Pagination.Button>
         <Pagination.Button size="lg">3</Pagination.Button>
         <Pagination.Button size="lg">4</Pagination.Button>
       </Pagination>
       <Pagination>
         <Pagination.Button size="xl">1</Pagination.Button>
-        <Pagination.Button size="xl" active>2</Pagination.Button>
+        <Pagination.Button size="xl" active>
+          2
+        </Pagination.Button>
         <Pagination.Button size="xl">3</Pagination.Button>
         <Pagination.Button size="xl">4</Pagination.Button>
       </Pagination>
@@ -114,8 +131,12 @@ export const PrevNext: Story = {
 export const OutlineButtons: Story = {
   render: () => (
     <Pagination class="grid grid-cols-2">
-      <Button class="join-item" variant="outline">Previous page</Button>
-      <Button class="join-item" variant="outline">Next</Button>
+      <Button class="join-item" variant="outline">
+        Previous page
+      </Button>
+      <Button class="join-item" variant="outline">
+        Next
+      </Button>
     </Pagination>
   ),
 };
@@ -123,10 +144,31 @@ export const OutlineButtons: Story = {
 export const RadioInputs: Story = {
   render: () => (
     <Pagination>
-      <input class="join-item btn btn-square" type="radio" name="options" aria-label="1" checked />
-      <input class="join-item btn btn-square" type="radio" name="options" aria-label="2" />
-      <input class="join-item btn btn-square" type="radio" name="options" aria-label="3" />
-      <input class="join-item btn btn-square" type="radio" name="options" aria-label="4" />
+      <input
+        class="join-item btn btn-square"
+        type="radio"
+        name="options"
+        aria-label="1"
+        checked
+      />
+      <input
+        class="join-item btn btn-square"
+        type="radio"
+        name="options"
+        aria-label="2"
+      />
+      <input
+        class="join-item btn btn-square"
+        type="radio"
+        name="options"
+        aria-label="3"
+      />
+      <input
+        class="join-item btn btn-square"
+        type="radio"
+        name="options"
+        aria-label="4"
+      />
     </Pagination>
   ),
 };
@@ -137,7 +179,14 @@ export const AutomaticPagination: Story = {
     const totalPages = 10;
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", "align-items": "center" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "1rem",
+          "align-items": "center",
+        }}
+      >
         <Pagination
           currentPage={currentPage()}
           totalPages={totalPages}
@@ -179,16 +228,31 @@ export const SolidJSInteractive: Story = {
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "600px",
+        }}
+      >
         <h3 class="text-xl font-bold">Interactive Pagination Example</h3>
 
         <div class="bg-base-200 p-4 rounded-box">
           <h4 class="font-semibold mb-2">Data Summary</h4>
           <div class="grid grid-cols-2 gap-2 text-sm">
-            <div><strong>Total Items:</strong> {totalItems}</div>
-            <div><strong>Items per Page:</strong> {itemsPerPage()}</div>
-            <div><strong>Total Pages:</strong> {totalPages()}</div>
-            <div><strong>Current Page:</strong> {currentPage()}</div>
+            <div>
+              <strong>Total Items:</strong> {totalItems}
+            </div>
+            <div>
+              <strong>Items per Page:</strong> {itemsPerPage()}
+            </div>
+            <div>
+              <strong>Total Pages:</strong> {totalPages()}
+            </div>
+            <div>
+              <strong>Current Page:</strong> {currentPage()}
+            </div>
           </div>
         </div>
 
@@ -202,7 +266,8 @@ export const SolidJSInteractive: Story = {
         >
           <div class="bg-base-100 border border-base-300 p-4 rounded-box">
             <h4 class="font-semibold mb-2">
-              Showing items {getCurrentItems().start} - {getCurrentItems().end} of {totalItems}
+              Showing items {getCurrentItems().start} - {getCurrentItems().end}{" "}
+              of {totalItems}
             </h4>
             <div class="text-sm text-base-content/60">
               Page {currentPage()} content would be displayed here...
@@ -210,13 +275,24 @@ export const SolidJSInteractive: Story = {
           </div>
         </Transition>
 
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", "align-items": "center" }}>
-          <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
+        <div
+          style={{
+            display: "flex",
+            "flex-direction": "column",
+            gap: "1rem",
+            "align-items": "center",
+          }}
+        >
+          <div
+            style={{ display: "flex", gap: "1rem", "align-items": "center" }}
+          >
             <label class="text-sm">Items per page:</label>
             <select
               class="select select-sm select-bordered"
               value={itemsPerPage()}
-              onInput={(e) => handleItemsPerPageChange(Number(e.currentTarget.value))}
+              onInput={(e) =>
+                handleItemsPerPageChange(Number(e.currentTarget.value))
+              }
             >
               <option value={5}>5</option>
               <option value={10}>10</option>
@@ -236,9 +312,18 @@ export const SolidJSInteractive: Story = {
           />
         </div>
 
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+        >
           <h4 class="font-semibold">Different Pagination Sizes:</h4>
-          <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem", "align-items": "center" }}>
+          <div
+            style={{
+              display: "flex",
+              "flex-direction": "column",
+              gap: "0.5rem",
+              "align-items": "center",
+            }}
+          >
             <Pagination
               currentPage={currentPage()}
               totalPages={Math.min(totalPages(), 5)}

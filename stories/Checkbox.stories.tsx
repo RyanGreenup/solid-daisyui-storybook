@@ -10,7 +10,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "primary", "secondary", "accent", "neutral", "info", "success", "warning", "error"],
+      options: [
+        "default",
+        "primary",
+        "secondary",
+        "accent",
+        "neutral",
+        "info",
+        "success",
+        "warning",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -93,12 +103,7 @@ export const Indeterminate: Story = {
       }
     }, 0);
 
-    return (
-      <Checkbox
-        ref={checkboxRef!}
-        onclick={(e) => e.preventDefault()}
-      />
-    );
+    return <Checkbox ref={checkboxRef!} onclick={(e) => e.preventDefault()} />;
   },
 };
 
@@ -116,15 +121,26 @@ export const KeybindingDemo: Story = {
     const [isRotating, setIsRotating] = createSignal(false);
 
     // Space key to toggle rotation
-    useKeybinding(
-      { key: " " },
-      () => setIsRotating(!isRotating())
-    );
+    useKeybinding({ key: " " }, () => setIsRotating(!isRotating()));
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "align-items": "center", padding: "2rem" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "align-items": "center",
+          padding: "2rem",
+        }}
+      >
         <div style={{ "text-align": "center" }}>
-          <h3 style={{ "margin-bottom": "1rem", "font-size": "1.25rem", "font-weight": "bold" }}>
+          <h3
+            style={{
+              "margin-bottom": "1rem",
+              "font-size": "1.25rem",
+              "font-weight": "bold",
+            }}
+          >
             Keybinding Demo
           </h3>
           <p style={{ "margin-bottom": "1rem", color: "gray" }}>

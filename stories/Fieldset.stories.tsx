@@ -1,5 +1,8 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../src/solid-daisy-components/components/Fieldset";
 import { Input } from "../src/solid-daisy-components/components/Input";
 import { Button } from "../src/solid-daisy-components/components/Button";
 

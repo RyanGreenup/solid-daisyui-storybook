@@ -2,7 +2,10 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal, createMemo } from "solid-js";
 import type { ApexOptions } from "apexcharts";
 import { ApexChart } from "../../../src/solid-daisy-components/components/viz/apex/ApexChart";
-import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
 import { Select } from "../../../src/solid-daisy-components/components/Select";
 import { Range } from "../../../src/solid-daisy-components/components/Range";
 import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
@@ -17,15 +20,38 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 // Sample data generators
-const generateRandomData = (count: number, min: number = 10, max: number = 100) => {
-  return Array.from({ length: count }, () => Math.floor(Math.random() * (max - min + 1)) + min);
+const generateRandomData = (
+  count: number,
+  min: number = 10,
+  max: number = 100,
+) => {
+  return Array.from(
+    { length: count },
+    () => Math.floor(Math.random() * (max - min + 1)) + min,
+  );
 };
 
-const generateLabels = (count: number, type: 'months' | 'quarters' | 'categories' = 'months') => {
-  if (type === 'months') {
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const generateLabels = (
+  count: number,
+  type: "months" | "quarters" | "categories" = "months",
+) => {
+  if (type === "months") {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
     return months.slice(0, count);
-  } else if (type === 'quarters') {
+  } else if (type === "quarters") {
     return Array.from({ length: count }, (_, i) => `Q${i + 1}`);
   } else {
     return Array.from({ length: count }, (_, i) => `Category ${i + 1}`);
@@ -34,38 +60,40 @@ const generateLabels = (count: number, type: 'months' | 'quarters' | 'categories
 
 export const BasicLineChart: Story = {
   render: () => {
-    const [series] = createSignal([{
-      name: 'Sales',
-      data: [30, 40, 35, 50, 49, 60, 70, 91]
-    }]);
+    const [series] = createSignal([
+      {
+        name: "Sales",
+        data: [30, 40, 35, 50, 49, 60, 70, 91],
+      },
+    ]);
 
     const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         toolbar: {
-          show: true
-        }
+          show: true,
+        },
       },
-      colors: ['#3B82F6'],
+      colors: ["#3B82F6"],
       title: {
-        text: 'Basic Line Chart with ApexCharts',
-        align: 'center'
+        text: "Basic Line Chart with ApexCharts",
+        align: "center",
       },
       xaxis: {
-        categories: generateLabels(8)
+        categories: generateLabels(8),
       },
       yaxis: {
         title: {
-          text: 'Sales ($k)'
-        }
+          text: "Sales ($k)",
+        },
       },
       stroke: {
-        curve: 'smooth',
-        width: 3
+        curve: "smooth",
+        width: 3,
       },
       markers: {
-        size: 4
-      }
+        size: 4,
+      },
     });
 
     return (
@@ -83,51 +111,48 @@ export const BasicLineChart: Story = {
 
 export const BasicBarChart: Story = {
   render: () => {
-    const [series] = createSignal([{
-      name: 'Revenue',
-      data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-    }]);
+    const [series] = createSignal([
+      {
+        name: "Revenue",
+        data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
+      },
+    ]);
 
     const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         toolbar: {
-          show: true
-        }
+          show: true,
+        },
       },
-      colors: ['#10B981'],
+      colors: ["#10B981"],
       title: {
-        text: 'Basic Bar Chart with ApexCharts',
-        align: 'center'
+        text: "Basic Bar Chart with ApexCharts",
+        align: "center",
       },
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: '55%',
-          borderRadius: 4
-        }
+          columnWidth: "55%",
+          borderRadius: 4,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       xaxis: {
-        categories: generateLabels(9, 'categories')
+        categories: generateLabels(9, "categories"),
       },
       yaxis: {
         title: {
-          text: 'Revenue ($k)'
-        }
-      }
+          text: "Revenue ($k)",
+        },
+      },
     });
 
     return (
       <div style={{ height: "400px" }}>
-        <ApexChart
-          type="bar"
-          series={series()}
-          options={options()}
-          size="lg"
-        />
+        <ApexChart type="bar" series={series()} options={options()} size="lg" />
       </div>
     );
   },
@@ -139,33 +164,28 @@ export const BasicPieChart: Story = {
 
     const [options] = createSignal<ApexOptions>({
       chart: {
-        height: 350
+        height: 350,
       },
       title: {
-        text: 'Basic Pie Chart with ApexCharts',
-        align: 'center'
+        text: "Basic Pie Chart with ApexCharts",
+        align: "center",
       },
-      labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-      colors: ['#EF4444', '#3B82F6', '#F59E0B', '#10B981', '#8B5CF6'],
+      labels: ["Team A", "Team B", "Team C", "Team D", "Team E"],
+      colors: ["#EF4444", "#3B82F6", "#F59E0B", "#10B981", "#8B5CF6"],
       legend: {
-        position: 'bottom'
+        position: "bottom",
       },
       dataLabels: {
         enabled: true,
         formatter: function (val: number) {
-          return val.toFixed(1) + "%"
-        }
-      }
+          return val.toFixed(1) + "%";
+        },
+      },
     });
 
     return (
       <div style={{ height: "400px", width: "400px", margin: "0 auto" }}>
-        <ApexChart
-          type="pie"
-          series={series()}
-          options={options()}
-          size="lg"
-        />
+        <ApexChart type="pie" series={series()} options={options()} size="lg" />
       </div>
     );
   },
@@ -177,27 +197,27 @@ export const BasicDonutChart: Story = {
 
     const [options] = createSignal<ApexOptions>({
       chart: {
-        height: 350
+        height: 350,
       },
       title: {
-        text: 'Basic Donut Chart with ApexCharts',
-        align: 'center'
+        text: "Basic Donut Chart with ApexCharts",
+        align: "center",
       },
-      labels: ['Apple', 'Mango', 'Orange', 'Watermelon', 'Banana'],
-      colors: ['#EF4444', '#F59E0B', '#FF6B35', '#10B981', '#FBBF24'],
+      labels: ["Apple", "Mango", "Orange", "Watermelon", "Banana"],
+      colors: ["#EF4444", "#F59E0B", "#FF6B35", "#10B981", "#FBBF24"],
       legend: {
-        position: 'bottom'
+        position: "bottom",
       },
       dataLabels: {
-        enabled: true
+        enabled: true,
       },
       plotOptions: {
         pie: {
           donut: {
-            size: '60%'
-          }
-        }
-      }
+            size: "60%",
+          },
+        },
+      },
     });
 
     return (
@@ -215,45 +235,48 @@ export const BasicDonutChart: Story = {
 
 export const BasicAreaChart: Story = {
   render: () => {
-    const [series] = createSignal([{
-      name: 'Website Traffic',
-      data: [31, 40, 28, 51, 42, 109, 100]
-    }, {
-      name: 'Mobile Traffic',
-      data: [11, 32, 45, 32, 34, 52, 41]
-    }]);
+    const [series] = createSignal([
+      {
+        name: "Website Traffic",
+        data: [31, 40, 28, 51, 42, 109, 100],
+      },
+      {
+        name: "Mobile Traffic",
+        data: [11, 32, 45, 32, 34, 52, 41],
+      },
+    ]);
 
     const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
-        stacked: false
+        stacked: false,
       },
-      colors: ['#3B82F6', '#EF4444'],
+      colors: ["#3B82F6", "#EF4444"],
       title: {
-        text: 'Basic Area Chart with ApexCharts',
-        align: 'center'
+        text: "Basic Area Chart with ApexCharts",
+        align: "center",
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
-        curve: 'smooth'
+        curve: "smooth",
       },
       xaxis: {
-        categories: generateLabels(7)
+        categories: generateLabels(7),
       },
       yaxis: {
         title: {
-          text: 'Traffic'
-        }
+          text: "Traffic",
+        },
       },
       fill: {
-        type: 'gradient',
+        type: "gradient",
         gradient: {
           opacityFrom: 0.6,
-          opacityTo: 0.1
-        }
-      }
+          opacityTo: 0.1,
+        },
+      },
     });
 
     return (
@@ -274,43 +297,46 @@ export const BasicScatterChart: Story = {
     const generateScatterData = () => {
       return Array.from({ length: 30 }, () => [
         Math.floor(Math.random() * 100),
-        Math.floor(Math.random() * 100)
+        Math.floor(Math.random() * 100),
       ]);
     };
 
-    const [series] = createSignal([{
-      name: 'Sample A',
-      data: generateScatterData()
-    }, {
-      name: 'Sample B',
-      data: generateScatterData()
-    }]);
+    const [series] = createSignal([
+      {
+        name: "Sample A",
+        data: generateScatterData(),
+      },
+      {
+        name: "Sample B",
+        data: generateScatterData(),
+      },
+    ]);
 
     const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
         zoom: {
           enabled: true,
-          type: 'xy'
-        }
+          type: "xy",
+        },
       },
-      colors: ['#3B82F6', '#EF4444'],
+      colors: ["#3B82F6", "#EF4444"],
       title: {
-        text: 'Basic Scatter Chart with ApexCharts',
-        align: 'center'
+        text: "Basic Scatter Chart with ApexCharts",
+        align: "center",
       },
       xaxis: {
         title: {
-          text: 'X Axis'
+          text: "X Axis",
         },
-        tickAmount: 10
+        tickAmount: 10,
       },
       yaxis: {
         title: {
-          text: 'Y Axis'
+          text: "Y Axis",
         },
-        tickAmount: 7
-      }
+        tickAmount: 7,
+      },
     });
 
     return (
@@ -332,33 +358,33 @@ export const BasicRadialBarChart: Story = {
 
     const [options] = createSignal<ApexOptions>({
       chart: {
-        height: 350
+        height: 350,
       },
       title: {
-        text: 'Basic Radial Bar Chart',
-        align: 'center'
+        text: "Basic Radial Bar Chart",
+        align: "center",
       },
       plotOptions: {
         radialBar: {
           dataLabels: {
             name: {
-              fontSize: '22px'
+              fontSize: "22px",
             },
             value: {
-              fontSize: '16px'
+              fontSize: "16px",
             },
             total: {
               show: true,
-              label: 'Total',
+              label: "Total",
               formatter: function () {
-                return '249'
-              }
-            }
-          }
-        }
+                return "249";
+              },
+            },
+          },
+        },
       },
-      labels: ['Apples', 'Oranges', 'Bananas', 'Berries'],
-      colors: ['#EF4444', '#F59E0B', '#FBBF24', '#8B5CF6']
+      labels: ["Apples", "Oranges", "Bananas", "Berries"],
+      colors: ["#EF4444", "#F59E0B", "#FBBF24", "#8B5CF6"],
     });
 
     return (
@@ -378,113 +404,113 @@ export const BoxPlotChart: Story = {
   render: () => {
     const [series] = createSignal([
       {
-        name: 'box',
-        type: 'boxPlot',
+        name: "box",
+        type: "boxPlot",
         data: [
           {
-            x: 'Alice',
+            x: "Alice",
             y: [54, 66, 69, 75, 88],
             goals: [
               {
                 value: 32,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
             ],
           },
           {
-            x: 'Bob',
+            x: "Bob",
             y: [43, 65, 69, 76, 81],
             goals: [
               {
                 value: 35,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
               {
                 value: 95,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
             ],
           },
           {
-            x: 'Charlie',
+            x: "Charlie",
             y: [31, 39, 45, 51, 59],
             goals: [
               {
                 value: 64,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
               {
                 value: 75,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
             ],
           },
           {
-            x: 'David',
+            x: "David",
             y: [39, 46, 55, 65, 71],
             goals: [
               {
                 value: 27,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
               {
                 value: 77,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
             ],
           },
           {
-            x: 'Ahmed',
+            x: "Ahmed",
             y: [29, 31, 35, 39, 44],
             goals: [
               {
                 value: 10,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
               {
                 value: 56,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
               {
                 value: 62,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
               {
                 value: 98,
                 strokeWidth: 0,
                 strokeHeight: 13,
-                strokeLineCap: 'round',
-                strokeColor: '#FEB019',
+                strokeLineCap: "round",
+                strokeColor: "#FEB019",
               },
             ],
           },
@@ -494,40 +520,40 @@ export const BoxPlotChart: Story = {
 
     const [options] = createSignal<ApexOptions>({
       chart: {
-        type: 'boxPlot',
+        type: "boxPlot",
         height: 350,
         toolbar: {
-          show: true
-        }
+          show: true,
+        },
       },
-      colors: ['#008FFB', '#FEB019'],
+      colors: ["#008FFB", "#FEB019"],
       title: {
-        text: 'BoxPlot Chart with Outliers',
-        align: 'left'
+        text: "BoxPlot Chart with Outliers",
+        align: "left",
       },
       xaxis: {
-        type: 'category',
+        type: "category",
         title: {
-          text: 'Participants'
-        }
+          text: "Participants",
+        },
       },
       yaxis: {
         title: {
-          text: 'Score Range'
-        }
+          text: "Score Range",
+        },
       },
       plotOptions: {
         boxPlot: {
           colors: {
-            upper: '#008FFB',
-            lower: '#008FFB'
-          }
-        }
+            upper: "#008FFB",
+            lower: "#008FFB",
+          },
+        },
       },
       tooltip: {
         shared: false,
-        intersect: true
-      }
+        intersect: true,
+      },
     });
 
     return (
@@ -551,379 +577,396 @@ export const SparklineCharts: Story = {
     };
 
     // Base sparkline data
-    const sparklineData = [47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19, 46];
+    const sparklineData = [
+      47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53,
+      61, 27, 54, 43, 19, 46,
+    ];
 
     // Large sparkline area charts (top row)
-    const [salesSeries] = createSignal([{
-      data: randomizeArray(sparklineData)
-    }]);
-    
+    const [salesSeries] = createSignal([
+      {
+        data: randomizeArray(sparklineData),
+      },
+    ]);
+
     const [salesOptions] = createSignal<ApexOptions>({
       chart: {
-        type: 'area',
+        type: "area",
         height: 160,
         sparkline: {
-          enabled: true
+          enabled: true,
         },
       },
       stroke: {
-        curve: 'straight'
+        curve: "straight",
       },
       fill: {
         opacity: 0.3,
       },
       yaxis: {
-        min: 0
+        min: 0,
       },
-      colors: ['#00E396'],
+      colors: ["#00E396"],
       title: {
-        text: '$424,652',
+        text: "$424,652",
         offsetX: 0,
         style: {
-          fontSize: '24px',
-        }
+          fontSize: "24px",
+        },
       },
       subtitle: {
-        text: 'Sales',
+        text: "Sales",
         offsetX: 0,
         style: {
-          fontSize: '14px',
-        }
-      }
+          fontSize: "14px",
+        },
+      },
     });
 
-    const [expensesSeries] = createSignal([{
-      data: randomizeArray(sparklineData)
-    }]);
-    
+    const [expensesSeries] = createSignal([
+      {
+        data: randomizeArray(sparklineData),
+      },
+    ]);
+
     const [expensesOptions] = createSignal<ApexOptions>({
       chart: {
-        type: 'area',
+        type: "area",
         height: 160,
         sparkline: {
-          enabled: true
+          enabled: true,
         },
       },
       stroke: {
-        curve: 'straight'
+        curve: "straight",
       },
       fill: {
         opacity: 0.3,
       },
       yaxis: {
-        min: 0
+        min: 0,
       },
-      colors: ['#FF4560'],
+      colors: ["#FF4560"],
       title: {
-        text: '$235,312',
+        text: "$235,312",
         offsetX: 0,
         style: {
-          fontSize: '24px',
-        }
+          fontSize: "24px",
+        },
       },
       subtitle: {
-        text: 'Expenses',
+        text: "Expenses",
         offsetX: 0,
         style: {
-          fontSize: '14px',
-        }
-      }
+          fontSize: "14px",
+        },
+      },
     });
 
-    const [profitsSeries] = createSignal([{
-      data: randomizeArray(sparklineData)
-    }]);
-    
+    const [profitsSeries] = createSignal([
+      {
+        data: randomizeArray(sparklineData),
+      },
+    ]);
+
     const [profitsOptions] = createSignal<ApexOptions>({
       chart: {
-        type: 'area',
+        type: "area",
         height: 160,
         sparkline: {
-          enabled: true
+          enabled: true,
         },
       },
       stroke: {
-        curve: 'straight'
+        curve: "straight",
       },
       fill: {
-        opacity: 0.3
+        opacity: 0.3,
       },
       xaxis: {
         crosshairs: {
-          width: 1
+          width: 1,
         },
       },
       yaxis: {
-        min: 0
+        min: 0,
       },
-      colors: ['#008FFB'],
+      colors: ["#008FFB"],
       title: {
-        text: '$135,965',
+        text: "$135,965",
         offsetX: 0,
         style: {
-          fontSize: '24px',
-        }
+          fontSize: "24px",
+        },
       },
       subtitle: {
-        text: 'Profits',
+        text: "Profits",
         offsetX: 0,
         style: {
-          fontSize: '14px',
-        }
-      }
+          fontSize: "14px",
+        },
+      },
     });
 
     // Small sparklines for table
-    const [lineSeries1] = createSignal([{
-      data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
-    }]);
-    
+    const [lineSeries1] = createSignal([
+      {
+        data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54],
+      },
+    ]);
+
     const [lineOptions1] = createSignal<ApexOptions>({
       chart: {
-        type: 'line',
+        type: "line",
         width: 100,
         height: 35,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       tooltip: {
         fixed: {
-          enabled: false
+          enabled: false,
         },
         x: {
-          show: false
+          show: false,
         },
         y: {
           title: {
             formatter: function () {
-              return '';
-            }
-          }
+              return "";
+            },
+          },
         },
         marker: {
-          show: false
-        }
-      }
+          show: false,
+        },
+      },
     });
 
-    const [lineSeries2] = createSignal([{
-      data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
-    }]);
-    
+    const [lineSeries2] = createSignal([
+      {
+        data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14],
+      },
+    ]);
+
     const [lineOptions2] = createSignal<ApexOptions>({
       chart: {
-        type: 'line',
+        type: "line",
         width: 100,
         height: 35,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       tooltip: {
         fixed: {
-          enabled: false
+          enabled: false,
         },
         x: {
-          show: false
+          show: false,
         },
         y: {
           title: {
             formatter: function () {
-              return '';
-            }
-          }
+              return "";
+            },
+          },
         },
         marker: {
-          show: false
-        }
-      }
+          show: false,
+        },
+      },
     });
 
     const [pieSeries] = createSignal([43, 32, 12, 9]);
     const [pieOptions] = createSignal<ApexOptions>({
       chart: {
-        type: 'pie',
+        type: "pie",
         width: 40,
         height: 40,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       stroke: {
-        width: 1
+        width: 1,
       },
       tooltip: {
         fixed: {
-          enabled: false
+          enabled: false,
         },
-      }
+      },
     });
 
     const [donutSeries] = createSignal([43, 32, 12, 9]);
     const [donutOptions] = createSignal<ApexOptions>({
       chart: {
-        type: 'donut',
+        type: "donut",
         width: 40,
         height: 40,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       stroke: {
-        width: 1
+        width: 1,
       },
       tooltip: {
         fixed: {
-          enabled: false
+          enabled: false,
         },
-      }
+      },
     });
 
-    const [barSeries1] = createSignal([{
-      data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54]
-    }]);
-    
+    const [barSeries1] = createSignal([
+      {
+        data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54],
+      },
+    ]);
+
     const [barOptions1] = createSignal<ApexOptions>({
       chart: {
-        type: 'bar',
+        type: "bar",
         width: 100,
         height: 35,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       plotOptions: {
         bar: {
-          columnWidth: '80%'
-        }
+          columnWidth: "80%",
+        },
       },
-      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
       xaxis: {
         crosshairs: {
-          width: 1
+          width: 1,
         },
       },
       tooltip: {
         fixed: {
-          enabled: false
+          enabled: false,
         },
         x: {
-          show: false
+          show: false,
         },
         y: {
           title: {
             formatter: function () {
-              return '';
-            }
-          }
+              return "";
+            },
+          },
         },
         marker: {
-          show: false
-        }
-      }
+          show: false,
+        },
+      },
     });
 
-    const [barSeries2] = createSignal([{
-      data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14]
-    }]);
+    const [barSeries2] = createSignal([
+      {
+        data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14],
+      },
+    ]);
 
     const [barOptions2] = createSignal<ApexOptions>({
       chart: {
-        type: 'bar',
+        type: "bar",
         width: 100,
         height: 35,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       plotOptions: {
         bar: {
-          columnWidth: '80%'
-        }
+          columnWidth: "80%",
+        },
       },
-      labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
       xaxis: {
         crosshairs: {
-          width: 1
+          width: 1,
         },
       },
       tooltip: {
         fixed: {
-          enabled: false
+          enabled: false,
         },
         x: {
-          show: false
+          show: false,
         },
         y: {
           title: {
             formatter: function () {
-              return '';
-            }
-          }
+              return "";
+            },
+          },
         },
         marker: {
-          show: false
-        }
-      }
+          show: false,
+        },
+      },
     });
 
     const [radialSeries1] = createSignal([45]);
     const [radialOptions1] = createSignal<ApexOptions>({
       chart: {
-        type: 'radialBar',
+        type: "radialBar",
         width: 50,
         height: 50,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '50%'
+            size: "50%",
           },
           track: {
-            margin: 0
+            margin: 0,
           },
           dataLabels: {
-            show: false
-          }
-        }
-      }
+            show: false,
+          },
+        },
+      },
     });
 
     const [radialSeries2] = createSignal([53, 67]);
     const [radialOptions2] = createSignal<ApexOptions>({
       chart: {
-        type: 'radialBar',
+        type: "radialBar",
         width: 40,
         height: 40,
         sparkline: {
-          enabled: true
-        }
+          enabled: true,
+        },
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
-            size: '50%'
+            size: "50%",
           },
           track: {
-            margin: 1
+            margin: 1,
           },
           dataLabels: {
-            show: false
-          }
-        }
-      }
+            show: false,
+          },
+        },
+      },
     });
 
     return (
@@ -975,7 +1018,9 @@ export const SparklineCharts: Story = {
               <tbody>
                 <tr>
                   <td class="font-semibold">$32,554</td>
-                  <td><div class="badge badge-success">15%</div></td>
+                  <td>
+                    <div class="badge badge-success">15%</div>
+                  </td>
                   <td>
                     <ApexChart
                       type="line"
@@ -997,7 +1042,9 @@ export const SparklineCharts: Story = {
                 </tr>
                 <tr>
                   <td class="font-semibold">$23,533</td>
-                  <td><div class="badge badge-warning">7%</div></td>
+                  <td>
+                    <div class="badge badge-warning">7%</div>
+                  </td>
                   <td>
                     <ApexChart
                       type="line"
@@ -1019,7 +1066,9 @@ export const SparklineCharts: Story = {
                 </tr>
                 <tr>
                   <td class="font-semibold">$54,276</td>
-                  <td><div class="badge badge-info">9%</div></td>
+                  <td>
+                    <div class="badge badge-info">9%</div>
+                  </td>
                   <td>
                     <ApexChart
                       type="pie"
@@ -1041,7 +1090,9 @@ export const SparklineCharts: Story = {
                 </tr>
                 <tr>
                   <td class="font-semibold">$11,533</td>
-                  <td><div class="badge badge-error">2%</div></td>
+                  <td>
+                    <div class="badge badge-error">2%</div>
+                  </td>
                   <td>
                     <ApexChart
                       type="donut"
@@ -1069,8 +1120,13 @@ export const SparklineCharts: Story = {
         <div class="bg-info text-info-content p-4 rounded-box">
           <h4 class="font-semibold mb-2">💡 Sparkline Charts</h4>
           <p class="text-sm">
-            Sparklines are small, word-sized charts that provide quick visual insights without axes or detailed formatting.
-            They're perfect for dashboards, tables, and inline data visualization. The <code class="bg-info-content text-info px-1 rounded">sparkline: {`{ enabled: true }`}</code> option removes all chart chrome.
+            Sparklines are small, word-sized charts that provide quick visual
+            insights without axes or detailed formatting. They're perfect for
+            dashboards, tables, and inline data visualization. The{" "}
+            <code class="bg-info-content text-info px-1 rounded">
+              sparkline: {`{ enabled: true }`}
+            </code>{" "}
+            option removes all chart chrome.
           </p>
         </div>
       </div>
@@ -1080,26 +1136,28 @@ export const SparklineCharts: Story = {
 
 export const InteractiveAdvanced: Story = {
   render: () => {
-    const [chartType, setChartType] = createSignal<'line' | 'bar' | 'area'>('line');
+    const [chartType, setChartType] = createSignal<"line" | "bar" | "area">(
+      "line",
+    );
     const [dataPoints, setDataPoints] = createSignal(8);
     const [showDataLabels, setShowDataLabels] = createSignal(false);
     const [animationEnabled, setAnimationEnabled] = createSignal(true);
     const [strokeWidth, setStrokeWidth] = createSignal(3);
-    
+
     // Create debounced versions of frequently changing signals
     const [debouncedDataPoints, setDebouncedDataPoints] = createSignal(8);
     const [debouncedStrokeWidth, setDebouncedStrokeWidth] = createSignal(3);
-    
+
     // Debounce data points and stroke width changes
     let dataPointsTimer: number;
     let strokeWidthTimer: number;
-    
+
     const handleDataPointsChange = (value: number) => {
       setDataPoints(value);
       clearTimeout(dataPointsTimer);
       dataPointsTimer = setTimeout(() => setDebouncedDataPoints(value), 150);
     };
-    
+
     const handleStrokeWidthChange = (value: number) => {
       setStrokeWidth(value);
       clearTimeout(strokeWidthTimer);
@@ -1107,16 +1165,22 @@ export const InteractiveAdvanced: Story = {
     };
 
     // Create reactive chart data and options using debounced values
-    const series = createMemo(() => [{
-      name: 'Interactive Data',
-      data: generateRandomData(debouncedDataPoints(), 20, 100)
-    }]);
+    const series = createMemo(() => [
+      {
+        name: "Interactive Data",
+        data: generateRandomData(debouncedDataPoints(), 20, 100),
+      },
+    ]);
 
     const options = createMemo(() => {
       const currentType = chartType();
-      const currentColor = currentType === 'line' ? '#8B5CF6' :
-                          currentType === 'bar' ? '#10B981' : '#3B82F6';
-      
+      const currentColor =
+        currentType === "line"
+          ? "#8B5CF6"
+          : currentType === "bar"
+            ? "#10B981"
+            : "#3B82F6";
+
       const baseOptions = {
         chart: {
           id: `interactive-chart-${currentType}`,
@@ -1126,85 +1190,98 @@ export const InteractiveAdvanced: Story = {
             speed: 800,
             animateGradually: {
               enabled: true,
-              delay: 150
-            }
+              delay: 150,
+            },
           },
           toolbar: {
-            show: true
-          }
+            show: true,
+          },
         },
         colors: [currentColor],
         title: {
           text: `Advanced ${currentType.toUpperCase()} Chart - ${debouncedDataPoints()} Data Points`,
-          align: 'center' as const,
+          align: "center" as const,
           style: {
-            fontSize: '16px',
-            fontWeight: 'bold'
-          }
+            fontSize: "16px",
+            fontWeight: "bold",
+          },
         },
         dataLabels: {
-          enabled: showDataLabels()
+          enabled: showDataLabels(),
         },
         stroke: {
-          curve: currentType === 'area' ? 'smooth' as const : 'straight' as const,
-          width: currentType === 'line' ? debouncedStrokeWidth() : currentType === 'area' ? 2 : 0
+          curve:
+            currentType === "area"
+              ? ("smooth" as const)
+              : ("straight" as const),
+          width:
+            currentType === "line"
+              ? debouncedStrokeWidth()
+              : currentType === "area"
+                ? 2
+                : 0,
         },
         xaxis: {
           categories: generateLabels(debouncedDataPoints()),
           title: {
-            text: 'Time Period'
-          }
+            text: "Time Period",
+          },
         },
         yaxis: {
           title: {
-            text: 'Values ($)'
+            text: "Values ($)",
           },
           labels: {
             formatter: function (value: number) {
-              return '$' + value.toFixed(0);
-            }
-          }
+              return "$" + value.toFixed(0);
+            },
+          },
         },
         // Stable plotOptions for all chart types
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: '55%',
-            endingShape: 'rounded'
-          }
+            columnWidth: "55%",
+            endingShape: "rounded",
+          },
         },
         // Stable fill configuration
         fill: {
-          type: currentType === 'area' ? 'gradient' : 'solid',
+          type: currentType === "area" ? "gradient" : "solid",
           colors: [currentColor],
-          gradient: currentType === 'area' ? {
-            shade: 'light',
-            type: 'vertical',
-            shadeIntensity: 0.25,
-            gradientToColors: [currentColor],
-            inverseColors: false,
-            opacityFrom: 0.6,
-            opacityTo: 0.1,
-            stops: [0, 100]
-          } : undefined
+          gradient:
+            currentType === "area"
+              ? {
+                  shade: "light",
+                  type: "vertical",
+                  shadeIntensity: 0.25,
+                  gradientToColors: [currentColor],
+                  inverseColors: false,
+                  opacityFrom: 0.6,
+                  opacityTo: 0.1,
+                  stops: [0, 100],
+                }
+              : undefined,
         },
         // Stable markers configuration
         markers: {
-          size: currentType === 'line' ? 4 : 0,
+          size: currentType === "line" ? 4 : 0,
           colors: [currentColor],
-          strokeColors: '#fff',
+          strokeColors: "#fff",
           strokeWidth: 2,
           hover: {
-            size: currentType === 'line' ? 7 : 0
-          }
-        }
+            size: currentType === "line" ? 7 : 0,
+          },
+        },
       };
 
       return baseOptions;
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+      <div
+        style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}
+      >
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Advanced ApexChart Configuration</Fieldset.Legend>
 
@@ -1214,7 +1291,9 @@ export const InteractiveAdvanced: Story = {
               <Select
                 size="sm"
                 value={chartType()}
-                onChange={(e) => setChartType(e.target.value as 'line' | 'bar' | 'area')}
+                onChange={(e) =>
+                  setChartType(e.target.value as "line" | "bar" | "area")
+                }
               >
                 <option value="line">Line Chart</option>
                 <option value="bar">Bar Chart</option>
@@ -1230,12 +1309,14 @@ export const InteractiveAdvanced: Story = {
                 min={4}
                 max={12}
                 value={dataPoints()}
-                onChange={(e) => handleDataPointsChange(parseInt(e.target.value))}
+                onChange={(e) =>
+                  handleDataPointsChange(parseInt(e.target.value))
+                }
               />
               <div class="text-center text-sm mt-1">{dataPoints()} points</div>
             </div>
 
-            {chartType() === 'line' && (
+            {chartType() === "line" && (
               <div>
                 <Label>Stroke Width</Label>
                 <Range
@@ -1244,7 +1325,9 @@ export const InteractiveAdvanced: Story = {
                   min={1}
                   max={6}
                   value={strokeWidth()}
-                  onChange={(e) => handleStrokeWidthChange(parseInt(e.target.value))}
+                  onChange={(e) =>
+                    handleStrokeWidthChange(parseInt(e.target.value))
+                  }
                 />
                 <div class="text-center text-sm mt-1">{strokeWidth()}px</div>
               </div>
@@ -1277,8 +1360,12 @@ export const InteractiveAdvanced: Story = {
 
           <Label class="text-sm opacity-70 mt-3">
             {chartType().toUpperCase()} chart with {dataPoints()} data points
-            {showDataLabels() ? ', data labels enabled' : ', data labels disabled'}
-            {animationEnabled() ? ', animations enabled' : ', animations disabled'}
+            {showDataLabels()
+              ? ", data labels enabled"
+              : ", data labels disabled"}
+            {animationEnabled()
+              ? ", animations enabled"
+              : ", animations disabled"}
           </Label>
         </Fieldset>
 
@@ -1294,8 +1381,13 @@ export const InteractiveAdvanced: Story = {
         <div class="bg-info text-info-content p-4 rounded-box">
           <h4 class="font-semibold mb-2">💡 Using ApexChart Component</h4>
           <p class="text-sm">
-            This example shows how to use <code class="bg-info-content text-info px-1 rounded">ApexChart</code> with reactive data and options.
-            ApexCharts provides excellent performance and built-in interactivity features like zooming, tooltips, and animations.
+            This example shows how to use{" "}
+            <code class="bg-info-content text-info px-1 rounded">
+              ApexChart
+            </code>{" "}
+            with reactive data and options. ApexCharts provides excellent
+            performance and built-in interactivity features like zooming,
+            tooltips, and animations.
           </p>
         </div>
       </div>
@@ -1305,45 +1397,51 @@ export const InteractiveAdvanced: Story = {
 
 export const MixedChart: Story = {
   render: () => {
-    const [series] = createSignal([{
-      name: 'Website Blog',
-      type: 'column',
-      data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160]
-    }, {
-      name: 'Social Media',
-      type: 'line',
-      data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16]
-    }]);
+    const [series] = createSignal([
+      {
+        name: "Website Blog",
+        type: "column",
+        data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
+      },
+      {
+        name: "Social Media",
+        type: "line",
+        data: [23, 42, 35, 27, 43, 22, 17, 31, 22, 22, 12, 16],
+      },
+    ]);
 
     const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
-        stacked: false
+        stacked: false,
       },
-      colors: ['#3B82F6', '#EF4444'],
+      colors: ["#3B82F6", "#EF4444"],
       title: {
-        text: 'Mixed Chart: Column + Line',
-        align: 'center'
+        text: "Mixed Chart: Column + Line",
+        align: "center",
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
-        width: [1, 4]
+        width: [1, 4],
       },
       xaxis: {
-        categories: generateLabels(12)
+        categories: generateLabels(12),
       },
-      yaxis: [{
-        title: {
-          text: 'Website Blog'
-        }
-      }, {
-        opposite: true,
-        title: {
-          text: 'Social Media'
-        }
-      }]
+      yaxis: [
+        {
+          title: {
+            text: "Website Blog",
+          },
+        },
+        {
+          opposite: true,
+          title: {
+            text: "Social Media",
+          },
+        },
+      ],
     });
 
     return (
@@ -1361,94 +1459,106 @@ export const MixedChart: Story = {
 
 export const CustomStyledChart: Story = {
   render: () => {
-    const [series] = createSignal([{
-      name: 'Performance',
-      data: [65, 85, 70, 90, 75, 95]
-    }]);
+    const [series] = createSignal([
+      {
+        name: "Performance",
+        data: [65, 85, 70, 90, 75, 95],
+      },
+    ]);
 
     const [options] = createSignal<ApexOptions>({
       chart: {
         height: 350,
-        background: 'transparent'
+        background: "transparent",
       },
-      colors: ['#10B981'],
+      colors: ["#10B981"],
       title: {
-        text: 'Highly Customized Chart Styling',
-        align: 'center',
+        text: "Highly Customized Chart Styling",
+        align: "center",
         style: {
-          fontSize: '18px',
-          fontWeight: 'bold',
-          color: '#10B981'
-        }
+          fontSize: "18px",
+          fontWeight: "bold",
+          color: "#10B981",
+        },
       },
       stroke: {
-        curve: 'smooth',
-        width: 4
+        curve: "smooth",
+        width: 4,
       },
       markers: {
         size: 8,
-        colors: ['#10B981'],
-        strokeColors: '#fff',
+        colors: ["#10B981"],
+        strokeColors: "#fff",
         strokeWidth: 3,
         hover: {
-          size: 12
-        }
+          size: 12,
+        },
       },
       xaxis: {
-        categories: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
+        categories: [
+          "Week 1",
+          "Week 2",
+          "Week 3",
+          "Week 4",
+          "Week 5",
+          "Week 6",
+        ],
         labels: {
           style: {
-            fontSize: '12px'
-          }
-        }
+            fontSize: "12px",
+          },
+        },
       },
       yaxis: {
         title: {
-          text: 'Performance %',
+          text: "Performance %",
           style: {
-            fontSize: '14px',
-            fontWeight: 'bold'
-          }
+            fontSize: "14px",
+            fontWeight: "bold",
+          },
         },
         min: 0,
         max: 100,
         labels: {
           formatter: function (value: number) {
-            return value + '%';
+            return value + "%";
           },
           style: {
-            fontSize: '12px'
-          }
-        }
+            fontSize: "12px",
+          },
+        },
       },
       fill: {
-        type: 'gradient',
+        type: "gradient",
         gradient: {
-          shade: 'light',
-          type: 'vertical',
+          shade: "light",
+          type: "vertical",
           shadeIntensity: 0.25,
-          gradientToColors: ['#34D399'],
+          gradientToColors: ["#34D399"],
           inverseColors: false,
           opacityFrom: 0.8,
           opacityTo: 0.1,
-          stops: [0, 100]
-        }
+          stops: [0, 100],
+        },
       },
       grid: {
-        borderColor: 'rgba(16, 185, 129, 0.1)',
-        strokeDashArray: 5
+        borderColor: "rgba(16, 185, 129, 0.1)",
+        strokeDashArray: 5,
       },
       tooltip: {
-        theme: 'dark',
+        theme: "dark",
         style: {
-          fontSize: '13px'
-        }
-      }
+          fontSize: "13px",
+        },
+      },
     });
 
     return (
       <div class="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-box">
-        <div style={{ height: "450px" }} class="bg-white rounded-box p-4 shadow-lg">
+        <div
+          style={{ height: "450px" }}
+          class="bg-white rounded-box p-4 shadow-lg"
+        >
           <ApexChart
             type="area"
             series={series()}

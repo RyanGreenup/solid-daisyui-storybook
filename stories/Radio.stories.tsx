@@ -9,7 +9,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "neutral", "primary", "secondary", "accent", "success", "warning", "info", "error"],
+      options: [
+        "default",
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "success",
+        "warning",
+        "info",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -199,16 +209,24 @@ export const FormExample: Story = {
   render: () => (
     <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
       <h3 class="text-lg font-semibold">Choose your preferred option:</h3>
-      <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem" }}>
-        <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+      <div
+        style={{ display: "flex", "flex-direction": "column", gap: "0.5rem" }}
+      >
+        <label
+          style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+        >
           <Radio name="form-example" color="primary" value="option1" />
           <span>Option 1</span>
         </label>
-        <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+        <label
+          style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+        >
           <Radio name="form-example" color="primary" value="option2" />
           <span>Option 2</span>
         </label>
-        <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+        <label
+          style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+        >
           <Radio name="form-example" color="primary" value="option3" checked />
           <span>Option 3 (Selected)</span>
         </label>
@@ -235,11 +253,23 @@ export const InteractiveBox: Story = {
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "align-items": "center", padding: "2rem" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "align-items": "center",
+          padding: "2rem",
+        }}
+      >
         <h3 class="text-lg font-semibold">Rotate the Box (JavaScript)</h3>
 
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
-          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+        >
+          <label
+            style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+          >
             <Radio
               name="rotation-control"
               color="primary"
@@ -249,7 +279,9 @@ export const InteractiveBox: Story = {
             />
             <span>No Rotation (0°)</span>
           </label>
-          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+          <label
+            style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+          >
             <Radio
               name="rotation-control"
               color="primary"
@@ -259,7 +291,9 @@ export const InteractiveBox: Story = {
             />
             <span>Slight Rotation (45°)</span>
           </label>
-          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+          <label
+            style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+          >
             <Radio
               name="rotation-control"
               color="primary"
@@ -269,7 +303,9 @@ export const InteractiveBox: Story = {
             />
             <span>Quarter Turn (90°)</span>
           </label>
-          <label style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+          <label
+            style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+          >
             <Radio
               name="rotation-control"
               color="primary"
@@ -285,7 +321,7 @@ export const InteractiveBox: Story = {
           style={{
             width: "120px",
             height: "120px",
-            "background": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
             border: "3px solid #4f46e5",
             "border-radius": "12px",
             display: "flex",
@@ -427,10 +463,35 @@ export const CSSOnlyBox: Story = {
         <h3 class="text-lg font-semibold">Rotate the Box (CSS Only)</h3>
 
         {/* Hidden radio inputs */}
-        <input type="radio" id="css-rotate-0" name="css-rotation" value="0" class="css-hidden-radio" checked />
-        <input type="radio" id="css-rotate-45" name="css-rotation" value="45" class="css-hidden-radio" />
-        <input type="radio" id="css-rotate-90" name="css-rotation" value="90" class="css-hidden-radio" />
-        <input type="radio" id="css-rotate-180" name="css-rotation" value="180" class="css-hidden-radio" />
+        <input
+          type="radio"
+          id="css-rotate-0"
+          name="css-rotation"
+          value="0"
+          class="css-hidden-radio"
+          checked
+        />
+        <input
+          type="radio"
+          id="css-rotate-45"
+          name="css-rotation"
+          value="45"
+          class="css-hidden-radio"
+        />
+        <input
+          type="radio"
+          id="css-rotate-90"
+          name="css-rotation"
+          value="90"
+          class="css-hidden-radio"
+        />
+        <input
+          type="radio"
+          id="css-rotate-180"
+          name="css-rotation"
+          value="180"
+          class="css-hidden-radio"
+        />
 
         <div class="css-controls">
           <label for="css-rotate-0" class="css-button-label">
@@ -452,9 +513,7 @@ export const CSSOnlyBox: Story = {
         </div>
 
         <div class="css-box-wrapper">
-          <div class="css-animated-box">
-            🎨
-          </div>
+          <div class="css-animated-box">🎨</div>
         </div>
 
         <div class="text-sm text-base-content/70 text-center">

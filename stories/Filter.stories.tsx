@@ -48,13 +48,31 @@ export const WithCheckboxes: Story = {
 export const Interactive: Story = {
   render: () => {
     const [selectedFramework, setSelectedFramework] = createSignal("");
-    const [selectedCategories, setSelectedCategories] = createSignal<string[]>([]);
+    const [selectedCategories, setSelectedCategories] = createSignal<string[]>(
+      [],
+    );
 
     const frameworks = [
-      { id: "solid", name: "SolidJS", description: "Fine-grained reactive UI library" },
-      { id: "react", name: "React", description: "Popular component-based library" },
-      { id: "vue", name: "Vue", description: "Progressive JavaScript framework" },
-      { id: "svelte", name: "Svelte", description: "Compile-time optimized framework" },
+      {
+        id: "solid",
+        name: "SolidJS",
+        description: "Fine-grained reactive UI library",
+      },
+      {
+        id: "react",
+        name: "React",
+        description: "Popular component-based library",
+      },
+      {
+        id: "vue",
+        name: "Vue",
+        description: "Progressive JavaScript framework",
+      },
+      {
+        id: "svelte",
+        name: "Svelte",
+        description: "Compile-time optimized framework",
+      },
     ];
 
     const categories = [
@@ -74,9 +92,9 @@ export const Interactive: Story = {
       const categoryId = target.value;
 
       if (target.checked) {
-        setSelectedCategories(prev => [...prev, categoryId]);
+        setSelectedCategories((prev) => [...prev, categoryId]);
       } else {
-        setSelectedCategories(prev => prev.filter(id => id !== categoryId));
+        setSelectedCategories((prev) => prev.filter((id) => id !== categoryId));
       }
     };
 
@@ -86,17 +104,24 @@ export const Interactive: Story = {
     };
 
     const getSelectedFramework = () => {
-      return frameworks.find(f => f.id === selectedFramework());
+      return frameworks.find((f) => f.id === selectedFramework());
     };
 
     const getSelectedCategoryNames = () => {
       return categories
-        .filter(c => selectedCategories().includes(c.id))
-        .map(c => c.name);
+        .filter((c) => selectedCategories().includes(c.id))
+        .map((c) => c.name);
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "600px",
+        }}
+      >
         <h3 class="text-xl font-bold">Interactive Filter Example</h3>
 
         <div>
@@ -123,7 +148,9 @@ export const Interactive: Story = {
         </div>
 
         <div>
-          <h4 class="text-lg font-semibold mb-3">Select Categories (Checkboxes)</h4>
+          <h4 class="text-lg font-semibold mb-3">
+            Select Categories (Checkboxes)
+          </h4>
           <form>
             <For each={categories}>
               {(category) => (
@@ -146,12 +173,20 @@ export const Interactive: Story = {
           </form>
         </div>
 
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+        >
           <h4 class="text-lg font-semibold">Current Selection:</h4>
 
           <div class="bg-base-200 p-4 rounded-box">
-            <div><strong>Framework:</strong> {selectedFramework() || "None selected"}</div>
-            <div><strong>Categories:</strong> {getSelectedCategoryNames().join(", ") || "None selected"}</div>
+            <div>
+              <strong>Framework:</strong>{" "}
+              {selectedFramework() || "None selected"}
+            </div>
+            <div>
+              <strong>Categories:</strong>{" "}
+              {getSelectedCategoryNames().join(", ") || "None selected"}
+            </div>
           </div>
 
           <Transition
@@ -183,7 +218,9 @@ export const Interactive: Story = {
             <Show when={selectedCategories().length > 0}>
               <div class="alert alert-success">
                 <span>
-                  Selected {selectedCategories().length} categor{selectedCategories().length === 1 ? 'y' : 'ies'}: {getSelectedCategoryNames().join(", ")}
+                  Selected {selectedCategories().length} categor
+                  {selectedCategories().length === 1 ? "y" : "ies"}:{" "}
+                  {getSelectedCategoryNames().join(", ")}
                 </span>
               </div>
             </Show>
@@ -192,7 +229,8 @@ export const Interactive: Story = {
           <Show when={selectedFramework() && selectedCategories().length > 0}>
             <div class="alert alert-warning">
               <span>
-                Ready to build a {getSelectedCategoryNames().join(" & ")} app with {getSelectedFramework()?.name}!
+                Ready to build a {getSelectedCategoryNames().join(" & ")} app
+                with {getSelectedFramework()?.name}!
               </span>
             </div>
           </Show>
@@ -237,7 +275,9 @@ export const AllVariants: Story = {
 
       <div>
         <h3 class="text-lg font-semibold mb-2">Multiple Filter Groups</h3>
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+        >
           <div>
             <label class="text-sm font-medium">Programming Languages:</label>
             <Filter>
@@ -253,9 +293,17 @@ export const AllVariants: Story = {
             <label class="text-sm font-medium">Deployment:</label>
             <form>
               <Filter.Input type="checkbox" name="deploy" aria-label="Vercel" />
-              <Filter.Input type="checkbox" name="deploy" aria-label="Netlify" />
+              <Filter.Input
+                type="checkbox"
+                name="deploy"
+                aria-label="Netlify"
+              />
               <Filter.Input type="checkbox" name="deploy" aria-label="AWS" />
-              <Filter.Input type="checkbox" name="deploy" aria-label="Railway" />
+              <Filter.Input
+                type="checkbox"
+                name="deploy"
+                aria-label="Railway"
+              />
               <input class="btn btn-square" type="reset" value="×" />
             </form>
           </div>

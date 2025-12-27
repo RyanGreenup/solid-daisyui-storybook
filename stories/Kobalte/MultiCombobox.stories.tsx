@@ -109,8 +109,10 @@ export const LargeOptionSet: Story = {
 
 export const Controlled: Story = {
   render: () => {
-    const [selectedLanguages, setSelectedLanguages] = createSignal<string[]>([]);
-    
+    const [selectedLanguages, setSelectedLanguages] = createSignal<string[]>(
+      [],
+    );
+
     return (
       <div class="space-y-4">
         <MultiCombobox
@@ -122,8 +124,14 @@ export const Controlled: Story = {
         />
         <div class="alert alert-info">
           <div>
-            <h4 class="font-bold">Selected Languages ({selectedLanguages().length}):</h4>
-            <p>{selectedLanguages().length > 0 ? selectedLanguages().join(", ") : "None selected"}</p>
+            <h4 class="font-bold">
+              Selected Languages ({selectedLanguages().length}):
+            </h4>
+            <p>
+              {selectedLanguages().length > 0
+                ? selectedLanguages().join(", ")
+                : "None selected"}
+            </p>
           </div>
         </div>
       </div>
@@ -136,7 +144,7 @@ export const MultipleComboboxes: Story = {
     const [languages, setLanguages] = createSignal<string[]>([]);
     const [techs, setTechs] = createSignal<string[]>([]);
     const [selectedSkills, setSelectedSkills] = createSignal<string[]>([]);
-    
+
     return (
       <div class="space-y-6">
         <div>
@@ -149,7 +157,7 @@ export const MultipleComboboxes: Story = {
             label="Languages"
           />
         </div>
-        
+
         <div>
           <h3 class="text-lg font-semibold mb-2">Frameworks & Libraries</h3>
           <MultiCombobox
@@ -160,7 +168,7 @@ export const MultipleComboboxes: Story = {
             label="Frameworks"
           />
         </div>
-        
+
         <div>
           <h3 class="text-lg font-semibold mb-2">Skills</h3>
           <MultiCombobox
@@ -171,13 +179,24 @@ export const MultipleComboboxes: Story = {
             label="Skills"
           />
         </div>
-        
+
         <div class="alert">
           <div>
             <h4 class="font-bold">Summary:</h4>
-            <p><strong>Languages:</strong> {languages().length > 0 ? languages().join(", ") : "None"}</p>
-            <p><strong>Frameworks:</strong> {techs().length > 0 ? techs().join(", ") : "None"}</p>
-            <p><strong>Skills:</strong> {selectedSkills().length > 0 ? selectedSkills().join(", ") : "None"}</p>
+            <p>
+              <strong>Languages:</strong>{" "}
+              {languages().length > 0 ? languages().join(", ") : "None"}
+            </p>
+            <p>
+              <strong>Frameworks:</strong>{" "}
+              {techs().length > 0 ? techs().join(", ") : "None"}
+            </p>
+            <p>
+              <strong>Skills:</strong>{" "}
+              {selectedSkills().length > 0
+                ? selectedSkills().join(", ")
+                : "None"}
+            </p>
           </div>
         </div>
       </div>
@@ -189,13 +208,13 @@ export const WithLimits: Story = {
   render: () => {
     const [selected, setSelected] = createSignal<string[]>([]);
     const maxSelections = 5;
-    
+
     const handleChange = (values: string[]) => {
       if (values.length <= maxSelections) {
         setSelected(values);
       }
     };
-    
+
     return (
       <div class="space-y-4">
         <MultiCombobox
@@ -210,7 +229,9 @@ export const WithLimits: Story = {
         </div>
         {selected().length >= maxSelections && (
           <div class="alert alert-warning">
-            <span>You've reached the maximum of {maxSelections} selections.</span>
+            <span>
+              You've reached the maximum of {maxSelections} selections.
+            </span>
           </div>
         )}
       </div>
@@ -226,12 +247,12 @@ export const InForm: Story = {
       frameworks: [] as string[],
       experience: "",
     });
-    
+
     const handleSubmit = (e: Event) => {
       e.preventDefault();
       alert(JSON.stringify(formData(), null, 2));
     };
-    
+
     return (
       <form onSubmit={handleSubmit} class="space-y-4 max-w-md">
         <div class="form-control">
@@ -242,10 +263,12 @@ export const InForm: Story = {
             type="text"
             class="input input-bordered"
             value={formData().name}
-            onInput={(e) => setFormData({ ...formData(), name: e.currentTarget.value })}
+            onInput={(e) =>
+              setFormData({ ...formData(), name: e.currentTarget.value })
+            }
           />
         </div>
-        
+
         <div class="form-control">
           <label class="label">
             <span class="label-text">Programming Languages</span>
@@ -258,7 +281,7 @@ export const InForm: Story = {
             label="Programming Languages"
           />
         </div>
-        
+
         <div class="form-control">
           <label class="label">
             <span class="label-text">Frameworks</span>
@@ -267,19 +290,23 @@ export const InForm: Story = {
             options={frameworks}
             placeholder="Select frameworks..."
             value={formData().frameworks}
-            onChange={(frameworks) => setFormData({ ...formData(), frameworks })}
+            onChange={(frameworks) =>
+              setFormData({ ...formData(), frameworks })
+            }
             label="Frameworks"
           />
         </div>
-        
+
         <div class="form-control">
           <label class="label">
             <span class="label-text">Experience Level</span>
           </label>
-          <select 
+          <select
             class="select select-bordered"
             value={formData().experience}
-            onChange={(e) => setFormData({ ...formData(), experience: e.currentTarget.value })}
+            onChange={(e) =>
+              setFormData({ ...formData(), experience: e.currentTarget.value })
+            }
           >
             <option value="">Select...</option>
             <option value="junior">Junior (0-2 years)</option>
@@ -287,7 +314,7 @@ export const InForm: Story = {
             <option value="senior">Senior (5+ years)</option>
           </select>
         </div>
-        
+
         <button type="submit" class="btn btn-primary">
           Submit
         </button>
@@ -300,7 +327,7 @@ export const TagStyles: Story = {
   render: () => {
     const colorfulItems = [
       "🍎 Apple",
-      "🍊 Orange", 
+      "🍊 Orange",
       "🍇 Grape",
       "🍓 Strawberry",
       "🥝 Kiwi",
@@ -310,9 +337,13 @@ export const TagStyles: Story = {
       "🍍 Pineapple",
       "🥥 Coconut",
     ];
-    
-    const [selected, setSelected] = createSignal(["🍎 Apple", "🍊 Orange", "🍇 Grape"]);
-    
+
+    const [selected, setSelected] = createSignal([
+      "🍎 Apple",
+      "🍊 Orange",
+      "🍇 Grape",
+    ]);
+
     return (
       <div class="space-y-4">
         <MultiCombobox

@@ -35,7 +35,14 @@ export const Default: Story = {
 
 export const DifferentValues: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "1rem", "align-items": "center", "flex-wrap": "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        "align-items": "center",
+        "flex-wrap": "wrap",
+      }}
+    >
       <RadialProgress value={0}>0%</RadialProgress>
       <RadialProgress value={20}>20%</RadialProgress>
       <RadialProgress value={60}>60%</RadialProgress>
@@ -79,25 +86,61 @@ export const CustomSizeAndThickness: Story = {
 
 export const Colors: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "1rem", "align-items": "center", "flex-wrap": "wrap" }}>
-      <RadialProgress value={75} class="text-primary">75%</RadialProgress>
-      <RadialProgress value={75} class="text-secondary">75%</RadialProgress>
-      <RadialProgress value={75} class="text-accent">75%</RadialProgress>
-      <RadialProgress value={75} class="text-info">75%</RadialProgress>
-      <RadialProgress value={75} class="text-success">75%</RadialProgress>
-      <RadialProgress value={75} class="text-warning">75%</RadialProgress>
-      <RadialProgress value={75} class="text-error">75%</RadialProgress>
+    <div
+      style={{
+        display: "flex",
+        gap: "1rem",
+        "align-items": "center",
+        "flex-wrap": "wrap",
+      }}
+    >
+      <RadialProgress value={75} class="text-primary">
+        75%
+      </RadialProgress>
+      <RadialProgress value={75} class="text-secondary">
+        75%
+      </RadialProgress>
+      <RadialProgress value={75} class="text-accent">
+        75%
+      </RadialProgress>
+      <RadialProgress value={75} class="text-info">
+        75%
+      </RadialProgress>
+      <RadialProgress value={75} class="text-success">
+        75%
+      </RadialProgress>
+      <RadialProgress value={75} class="text-warning">
+        75%
+      </RadialProgress>
+      <RadialProgress value={75} class="text-error">
+        75%
+      </RadialProgress>
     </div>
   ),
 };
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "2rem", "align-items": "center", "flex-wrap": "wrap" }}>
-      <RadialProgress value={70} size="3rem" class="text-primary">70%</RadialProgress>
-      <RadialProgress value={70} size="5rem" class="text-primary">70%</RadialProgress>
-      <RadialProgress value={70} size="8rem" class="text-primary">70%</RadialProgress>
-      <RadialProgress value={70} size="10rem" class="text-primary">70%</RadialProgress>
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        "align-items": "center",
+        "flex-wrap": "wrap",
+      }}
+    >
+      <RadialProgress value={70} size="3rem" class="text-primary">
+        70%
+      </RadialProgress>
+      <RadialProgress value={70} size="5rem" class="text-primary">
+        70%
+      </RadialProgress>
+      <RadialProgress value={70} size="8rem" class="text-primary">
+        70%
+      </RadialProgress>
+      <RadialProgress value={70} size="10rem" class="text-primary">
+        70%
+      </RadialProgress>
     </div>
   ),
 };
@@ -111,7 +154,7 @@ export const AnimatedProgress: Story = {
     const startAnimation = () => {
       setProgress(0);
       interval = setInterval(() => {
-        setProgress(prev => {
+        setProgress((prev) => {
           if (prev >= 100) {
             clearInterval(interval);
             return 100;
@@ -126,12 +169,15 @@ export const AnimatedProgress: Story = {
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", "align-items": "center" }}>
-        <RadialProgress
-          value={progress()}
-          class="text-primary"
-          size="8rem"
-        >
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "1rem",
+          "align-items": "center",
+        }}
+      >
+        <RadialProgress value={progress()} class="text-primary" size="8rem">
           {progress()}%
         </RadialProgress>
         <Button onClick={startAnimation} color="primary">
@@ -148,7 +194,9 @@ export const LoadingStates: Story = {
       <div>
         <h3 class="text-lg font-semibold mb-2">File Upload Progress</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
-          <RadialProgress value={45} class="text-info">45%</RadialProgress>
+          <RadialProgress value={45} class="text-info">
+            45%
+          </RadialProgress>
           <span class="text-sm">Uploading document.pdf...</span>
         </div>
       </div>
@@ -156,7 +204,9 @@ export const LoadingStates: Story = {
       <div>
         <h3 class="text-lg font-semibold mb-2">Download Progress</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
-          <RadialProgress value={78} class="text-success">78%</RadialProgress>
+          <RadialProgress value={78} class="text-success">
+            78%
+          </RadialProgress>
           <span class="text-sm">Downloading update...</span>
         </div>
       </div>
@@ -164,7 +214,10 @@ export const LoadingStates: Story = {
       <div>
         <h3 class="text-lg font-semibold mb-2">Task Completion</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
-          <RadialProgress value={100} class="text-success bg-success/10 border-2 border-success">
+          <RadialProgress
+            value={100}
+            class="text-success bg-success/10 border-2 border-success"
+          >
             ✓
           </RadialProgress>
           <span class="text-sm text-success">Task completed successfully!</span>
@@ -174,11 +227,7 @@ export const LoadingStates: Story = {
       <div>
         <h3 class="text-lg font-semibold mb-2">Battery Level</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
-          <RadialProgress
-            value={25}
-            class="text-warning"
-            thickness="8px"
-          >
+          <RadialProgress value={25} class="text-warning" thickness="8px">
             25%
           </RadialProgress>
           <span class="text-sm text-warning">Low battery warning</span>
@@ -190,7 +239,14 @@ export const LoadingStates: Story = {
 
 export const CustomContent: Story = {
   render: () => (
-    <div style={{ display: "flex", gap: "2rem", "align-items": "center", "flex-wrap": "wrap" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "2rem",
+        "align-items": "center",
+        "flex-wrap": "wrap",
+      }}
+    >
       <RadialProgress value={100} class="text-success" size="6rem">
         ✓
       </RadialProgress>

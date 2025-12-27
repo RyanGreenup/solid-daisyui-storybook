@@ -70,13 +70,27 @@ export const WithCustomIcons: Story = {
 export const WithDataContent: Story = {
   render: () => (
     <Steps>
-      <Steps.Step color="neutral" data-content="?">Step 1</Steps.Step>
-      <Steps.Step color="neutral" data-content="!">Step 2</Steps.Step>
-      <Steps.Step color="neutral" data-content="✓">Step 3</Steps.Step>
-      <Steps.Step color="neutral" data-content="✕">Step 4</Steps.Step>
-      <Steps.Step color="neutral" data-content="★">Step 5</Steps.Step>
-      <Steps.Step color="neutral" data-content="">Step 6</Steps.Step>
-      <Steps.Step color="neutral" data-content="●">Step 7</Steps.Step>
+      <Steps.Step color="neutral" data-content="?">
+        Step 1
+      </Steps.Step>
+      <Steps.Step color="neutral" data-content="!">
+        Step 2
+      </Steps.Step>
+      <Steps.Step color="neutral" data-content="✓">
+        Step 3
+      </Steps.Step>
+      <Steps.Step color="neutral" data-content="✕">
+        Step 4
+      </Steps.Step>
+      <Steps.Step color="neutral" data-content="★">
+        Step 5
+      </Steps.Step>
+      <Steps.Step color="neutral" data-content="">
+        Step 6
+      </Steps.Step>
+      <Steps.Step color="neutral" data-content="●">
+        Step 7
+      </Steps.Step>
     </Steps>
   ),
 };
@@ -87,7 +101,9 @@ export const CustomColors: Story = {
       <Steps.Step color="info">Fly to moon</Steps.Step>
       <Steps.Step color="info">Shrink the moon</Steps.Step>
       <Steps.Step color="info">Grab the moon</Steps.Step>
-      <Steps.Step color="error" data-content="?">Sit on toilet</Steps.Step>
+      <Steps.Step color="error" data-content="?">
+        Sit on toilet
+      </Steps.Step>
     </Steps>
   ),
 };
@@ -147,7 +163,7 @@ export const AllColors: Story = {
 export const InteractiveProgress: Story = {
   render: () => {
     const [currentStep, setCurrentStep] = createSignal(0);
-    
+
     const steps = [
       { label: "Create Account", description: "Set up your profile" },
       { label: "Verify Email", description: "Check your inbox" },
@@ -158,13 +174,13 @@ export const InteractiveProgress: Story = {
 
     const nextStep = () => {
       if (currentStep() < steps.length - 1) {
-        setCurrentStep(prev => prev + 1);
+        setCurrentStep((prev) => prev + 1);
       }
     };
 
     const prevStep = () => {
       if (currentStep() > 0) {
-        setCurrentStep(prev => prev - 1);
+        setCurrentStep((prev) => prev - 1);
       }
     };
 
@@ -173,13 +189,20 @@ export const InteractiveProgress: Story = {
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "600px",
+        }}
+      >
         <h3 class="text-xl font-bold">Interactive Step Progress</h3>
-        
+
         <Steps>
           <For each={steps}>
             {(step, index) => (
-              <Steps.Step 
+              <Steps.Step
                 color={index() <= currentStep() ? "primary" : "default"}
                 class="cursor-pointer"
                 onClick={() => goToStep(index())}
@@ -206,16 +229,16 @@ export const InteractiveProgress: Story = {
               <p class="text-sm opacity-70 mb-4">
                 {steps[currentStep()].description}
               </p>
-              
+
               <div class="flex justify-between">
-                <button 
+                <button
                   class="btn btn-outline"
                   disabled={currentStep() === 0}
                   onClick={prevStep}
                 >
                   Previous
                 </button>
-                <button 
+                <button
                   class="btn btn-primary"
                   disabled={currentStep() === steps.length - 1}
                   onClick={nextStep}
