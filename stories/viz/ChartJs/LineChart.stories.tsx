@@ -1,12 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import {
-  ChartJSLineChart as LineChart,
-  Select,
-  Toggle,
-  Label,
-  Fieldset,
-} from "../../../src/solid-daisy-components/";
-import { createSignal, createMemo, For } from "solid-js";
+import { createSignal, createMemo } from "solid-js";
+import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import { LineChart } from "../../../src/solid-daisy-components/components/viz/chart_js/LineChart";
 
 const meta = {
   title: "Viz/Chart JS/LineChart",

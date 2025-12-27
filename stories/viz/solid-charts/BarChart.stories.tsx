@@ -1,7 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { BarChart, Button, Card, Select } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For } from "solid-js";
+import { BarChart } from "../../../src/solid-daisy-components/components/viz/solid-charts/BarChart";
+import { Button } from "../../../src/solid-daisy-components/components/Button";
 
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import { Card } from "../../../src/solid-daisy-components/components/Card";
 const meta = {
   title: "Viz/Solid Charts/Bar Chart",
   component: BarChart,

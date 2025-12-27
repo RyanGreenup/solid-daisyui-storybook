@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Progress } from "../src/solid-daisy-components/";
 import { createSignal, onCleanup } from "solid-js";
+import { Progress } from "../src/solid-daisy-components/components/Progress";
 
 const meta = {
   title: "Components/Progress",

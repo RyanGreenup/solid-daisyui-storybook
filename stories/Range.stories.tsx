@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Range } from "../src/solid-daisy-components/";
+import { Range } from "../src/solid-daisy-components/components/Range";
 
 const meta = {
   title: "Components/Data Input/Range",

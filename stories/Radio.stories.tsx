@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Radio } from "../src/solid-daisy-components/";
 import { createSignal } from "solid-js";
+import { Radio } from "../src/solid-daisy-components/components/Radio";
 
 const meta = {
   title: "Components/Data Input/Radio",

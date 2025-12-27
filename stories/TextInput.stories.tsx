@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { TextInput, Fieldset, Label, Badge, Kbd, Button } from "../src/solid-daisy-components/";
 import { createSignal, Show } from "solid-js";
 import Search from "lucide-solid/icons/search";
 import File from "lucide-solid/icons/file";
@@ -8,6 +7,14 @@ import Mail from "lucide-solid/icons/mail";
 import Key from "lucide-solid/icons/key";
 import Phone from "lucide-solid/icons/phone";
 import Link from "lucide-solid/icons/link";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Kbd } from "../src/solid-daisy-components/components/Kbd";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import {
+  Fieldset,
+  Label,
+} from "../src/solid-daisy-components/components/Fieldset";
+import { TextInput } from "../src/solid-daisy-components/components/TextInput";
 
 const meta = {
   title: "Components/Data Input/TextInput",
@@ -16,7 +23,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "neutral", "primary", "secondary", "accent", "info", "success", "warning", "error"],
+      options: [
+        "default",
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "info",
+        "success",
+        "warning",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -63,7 +80,9 @@ export const WithWrapper: Story = {
       <TextInput.Wrapper>
         Path
         <input type="text" class="grow" placeholder="src/app/" />
-        <Badge color="neutral" size="xs">Optional</Badge>
+        <Badge color="neutral" size="xs">
+          Optional
+        </Badge>
       </TextInput.Wrapper>
     </div>
   ),
@@ -126,7 +145,11 @@ export const InputTypes: Story = {
 export const WithDatalist: Story = {
   render: () => (
     <div>
-      <TextInput type="text" placeholder="Which browser do you use" list="browsers" />
+      <TextInput
+        type="text"
+        placeholder="Which browser do you use"
+        list="browsers"
+      />
       <datalist id="browsers">
         <option value="Chrome" />
         <option value="Firefox" />
@@ -157,7 +180,8 @@ export const FormExamples: Story = {
             />
           </TextInput.Wrapper>
           <p class="validator-hint">
-            Must be 3 to 30 characters<br />
+            Must be 3 to 30 characters
+            <br />
             containing only letters, numbers or dash
           </p>
         </form>
@@ -215,9 +239,12 @@ export const FormExamples: Story = {
             />
           </TextInput.Wrapper>
           <p class="validator-hint hidden">
-            Must be more than 8 characters, including<br />
-            At least one number<br />
-            At least one lowercase letter<br />
+            Must be more than 8 characters, including
+            <br />
+            At least one number
+            <br />
+            At least one lowercase letter
+            <br />
             At least one uppercase letter
           </p>
         </form>
@@ -276,11 +303,22 @@ export const SolidJSReactive: Story = {
       setIsValidEmail(target.validity.valid);
     };
 
-    const wordCount = () => value().trim().split(/\\s+/).filter(word => word.length > 0).length;
+    const wordCount = () =>
+      value()
+        .trim()
+        .split(/\\s+/)
+        .filter((word) => word.length > 0).length;
     const charCount = () => value().length;
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "500px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "500px",
+        }}
+      >
         <h3 class="text-xl font-bold">SolidJS Reactive TextInput Example</h3>
 
         <div>
@@ -293,7 +331,8 @@ export const SolidJSReactive: Story = {
             color="primary"
           />
           <div class="mt-2 text-sm text-base-content/60">
-            <span>Characters: {charCount()}</span> | <span>Words: {wordCount()}</span>
+            <span>Characters: {charCount()}</span> |{" "}
+            <span>Words: {wordCount()}</span>
           </div>
           <Show when={value().length > 0}>
             <div class="mt-2 p-3 bg-base-200 rounded-box">
@@ -315,7 +354,9 @@ export const SolidJSReactive: Story = {
             />
           </TextInput.Wrapper>
           <Show when={!isValidEmail() && email().length > 0}>
-            <p class="mt-1 text-sm text-error">Please enter a valid email address</p>
+            <p class="mt-1 text-sm text-error">
+              Please enter a valid email address
+            </p>
           </Show>
           <Show when={isValidEmail() && email().length > 0}>
             <p class="mt-1 text-sm text-success">Email looks good!</p>
@@ -337,13 +378,15 @@ export const SolidJSReactive: Story = {
             <div class="mt-2 p-3 bg-base-200 rounded-box">
               <strong>Searching for:</strong> "{value()}"
               <div class="mt-2 text-sm">
-                {["Apple", "Banana", "Cherry", "Date", "Elderberry"].filter(fruit =>
-                  fruit.toLowerCase().includes(value().toLowerCase())
-                ).map(fruit => (
-                  <div class="py-1 px-2 hover:bg-base-300 rounded cursor-pointer">
-                    {fruit}
-                  </div>
-                ))}
+                {["Apple", "Banana", "Cherry", "Date", "Elderberry"]
+                  .filter((fruit) =>
+                    fruit.toLowerCase().includes(value().toLowerCase()),
+                  )
+                  .map((fruit) => (
+                    <div class="py-1 px-2 hover:bg-base-300 rounded cursor-pointer">
+                      {fruit}
+                    </div>
+                  ))}
               </div>
             </div>
           </Show>

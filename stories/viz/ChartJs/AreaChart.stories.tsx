@@ -1,6 +1,11 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { AreaChart, Toggle, Label, Fieldset } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, onMount } from "solid-js";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
+import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
+import { AreaChart } from "../../../src/solid-daisy-components/components/viz/chart_js/AreaChart";
 
 const meta = {
   title: "Charts/AreaChart",
@@ -18,10 +23,16 @@ const generateAreaData = (months: number = 12) => {
   const currentDate = new Date();
 
   for (let i = months - 1; i >= 0; i--) {
-    const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
-    labels.push(date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }));
+    const date = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() - i,
+      1,
+    );
+    labels.push(
+      date.toLocaleDateString("en-US", { month: "short", year: "numeric" }),
+    );
     // Generate more stable data for area charts
-    const baseValue = 5000 + (i * 200);
+    const baseValue = 5000 + i * 200;
     data.push(baseValue + Math.floor(Math.random() * 2000));
   }
 
@@ -36,13 +47,17 @@ const generateMultiSeriesAreaData = (months: number = 12) => {
   const currentDate = new Date();
 
   for (let i = months - 1; i >= 0; i--) {
-    const date = new Date(currentDate.getFullYear(), currentDate.getMonth() - i, 1);
-    labels.push(date.toLocaleDateString('en-US', { month: 'short' }));
+    const date = new Date(
+      currentDate.getFullYear(),
+      currentDate.getMonth() - i,
+      1,
+    );
+    labels.push(date.toLocaleDateString("en-US", { month: "short" }));
 
     // Generate trending data for better visualization
-    const baseValue1 = 3000 + (i * 100);
-    const baseValue2 = 2000 + (i * 150);
-    const baseValue3 = 1500 + (i * 80);
+    const baseValue1 = 3000 + i * 100;
+    const baseValue2 = 2000 + i * 150;
+    const baseValue3 = 1500 + i * 80;
 
     series1.push(baseValue1 + Math.floor(Math.random() * 500));
     series2.push(baseValue2 + Math.floor(Math.random() * 400));
@@ -62,15 +77,17 @@ export const Basic: Story = {
           title="Website Traffic Over Time"
           data={{
             labels: areaData.labels,
-            datasets: [{
-              label: 'Visitors',
-              data: areaData.data,
-              borderColor: 'rgb(59, 130, 246)',
-              backgroundColor: 'rgba(59, 130, 246, 0.3)',
-              borderWidth: 2,
-              fill: 'origin',
-              tension: 0.4,
-            }]
+            datasets: [
+              {
+                label: "Visitors",
+                data: areaData.data,
+                borderColor: "rgb(59, 130, 246)",
+                backgroundColor: "rgba(59, 130, 246, 0.3)",
+                borderWidth: 2,
+                fill: "origin",
+                tension: 0.4,
+              },
+            ],
           }}
         />
       </div>
@@ -90,33 +107,33 @@ export const MultipleAreas: Story = {
             labels: multiData.labels,
             datasets: [
               {
-                label: 'Online Sales',
+                label: "Online Sales",
                 data: multiData.series1,
-                borderColor: 'rgb(34, 197, 94)',
-                backgroundColor: 'rgba(34, 197, 94, 0.3)',
+                borderColor: "rgb(34, 197, 94)",
+                backgroundColor: "rgba(34, 197, 94, 0.3)",
                 borderWidth: 2,
-                fill: 'origin',
+                fill: "origin",
                 tension: 0.4,
               },
               {
-                label: 'Retail Stores',
+                label: "Retail Stores",
                 data: multiData.series2,
-                borderColor: 'rgb(168, 85, 247)',
-                backgroundColor: 'rgba(168, 85, 247, 0.3)',
+                borderColor: "rgb(168, 85, 247)",
+                backgroundColor: "rgba(168, 85, 247, 0.3)",
                 borderWidth: 2,
-                fill: 'origin',
+                fill: "origin",
                 tension: 0.4,
               },
               {
-                label: 'Wholesale',
+                label: "Wholesale",
                 data: multiData.series3,
-                borderColor: 'rgb(245, 158, 11)',
-                backgroundColor: 'rgba(245, 158, 11, 0.3)',
+                borderColor: "rgb(245, 158, 11)",
+                backgroundColor: "rgba(245, 158, 11, 0.3)",
                 borderWidth: 2,
-                fill: 'origin',
+                fill: "origin",
                 tension: 0.4,
-              }
-            ]
+              },
+            ],
           }}
         />
       </div>
@@ -137,30 +154,30 @@ export const StackedArea: Story = {
             labels: stackedData.labels,
             datasets: [
               {
-                label: 'Product Sales',
+                label: "Product Sales",
                 data: stackedData.series1,
-                borderColor: 'rgb(59, 130, 246)',
-                backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                borderColor: "rgb(59, 130, 246)",
+                backgroundColor: "rgba(59, 130, 246, 0.8)",
                 borderWidth: 1,
                 fill: true,
               },
               {
-                label: 'Service Revenue',
+                label: "Service Revenue",
                 data: stackedData.series2,
-                borderColor: 'rgb(34, 197, 94)',
-                backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                borderColor: "rgb(34, 197, 94)",
+                backgroundColor: "rgba(34, 197, 94, 0.8)",
                 borderWidth: 1,
                 fill: true,
               },
               {
-                label: 'Subscription Revenue',
+                label: "Subscription Revenue",
                 data: stackedData.series3,
-                borderColor: 'rgb(245, 158, 11)',
-                backgroundColor: 'rgba(245, 158, 11, 0.8)',
+                borderColor: "rgb(245, 158, 11)",
+                backgroundColor: "rgba(245, 158, 11, 0.8)",
                 borderWidth: 1,
                 fill: true,
-              }
-            ]
+              },
+            ],
           }}
         />
       </div>
@@ -188,10 +205,12 @@ export const InteractiveExample: Story = {
         labels: data.labels,
         datasets: [
           {
-            label: 'Desktop Users',
+            label: "Desktop Users",
             data: data.series1,
-            borderColor: 'rgb(59, 130, 246)',
-            backgroundColor: useStacking() ? 'rgba(59, 130, 246, 0.8)' : 'rgba(59, 130, 246, 0.3)',
+            borderColor: "rgb(59, 130, 246)",
+            backgroundColor: useStacking()
+              ? "rgba(59, 130, 246, 0.8)"
+              : "rgba(59, 130, 246, 0.3)",
             borderWidth: 2,
             fill: true,
             tension: 0.4,
@@ -199,10 +218,12 @@ export const InteractiveExample: Story = {
             pointHoverRadius: showPoints() ? 6 : 4,
           },
           {
-            label: 'Mobile Users',
+            label: "Mobile Users",
             data: data.series2,
-            borderColor: 'rgb(34, 197, 94)',
-            backgroundColor: useStacking() ? 'rgba(34, 197, 94, 0.8)' : 'rgba(34, 197, 94, 0.3)',
+            borderColor: "rgb(34, 197, 94)",
+            backgroundColor: useStacking()
+              ? "rgba(34, 197, 94, 0.8)"
+              : "rgba(34, 197, 94, 0.3)",
             borderWidth: 2,
             fill: true,
             tension: 0.4,
@@ -210,22 +231,26 @@ export const InteractiveExample: Story = {
             pointHoverRadius: showPoints() ? 6 : 4,
           },
           {
-            label: 'Tablet Users',
+            label: "Tablet Users",
             data: data.series3,
-            borderColor: 'rgb(168, 85, 247)',
-            backgroundColor: useStacking() ? 'rgba(168, 85, 247, 0.8)' : 'rgba(168, 85, 247, 0.3)',
+            borderColor: "rgb(168, 85, 247)",
+            backgroundColor: useStacking()
+              ? "rgba(168, 85, 247, 0.8)"
+              : "rgba(168, 85, 247, 0.3)",
             borderWidth: 2,
             fill: true,
             tension: 0.4,
             pointRadius: showPoints() ? 4 : 0,
             pointHoverRadius: showPoints() ? 6 : 4,
-          }
-        ]
+          },
+        ],
       };
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+      <div
+        style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}
+      >
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
 
@@ -280,29 +305,29 @@ export const InteractiveExample: Story = {
 
           <Label class="text-sm opacity-70 mt-3">
             Displaying {timeRange()} months of user analytics data
-            {useStacking() ? ' with stacked visualization' : ''}
-            {showPoints() ? ' with data points visible' : ''}
+            {useStacking() ? " with stacked visualization" : ""}
+            {showPoints() ? " with data points visible" : ""}
           </Label>
         </Fieldset>
 
         <div style={{ height: "400px" }}>
           <AreaChart
-            title={`User Analytics - Last ${timeRange()} Months ${useStacking() ? '(Stacked)' : ''}`}
+            title={`User Analytics - Last ${timeRange()} Months ${useStacking() ? "(Stacked)" : ""}`}
             stacked={useStacking()}
             data={chartData()}
             options={{
               animation: {
-                duration: animationEnabled() ? 750 : (hasRendered() ? 0 : 1000)
+                duration: animationEnabled() ? 750 : hasRendered() ? 0 : 1000,
               },
               plugins: {
                 legend: {
-                  position: 'bottom' as const,
+                  position: "bottom" as const,
                   labels: {
                     usePointStyle: true,
-                    padding: 15
-                  }
-                }
-              }
+                    padding: 15,
+                  },
+                },
+              },
             }}
           />
         </div>
@@ -321,33 +346,35 @@ export const GradientArea: Story = {
           title="Sales Performance with Gradient"
           data={{
             labels: gradientData.labels,
-            datasets: [{
-              label: 'Sales ($)',
-              data: gradientData.data,
-              borderColor: 'rgb(168, 85, 247)',
-              backgroundColor: 'rgba(168, 85, 247, 0.4)',
-              borderWidth: 3,
-              fill: true,
-              tension: 0.6,
-            }]
+            datasets: [
+              {
+                label: "Sales ($)",
+                data: gradientData.data,
+                borderColor: "rgb(168, 85, 247)",
+                backgroundColor: "rgba(168, 85, 247, 0.4)",
+                borderWidth: 3,
+                fill: true,
+                tension: 0.6,
+              },
+            ],
           }}
           options={{
             elements: {
               point: {
                 radius: 0,
                 hoverRadius: 8,
-                hoverBorderWidth: 3
-              }
+                hoverBorderWidth: 3,
+              },
             },
             scales: {
               y: {
                 ticks: {
-                  callback: function(value) {
-                    return '$' + Number(value).toLocaleString();
-                  }
-                }
-              }
-            }
+                  callback: function (value) {
+                    return "$" + Number(value).toLocaleString();
+                  },
+                },
+              },
+            },
           }}
         />
       </div>
@@ -358,10 +385,12 @@ export const GradientArea: Story = {
 export const ComparativeAreas: Story = {
   render: () => {
     const currentYear = generateAreaData(12).data;
-    const lastYear = generateAreaData(12).data.map(val => val * 0.85 + Math.random() * 1000);
+    const lastYear = generateAreaData(12).data.map(
+      (val) => val * 0.85 + Math.random() * 1000,
+    );
     const labels = Array.from({ length: 12 }, (_, i) => {
       const date = new Date(2024, i, 1);
-      return date.toLocaleDateString('en-US', { month: 'short' });
+      return date.toLocaleDateString("en-US", { month: "short" });
     });
 
     return (
@@ -372,36 +401,36 @@ export const ComparativeAreas: Story = {
             labels: labels,
             datasets: [
               {
-                label: '2024',
+                label: "2024",
                 data: currentYear,
-                borderColor: 'rgb(34, 197, 94)',
-                backgroundColor: 'rgba(34, 197, 94, 0.2)',
+                borderColor: "rgb(34, 197, 94)",
+                backgroundColor: "rgba(34, 197, 94, 0.2)",
                 borderWidth: 3,
                 fill: true,
                 tension: 0.4,
               },
               {
-                label: '2023',
+                label: "2023",
                 data: lastYear,
-                borderColor: 'rgb(156, 163, 175)',
-                backgroundColor: 'rgba(156, 163, 175, 0.2)',
+                borderColor: "rgb(156, 163, 175)",
+                backgroundColor: "rgba(156, 163, 175, 0.2)",
                 borderWidth: 2,
                 fill: true,
                 tension: 0.4,
                 borderDash: [5, 5],
-              }
-            ]
+              },
+            ],
           }}
           options={{
             plugins: {
               legend: {
-                position: 'bottom',
+                position: "bottom",
                 labels: {
                   usePointStyle: true,
-                  padding: 20
-                }
-              }
-            }
+                  padding: 20,
+                },
+              },
+            },
           }}
         />
       </div>
@@ -412,13 +441,29 @@ export const ComparativeAreas: Story = {
 export const MiniAreaCharts: Story = {
   render: () => {
     const datasets = [
-      { label: 'Revenue', data: generateAreaData(6).data, color: 'rgb(59, 130, 246)' },
-      { label: 'Users', data: generateAreaData(6).data, color: 'rgb(34, 197, 94)' },
-      { label: 'Orders', data: generateAreaData(6).data, color: 'rgb(245, 158, 11)' },
-      { label: 'Conversion', data: generateAreaData(6).data, color: 'rgb(168, 85, 247)' }
+      {
+        label: "Revenue",
+        data: generateAreaData(6).data,
+        color: "rgb(59, 130, 246)",
+      },
+      {
+        label: "Users",
+        data: generateAreaData(6).data,
+        color: "rgb(34, 197, 94)",
+      },
+      {
+        label: "Orders",
+        data: generateAreaData(6).data,
+        color: "rgb(245, 158, 11)",
+      },
+      {
+        label: "Conversion",
+        data: generateAreaData(6).data,
+        color: "rgb(168, 85, 247)",
+      },
     ];
 
-    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+    const labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
 
     return (
       <div class="grid grid-cols-2 gap-4">
@@ -428,30 +473,34 @@ export const MiniAreaCharts: Story = {
               title={dataset.label}
               data={{
                 labels: labels,
-                datasets: [{
-                  label: dataset.label,
-                  data: dataset.data,
-                  borderColor: dataset.color,
-                  backgroundColor: dataset.color.replace('rgb', 'rgba').replace(')', ', 0.3)'),
-                  borderWidth: 2,
-                  fill: true,
-                  tension: 0.4,
-                }]
+                datasets: [
+                  {
+                    label: dataset.label,
+                    data: dataset.data,
+                    borderColor: dataset.color,
+                    backgroundColor: dataset.color
+                      .replace("rgb", "rgba")
+                      .replace(")", ", 0.3)"),
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                  },
+                ],
               }}
               options={{
                 plugins: {
                   legend: {
-                    display: false
-                  }
+                    display: false,
+                  },
                 },
                 scales: {
                   x: {
-                    display: false
+                    display: false,
                   },
                   y: {
-                    display: false
-                  }
-                }
+                    display: false,
+                  },
+                },
               }}
             />
           </div>

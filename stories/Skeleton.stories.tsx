@@ -1,7 +1,11 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Skeleton, Button, Card, Badge, Avatar } from "../src/solid-daisy-components/";
 import { createSignal, onCleanup, Show, For } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Avatar } from "../src/solid-daisy-components/components/Avatar";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import { Card } from "../src/solid-daisy-components/components/Card";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Skeleton } from "../src/solid-daisy-components/components/Skeleton";
 
 const meta = {
   title: "Components/Skeleton",
@@ -13,9 +17,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: () => (
-    <Skeleton class="w-32 h-32" />
-  ),
+  render: () => <Skeleton class="w-32 h-32" />,
 };
 
 export const Circle: Story = {
@@ -97,23 +99,24 @@ export const InteractiveDemo: Story = {
     const loadUserData = async () => {
       setIsLoading(true);
       setUserData(null);
-      
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       setUserData({
-        avatar: "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
+        avatar:
+          "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp",
         name: "Sarah Johnson",
         role: "Senior Developer",
         bio: "Passionate about creating beautiful and functional user interfaces. Love working with modern web technologies and solving complex problems.",
         stats: {
           projects: 24,
           followers: 1337,
-          following: 189
+          following: 189,
         },
-        badges: ["TypeScript", "React", "SolidJS", "Design"]
+        badges: ["TypeScript", "React", "SolidJS", "Design"],
       });
-      
+
       setIsLoading(false);
     };
 
@@ -121,7 +124,14 @@ export const InteractiveDemo: Story = {
     loadUserData();
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "500px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "500px",
+        }}
+      >
         <div class="flex justify-between items-center">
           <h3 class="text-xl font-bold">User Profile</h3>
           <Button onClick={loadUserData} disabled={isLoading()}>
@@ -139,55 +149,70 @@ export const InteractiveDemo: Story = {
               exitClass="opacity-100"
               exitToClass="opacity-0"
             >
-              <Show when={isLoading()} fallback={
-                <Show when={userData()}>
-                  <div class="flex flex-col gap-4">
-                    {/* Profile Header */}
-                    <div class="flex items-center gap-4">
-                      <div class="avatar">
-                        <div class="w-16 rounded-full">
-                          <img src={userData().avatar} alt="Profile" />
+              <Show
+                when={isLoading()}
+                fallback={
+                  <Show when={userData()}>
+                    <div class="flex flex-col gap-4">
+                      {/* Profile Header */}
+                      <div class="flex items-center gap-4">
+                        <div class="avatar">
+                          <div class="w-16 rounded-full">
+                            <img src={userData().avatar} alt="Profile" />
+                          </div>
+                        </div>
+                        <div class="flex flex-col">
+                          <h2 class="text-xl font-bold">{userData().name}</h2>
+                          <p class="text-base-content/70">{userData().role}</p>
                         </div>
                       </div>
-                      <div class="flex flex-col">
-                        <h2 class="text-xl font-bold">{userData().name}</h2>
-                        <p class="text-base-content/70">{userData().role}</p>
+
+                      {/* Bio */}
+                      <p class="text-sm">{userData().bio}</p>
+
+                      {/* Stats */}
+                      <div class="flex justify-around bg-base-200 rounded-lg p-4">
+                        <div class="text-center">
+                          <div class="text-xl font-bold">
+                            {userData().stats.projects}
+                          </div>
+                          <div class="text-xs text-base-content/70">
+                            Projects
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <div class="text-xl font-bold">
+                            {userData().stats.followers}
+                          </div>
+                          <div class="text-xs text-base-content/70">
+                            Followers
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <div class="text-xl font-bold">
+                            {userData().stats.following}
+                          </div>
+                          <div class="text-xs text-base-content/70">
+                            Following
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Skills */}
+                      <div>
+                        <h3 class="font-semibold mb-2">Skills</h3>
+                        <div class="flex flex-wrap gap-2">
+                          <For each={userData().badges}>
+                            {(badge) => (
+                              <Badge variant="outline">{badge}</Badge>
+                            )}
+                          </For>
+                        </div>
                       </div>
                     </div>
-
-                    {/* Bio */}
-                    <p class="text-sm">{userData().bio}</p>
-
-                    {/* Stats */}
-                    <div class="flex justify-around bg-base-200 rounded-lg p-4">
-                      <div class="text-center">
-                        <div class="text-xl font-bold">{userData().stats.projects}</div>
-                        <div class="text-xs text-base-content/70">Projects</div>
-                      </div>
-                      <div class="text-center">
-                        <div class="text-xl font-bold">{userData().stats.followers}</div>
-                        <div class="text-xs text-base-content/70">Followers</div>
-                      </div>
-                      <div class="text-center">
-                        <div class="text-xl font-bold">{userData().stats.following}</div>
-                        <div class="text-xs text-base-content/70">Following</div>
-                      </div>
-                    </div>
-
-                    {/* Skills */}
-                    <div>
-                      <h3 class="font-semibold mb-2">Skills</h3>
-                      <div class="flex flex-wrap gap-2">
-                        <For each={userData().badges}>
-                          {(badge) => (
-                            <Badge variant="outline">{badge}</Badge>
-                          )}
-                        </For>
-                      </div>
-                    </div>
-                  </div>
-                </Show>
-              }>
+                  </Show>
+                }
+              >
                 {/* Skeleton Loading State */}
                 <div class="flex flex-col gap-4">
                   {/* Profile Header Skeleton */}
@@ -241,7 +266,13 @@ export const InteractiveDemo: Story = {
         <Card class="bg-base-100 shadow-sm">
           <Card.Body>
             <Card.Title>Different Skeleton Shapes</Card.Title>
-            <div style={{ display: "grid", "grid-template-columns": "repeat(2, 1fr)", gap: "2rem" }}>
+            <div
+              style={{
+                display: "grid",
+                "grid-template-columns": "repeat(2, 1fr)",
+                gap: "2rem",
+              }}
+            >
               <div>
                 <h4 class="font-medium mb-2">Basic Shapes</h4>
                 <div class="flex flex-col gap-2">
@@ -252,7 +283,7 @@ export const InteractiveDemo: Story = {
                   <Skeleton class="h-16 w-full" />
                 </div>
               </div>
-              
+
               <div>
                 <h4 class="font-medium mb-2">Complex Layout</h4>
                 <div class="flex items-start gap-3">

@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Carousel, Button } from "../src/solid-daisy-components/";
 import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Carousel } from "../src/solid-daisy-components/components/Carousel";
 
 const meta = {
   title: "Components/Carousel",
@@ -80,7 +81,11 @@ export const FullWidth: Story = {
       <For each={sampleImages.slice(0, 4)}>
         {(src, index) => (
           <Carousel.Item class="w-full">
-            <img src={src} class="w-full" alt={`Carousel item ${index() + 1}`} />
+            <img
+              src={src}
+              class="w-full"
+              alt={`Carousel item ${index() + 1}`}
+            />
           </Carousel.Item>
         )}
       </For>
@@ -108,7 +113,11 @@ export const HalfWidth: Story = {
       <For each={sampleImages}>
         {(src, index) => (
           <Carousel.Item class="w-1/2">
-            <img src={src} class="w-full" alt={`Carousel item ${index() + 1}`} />
+            <img
+              src={src}
+              class="w-full"
+              alt={`Carousel item ${index() + 1}`}
+            />
           </Carousel.Item>
         )}
       </For>
@@ -118,11 +127,18 @@ export const HalfWidth: Story = {
 
 export const FullBleed: Story = {
   render: () => (
-    <Carousel snap="center" class="max-w-md p-4 space-x-4 bg-neutral rounded-box">
+    <Carousel
+      snap="center"
+      class="max-w-md p-4 space-x-4 bg-neutral rounded-box"
+    >
       <For each={sampleImages}>
         {(src, index) => (
           <Carousel.Item>
-            <img src={src} class="rounded-box" alt={`Carousel item ${index() + 1}`} />
+            <img
+              src={src}
+              class="rounded-box"
+              alt={`Carousel item ${index() + 1}`}
+            />
           </Carousel.Item>
         )}
       </For>
@@ -145,7 +161,11 @@ export const WithIndicators: Story = {
           <For each={indicatorImages}>
             {(src, index) => (
               <Carousel.Item id={`item${index() + 1}`} class="w-full">
-                <img src={src} class="w-full" alt={`Carousel item ${index() + 1}`} />
+                <img
+                  src={src}
+                  class="w-full"
+                  alt={`Carousel item ${index() + 1}`}
+                />
               </Carousel.Item>
             )}
           </For>
@@ -186,12 +206,22 @@ export const WithNavigation: Story = {
         <For each={navImages}>
           {(src, index) => (
             <Carousel.Item id={`slide${index() + 1}`} class="relative w-full">
-              <img src={src} class="w-full" alt={`Carousel slide ${index() + 1}`} />
+              <img
+                src={src}
+                class="w-full"
+                alt={`Carousel slide ${index() + 1}`}
+              />
               <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href={`#slide${getPrevSlide(index()) + 1}`} class="btn btn-circle">
+                <a
+                  href={`#slide${getPrevSlide(index()) + 1}`}
+                  class="btn btn-circle"
+                >
                   ❮
                 </a>
-                <a href={`#slide${getNextSlide(index()) + 1}`} class="btn btn-circle">
+                <a
+                  href={`#slide${getNextSlide(index()) + 1}`}
+                  class="btn btn-circle"
+                >
                   ❯
                 </a>
               </div>
@@ -213,34 +243,36 @@ export const SolidJSReactive: Story = {
         src: "https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp",
         title: "Delicious Burger",
         description: "Fresh beef patty with premium toppings",
-        price: "$12.99"
+        price: "$12.99",
       },
       {
         src: "https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp",
         title: "Gourmet Pizza",
         description: "Wood-fired pizza with artisan ingredients",
-        price: "$18.99"
+        price: "$18.99",
       },
       {
         src: "https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp",
         title: "Fresh Salad",
         description: "Organic greens with seasonal vegetables",
-        price: "$9.99"
+        price: "$9.99",
       },
       {
         src: "https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp",
         title: "Pasta Special",
         description: "Handmade pasta with signature sauce",
-        price: "$15.99"
-      }
+        price: "$15.99",
+      },
     ];
 
     const nextSlide = () => {
-      setCurrentSlide(prev => (prev + 1) % productImages.length);
+      setCurrentSlide((prev) => (prev + 1) % productImages.length);
     };
 
     const prevSlide = () => {
-      setCurrentSlide(prev => prev === 0 ? productImages.length - 1 : prev - 1);
+      setCurrentSlide((prev) =>
+        prev === 0 ? productImages.length - 1 : prev - 1,
+      );
     };
 
     const goToSlide = (index: number) => {
@@ -249,7 +281,7 @@ export const SolidJSReactive: Story = {
 
     // Auto-play functionality
     let autoplayInterval: ReturnType<typeof setInterval>;
-    
+
     const startAutoplay = () => {
       if (isAutoplay()) {
         autoplayInterval = setInterval(nextSlide, 3000);
@@ -269,13 +301,28 @@ export const SolidJSReactive: Story = {
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem", "max-width": "600px" }}>
-        <div style={{ display: "flex", "justify-content": "space-between", "align-items": "center" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "1.5rem",
+          "max-width": "600px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            "justify-content": "space-between",
+            "align-items": "center",
+          }}
+        >
           <h3 class="text-xl font-bold">SolidJS Interactive Carousel</h3>
-          <div style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+          <div
+            style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}
+          >
             <span class="text-sm">Autoplay:</span>
-            <input 
-              type="checkbox" 
+            <input
+              type="checkbox"
               class="toggle toggle-primary toggle-sm"
               checked={isAutoplay()}
               onChange={(e) => {
@@ -290,24 +337,26 @@ export const SolidJSReactive: Story = {
           <Carousel class="w-full rounded-lg overflow-hidden shadow-lg">
             <For each={productImages}>
               {(product, index) => (
-                <Carousel.Item 
+                <Carousel.Item
                   class="w-full relative transition-transform duration-300"
-                  style={{ 
+                  style={{
                     transform: `translateX(${(index() - currentSlide()) * 100}%)`,
                     position: index() === 0 ? "relative" : "absolute",
                     top: index() === 0 ? "auto" : "0",
                     left: index() === 0 ? "auto" : "0",
                   }}
                 >
-                  <img 
-                    src={product.src} 
-                    class="w-full h-64 object-cover" 
-                    alt={product.title} 
+                  <img
+                    src={product.src}
+                    class="w-full h-64 object-cover"
+                    alt={product.title}
                   />
                   <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
                     <h4 class="text-lg font-semibold">{product.title}</h4>
                     <p class="text-sm opacity-90">{product.description}</p>
-                    <div class="text-lg font-bold text-primary-content">{product.price}</div>
+                    <div class="text-lg font-bold text-primary-content">
+                      {product.price}
+                    </div>
                   </div>
                 </Carousel.Item>
               )}
@@ -315,13 +364,13 @@ export const SolidJSReactive: Story = {
           </Carousel>
 
           {/* Navigation arrows */}
-          <button 
+          <button
             class="btn btn-circle btn-primary absolute left-4 top-1/2 transform -translate-y-1/2 z-10"
             onClick={prevSlide}
           >
             ❮
           </button>
-          <button 
+          <button
             class="btn btn-circle btn-primary absolute right-4 top-1/2 transform -translate-y-1/2 z-10"
             onClick={nextSlide}
           >
@@ -333,9 +382,11 @@ export const SolidJSReactive: Story = {
         <div class="flex justify-center gap-2">
           <For each={productImages}>
             {(_, index) => (
-              <button 
+              <button
                 class={`w-3 h-3 rounded-full transition-colors ${
-                  index() === currentSlide() ? 'bg-primary' : 'bg-base-300 hover:bg-base-400'
+                  index() === currentSlide()
+                    ? "bg-primary"
+                    : "bg-base-300 hover:bg-base-400"
                 }`}
                 onClick={() => goToSlide(index())}
               />
@@ -360,13 +411,23 @@ export const SolidJSReactive: Story = {
               <p class="text-base-content/80 mb-2">
                 {productImages[currentSlide()]?.description}
               </p>
-              <div style={{ display: "flex", "justify-content": "space-between", "align-items": "center" }}>
+              <div
+                style={{
+                  display: "flex",
+                  "justify-content": "space-between",
+                  "align-items": "center",
+                }}
+              >
                 <span class="text-xl font-bold text-primary">
                   {productImages[currentSlide()]?.price}
                 </span>
                 <div style={{ display: "flex", gap: "0.5rem" }}>
-                  <Button size="sm" variant="outline">Add to Cart</Button>
-                  <Button size="sm" color="primary">Buy Now</Button>
+                  <Button size="sm" variant="outline">
+                    Add to Cart
+                  </Button>
+                  <Button size="sm" color="primary">
+                    Buy Now
+                  </Button>
                 </div>
               </div>
             </div>
@@ -374,7 +435,7 @@ export const SolidJSReactive: Story = {
         </Transition>
 
         <div class="text-sm text-base-content/60 text-center">
-          Slide {currentSlide() + 1} of {productImages.length} 
+          Slide {currentSlide() + 1} of {productImages.length}
           {isAutoplay() && " • Auto-playing"}
         </div>
       </div>
@@ -391,7 +452,11 @@ export const AllVariants: Story = {
           <For each={sampleImages.slice(0, 4)}>
             {(src, index) => (
               <Carousel.Item>
-                <img src={src} alt={`Image ${index() + 1}`} class="h-32 object-cover" />
+                <img
+                  src={src}
+                  alt={`Image ${index() + 1}`}
+                  class="h-32 object-cover"
+                />
               </Carousel.Item>
             )}
           </For>
@@ -404,7 +469,11 @@ export const AllVariants: Story = {
           <For each={sampleImages.slice(0, 4)}>
             {(src, index) => (
               <Carousel.Item>
-                <img src={src} alt={`Image ${index() + 1}`} class="h-32 object-cover" />
+                <img
+                  src={src}
+                  alt={`Image ${index() + 1}`}
+                  class="h-32 object-cover"
+                />
               </Carousel.Item>
             )}
           </For>
@@ -417,7 +486,11 @@ export const AllVariants: Story = {
           <For each={sampleImages.slice(0, 4)}>
             {(src, index) => (
               <Carousel.Item class="h-full">
-                <img src={src} alt={`Image ${index() + 1}`} class="w-full object-cover" />
+                <img
+                  src={src}
+                  alt={`Image ${index() + 1}`}
+                  class="w-full object-cover"
+                />
               </Carousel.Item>
             )}
           </For>
@@ -430,7 +503,11 @@ export const AllVariants: Story = {
           <For each={sampleImages.slice(0, 3)}>
             {(src, index) => (
               <Carousel.Item class="w-full">
-                <img src={src} class="w-full h-32 object-cover" alt={`Image ${index() + 1}`} />
+                <img
+                  src={src}
+                  class="w-full h-32 object-cover"
+                  alt={`Image ${index() + 1}`}
+                />
               </Carousel.Item>
             )}
           </For>

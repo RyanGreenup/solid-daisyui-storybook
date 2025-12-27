@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { ChartJSBarChart as BarChart, Fieldset, Label, Select, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo } from "solid-js";
+import { BarChart } from "../../../src/solid-daisy-components/components/viz/chart_js/BarChart";
+import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import { Range } from "../../../src/solid-daisy-components/components/Range";
 
 const meta = {
   title: "Viz/Chart JS/BarChart",

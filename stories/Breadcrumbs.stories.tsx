@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Breadcrumbs } from "../src/solid-daisy-components/";
 import Home from "lucide-solid/icons/home";
 import Folder from "lucide-solid/icons/folder";
 import FilePlus from "lucide-solid/icons/file-plus";
+import { Breadcrumbs } from "../src/solid-daisy-components/components/Breadcrumbs";
 
 const meta = {
   title: "Components/Breadcrumbs",
@@ -166,8 +166,8 @@ export const InteractiveBreadcrumbs: Story = {
   render: () => (
     <Breadcrumbs class="text-sm">
       <Breadcrumbs.Item>
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="hover:underline cursor-pointer hover:text-primary transition-colors inline-flex gap-2 items-center"
           onClick={(e) => { e.preventDefault(); alert('Navigate to Home'); }}
         >
@@ -176,8 +176,8 @@ export const InteractiveBreadcrumbs: Story = {
         </a>
       </Breadcrumbs.Item>
       <Breadcrumbs.Item>
-        <a 
-          href="#" 
+        <a
+          href="#"
           class="hover:underline cursor-pointer hover:text-primary transition-colors inline-flex gap-2 items-center"
           onClick={(e) => { e.preventDefault(); alert('Navigate to Documents'); }}
         >

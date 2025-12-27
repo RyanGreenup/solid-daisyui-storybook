@@ -1,6 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { RadialProgress, Button } from "../src/solid-daisy-components/";
 import { createSignal, onCleanup } from "solid-js";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { RadialProgress } from "../src/solid-daisy-components/components/RadialProgress";
 
 const meta = {
   title: "Components/RadialProgress",
@@ -54,8 +55,8 @@ export const CustomColor: Story = {
 
 export const WithBackgroundAndBorder: Story = {
   render: () => (
-    <RadialProgress 
-      value={70} 
+    <RadialProgress
+      value={70}
       class="bg-primary text-primary-content border-4 border-primary"
     >
       70%
@@ -104,9 +105,9 @@ export const Sizes: Story = {
 export const AnimatedProgress: Story = {
   render: () => {
     const [progress, setProgress] = createSignal(0);
-    
+
     let interval: ReturnType<typeof setInterval>;
-    
+
     const startAnimation = () => {
       setProgress(0);
       interval = setInterval(() => {
@@ -126,9 +127,9 @@ export const AnimatedProgress: Story = {
 
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", "align-items": "center" }}>
-        <RadialProgress 
-          value={progress()} 
-          class="text-primary" 
+        <RadialProgress
+          value={progress()}
+          class="text-primary"
           size="8rem"
         >
           {progress()}%
@@ -151,7 +152,7 @@ export const LoadingStates: Story = {
           <span class="text-sm">Uploading document.pdf...</span>
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Download Progress</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -159,7 +160,7 @@ export const LoadingStates: Story = {
           <span class="text-sm">Downloading update...</span>
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Task Completion</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -169,12 +170,12 @@ export const LoadingStates: Story = {
           <span class="text-sm text-success">Task completed successfully!</span>
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Battery Level</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
-          <RadialProgress 
-            value={25} 
+          <RadialProgress
+            value={25}
             class="text-warning"
             thickness="8px"
           >

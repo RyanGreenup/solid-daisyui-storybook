@@ -2,7 +2,9 @@ import type { Meta, StoryObj } from "storybook-solidjs-vite";
 import { createSignal } from "solid-js";
 import { ColumnDef } from "@tanstack/solid-table";
 import { VirtualizedDataTable } from "../src/solid-daisy-components/components/Datatables/VirtualizedDataTable";
-import { Progress, Badge } from "../src/solid-daisy-components";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import { Progress } from "../src/solid-daisy-components/components/Progress";
+
 /**
  * NOTE Panda CSS struggles to scan this file, it's been excluded from
  * ../panda.config.ts and inline style props used instead.

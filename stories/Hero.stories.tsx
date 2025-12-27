@@ -1,8 +1,12 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Hero, Button, Card, Input, Label, Fieldset } from "../src/solid-daisy-components/";
 import { createSignal, For, onMount, onCleanup } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import { Input } from "../src/solid-daisy-components/components/Input";
+import { Card } from "../src/solid-daisy-components/components/Card";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
+import { Hero } from "../src/solid-daisy-components/components/Hero";
 const meta = {
   title: "Components/Hero",
   component: Hero,
@@ -15,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   render: () => (
     <Hero class="min-h-96 rounded bg-base-200">
-      <Hero.Content 
+      <Hero.Content
         class="text-center"
         title="Hello there"
         description="Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi."
@@ -30,10 +34,10 @@ export const WithFigure: Story = {
   render: () => (
     <Hero class="min-h-96 rounded bg-base-200">
       <Hero.Content class="flex-col lg:flex-row">
-        <img 
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" 
-          class="max-w-sm rounded-lg shadow-2xl" 
-          alt="Hero component example" 
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+          class="max-w-sm rounded-lg shadow-2xl"
+          alt="Hero component example"
         />
         <div>
           <Hero.Title>Box Office News!</Hero.Title>
@@ -51,10 +55,10 @@ export const WithFigureReverse: Story = {
   render: () => (
     <Hero class="min-h-96 rounded bg-base-200">
       <Hero.Content class="flex-col lg:flex-row-reverse">
-        <img 
-          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" 
-          class="max-w-sm rounded-lg shadow-2xl" 
-          alt="Hero component example" 
+        <img
+          src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+          class="max-w-sm rounded-lg shadow-2xl"
+          alt="Hero component example"
         />
         <div>
           <h1 class="text-5xl font-bold">Box Office News!</h1>
@@ -99,8 +103,8 @@ export const WithForm: Story = {
 
 export const WithOverlayImage: Story = {
   render: () => (
-    <Hero 
-      class="min-h-96 rounded" 
+    <Hero
+      class="min-h-96 rounded"
       style={{ "background-image": "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)" }}
     >
       <Hero.Overlay class="rounded" />
@@ -123,7 +127,7 @@ export const ConvenienceAPI: Story = {
       <div>
         <h3 class="text-lg font-semibold mb-2">Quick Setup with Props</h3>
         <Hero class="min-h-64 rounded bg-base-200">
-          <Hero.Content 
+          <Hero.Content
             class="text-center"
             title="Quick Setup"
             description="Use title and description props for quick hero setup with consistent styling."
@@ -132,7 +136,7 @@ export const ConvenienceAPI: Story = {
           </Hero.Content>
         </Hero>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Custom Components for Full Control</h3>
         <Hero class="min-h-64 rounded bg-base-200">
@@ -148,11 +152,11 @@ export const ConvenienceAPI: Story = {
           </Hero.Content>
         </Hero>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Mixed Approach</h3>
         <Hero class="min-h-64 rounded bg-base-200">
-          <Hero.Content 
+          <Hero.Content
             class="text-center"
             title="Mixed Approach"
           >
@@ -171,7 +175,7 @@ export const InteractiveDemo: Story = {
   render: () => {
     const [currentHero, setCurrentHero] = createSignal(0);
     const [isAnimating, setIsAnimating] = createSignal(false);
-    
+
     const heroes = [
       {
         title: "Welcome to SolidJS",
@@ -240,18 +244,18 @@ export const InteractiveDemo: Story = {
             exitClass="opacity-100 transform scale-100"
             exitToClass="opacity-0 transform scale-95"
           >
-            <div 
+            <div
               class={`absolute inset-0 ${heroes[currentHero()].background}`}
-              style={{ 
+              style={{
                 "background-image": `linear-gradient(45deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url(${heroes[currentHero()].image})`,
                 "background-size": "cover",
                 "background-position": "center"
               }}
             />
           </Transition>
-          
+
           <Hero.Overlay class="rounded bg-black/20" />
-          
+
           <Hero.Content class="text-center text-white relative z-10">
             <Transition
               enterActiveClass="transition-all duration-700 ease-out"
@@ -273,12 +277,12 @@ export const InteractiveDemo: Story = {
               </div>
             </Transition>
           </Hero.Content>
-          
+
           {/* Navigation buttons */}
           <div class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20">
-            <Button 
-              size="sm" 
-              variant="ghost" 
+            <Button
+              size="sm"
+              variant="ghost"
               class="text-white hover:bg-white/20"
               onClick={prevHero}
               disabled={isAnimating()}
@@ -287,9 +291,9 @@ export const InteractiveDemo: Story = {
             </Button>
           </div>
           <div class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20">
-            <Button 
-              size="sm" 
-              variant="ghost" 
+            <Button
+              size="sm"
+              variant="ghost"
               class="text-white hover:bg-white/20"
               onClick={nextHero}
               disabled={isAnimating()}
@@ -298,15 +302,15 @@ export const InteractiveDemo: Story = {
             </Button>
           </div>
         </Hero>
-        
+
         {/* Hero indicators */}
         <div class="flex justify-center gap-2">
           <For each={heroes}>
             {(_, index) => (
               <button
                 class={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index() === currentHero() 
-                    ? 'bg-primary scale-125' 
+                  index() === currentHero()
+                    ? 'bg-primary scale-125'
                     : 'bg-base-300 hover:bg-base-content/20'
                 }`}
                 onClick={() => {
@@ -322,7 +326,7 @@ export const InteractiveDemo: Story = {
             )}
           </For>
         </div>
-        
+
         <div class="text-center text-sm opacity-60">
           Auto-rotates every 5 seconds • Click indicators to navigate
         </div>
@@ -346,15 +350,15 @@ export const AllVariants: Story = {
           </Hero.Content>
         </Hero>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">With Image</h3>
         <Hero class="min-h-64 rounded bg-base-200">
           <Hero.Content class="flex-col lg:flex-row">
-            <img 
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" 
-              class="max-w-48 rounded-lg shadow-lg" 
-              alt="Example" 
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              class="max-w-48 rounded-lg shadow-lg"
+              alt="Example"
             />
             <div>
               <h1 class="text-3xl font-bold">With Figure</h1>
@@ -364,11 +368,11 @@ export const AllVariants: Story = {
           </Hero.Content>
         </Hero>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">With Background Overlay</h3>
-        <Hero 
-          class="min-h-64 rounded" 
+        <Hero
+          class="min-h-64 rounded"
           style={{ "background-image": "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)" }}
         >
           <Hero.Overlay class="rounded bg-black/40" />

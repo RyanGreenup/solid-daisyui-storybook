@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Checkbox } from "../src/solid-daisy-components/";
 import { createSignal } from "solid-js";
 import { useKeybinding } from "../src/solid-daisy-components/utilities/useKeybinding";
+import { Checkbox } from "../src/solid-daisy-components/components/Checkbox";
 
 const meta = {
   title: "Components/Checkbox",
@@ -86,7 +86,7 @@ export const Disabled: Story = {
 export const Indeterminate: Story = {
   render: () => {
     let checkboxRef: HTMLInputElement;
-    
+
     setTimeout(() => {
       if (checkboxRef) {
         checkboxRef.indeterminate = true;
@@ -94,7 +94,7 @@ export const Indeterminate: Story = {
     }, 0);
 
     return (
-      <Checkbox 
+      <Checkbox
         ref={checkboxRef!}
         onclick={(e) => e.preventDefault()}
       />
@@ -104,7 +104,7 @@ export const Indeterminate: Story = {
 
 export const CustomColors: Story = {
   render: () => (
-    <Checkbox 
+    <Checkbox
       checked={true}
       class="border-indigo-600 bg-indigo-500 checked:bg-orange-400 checked:text-orange-800 checked:border-orange-500"
     />
@@ -130,18 +130,18 @@ export const KeybindingDemo: Story = {
           <p style={{ "margin-bottom": "1rem", color: "gray" }}>
             Press <kbd class="kbd">Space</kbd> to toggle the rotating box
           </p>
-          
+
           <label class="label cursor-pointer justify-center gap-4">
             <span class="label-text">Enable Rotation</span>
-            <Checkbox 
-              color="primary" 
+            <Checkbox
+              color="primary"
               checked={isRotating()}
               onchange={(e) => setIsRotating(e.currentTarget.checked)}
             />
           </label>
         </div>
-        
-        <div 
+
+        <div
           class="w-24 h-24 bg-primary flex items-center justify-center text-primary-content font-bold text-lg rounded-lg shadow-lg"
           style={{
             transform: isRotating() ? "rotate(360deg)" : "rotate(0deg)",
@@ -151,7 +151,7 @@ export const KeybindingDemo: Story = {
         >
           📦
         </div>
-        
+
         <style>{`
           @keyframes spin {
             from { transform: rotate(0deg); }

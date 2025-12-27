@@ -1,6 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { RadarChart, Toggle, Label, Fieldset, Select } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For, onMount } from "solid-js";
+import { RadarChart } from "../../../src/solid-daisy-components/components/viz/chart_js/RadarChart";
+import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
+import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import { Select } from "../../../src/solid-daisy-components/components/Select";
 
 const meta = {
   title: "Viz/Chart JS/RadarChart",

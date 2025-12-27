@@ -1,9 +1,11 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Toggle, Fieldset, Label, Alert } from "../src/solid-daisy-components/";
 import { createSignal, onMount, Show, createEffect } from "solid-js";
 import { Transition } from "solid-transition-group";
 import CheckIcon from "lucide-solid/icons/check";
 import XIcon from "lucide-solid/icons/x";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import { Toggle } from "../src/solid-daisy-components/components/Toggle";
 
 const meta = {
   title: "Components/Data Input/Toggle",

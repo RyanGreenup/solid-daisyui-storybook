@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Fieldset, Label, Input, Button } from "../src/solid-daisy-components/";
+import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import { Input } from "../src/solid-daisy-components/components/Input";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
 const meta = {
   title: "Components/Data Input/Fieldset",
@@ -64,7 +66,9 @@ export const LoginForm: Story = {
       <Input type="email" placeholder="Email" />
       <Label>Password</Label>
       <Input type="password" placeholder="Password" />
-      <Button color="neutral" class="mt-4">Login</Button>
+      <Button color="neutral" class="mt-4">
+        Login
+      </Button>
     </Fieldset>
   ),
 };

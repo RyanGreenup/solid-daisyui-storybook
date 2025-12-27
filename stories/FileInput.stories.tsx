@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { FileInput, Fieldset, Label } from "../src/solid-daisy-components/";
+import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
+import { FileInput } from "../src/solid-daisy-components/components/FileInput";
+
 
 const meta = {
   title: "Components/Data Input/FileInput",

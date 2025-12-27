@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Button } from "../src/solid-daisy-components/";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
 const meta = {
   title: "Components/Button",

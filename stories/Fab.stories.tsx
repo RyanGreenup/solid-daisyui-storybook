@@ -1,11 +1,12 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Fab, Button } from "../src/solid-daisy-components/";
 import Plus from "lucide-solid/icons/plus";
 import Camera from "lucide-solid/icons/camera";
 import Image from "lucide-solid/icons/image";
 import Mic from "lucide-solid/icons/mic";
 import X from "lucide-solid/icons/x";
 import Edit from "lucide-solid/icons/edit";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Fab } from "../src/solid-daisy-components/components/Fab";
 
 const meta = {
   title: "Components/Fab",
@@ -25,9 +26,7 @@ export const Default: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-circle btn-primary">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-circle btn-primary">F</Fab.Trigger>
         <Button class="btn btn-lg btn-circle">A</Button>
         <Button class="btn btn-lg btn-circle">B</Button>
         <Button class="btn btn-lg btn-circle">C</Button>
@@ -61,9 +60,7 @@ export const WithLabels: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-circle btn-success">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-circle btn-success">F</Fab.Trigger>
         <Fab.Item>
           Label A <Button class="btn btn-lg btn-circle">A</Button>
         </Fab.Item>
@@ -82,9 +79,7 @@ export const WithRectangleButtons: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-circle btn-success">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-circle btn-success">F</Fab.Trigger>
         <Button class="btn btn-lg">Button A</Button>
         <Button class="btn btn-lg">Button B</Button>
         <Button class="btn btn-lg">Button C</Button>
@@ -97,9 +92,7 @@ export const WithCloseButton: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-circle btn-info">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-circle btn-info">F</Fab.Trigger>
         <Fab.Close>
           Close <Button class="btn btn-circle btn-lg btn-error">✕</Button>
         </Fab.Close>
@@ -121,11 +114,10 @@ export const WithMainAction: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-circle btn-primary">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-circle btn-primary">F</Fab.Trigger>
         <Fab.MainAction>
-          Main Action <Button class="btn btn-circle btn-secondary btn-lg">M</Button>
+          Main Action{" "}
+          <Button class="btn btn-circle btn-secondary btn-lg">M</Button>
         </Fab.MainAction>
         <Fab.Item>
           Label A <Button class="btn btn-lg btn-circle">A</Button>
@@ -155,9 +147,7 @@ export const FlowerLayout: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab flower class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-circle btn-success">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-circle btn-success">F</Fab.Trigger>
         <Button class="fab-main-action btn btn-circle btn-lg">M</Button>
         <Button class="btn btn-lg btn-circle">A</Button>
         <Button class="btn btn-lg btn-circle">B</Button>
@@ -196,9 +186,7 @@ export const FlowerWithTooltips: Story = {
   render: () => (
     <div style={{ height: "300px", position: "relative" }}>
       <Fab flower class="absolute bottom-4 right-4">
-        <Fab.Trigger class="btn btn-lg btn-info btn-circle">
-          F
-        </Fab.Trigger>
+        <Fab.Trigger class="btn btn-lg btn-info btn-circle">F</Fab.Trigger>
         <Button class="fab-main-action btn btn-circle btn-lg btn-success">
           M
         </Button>
@@ -221,7 +209,14 @@ export const FlowerWithTooltips: Story = {
 
 export const ComparisonVerticalVsFlower: Story = {
   render: () => (
-    <div style={{ height: "400px", position: "relative", display: "flex", gap: "2rem" }}>
+    <div
+      style={{
+        height: "400px",
+        position: "relative",
+        display: "flex",
+        gap: "2rem",
+      }}
+    >
       <div style={{ position: "relative", width: "200px", height: "300px" }}>
         <h3 style={{ "margin-bottom": "1rem" }}>Vertical Layout</h3>
         <Fab class="absolute bottom-0 right-0">

@@ -1,7 +1,11 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Indicator, Badge, Button, Card, Input } from "../src/solid-daisy-components/";
-import { createSignal, For, Show, createMemo } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Input } from "../src/solid-daisy-components/components/Input";
+import { Card } from "../src/solid-daisy-components/components/Card";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import { Indicator } from "../src/solid-daisy-components/components/Indicator";
 
 const meta = {
   title: "Components/Indicator",
@@ -104,10 +108,10 @@ export const InCenterOfImage: Story = {
       <Indicator.Item horizontal="center" vertical="middle">
         <Badge>Only available for Pro users</Badge>
       </Indicator.Item>
-      <img 
-        alt="Product" 
-        class="rounded" 
-        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" 
+      <img
+        alt="Product"
+        class="rounded"
+        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
       />
     </Indicator>
   ),
@@ -126,7 +130,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       <div>
         <h4 class="text-sm font-medium mb-2">Top Center</h4>
         <Indicator>
@@ -136,7 +140,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       <div>
         <h4 class="text-sm font-medium mb-2">Top End (default)</h4>
         <Indicator>
@@ -146,7 +150,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       {/* Middle row */}
       <div>
         <h4 class="text-sm font-medium mb-2">Middle Start</h4>
@@ -157,7 +161,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       <div>
         <h4 class="text-sm font-medium mb-2">Middle Center</h4>
         <Indicator>
@@ -167,7 +171,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       <div>
         <h4 class="text-sm font-medium mb-2">Middle End</h4>
         <Indicator>
@@ -177,7 +181,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       {/* Bottom row */}
       <div>
         <h4 class="text-sm font-medium mb-2">Bottom Start</h4>
@@ -188,7 +192,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       <div>
         <h4 class="text-sm font-medium mb-2">Bottom Center</h4>
         <Indicator>
@@ -198,7 +202,7 @@ export const Positions: Story = {
           <div class="grid w-32 h-32 bg-base-300 place-items-center">content</div>
         </Indicator>
       </div>
-      
+
       <div>
         <h4 class="text-sm font-medium mb-2">Bottom End</h4>
         <Indicator>
@@ -276,7 +280,7 @@ export const NotificationDemo: Story = {
         <Card class="bg-base-200 border border-base-300">
           <Card.Body>
             <Card.Title>Interactive Notification Demo</Card.Title>
-            
+
             <div style={{ display: "flex", "flex-wrap": "wrap", gap: "2rem", "align-items": "center" }}>
               {/* Messages */}
               <div style={{ display: "flex", "flex-direction": "column", gap: "0.5rem", "align-items": "center" }}>

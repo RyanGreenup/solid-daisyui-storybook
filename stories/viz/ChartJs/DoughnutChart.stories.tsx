@@ -1,7 +1,13 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { DoughnutChart, Fieldset, Label, Range, Toggle, Select } from "../../../src/solid-daisy-components/";
 import { createSignal, onMount } from "solid-js";
-
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
+import { Range } from "../../../src/solid-daisy-components/components/Range";
+import {
+  Fieldset,
+  Label,
+} from "../../../src/solid-daisy-components/components/Fieldset";
+import { DoughnutChart } from "../../../src/solid-daisy-components/components/viz/chart_js/DoughnutChart";
 const meta = {
   title: "Viz/Chart JS/DoughnutChart",
   component: DoughnutChart,
@@ -13,21 +19,21 @@ type Story = StoryObj<typeof meta>;
 
 // Color palettes
 const brandColors = [
-  'rgba(59, 130, 246, 0.8)',
-  'rgba(34, 197, 94, 0.8)',
-  'rgba(239, 68, 68, 0.8)',
-  'rgba(245, 158, 11, 0.8)',
-  'rgba(147, 51, 234, 0.8)',
-  'rgba(14, 165, 233, 0.8)'
+  "rgba(59, 130, 246, 0.8)",
+  "rgba(34, 197, 94, 0.8)",
+  "rgba(239, 68, 68, 0.8)",
+  "rgba(245, 158, 11, 0.8)",
+  "rgba(147, 51, 234, 0.8)",
+  "rgba(14, 165, 233, 0.8)",
 ];
 
 const pastelColors = [
-  'rgba(254, 202, 202, 0.8)',
-  'rgba(191, 219, 254, 0.8)',
-  'rgba(167, 243, 208, 0.8)',
-  'rgba(253, 230, 138, 0.8)',
-  'rgba(196, 181, 253, 0.8)',
-  'rgba(165, 243, 252, 0.8)'
+  "rgba(254, 202, 202, 0.8)",
+  "rgba(191, 219, 254, 0.8)",
+  "rgba(167, 243, 208, 0.8)",
+  "rgba(253, 230, 138, 0.8)",
+  "rgba(196, 181, 253, 0.8)",
+  "rgba(165, 243, 252, 0.8)",
 ];
 
 export const Basic: Story = {
@@ -37,13 +43,15 @@ export const Basic: Story = {
         <DoughnutChart
           title="Market Share Distribution"
           data={{
-            labels: ['Desktop', 'Mobile', 'Tablet', 'Other'],
-            datasets: [{
-              data: [45, 35, 15, 5],
-              backgroundColor: brandColors.slice(0, 4),
-              borderWidth: 2,
-              borderColor: '#fff'
-            }]
+            labels: ["Desktop", "Mobile", "Tablet", "Other"],
+            datasets: [
+              {
+                data: [45, 35, 15, 5],
+                backgroundColor: brandColors.slice(0, 4),
+                borderWidth: 2,
+                borderColor: "#fff",
+              },
+            ],
           }}
         />
       </div>
@@ -59,30 +67,37 @@ export const CustomCutout: Story = {
           title="Revenue by Product Line"
           cutout="70%"
           data={{
-            labels: ['Software', 'Hardware', 'Services', 'Support', 'Training'],
-            datasets: [{
-              data: [2500000, 1800000, 1200000, 800000, 400000],
-              backgroundColor: brandColors.slice(0, 5),
-              borderWidth: 3,
-              borderColor: '#fff'
-            }]
+            labels: ["Software", "Hardware", "Services", "Support", "Training"],
+            datasets: [
+              {
+                data: [2500000, 1800000, 1200000, 800000, 400000],
+                backgroundColor: brandColors.slice(0, 5),
+                borderWidth: 3,
+                borderColor: "#fff",
+              },
+            ],
           }}
           options={{
             plugins: {
               tooltip: {
                 callbacks: {
                   label: (context) => {
-                    const total = context.dataset.data.reduce((a: any, b: any) => a + b, 0);
-                    const percentage = ((context.parsed / total) * 100).toFixed(1);
-                    const value = new Intl.NumberFormat('en-US', {
-                      style: 'currency',
-                      currency: 'USD'
+                    const total = context.dataset.data.reduce(
+                      (a: any, b: any) => a + b,
+                      0,
+                    );
+                    const percentage = ((context.parsed / total) * 100).toFixed(
+                      1,
+                    );
+                    const value = new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "USD",
                     }).format(context.parsed);
                     return `${context.label}: ${value} (${percentage}%)`;
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           }}
         />
       </div>
@@ -97,23 +112,23 @@ export const MultipleDatasets: Story = {
         <DoughnutChart
           title="Sales Comparison: Current vs Previous Year"
           data={{
-            labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+            labels: ["Q1", "Q2", "Q3", "Q4"],
             datasets: [
               {
-                label: '2024',
+                label: "2024",
                 data: [850, 920, 1050, 980],
                 backgroundColor: brandColors.slice(0, 4),
                 borderWidth: 2,
-                borderColor: '#fff'
+                borderColor: "#fff",
               },
               {
-                label: '2023',
+                label: "2023",
                 data: [720, 850, 900, 840],
                 backgroundColor: pastelColors.slice(0, 4),
                 borderWidth: 2,
-                borderColor: '#fff'
-              }
-            ]
+                borderColor: "#fff",
+              },
+            ],
           }}
         />
       </div>
@@ -125,23 +140,32 @@ export const InteractiveExample: Story = {
   render: () => {
     const [cutoutSize, setCutoutSize] = createSignal(50);
     const [showLabels, setShowLabels] = createSignal(true);
-    const [colorScheme, setColorScheme] = createSignal<'brand' | 'pastel'>('brand');
+    const [colorScheme, setColorScheme] = createSignal<"brand" | "pastel">(
+      "brand",
+    );
     const [hasRendered, setHasRendered] = createSignal(false);
 
     const data = [30, 25, 20, 15, 10];
-    const labels = ['Category A', 'Category B', 'Category C', 'Category D', 'Category E'];
-    const colors = colorScheme() === 'brand' ? brandColors : pastelColors;
+    const labels = [
+      "Category A",
+      "Category B",
+      "Category C",
+      "Category D",
+      "Category E",
+    ];
+    const colors = colorScheme() === "brand" ? brandColors : pastelColors;
 
     onMount(() => {
-    // Set hasRendered to true after the first render
-    if (!hasRendered()) {
-      setTimeout(() => setHasRendered(true), 500);
-    }
+      // Set hasRendered to true after the first render
+      if (!hasRendered()) {
+        setTimeout(() => setHasRendered(true), 500);
+      }
     });
 
-
     return (
-      <div style={{ display: "flex", gap: "2rem", "align-items": "flex-start" }}>
+      <div
+        style={{ display: "flex", gap: "2rem", "align-items": "flex-start" }}
+      >
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box min-w-72">
           <Fieldset.Legend>Chart Configuration</Fieldset.Legend>
 
@@ -186,7 +210,8 @@ export const InteractiveExample: Story = {
 
             <div class="border-t border-base-300 pt-3 mt-2">
               <Label class="text-sm opacity-70">
-                Total segments: {data.length} • Total value: {data.reduce((a, b) => a + b, 0)}
+                Total segments: {data.length} • Total value:{" "}
+                {data.reduce((a, b) => a + b, 0)}
               </Label>
               <Label class="text-xs opacity-60 mt-1">
                 Using {colorScheme()} color scheme with {cutoutSize()}% cutout
@@ -201,23 +226,25 @@ export const InteractiveExample: Story = {
             cutout={`${cutoutSize()}%`}
             data={{
               labels: labels,
-              datasets: [{
-                data: data,
-                backgroundColor: colors.slice(0, data.length),
-                borderWidth: 2,
-                borderColor: '#fff'
-              }]
+              datasets: [
+                {
+                  data: data,
+                  backgroundColor: colors.slice(0, data.length),
+                  borderWidth: 2,
+                  borderColor: "#fff",
+                },
+              ],
             }}
             options={{
               animation: {
-                duration: hasRendered() ? 0 : 1000
+                duration: hasRendered() ? 0 : 1000,
               },
               plugins: {
                 legend: {
                   display: showLabels(),
-                  position: 'bottom'
-                }
-              }
+                  position: "bottom",
+                },
+              },
             }}
           />
         </div>
@@ -231,36 +258,50 @@ export const DonutWithCenterText: Story = {
     const totalValue = 4250;
 
     return (
-      <div style={{ height: "400px", width: "400px", margin: "0 auto", position: "relative" }}>
+      <div
+        style={{
+          height: "400px",
+          width: "400px",
+          margin: "0 auto",
+          position: "relative",
+        }}
+      >
         <DoughnutChart
           title="Total Sales Performance"
           cutout="65%"
           data={{
-            labels: ['Achieved', 'Remaining'],
-            datasets: [{
-              data: [3400, 850],
-              backgroundColor: [
-                'rgba(34, 197, 94, 0.8)',
-                'rgba(229, 231, 235, 0.8)'
-              ],
-              borderWidth: 0
-            }]
+            labels: ["Achieved", "Remaining"],
+            datasets: [
+              {
+                data: [3400, 850],
+                backgroundColor: [
+                  "rgba(34, 197, 94, 0.8)",
+                  "rgba(229, 231, 235, 0.8)",
+                ],
+                borderWidth: 0,
+              },
+            ],
           }}
           options={{
             plugins: {
               legend: {
-                display: false
+                display: false,
               },
               tooltip: {
                 callbacks: {
                   label: (context) => {
-                    const percentage = ((context.parsed / totalValue) * 100).toFixed(1);
-                    const value = new Intl.NumberFormat().format(context.parsed);
+                    const percentage = (
+                      (context.parsed / totalValue) *
+                      100
+                    ).toFixed(1);
+                    const value = new Intl.NumberFormat().format(
+                      context.parsed,
+                    );
                     return `${context.label}: ${value} (${percentage}%)`;
-                  }
-                }
-              }
-            }
+                  },
+                },
+              },
+            },
           }}
         />
 
@@ -272,13 +313,14 @@ export const DonutWithCenterText: Story = {
             left: "50%",
             transform: "translate(-50%, -50%)",
             "text-align": "center",
-            "pointer-events": "none"
+            "pointer-events": "none",
           }}
         >
           <div class="text-3xl font-bold text-success">80%</div>
           <div class="text-sm text-base-content/70">Goal Achieved</div>
           <div class="text-xs text-base-content/50 mt-1">
-            {new Intl.NumberFormat().format(3400)} / {new Intl.NumberFormat().format(totalValue)}
+            {new Intl.NumberFormat().format(3400)} /{" "}
+            {new Intl.NumberFormat().format(totalValue)}
           </div>
         </div>
       </div>
@@ -289,10 +331,26 @@ export const DonutWithCenterText: Story = {
 export const MiniDoughnuts: Story = {
   render: () => {
     const datasets = [
-      { label: 'Web Traffic', data: [65, 35], colors: ['rgba(59, 130, 246, 0.8)', 'rgba(229, 231, 235, 0.3)'] },
-      { label: 'Conversion Rate', data: [23, 77], colors: ['rgba(34, 197, 94, 0.8)', 'rgba(229, 231, 235, 0.3)'] },
-      { label: 'Customer Satisfaction', data: [89, 11], colors: ['rgba(245, 158, 11, 0.8)', 'rgba(229, 231, 235, 0.3)'] },
-      { label: 'Revenue Growth', data: [45, 55], colors: ['rgba(147, 51, 234, 0.8)', 'rgba(229, 231, 235, 0.3)'] }
+      {
+        label: "Web Traffic",
+        data: [65, 35],
+        colors: ["rgba(59, 130, 246, 0.8)", "rgba(229, 231, 235, 0.3)"],
+      },
+      {
+        label: "Conversion Rate",
+        data: [23, 77],
+        colors: ["rgba(34, 197, 94, 0.8)", "rgba(229, 231, 235, 0.3)"],
+      },
+      {
+        label: "Customer Satisfaction",
+        data: [89, 11],
+        colors: ["rgba(245, 158, 11, 0.8)", "rgba(229, 231, 235, 0.3)"],
+      },
+      {
+        label: "Revenue Growth",
+        data: [45, 55],
+        colors: ["rgba(147, 51, 234, 0.8)", "rgba(229, 231, 235, 0.3)"],
+      },
     ];
 
     return (
@@ -303,24 +361,29 @@ export const MiniDoughnuts: Story = {
               title={dataset.label}
               cutout="60%"
               data={{
-                labels: ['Achieved', 'Remaining'],
-                datasets: [{
-                  data: dataset.data,
-                  backgroundColor: dataset.colors,
-                  borderWidth: 2,
-                  borderColor: '#fff'
-                }]
+                labels: ["Achieved", "Remaining"],
+                datasets: [
+                  {
+                    data: dataset.data,
+                    backgroundColor: dataset.colors,
+                    borderWidth: 2,
+                    borderColor: "#fff",
+                  },
+                ],
               }}
               options={{
                 plugins: {
                   legend: {
-                    display: false
-                  }
-                }
+                    display: false,
+                  },
+                },
               }}
             />
             <div class="text-center mt-2">
-              <div class="text-2xl font-bold" style={{ color: dataset.colors[0].replace('0.8', '1') }}>
+              <div
+                class="text-2xl font-bold"
+                style={{ color: dataset.colors[0].replace("0.8", "1") }}
+              >
                 {dataset.data[0]}%
               </div>
             </div>

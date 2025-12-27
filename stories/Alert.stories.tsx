@@ -1,9 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Alert, Button } from "../src/solid-daisy-components/";
-import InfoCircle from "lucide-solid/icons/info";
-import CheckCircle from "lucide-solid/icons/check-circle";
-import AlertTriangle from "lucide-solid/icons/alert-triangle";
 import XCircle from "lucide-solid/icons/x-circle";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
 const meta = {
   title: "Components/Alert",

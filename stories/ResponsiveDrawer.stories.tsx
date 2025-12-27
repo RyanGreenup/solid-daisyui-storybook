@@ -1,6 +1,5 @@
 import { For } from "solid-js";
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Button } from "../src/solid-daisy-components/";
 import {
   BottomDock,
   CheckboxId,
@@ -20,6 +19,7 @@ import LayoutDashboard from "lucide-solid/icons/layout-dashboard";
 import CheckCircle from "lucide-solid/icons/check-circle";
 import Info from "lucide-solid/icons/info";
 import AlertTriangle from "lucide-solid/icons/alert-triangle";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
 const meta = {
   title: "Layouts/ResponsiveDrawer",

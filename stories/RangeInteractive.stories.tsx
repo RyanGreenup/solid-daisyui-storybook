@@ -1,6 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Range, Card, Badge, Button, Alert } from "../src/solid-daisy-components/";
 import { createSignal, createMemo, For, Show } from "solid-js";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import { Card } from "../src/solid-daisy-components/components/Card";
+import { Range } from "../src/solid-daisy-components/components/Range";
 
 const meta = {
   title: "Example/Range Interactive",

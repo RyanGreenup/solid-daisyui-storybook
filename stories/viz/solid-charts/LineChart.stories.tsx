@@ -1,7 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { LineChart, Button, Card } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For } from "solid-js";
+import { LineChart } from "../../../src/solid-daisy-components/components/viz/solid-charts/LineChart";
+import { Button } from "../../../src/solid-daisy-components/components/Button";
 
+import { Card } from "../../../src/solid-daisy-components/components/Card";
 const meta = {
   title: "Viz/Solid Charts/Line Chart",
   component: LineChart,

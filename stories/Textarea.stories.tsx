@@ -1,7 +1,13 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Textarea, Fieldset, Label, Alert, Badge } from "../src/solid-daisy-components/";
 import { createSignal, createMemo, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import {
+  Fieldset,
+  Label,
+} from "../src/solid-daisy-components/components/Fieldset";
+import { Textarea } from "../src/solid-daisy-components/components/Textarea";
 
 const meta = {
   title: "Components/Data Input/Textarea",
@@ -10,7 +16,17 @@ const meta = {
   argTypes: {
     color: {
       control: "select",
-      options: ["default", "neutral", "primary", "secondary", "accent", "info", "success", "warning", "error"],
+      options: [
+        "default",
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "info",
+        "success",
+        "warning",
+        "error",
+      ],
     },
     size: {
       control: "select",
@@ -33,9 +49,7 @@ export const Default: Story = {
 };
 
 export const Ghost: Story = {
-  render: () => (
-    <Textarea variant="ghost" placeholder="Bio" />
-  ),
+  render: () => <Textarea variant="ghost" placeholder="Bio" />,
 };
 
 export const WithFieldset: Story = {
@@ -65,7 +79,15 @@ export const Colors: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", width: "100%", "align-items": "center" }}>
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "1rem",
+        width: "100%",
+        "align-items": "center",
+      }}
+    >
       <Textarea size="xs" placeholder="Xsmall" />
       <Textarea size="sm" placeholder="Small" />
       <Textarea size="md" placeholder="Medium" />
@@ -76,9 +98,7 @@ export const Sizes: Story = {
 };
 
 export const Disabled: Story = {
-  render: () => (
-    <Textarea disabled placeholder="Bio" />
-  ),
+  render: () => <Textarea disabled placeholder="Bio" />,
 };
 
 export const SolidJSReactive: Story = {
@@ -89,7 +109,9 @@ export const SolidJSReactive: Story = {
     const characterCount = createMemo(() => content().length);
     const remainingChars = createMemo(() => maxLength() - characterCount());
     const isOverLimit = createMemo(() => remainingChars() < 0);
-    const isNearLimit = createMemo(() => remainingChars() <= 20 && remainingChars() >= 0);
+    const isNearLimit = createMemo(
+      () => remainingChars() <= 20 && remainingChars() >= 0,
+    );
 
     const getTextareaColor = () => {
       if (isOverLimit()) return "error";
@@ -104,18 +126,30 @@ export const SolidJSReactive: Story = {
     };
 
     const wordCount = createMemo(() => {
-      const words = content().trim().split(/\s+/).filter(word => word.length > 0);
+      const words = content()
+        .trim()
+        .split(/\s+/)
+        .filter((word) => word.length > 0);
       return words.length;
     });
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem", "max-width": "500px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "1.5rem",
+          "max-width": "500px",
+        }}
+      >
         <h3 class="text-xl font-bold">SolidJS Reactive Textarea Example</h3>
 
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Write a post</Fieldset.Legend>
 
-          <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+          <div
+            style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+          >
             <Textarea
               color={getTextareaColor()}
               class="h-32 resize-none"
@@ -124,8 +158,20 @@ export const SolidJSReactive: Story = {
               onInput={(e) => setContent(e.currentTarget.value)}
             />
 
-            <div style={{ display: "flex", "justify-content": "space-between", "align-items": "center" }}>
-              <div style={{ display: "flex", gap: "0.5rem", "align-items": "center" }}>
+            <div
+              style={{
+                display: "flex",
+                "justify-content": "space-between",
+                "align-items": "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  gap: "0.5rem",
+                  "align-items": "center",
+                }}
+              >
                 <Badge color={getCounterColor()} variant="outline">
                   {characterCount()}/{maxLength()}
                 </Badge>
@@ -145,13 +191,20 @@ export const SolidJSReactive: Story = {
           </div>
         </Fieldset>
 
-        <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+        <div
+          style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}
+        >
           <h4 class="text-lg font-semibold">Live Preview:</h4>
 
           <div class="bg-base-300 p-4 rounded-box min-h-20">
-            <Show when={content().trim().length > 0} fallback={
-              <span class="text-base-content/50 italic">Your post will appear here...</span>
-            }>
+            <Show
+              when={content().trim().length > 0}
+              fallback={
+                <span class="text-base-content/50 italic">
+                  Your post will appear here...
+                </span>
+              }
+            >
               <p class="whitespace-pre-wrap">{content()}</p>
             </Show>
           </div>
@@ -167,8 +220,8 @@ export const SolidJSReactive: Story = {
             <Show when={isOverLimit()}>
               <Alert color="error">
                 <span>
-                  Your post is {Math.abs(remainingChars())} characters over the limit.
-                  Please shorten it to continue.
+                  Your post is {Math.abs(remainingChars())} characters over the
+                  limit. Please shorten it to continue.
                 </span>
               </Alert>
             </Show>
@@ -185,8 +238,8 @@ export const SolidJSReactive: Story = {
             <Show when={content().trim().length > 0 && !isOverLimit()}>
               <Alert color="success">
                 <span>
-                  Great! Your post looks good with {wordCount()} words
-                  and {characterCount()} characters.
+                  Great! Your post looks good with {wordCount()} words and{" "}
+                  {characterCount()} characters.
                 </span>
               </Alert>
             </Show>
@@ -222,9 +275,16 @@ export const AllVariants: Story = {
 
       <div>
         <h3 class="text-lg font-semibold mb-2">In Fieldset</h3>
-        <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box" style={{ width: "400px" }}>
+        <Fieldset
+          class="bg-base-200 border border-base-300 p-4 rounded-box"
+          style={{ width: "400px" }}
+        >
           <Fieldset.Legend>Message</Fieldset.Legend>
-          <Textarea color="primary" class="h-24" placeholder="Enter your message here..." />
+          <Textarea
+            color="primary"
+            class="h-24"
+            placeholder="Enter your message here..."
+          />
           <Label>This field is required</Label>
         </Fieldset>
       </div>

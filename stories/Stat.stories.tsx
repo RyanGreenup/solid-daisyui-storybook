@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
+import { Button } from "../src/solid-daisy-components/components/Button";
 import {
+  StatActions,
+  StatDesc,
+  StatFigure,
   Stats,
   Stat,
   StatTitle,
   StatValue,
-  StatDesc,
-  StatFigure,
-  StatActions,
-  Button,
-} from "../src/solid-daisy-components";
+} from "../src/solid-daisy-components/components/Stat";
 import Heart from "lucide-solid/icons/heart";
 import Zap from "lucide-solid/icons/zap";
 import ShoppingCart from "lucide-solid/icons/shopping-cart";

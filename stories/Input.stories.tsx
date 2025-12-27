@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Input } from "../src/solid-daisy-components/";
 import { createSignal } from "solid-js";
+import { Input } from "../src/solid-daisy-components/components/Input";
 
 const meta = {
   title: "Components/Input",

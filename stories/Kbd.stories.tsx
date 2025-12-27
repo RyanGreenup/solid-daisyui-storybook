@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Kbd } from "../src/solid-daisy-components";
+import { Kbd } from "../src/solid-daisy-components/components/Kbd";
 
 const meta = {
   title: "Components/Kbd",

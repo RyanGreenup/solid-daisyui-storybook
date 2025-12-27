@@ -1,6 +1,4 @@
-import { For } from "solid-js";
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Button } from "../src/solid-daisy-components/";
 import {
   BottomDock,
   CheckboxId,

@@ -1,8 +1,11 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Loading, Button, Card, Alert } from "../src/solid-daisy-components/";
 import { createSignal, onCleanup, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import { Card } from "../src/solid-daisy-components/components/Card";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
+import { Loading } from "../src/solid-daisy-components/components/Loading";
 const meta = {
   title: "Components/Loading",
   component: Loading,
@@ -129,7 +132,7 @@ export const AllVariants: Story = {
           <Loading variant="spinner" size="xl" />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Dots</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -140,7 +143,7 @@ export const AllVariants: Story = {
           <Loading variant="dots" size="xl" />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Ring</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -151,7 +154,7 @@ export const AllVariants: Story = {
           <Loading variant="ring" size="xl" />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Ball</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -162,7 +165,7 @@ export const AllVariants: Story = {
           <Loading variant="ball" size="xl" />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Bars</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -173,7 +176,7 @@ export const AllVariants: Story = {
           <Loading variant="bars" size="xl" />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Infinity</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
@@ -184,7 +187,7 @@ export const AllVariants: Story = {
           <Loading variant="infinity" size="xl" />
         </div>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">With Colors</h3>
         <div style={{ display: "flex", gap: "1rem", "align-items": "center", "flex-wrap": "wrap" }}>
@@ -212,7 +215,7 @@ export const InteractiveDemo: Story = {
       setIsLoading(true);
       setProgress(0);
       setLoadingText("Initializing...");
-      
+
       // Simulate loading steps
       const steps = [
         { text: "Connecting to server...", delay: 800 },
@@ -243,7 +246,7 @@ export const InteractiveDemo: Story = {
         <Card class="bg-base-200 border border-base-300">
           <Card.Body>
             <Card.Title>Loading States Demo</Card.Title>
-            
+
             <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
               <div class="text-center">
                 <div style={{ display: "flex", "justify-content": "center", "align-items": "center", gap: "1rem", "min-height": "80px" }}>
@@ -261,20 +264,20 @@ export const InteractiveDemo: Story = {
                   </Transition>
                   <div class="text-lg font-medium">{loadingText()}</div>
                 </div>
-                
+
                 <Show when={isLoading()}>
                   <div class="w-full bg-base-300 rounded-full h-2">
-                    <div 
+                    <div
                       class="bg-primary h-2 rounded-full transition-all duration-300 ease-out"
                       style={{ width: `${progress()}%` }}
                     />
                   </div>
                 </Show>
               </div>
-              
-              <Button 
-                color="primary" 
-                onClick={simulateLoad} 
+
+              <Button
+                color="primary"
+                onClick={simulateLoad}
                 disabled={isLoading()}
                 class="w-full"
               >
@@ -294,33 +297,33 @@ export const InteractiveDemo: Story = {
         <Card class="bg-base-200 border border-base-300">
           <Card.Body>
             <Card.Title>Different Loading Styles</Card.Title>
-            
+
             <div style={{ display: "grid", "grid-template-columns": "repeat(3, 1fr)", gap: "1rem", "text-align": "center" }}>
               <div>
                 <div class="font-medium mb-2">Spinner</div>
                 <Loading variant="spinner" size="lg" class="text-primary" />
               </div>
-              
+
               <div>
                 <div class="font-medium mb-2">Dots</div>
                 <Loading variant="dots" size="lg" class="text-secondary" />
               </div>
-              
+
               <div>
                 <div class="font-medium mb-2">Ring</div>
                 <Loading variant="ring" size="lg" class="text-accent" />
               </div>
-              
+
               <div>
                 <div class="font-medium mb-2">Ball</div>
                 <Loading variant="ball" size="lg" class="text-info" />
               </div>
-              
+
               <div>
                 <div class="font-medium mb-2">Bars</div>
                 <Loading variant="bars" size="lg" class="text-success" />
               </div>
-              
+
               <div>
                 <div class="font-medium mb-2">Infinity</div>
                 <Loading variant="infinity" size="lg" class="text-warning" />

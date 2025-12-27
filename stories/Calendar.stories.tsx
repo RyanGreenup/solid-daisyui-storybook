@@ -1,8 +1,12 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Calendar, Button, Input, Alert, Fieldset } from "../src/solid-daisy-components/";
-import { createSignal, Show, onMount } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import ChevronLeft from "lucide-solid/icons/chevron-left";
 import ChevronRight from "lucide-solid/icons/chevron-right";
+import { Fieldset } from "../src/solid-daisy-components/components/Fieldset";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import { Input } from "../src/solid-daisy-components/components/Input";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Calendar } from "../src/solid-daisy-components/components/Calendar";
 
 const meta = {
   title: "Components/Calendar",
@@ -26,10 +30,22 @@ export const Default: Story = {
 export const WithSVGIcons: Story = {
   render: () => (
     <Calendar class="bg-base-100 border border-base-300 shadow-lg rounded-box">
-      <svg aria-label="Previous" class="fill-current size-4" slot="previous" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg
+        aria-label="Previous"
+        class="fill-current size-4"
+        slot="previous"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
         <path fill="currentColor" d="M15.75 19.5 8.25 12l7.5-7.5"></path>
       </svg>
-      <svg aria-label="Next" class="fill-current size-4" slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <svg
+        aria-label="Next"
+        class="fill-current size-4"
+        slot="next"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
         <path fill="currentColor" d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
       </svg>
       <Calendar.Month />
@@ -63,24 +79,21 @@ export const DatePickerInput: Story = {
 
     return (
       <div class="relative">
-        <Button 
+        <Button
           onClick={toggleCalendar}
           variant="outline"
           class="w-64 justify-start"
         >
           {formatDate(selectedDate())}
         </Button>
-        
+
         <Show when={showCalendar()}>
-          <div 
+          <div
             ref={popoverRef}
             class="absolute top-full left-0 mt-1 z-50 bg-base-100 rounded-box shadow-lg border border-base-300"
             onClick={(e) => e.stopPropagation()}
           >
-            <Calendar 
-              value={selectedDate()}
-              onDateChange={handleDateChange}
-            >
+            <Calendar value={selectedDate()} onDateChange={handleDateChange}>
               <ChevronLeft size={16} slot="previous" aria-label="Previous" />
               <ChevronRight size={16} slot="next" aria-label="Next" />
               <Calendar.Month />
@@ -90,7 +103,7 @@ export const DatePickerInput: Story = {
 
         {/* Backdrop to close calendar */}
         <Show when={showCalendar()}>
-          <div 
+          <div
             class="fixed inset-0 z-40"
             onClick={() => setShowCalendar(false)}
           />
@@ -103,18 +116,18 @@ export const DatePickerInput: Story = {
 export const WithConstraints: Story = {
   render: () => {
     const [selectedDate, setSelectedDate] = createSignal("");
-    
-    const today = new Date().toISOString().split('T')[0];
+
+    const today = new Date().toISOString().split("T")[0];
     const maxDate = new Date();
     maxDate.setMonth(maxDate.getMonth() + 3);
-    const maxDateStr = maxDate.toISOString().split('T')[0];
+    const maxDateStr = maxDate.toISOString().split("T")[0];
 
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
         <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
           <Fieldset.Legend>Date Selection (Next 3 months only)</Fieldset.Legend>
-          
-          <Calendar 
+
+          <Calendar
             class="bg-base-100 border border-base-300 shadow-lg rounded-box"
             value={selectedDate()}
             min={today}
@@ -129,7 +142,10 @@ export const WithConstraints: Story = {
 
         <Show when={selectedDate()}>
           <Alert color="success">
-            <span>Selected date: <strong>{new Date(selectedDate()).toLocaleDateString()}</strong></span>
+            <span>
+              Selected date:{" "}
+              <strong>{new Date(selectedDate()).toLocaleDateString()}</strong>
+            </span>
           </Alert>
         </Show>
       </div>
@@ -151,7 +167,7 @@ export const SolidJSReactive: Story = {
     ];
 
     const getSelectedTypeInfo = () => {
-      return appointmentTypes.find(type => type.value === appointmentType());
+      return appointmentTypes.find((type) => type.value === appointmentType());
     };
 
     const isFormComplete = () => {
@@ -160,21 +176,36 @@ export const SolidJSReactive: Story = {
 
     const handleSubmit = () => {
       if (isFormComplete()) {
-        alert(`Appointment scheduled!\nDate: ${new Date(selectedDate()).toLocaleDateString()}\nType: ${getSelectedTypeInfo()?.label}\nNotes: ${notes()}`);
+        alert(
+          `Appointment scheduled!\nDate: ${new Date(selectedDate()).toLocaleDateString()}\nType: ${getSelectedTypeInfo()?.label}\nNotes: ${notes()}`,
+        );
       }
     };
 
     return (
-      <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
+      <div
+        style={{
+          display: "flex",
+          "flex-direction": "column",
+          gap: "2rem",
+          "max-width": "600px",
+        }}
+      >
         <h3 class="text-xl font-bold">SolidJS Reactive Calendar Example</h3>
-        
-        <div style={{ display: "grid", "grid-template-columns": "1fr 1fr", gap: "2rem" }}>
+
+        <div
+          style={{
+            display: "grid",
+            "grid-template-columns": "1fr 1fr",
+            gap: "2rem",
+          }}
+        >
           <div>
             <h4 class="text-lg font-semibold mb-3">Select Appointment Date</h4>
-            <Calendar 
+            <Calendar
               class="bg-base-100 border border-base-300 shadow-lg rounded-box"
               value={selectedDate()}
-              min={new Date().toISOString().split('T')[0]}
+              min={new Date().toISOString().split("T")[0]}
               onDateChange={setSelectedDate}
             >
               <ChevronLeft size={16} slot="previous" aria-label="Previous" />
@@ -183,23 +214,37 @@ export const SolidJSReactive: Story = {
             </Calendar>
           </div>
 
-          <div style={{ display: "flex", "flex-direction": "column", gap: "1.5rem" }}>
+          <div
+            style={{
+              display: "flex",
+              "flex-direction": "column",
+              gap: "1.5rem",
+            }}
+          >
             <div>
               <h4 class="text-lg font-semibold mb-3">Appointment Details</h4>
-              
+
               <Fieldset class="bg-base-200 border border-base-300 p-4 rounded-box">
                 <Fieldset.Legend>Appointment Information</Fieldset.Legend>
-                
-                <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+
+                <div
+                  style={{
+                    display: "flex",
+                    "flex-direction": "column",
+                    gap: "1rem",
+                  }}
+                >
                   <div>
                     <label class="label">Appointment Type</label>
-                    <select 
+                    <select
                       class="select select-primary w-full"
                       value={appointmentType()}
                       onInput={(e) => setAppointmentType(e.currentTarget.value)}
                     >
-                      <option value="" disabled>Select type</option>
-                      {appointmentTypes.map(type => (
+                      <option value="" disabled>
+                        Select type
+                      </option>
+                      {appointmentTypes.map((type) => (
                         <option value={type.value}>{type.label}</option>
                       ))}
                     </select>
@@ -207,7 +252,7 @@ export const SolidJSReactive: Story = {
 
                   <div>
                     <label class="label">Notes</label>
-                    <textarea 
+                    <textarea
                       class="textarea textarea-primary w-full"
                       placeholder="Describe your needs..."
                       value={notes()}
@@ -219,28 +264,51 @@ export const SolidJSReactive: Story = {
               </Fieldset>
             </div>
 
-            <div style={{ display: "flex", "flex-direction": "column", gap: "1rem" }}>
+            <div
+              style={{
+                display: "flex",
+                "flex-direction": "column",
+                gap: "1rem",
+              }}
+            >
               <h5 class="font-semibold">Summary</h5>
 
               <div class="bg-base-300 p-3 rounded-box text-sm">
-                <div><strong>Date:</strong> {selectedDate() ? new Date(selectedDate()).toDateString()  : "Not selected"}</div>
-                <div><strong>Type:</strong> {getSelectedTypeInfo()?.label || "Not selected"}</div>
-                <div><strong>Notes:</strong> {notes() || "None"}</div>
+                <div>
+                  <strong>Date:</strong>{" "}
+                  {selectedDate()
+                    ? new Date(selectedDate()).toDateString()
+                    : "Not selected"}
+                </div>
+                <div>
+                  <strong>Type:</strong>{" "}
+                  {getSelectedTypeInfo()?.label || "Not selected"}
+                </div>
+                <div>
+                  <strong>Notes:</strong> {notes() || "None"}
+                </div>
               </div>
 
               <Show when={getSelectedTypeInfo()}>
-                <Alert color={getSelectedTypeInfo()?.color as any} showIcon={false}>
+                <Alert
+                  color={getSelectedTypeInfo()?.color as any}
+                  showIcon={false}
+                >
                   <span>
-                    {getSelectedTypeInfo()?.value === 'urgent' && "Urgent appointments will be prioritized."}
-                    {getSelectedTypeInfo()?.value === 'consultation' && "New patient consultation - please arrive 15 minutes early."}
-                    {getSelectedTypeInfo()?.value === 'checkup' && "Regular checkup scheduled."}
-                    {getSelectedTypeInfo()?.value === 'followup' && "Follow-up appointment to review progress."}
+                    {getSelectedTypeInfo()?.value === "urgent" &&
+                      "Urgent appointments will be prioritized."}
+                    {getSelectedTypeInfo()?.value === "consultation" &&
+                      "New patient consultation - please arrive 15 minutes early."}
+                    {getSelectedTypeInfo()?.value === "checkup" &&
+                      "Regular checkup scheduled."}
+                    {getSelectedTypeInfo()?.value === "followup" &&
+                      "Follow-up appointment to review progress."}
                   </span>
                 </Alert>
               </Show>
 
-              <Button 
-                color="primary" 
+              <Button
+                color="primary"
                 disabled={!isFormComplete()}
                 onClick={handleSubmit}
                 class="w-full"
@@ -250,7 +318,9 @@ export const SolidJSReactive: Story = {
 
               <Show when={isFormComplete()}>
                 <Alert color="success">
-                  <span>Ready to schedule! Click the button above to confirm.</span>
+                  <span>
+                    Ready to schedule! Click the button above to confirm.
+                  </span>
                 </Alert>
               </Show>
             </div>
@@ -272,7 +342,7 @@ export const Variations: Story = {
           <Calendar.Month />
         </Calendar>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">With Different Styling</h3>
         <Calendar class="bg-primary text-primary-content shadow-2xl rounded-2xl border-2 border-primary">
@@ -281,7 +351,7 @@ export const Variations: Story = {
           <Calendar.Month />
         </Calendar>
       </div>
-      
+
       <div>
         <h3 class="text-lg font-semibold mb-2">Compact Version</h3>
         <Calendar class="bg-base-200 border border-base-300 rounded-lg shadow-sm scale-90 origin-top-left">

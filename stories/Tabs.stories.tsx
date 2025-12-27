@@ -1,10 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Tabs } from "../src/solid-daisy-components/";
 import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
 import Play from "lucide-solid/icons/play";
 import Smile from "lucide-solid/icons/smile";
 import Heart from "lucide-solid/icons/heart";
+import { Tabs } from "../src/solid-daisy-components/components/Tabs";
 
 const meta = {
   title: "Components/Tabs",

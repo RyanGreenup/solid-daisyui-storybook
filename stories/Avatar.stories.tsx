@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Avatar } from "../src/solid-daisy-components/";
+import { Avatar } from "../src/solid-daisy-components/components/Avatar";
 
 const meta = {
   title: "Components/Avatar",

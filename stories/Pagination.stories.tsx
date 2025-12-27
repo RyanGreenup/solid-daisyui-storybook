@@ -1,8 +1,9 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Pagination, Button } from "../src/solid-daisy-components/";
 import { createSignal, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
+import { Pagination } from "../src/solid-daisy-components/components/Pagination";
 const meta = {
   title: "Components/Pagination",
   component: Pagination,
@@ -157,11 +158,11 @@ export const SolidJSInteractive: Story = {
   render: () => {
     const [currentPage, setCurrentPage] = createSignal(1);
     const [itemsPerPage, setItemsPerPage] = createSignal(10);
-    
+
     // Mock data
     const totalItems = 247;
     const totalPages = () => Math.ceil(totalItems / itemsPerPage());
-    
+
     const getCurrentItems = () => {
       const start = (currentPage() - 1) * itemsPerPage() + 1;
       const end = Math.min(start + itemsPerPage() - 1, totalItems);
@@ -180,7 +181,7 @@ export const SolidJSInteractive: Story = {
     return (
       <div style={{ display: "flex", "flex-direction": "column", gap: "2rem", "max-width": "600px" }}>
         <h3 class="text-xl font-bold">Interactive Pagination Example</h3>
-        
+
         <div class="bg-base-200 p-4 rounded-box">
           <h4 class="font-semibold mb-2">Data Summary</h4>
           <div class="grid grid-cols-2 gap-2 text-sm">
@@ -212,7 +213,7 @@ export const SolidJSInteractive: Story = {
         <div style={{ display: "flex", "flex-direction": "column", gap: "1rem", "align-items": "center" }}>
           <div style={{ display: "flex", gap: "1rem", "align-items": "center" }}>
             <label class="text-sm">Items per page:</label>
-            <select 
+            <select
               class="select select-sm select-bordered"
               value={itemsPerPage()}
               onInput={(e) => handleItemsPerPageChange(Number(e.currentTarget.value))}

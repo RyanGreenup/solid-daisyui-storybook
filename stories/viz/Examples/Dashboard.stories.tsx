@@ -14,21 +14,7 @@ import TrendingUp from "lucide-solid/icons/trending-up";
 import Users from "lucide-solid/icons/users";
 import { createMemo, createSignal, onMount } from "solid-js";
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import {
-  Badge,
-  ChartJSBarChart as BarChart,
-  Card,
-  DoughnutChart,
-  ChartJSLineChart as LineChart,
-  Progress,
-  Stat,
-  StatDesc,
-  StatFigure,
-  Stats,
-  StatTitle,
-  StatValue,
-  VirtualizedDataTable,
-} from "../../../src/solid-daisy-components/";
+import { Badge } from "../../../src/solid-daisy-components/components/Badge";
 import {
   CheckboxId,
   Layout,
@@ -39,6 +25,20 @@ import {
   SidebarContent,
   ToggleButton,
 } from "../../../src/solid-daisy-components/components/Layouts/ResponsiveDrawer/";
+import { BarChart } from "../../../src/solid-daisy-components/components/viz/chart_js/BarChart";
+import { Card } from "../../../src/solid-daisy-components/components/Card";
+import { DoughnutChart } from "../../../src/solid-daisy-components/components/viz/chart_js/DoughnutChart";
+import { LineChart } from "../../../src/solid-daisy-components/components/viz/chart_js/LineChart";
+import { Progress } from "../../../src/solid-daisy-components/components/Progress";
+import {
+  Stat,
+  StatDesc,
+  StatFigure,
+  Stats,
+  StatTitle,
+  StatValue,
+} from "../../../src/solid-daisy-components/components/Stat";
+import VirtualizedDataTable from "../../../src/solid-daisy-components/components/Datatables/VirtualizedDataTable";
 
 const meta = {
   title: "Viz/Examples/Dashboard",

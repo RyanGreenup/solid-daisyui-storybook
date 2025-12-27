@@ -1,5 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Card, Button, Badge } from "../src/solid-daisy-components/";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
+import { Button } from "../src/solid-daisy-components/components/Button";
+import { Card } from "../src/solid-daisy-components/components/Card";
 
 const meta = {
   title: "Components/Card",

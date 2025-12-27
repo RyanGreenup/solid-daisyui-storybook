@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Steps } from "../src/solid-daisy-components/";
 import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Steps } from "../src/solid-daisy-components/components/Steps";
 
 const meta = {
   title: "Components/Steps",

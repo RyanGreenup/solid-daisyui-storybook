@@ -1,8 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Select, Fieldset, Label, Alert } from "../src/solid-daisy-components/";
 import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Alert } from "../src/solid-daisy-components/components/Alert";
+import { Fieldset, Label } from "../src/solid-daisy-components/components/Fieldset";
 
+import { Select } from "../src/solid-daisy-components/components/Select";
 const meta = {
   title: "Components/Data Input/Select",
   component: Select,

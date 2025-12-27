@@ -1,6 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { EChartsComponent, Select, Toggle, Label, Fieldset, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo } from "solid-js";
+import EChartsComponent from "../../../src/solid-daisy-components/components/viz/apache_echarts/EChartsComponent";
+import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import { Range } from "../../../src/solid-daisy-components/components/Range";
+import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
 
 const meta = {
   title: "Viz/Apache ECharts/EChartsComponent",

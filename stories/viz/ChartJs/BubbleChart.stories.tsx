@@ -1,6 +1,10 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { BubbleChart, Select, Toggle, Label, Fieldset, Range } from "../../../src/solid-daisy-components/";
 import { createSignal, createMemo, For, onMount } from "solid-js";
+import { BubbleChart } from "../../../src/solid-daisy-components/components/viz/chart_js/BubbleChart";
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import { Toggle } from "../../../src/solid-daisy-components/components/Toggle";
+import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
+import { Range } from "../../../src/solid-daisy-components/components/Range";
 
 const meta = {
   title: "Viz/Chart JS/BubbleChart",

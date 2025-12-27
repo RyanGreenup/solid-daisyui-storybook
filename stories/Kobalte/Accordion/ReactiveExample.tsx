@@ -2,26 +2,12 @@ import { Meta, StoryObj } from "storybook-solidjs-vite";
 import {
   createSignal,
   createEffect,
-  createMemo,
-  onMount,
-  createResource,
-  Show,
 } from "solid-js";
-import {
-  Fieldset,
-  Label,
-  Range,
-  ChartJSLineChart,
-  VirtualizedDataTable,
-  Input,
-  Select,
-  RadialProgress,
-  Button,
-} from "../../../src/solid-daisy-components/";
 import { Story } from "./Accordion.stories";
-
 import { Accordion } from "../../../src/solid-daisy-components/components/Kobalte/Accordion/Accordion";
+import { Range } from "../../../src/solid-daisy-components/components/Range";
 
+import { Fieldset, Label } from "../../../src/solid-daisy-components/components/Fieldset";
 export const ReactiveExample: Story = {
   render: () => {
     // SolidJS signals for fine-grained reactivity

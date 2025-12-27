@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Filter } from "../src/solid-daisy-components/";
 import { createSignal, For, Show } from "solid-js";
 import { Transition } from "solid-transition-group";
+import { Filter } from "../src/solid-daisy-components/components/Filter";
 
 const meta = {
   title: "Components/Data Input/Filter",

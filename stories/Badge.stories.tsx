@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "storybook-solidjs-vite";
-import { Badge } from "../src/solid-daisy-components/";
+import { Badge } from "../src/solid-daisy-components/components/Badge";
 
 const meta = {
   title: "Components/Badge",

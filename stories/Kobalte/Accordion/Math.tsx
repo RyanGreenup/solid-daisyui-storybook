@@ -4,23 +4,17 @@ import {
   createEffect,
   createMemo,
   onMount,
-  createResource,
   Show,
 } from "solid-js";
-import {
-  Fieldset,
-  Label,
-  Range,
-  ChartJSLineChart,
-  VirtualizedDataTable,
-  Input,
-  Select,
-  RadialProgress,
-  Button,
-} from "../../../src/solid-daisy-components/";
 import { Story } from "./Accordion.stories";
-
 import { Accordion } from "../../../src/solid-daisy-components/components/Kobalte/Accordion/Accordion";
+import { RadialProgress } from "../../../src/solid-daisy-components/components/RadialProgress";
+import { Select } from "../../../src/solid-daisy-components/components/Select";
+import VirtualizedDataTable from "../../../src/solid-daisy-components/components/Datatables/VirtualizedDataTable";
+import { LineChart as ChartJSLineChart } from "../../../src/solid-daisy-components/components/viz/chart_js/LineChart";
+import { Range } from "../../../src/solid-daisy-components/components/Range";
+import { Fieldset } from "../../../src/solid-daisy-components/components/Fieldset";
+import { Label } from "../../../src/solid-daisy-components/components/Fieldset";
 
 export const MathVisualizationExample: Story = {
   render: () => {

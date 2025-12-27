@@ -10,9 +10,10 @@ import Settings from "lucide-solid/icons/settings";
 import User from "lucide-solid/icons/user";
 import { createSignal } from "solid-js";
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
+import { Input } from "../src/solid-daisy-components/components/Input";
 import {
-  Button,
   Command,
+  CommandDialog,
   CommandEmpty,
   CommandGroup,
   CommandInput,
@@ -20,9 +21,8 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-  CommandDialog,
-  Input,
-} from "../src/solid-daisy-components";
+} from "../src/solid-daisy-components/components/Command";
+import { Button } from "../src/solid-daisy-components/components/Button";
 
 const meta = {
   title: "Components/Widgets/Command Palette",
